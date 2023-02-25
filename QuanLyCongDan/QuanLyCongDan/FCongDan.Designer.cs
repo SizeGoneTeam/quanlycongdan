@@ -1,0 +1,332 @@
+﻿namespace Week2
+{
+    partial class FCongDan
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.lblHoTen = new System.Windows.Forms.Label();
+            this.txtCMND = new System.Windows.Forms.TextBox();
+            this.dTPNgaySinh = new System.Windows.Forms.DateTimePicker();
+            this.btnThem = new System.Windows.Forms.Button();
+            this.gvCongDan = new System.Windows.Forms.DataGridView();
+            this.lblQueQuan = new System.Windows.Forms.Label();
+            this.lblDiaChi = new System.Windows.Forms.Label();
+            this.lblNamSinh = new System.Windows.Forms.Label();
+            this.txtQueQuan = new System.Windows.Forms.TextBox();
+            this.txtHoTen = new System.Windows.Forms.TextBox();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnSua = new System.Windows.Forms.Button();
+            this.txtID = new System.Windows.Forms.TextBox();
+            this.lblID = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.lblSDT = new System.Windows.Forms.Label();
+            this.txtSDT = new System.Windows.Forms.TextBox();
+            this.lblDanToc = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lblTonGiao = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.lblGioiTinh = new System.Windows.Forms.Label();
+            this.cboGioiTinh = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.gvCongDan)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // lblHoTen
+            // 
+            this.lblHoTen.AutoSize = true;
+            this.lblHoTen.Location = new System.Drawing.Point(21, 69);
+            this.lblHoTen.Name = "lblHoTen";
+            this.lblHoTen.Size = new System.Drawing.Size(70, 16);
+            this.lblHoTen.TabIndex = 0;
+            this.lblHoTen.Text = "Ho va Ten";
+            // 
+            // txtCMND
+            // 
+            this.txtCMND.Location = new System.Drawing.Point(183, 142);
+            this.txtCMND.Name = "txtCMND";
+            this.txtCMND.Size = new System.Drawing.Size(245, 22);
+            this.txtCMND.TabIndex = 1;
+            // 
+            // dTPNgaySinh
+            // 
+            this.dTPNgaySinh.Location = new System.Drawing.Point(188, 401);
+            this.dTPNgaySinh.Name = "dTPNgaySinh";
+            this.dTPNgaySinh.Size = new System.Drawing.Size(200, 22);
+            this.dTPNgaySinh.TabIndex = 2;
+            // 
+            // btnThem
+            // 
+            this.btnThem.Location = new System.Drawing.Point(233, 456);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(75, 23);
+            this.btnThem.TabIndex = 3;
+            this.btnThem.Text = "Them";
+            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            // 
+            // gvCongDan
+            // 
+            this.gvCongDan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvCongDan.Location = new System.Drawing.Point(489, 34);
+            this.gvCongDan.Name = "gvCongDan";
+            this.gvCongDan.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.gvCongDan.RowTemplate.Height = 24;
+            this.gvCongDan.Size = new System.Drawing.Size(690, 246);
+            this.gvCongDan.TabIndex = 4;
+            this.gvCongDan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvHsinh_CellClick);
+            // 
+            // lblQueQuan
+            // 
+            this.lblQueQuan.AutoSize = true;
+            this.lblQueQuan.Location = new System.Drawing.Point(21, 107);
+            this.lblQueQuan.Name = "lblQueQuan";
+            this.lblQueQuan.Size = new System.Drawing.Size(67, 16);
+            this.lblQueQuan.TabIndex = 5;
+            this.lblQueQuan.Text = "Que Quan";
+            // 
+            // lblDiaChi
+            // 
+            this.lblDiaChi.AutoSize = true;
+            this.lblDiaChi.Location = new System.Drawing.Point(24, 148);
+            this.lblDiaChi.Name = "lblDiaChi";
+            this.lblDiaChi.Size = new System.Drawing.Size(49, 16);
+            this.lblDiaChi.TabIndex = 6;
+            this.lblDiaChi.Text = "Địa Chỉ";
+            // 
+            // lblNamSinh
+            // 
+            this.lblNamSinh.AutoSize = true;
+            this.lblNamSinh.Location = new System.Drawing.Point(29, 406);
+            this.lblNamSinh.Name = "lblNamSinh";
+            this.lblNamSinh.Size = new System.Drawing.Size(143, 16);
+            this.lblNamSinh.TabIndex = 7;
+            this.lblNamSinh.Text = "Ngay Thang Nam Sinh";
+            // 
+            // txtQueQuan
+            // 
+            this.txtQueQuan.Location = new System.Drawing.Point(183, 101);
+            this.txtQueQuan.Name = "txtQueQuan";
+            this.txtQueQuan.Size = new System.Drawing.Size(245, 22);
+            this.txtQueQuan.TabIndex = 8;
+            // 
+            // txtHoTen
+            // 
+            this.txtHoTen.Location = new System.Drawing.Point(183, 63);
+            this.txtHoTen.Name = "txtHoTen";
+            this.txtHoTen.Size = new System.Drawing.Size(245, 22);
+            this.txtHoTen.TabIndex = 9;
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Location = new System.Drawing.Point(358, 456);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa.TabIndex = 10;
+            this.btnXoa.Text = "Xoa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // btnSua
+            // 
+            this.btnSua.Location = new System.Drawing.Point(480, 456);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(75, 23);
+            this.btnSua.TabIndex = 11;
+            this.btnSua.Text = "Sua";
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
+            // txtID
+            // 
+            this.txtID.Location = new System.Drawing.Point(183, 18);
+            this.txtID.Name = "txtID";
+            this.txtID.ReadOnly = true;
+            this.txtID.Size = new System.Drawing.Size(245, 22);
+            this.txtID.TabIndex = 13;
+            // 
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.Location = new System.Drawing.Point(21, 18);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(20, 16);
+            this.lblID.TabIndex = 12;
+            this.lblID.Text = "ID";
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Location = new System.Drawing.Point(24, 189);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(41, 16);
+            this.lblEmail.TabIndex = 17;
+            this.lblEmail.Text = "Email";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(183, 183);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(245, 22);
+            this.txtEmail.TabIndex = 16;
+            // 
+            // lblSDT
+            // 
+            this.lblSDT.AutoSize = true;
+            this.lblSDT.Location = new System.Drawing.Point(24, 238);
+            this.lblSDT.Name = "lblSDT";
+            this.lblSDT.Size = new System.Drawing.Size(34, 16);
+            this.lblSDT.TabIndex = 19;
+            this.lblSDT.Text = "SĐT";
+            // 
+            // txtSDT
+            // 
+            this.txtSDT.Location = new System.Drawing.Point(183, 232);
+            this.txtSDT.Name = "txtSDT";
+            this.txtSDT.Size = new System.Drawing.Size(245, 22);
+            this.txtSDT.TabIndex = 18;
+            // 
+            // lblDanToc
+            // 
+            this.lblDanToc.AutoSize = true;
+            this.lblDanToc.Location = new System.Drawing.Point(24, 278);
+            this.lblDanToc.Name = "lblDanToc";
+            this.lblDanToc.Size = new System.Drawing.Size(59, 16);
+            this.lblDanToc.TabIndex = 21;
+            this.lblDanToc.Text = "Dân Tộc";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(183, 272);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(245, 22);
+            this.textBox1.TabIndex = 20;
+            // 
+            // lblTonGiao
+            // 
+            this.lblTonGiao.AutoSize = true;
+            this.lblTonGiao.Location = new System.Drawing.Point(24, 321);
+            this.lblTonGiao.Name = "lblTonGiao";
+            this.lblTonGiao.Size = new System.Drawing.Size(63, 16);
+            this.lblTonGiao.TabIndex = 23;
+            this.lblTonGiao.Text = "Tôn Giáo";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(183, 315);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(245, 22);
+            this.textBox2.TabIndex = 22;
+            // 
+            // lblGioiTinh
+            // 
+            this.lblGioiTinh.AutoSize = true;
+            this.lblGioiTinh.Location = new System.Drawing.Point(24, 361);
+            this.lblGioiTinh.Name = "lblGioiTinh";
+            this.lblGioiTinh.Size = new System.Drawing.Size(60, 16);
+            this.lblGioiTinh.TabIndex = 24;
+            this.lblGioiTinh.Text = "Giới Tính";
+            // 
+            // cboGioiTinh
+            // 
+            this.cboGioiTinh.FormattingEnabled = true;
+            this.cboGioiTinh.Items.AddRange(new object[] {
+            "Nam",
+            "Nữ",
+            "Khác"});
+            this.cboGioiTinh.Location = new System.Drawing.Point(183, 352);
+            this.cboGioiTinh.Name = "cboGioiTinh";
+            this.cboGioiTinh.Size = new System.Drawing.Size(125, 24);
+            this.cboGioiTinh.TabIndex = 25;
+            this.cboGioiTinh.Text = "Chọn Giới Tính";
+            // 
+            // FCongDan
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1206, 535);
+            this.Controls.Add(this.cboGioiTinh);
+            this.Controls.Add(this.lblGioiTinh);
+            this.Controls.Add(this.lblTonGiao);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.lblDanToc);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.lblSDT);
+            this.Controls.Add(this.txtSDT);
+            this.Controls.Add(this.lblEmail);
+            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.txtID);
+            this.Controls.Add(this.lblID);
+            this.Controls.Add(this.btnSua);
+            this.Controls.Add(this.btnXoa);
+            this.Controls.Add(this.txtHoTen);
+            this.Controls.Add(this.txtQueQuan);
+            this.Controls.Add(this.lblNamSinh);
+            this.Controls.Add(this.lblDiaChi);
+            this.Controls.Add(this.lblQueQuan);
+            this.Controls.Add(this.gvCongDan);
+            this.Controls.Add(this.btnThem);
+            this.Controls.Add(this.dTPNgaySinh);
+            this.Controls.Add(this.txtCMND);
+            this.Controls.Add(this.lblHoTen);
+            this.Name = "FCongDan";
+            this.Text = "Quản Lý Công Dân";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.gvCongDan)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Label lblHoTen;
+        private System.Windows.Forms.TextBox txtCMND;
+        private System.Windows.Forms.DateTimePicker dTPNgaySinh;
+        private System.Windows.Forms.Button btnThem;
+        private System.Windows.Forms.DataGridView gvCongDan;
+        private System.Windows.Forms.Label lblQueQuan;
+        private System.Windows.Forms.Label lblDiaChi;
+        private System.Windows.Forms.Label lblNamSinh;
+        private System.Windows.Forms.TextBox txtQueQuan;
+        private System.Windows.Forms.TextBox txtHoTen;
+        private System.Windows.Forms.Button btnXoa;
+        private System.Windows.Forms.Button btnSua;
+        private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.Label lblID;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label lblSDT;
+        private System.Windows.Forms.TextBox txtSDT;
+        private System.Windows.Forms.Label lblDanToc;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lblTonGiao;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label lblGioiTinh;
+        private System.Windows.Forms.ComboBox cboGioiTinh;
+    }
+}
+
