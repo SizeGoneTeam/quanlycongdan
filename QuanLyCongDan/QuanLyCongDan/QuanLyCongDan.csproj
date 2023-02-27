@@ -50,6 +50,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBconnection.cs" />
+    <Compile Include="FCCCD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FCCCD.Designer.cs">
+      <DependentUpon>FCCCD.cs</DependentUpon>
+    </Compile>
     <Compile Include="FCongDan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +72,9 @@
     <Compile Include="CongDanDAO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FCCCD.resx">
+      <DependentUpon>FCCCD.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FCongDan.resx">
       <DependentUpon>FCongDan.cs</DependentUpon>
     </EmbeddedResource>
