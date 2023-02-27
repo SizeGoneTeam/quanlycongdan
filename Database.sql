@@ -1,4 +1,5 @@
-create database QLCongDan
+create database QLCongDan;
+use QLCongDan;
 
 -- Tạo bảng Công dân
 CREATE TABLE CongDan (
@@ -57,14 +58,16 @@ CREATE TABLE SoHoKhau (
 CREATE TABLE KhaiSinh (
     ID_KhaiSinh INT IDENTITY(1,1) PRIMARY KEY,
     ID_CongDan INT,
-    HoTen varchar(100),
-    GioiTinh varchar(100),
-    NgaySinh DATE,
-    NoiSinh varchar(100),
-    QuocTich varchar(100),
-    DanToc varchar(100),
-    TonGiao varchar(100),
-    FOREIGN KEY (ID_CongDan) REFERENCES CongDan(ID_CongDan)
+    ID_NguoiYeuCau INT,
+    ID_Cha INT,
+    ID_Me INT,
+    NoiDangKy NVARCHAR(100),
+    NgayThucHien DATE,
+
+    FOREIGN KEY (ID_CongDan) REFERENCES CongDan(ID_CongDan),
+    FOREIGN KEY (ID_NguoiYeuCau) REFERENCES CongDan(ID_CongDan),
+    FOREIGN KEY (ID_Cha) REFERENCES CongDan(ID_CongDan),
+    FOREIGN KEY (ID_Me) REFERENCES CongDan(ID_CongDan)
 );
 
 -- Tạo bảng Hôn nhân
@@ -107,14 +110,12 @@ VALUES (1, '1234/ABC', '2022-01-01'),
 (2, '5678/DEF', '2022-02-01');
 
 -- Insert into KhaiSinh table
-INSERT INTO KhaiSinh (ID_CongDan, HoTen, GioiTinh, NgaySinh, NoiSinh, QuocTich, DanToc, TonGiao)
-VALUES (1, 'Nguyen Van A', 'Nam', '2022-01-01', 'TP.HCM', 'Viet Nam', 'Kinh', 'Khong'),
-(2, 'Tran Thi B', 'Nu', '2022-02-01', 'Ha Noi', 'Viet Nam', 'Kinh', 'Khong');
+--INSERT INTO KhaiSinh (ID_CongDan, HoTen, GioiTinh, NgaySinh, NoiSinh, QuocTich, DanToc, TonGiao)
+--VALUES (1, 'Nguyen Van A', 'Nam', '2022-01-01', 'TP.HCM', 'Viet Nam', 'Kinh', 'Khong'),
+--(2, 'Tran Thi B', 'Nu', '2022-02-01', 'Ha Noi', 'Viet Nam', 'Kinh', 'Khong');
 
 -- Insert into HonNhan table
 INSERT INTO HonNhan (ID_CongDan1, ID_CongDan2, NgayDangKy, NoiDangKy)
 VALUES (1, 2, '2022-01-01', 'TP.HCM'),
 (2, 1, '2022-02-01', 'TP.HCM');
-
-
 
