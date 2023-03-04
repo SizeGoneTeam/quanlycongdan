@@ -24,61 +24,86 @@ namespace Week2
         public FCongDan()
         {
             InitializeComponent();
+            cboGioiTinh.SelectedIndex = 0;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            HienThiDanhSach();
-        }
-
-        private void HienThiDanhSach()
-        {
-            this.gvCongDan.DataSource = cdDao.LayDanhSachCongDan();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            //cd = new CongDan(txtID.Text, txtHoTen.Text, txtQueQuan.Text, txtCMND.Text, dTPNgaySinh.Value.Date, txtEmail.Text, txtSDT.Text);
-            if (string.IsNullOrEmpty(cdDao.KiemTraDuLieu(cd))) cdDao.Them(cd);
-            else MessageBox.Show(cdDao.KiemTraDuLieu(cd));
-            HienThiDanhSach();
+            cd = new CongDan(txtHoTen.Text, txtQueQuan.Text, cboGioiTinh.SelectedItem.ToString(), dTPNgaySinh.Value, txtDanToc.Text, txtTonGiao.Text, txtSDT.Text, txtEmail.Text);
+            cdDao.Them(cd);
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            //cd = new CongDan(txtID.Text, txtHoTen.Text, txtQueQuan.Text, txtCMND.Text, dTPNgaySinh.Value.Date, txtEmail.Text, txtSDT.Text);
+            cd = new CongDan(txtID.Text,txtHoTen.Text, txtQueQuan.Text, cboGioiTinh.SelectedItem.ToString(), dTPNgaySinh.Value, txtDanToc.Text, txtTonGiao.Text, txtSDT.Text, txtEmail.Text);
             cdDao.Xoa(cd);
-            HienThiDanhSach();
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-           //cd = new CongDan(txtID.Text, txtHoTen.Text, txtQueQuan.Text, txtCMND.Text, dTPNgaySinh.Value.Date, txtEmail.Text, txtSDT.Text);
-            if (string.IsNullOrEmpty(cdDao.KiemTraDuLieu(cd))) cdDao.Sua(cd);
-            else MessageBox.Show(cdDao.KiemTraDuLieu(cd));
-            HienThiDanhSach();
+            cd = new CongDan(txtID.Text, txtHoTen.Text, txtQueQuan.Text, cboGioiTinh.SelectedItem.ToString(), dTPNgaySinh.Value, txtDanToc.Text, txtTonGiao.Text, txtSDT.Text, txtEmail.Text);
+            cdDao.Sua(cd);
         }
 
-        private void gvHsinh_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dTPNgaySinh_ValueChanged(object sender, EventArgs e)
         {
-            if (e.RowIndex >= 0)
+
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtID_TextChanged(object sender, EventArgs e)
+        {
+            TimKiemCongDan(txtID.Text);
+            if (String.IsNullOrEmpty(txtID.Text))
             {
-                DataGridViewRow row = gvCongDan.Rows[e.RowIndex];
-                txtID.Text = row.Cells[0].Value.ToString();
-                txtHoTen.Text = row.Cells[1].Value.ToString();
-                txtQueQuan.Text = row.Cells[2].Value.ToString();
-                txtCMND.Text = row.Cells[3].Value.ToString();
-                txtEmail.Text = row.Cells[5].Value.ToString();
-                txtSDT.Text = row.Cells[6].Value.ToString();
-                try
-                {
-                    dTPNgaySinh.Value = (DateTime)row.Cells[4].Value;
-                }
-                catch
-                {
-                    dTPNgaySinh.Value = DateTime.Now;
-                }
+                txtHoTen.Clear();
+                txtQueQuan.Clear();
+                dTPNgaySinh.Value = DateTime.Now;
+                txtDanToc.Clear();
+                txtTonGiao.Clear();
+                txtSDT.Clear();
+                txtEmail.Clear();
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
             }
+            else
+            {
+                btnSua.Enabled = true;
+                btnXoa.Enabled = true;
+            }
+        }
+
+        private void TimKiemCongDan(String id)
+        {
+            try
+            {
+                cd = cdDao.TimKiem(id);
+                txtHoTen.Text = cd.HoTen;
+                txtQueQuan.Text = cd.QueQuan;
+                dTPNgaySinh.Value = cd.NgaySinh;
+                txtDanToc.Text = cd.DanToc;
+                txtTonGiao.Text = cd.TonGiao;
+                txtSDT.Text = cd.Sdt;
+                txtEmail.Text = cd.Email;
+                if (cd.GioiTinh.Equals("Nam"))
+                    cboGioiTinh.SelectedItem = 0;
+                else if (cd.GioiTinh.Equals("Nữ"))
+                    cboGioiTinh.SelectedItem = 1;
+                else cboGioiTinh.SelectedItem = 2;
+            }
+            catch
+            {
+
+            }
+            
         }
     }
 }

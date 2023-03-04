@@ -13,7 +13,6 @@ namespace Week2
         private String queQuan;
         private String gioiTinh;
         private DateTime ngaySinh;
-        private String quocTich;
         private String danToc;
         private String tonGiao;
         private String sdt;
@@ -22,25 +21,38 @@ namespace Week2
         public string Id { get => id; set => id = value; }
         public string HoTen { get => hoTen; set => hoTen = value; }
         public DateTime NgaySinh { get => ngaySinh; set => ngaySinh = value; }
-        public string QuocTich { get => quocTich; set => quocTich = value; }
         public string DanToc { get => danToc; set => danToc = value; }
         public string QueQuan { get => queQuan; set => queQuan = value; }
         public string GioiTinh { get => gioiTinh; set => gioiTinh = value; }
         public string TonGiao { get => tonGiao; set => tonGiao = value; }
         public string Sdt { get => sdt; set => sdt = value; }
         public string Email { get => email; set => email = value; }
-
-        public CongDan(string hoTen, string queQuan, string gioiTinh, DateTime ngaySinh, string quocTich, string danToc, string tonGiao, string sdt, string email)
+ 
+        public CongDan(string hoTen, string queQuan, string gioiTinh, DateTime ngaySinh, string danToc, string tonGiao, string sdt, string email)
         {
             this.hoTen = hoTen;
             this.queQuan = queQuan;
             this.gioiTinh = gioiTinh;
             this.ngaySinh = ngaySinh;
-            this.quocTich = quocTich;
             this.danToc = danToc;
             this.tonGiao = tonGiao;
             this.sdt = sdt;
             this.email = email;
+        }
+        public CongDan(String id, string hoTen, string queQuan, string gioiTinh, DateTime ngaySinh, string danToc, string tonGiao, string sdt, string email)
+        {
+            this.id = id;
+            this.hoTen = hoTen;
+            this.queQuan = queQuan;
+            this.gioiTinh = gioiTinh;
+            this.ngaySinh = ngaySinh;
+            this.danToc = danToc;
+            this.tonGiao = tonGiao;
+            this.sdt = sdt;
+            this.email = email;
+        }
+        public CongDan()
+        {
         }
     }
 }
