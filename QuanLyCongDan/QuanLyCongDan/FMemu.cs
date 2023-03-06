@@ -23,5 +23,11 @@ namespace QuanLyCongDan
             FCongDan fCongDan = new FCongDan();
             fCongDan.Show();
         }
+
+        private void btnKhaiSinh_Click(object sender, EventArgs e)
+        {
+            FKhaiSinh f = new FKhaiSinh();
+            f.Show();
+        }
     }
 }
