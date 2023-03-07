@@ -76,6 +76,8 @@
     </Compile>
     <Compile Include="CongDan.cs" />
     <Compile Include="CongDanDAO.cs" />
+    <Compile Include="KhaiSinh.cs" />
+    <Compile Include="KhaiSinhDAO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FCCCD.resx">
