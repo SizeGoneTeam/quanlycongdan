@@ -16,20 +16,26 @@ namespace Week2
         DBconnection dbConn = new DBconnection();
         public void Them(CongDan cd)
         {
-            /*String sqlStr = string.Format("INSERT INTO HocSinh(Ten , QueQuan, Cmnd, NgaySinh, email, SDT) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}')", cd.HoTen, cd.QueQuan, cd.Cmnd, cd.NgaySinh, cd.Email, cd.Sdt);
-            dbConn.ThucThi(sqlStr);*/
+            String sqlStr = string.Format("INSERT INTO CongDan (HoTen, GioiTinh, NgaySinh, QueQuan, DanToc, TonGiao, SDT, Email) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}');", cd.HoTen, cd.GioiTinh, cd.NgaySinh, cd.QueQuan, cd.DanToc, cd.TonGiao, cd.Sdt, cd.Email);
+            dbConn.ThucThi(sqlStr);
         }
 
         public void Xoa(CongDan cd)
         {
-            /*String sqlStr = string.Format("DELETE FROM HocSinh WHERE macd = ('{0}')", cd.Id);
-            dbConn.ThucThi(sqlStr);*/
+            String sqlStr = string.Format("DELETE FROM CongDan WHERE ID_CongDan = {0};", cd.Id);
+            dbConn.ThucThi(sqlStr);
         }
 
         public void Sua(CongDan cd)
         {
-            /*String sqlStr = string.Format("UPDATE HocSinh SET Ten = '{0}', QueQuan = '{1}', email = '{3}', SDT = '{4}' WHERE macd = {2}", cd.HoTen, cd.NoiSinh, cd.Id, cd.Email, cd.Sdt);
-            dbConn.ThucThi(sqlStr);*/
+            String sqlStr = string.Format("UPDATE CongDan SET HoTen = '{0}', GioiTinh = '{1}', NgaySinh = '{2}', QueQuan = '{3}', DanToc = '{4}', TonGiao = '{5}', SDT = '{6}', Email = '{7}' WHERE ID_CongDan = {8};", cd.HoTen, cd.GioiTinh, cd.NgaySinh, cd.QueQuan, cd.DanToc, cd.TonGiao, cd.Sdt, cd.Email, cd.Id);
+            dbConn.ThucThi(sqlStr);
+        }   
+
+        public CongDan TimKiem(String id)
+        {
+            String sqlStr = string.Format("select * from CongDan where ID_CongDan = '{0}'", id);
+            return dbConn.TimKiemDB(sqlStr);
         }
 
         public DataTable LayDanhSachCongDan()
@@ -38,30 +44,12 @@ namespace Week2
             return dbConn.LayDanhSach(sqlStr);
         }
 
-        private Boolean IsNull(CongDan cd)
-        {
-            if (String.IsNullOrEmpty(cd.HoTen)) return true;
-            if (String.IsNullOrEmpty(cd.QueQuan)) return true;
-            if (String.IsNullOrEmpty(cd.GioiTinh)) return true;
-            if (String.IsNullOrEmpty(cd.Email)) return true;
-            if (String.IsNullOrEmpty(cd.Sdt)) return true;
-            return false;
-        }
-
         private Boolean checkEmail_SDT(CongDan cd)
         {
             bool isValidPhoneNumber = Regex.IsMatch(cd.Sdt, @"^\d{10}$");
             bool isValidEmail = Regex.IsMatch(cd.Email, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
             if (isValidPhoneNumber && isValidEmail) return true;
             return false;
-        }
-
-        public String KiemTraDuLieu(CongDan cd)
-        {
-            string result = "";
-            if (IsNull(cd)) result += "Vui long nhap day du thong tin ";
-            if (!checkEmail_SDT(cd)) result += "SDT hoac email khong hop le";
-            return result;
         }
     }
 }
