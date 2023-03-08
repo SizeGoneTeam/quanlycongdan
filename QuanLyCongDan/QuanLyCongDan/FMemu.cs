@@ -23,5 +23,11 @@ namespace QuanLyCongDan
             FCongDan fCongDan = new FCongDan();
             fCongDan.Show();
         }
+
+        private void btnCCCD_Click(object sender, EventArgs e)
+        {
+            FCCCD fCCCD = new FCCCD();
+            fCCCD.Show();
+        }
     }
 }

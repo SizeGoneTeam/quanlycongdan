@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CCCD.cs" />
+    <Compile Include="CCCDDAO.cs" />
     <Compile Include="DBconnection.cs" />
     <Compile Include="FCCCD.cs">
       <SubType>Form</SubType>

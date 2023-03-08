@@ -34,7 +34,7 @@ namespace Week2
 
         public DataTable LayDanhSachCongDan()
         {
-            string sqlStr = string.Format("SELECT * FROM HocSinh");
+            string sqlStr = string.Format("SELECT * FROM CongDan");
             return dbConn.LayDanhSach(sqlStr);
         }
 

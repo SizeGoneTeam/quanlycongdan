@@ -59,11 +59,6 @@ namespace Week2
             HienThiDanhSach();
         }
 
-        private void btnGiaoVien_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void gvHsinh_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
