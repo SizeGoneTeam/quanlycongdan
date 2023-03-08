@@ -1,18 +1,19 @@
 create database QLCongDan;
-GO
 use QLCongDan;
 
 -- Tạo bảng Công dân
 CREATE TABLE CongDan (
     ID_CongDan INT IDENTITY(1,1) PRIMARY KEY,
-    HoTen nvarchar(100),
-    GioiTinh nvarchar(100),
+    HoTen varchar(100),
+    GioiTinh varchar(100),
     NgaySinh DATE,
-    QueQuan nvarchar(100),
-    DanToc nvarchar(100),
-    TonGiao nvarchar(100),
-	SDT nvarchar(100),
-	Email nvarchar(100)
+    QueQuan varchar(100),
+    DiaChi varchar(100),
+    QuocTich varchar(100),
+    DanToc varchar(100),
+    TonGiao varchar(100),
+	SDT varchar(100),
+	Email varchar(100)
 );
 
 -- Tạo bảng tạm trú tạm vắng
@@ -21,7 +22,7 @@ CREATE TABLE TamTruTamVang (
     ID_CongDan INT,
     NgayDen DATE,
     NgayDi DATE,
-    DiaChi nvarchar(100),
+    DiaChi varchar(100),
     FOREIGN KEY (ID_CongDan) REFERENCES CongDan(ID_CongDan)
 );
 
@@ -29,9 +30,9 @@ CREATE TABLE TamTruTamVang (
 CREATE TABLE CCCD (
     ID_CCCD INT IDENTITY(1,1) PRIMARY KEY,
     ID_CongDan INT,
-    SoCCCD nvarchar(100),
+    SoCCCD varchar(100),
     NgayCap DATE,
-    NoiCap nvarchar(100),
+    NoiCap varchar(100),
     FOREIGN KEY (ID_CongDan) REFERENCES CongDan(ID_CongDan)
 );
 
@@ -39,7 +40,7 @@ CREATE TABLE CCCD (
 CREATE TABLE Thue (
     ID_Thue INT IDENTITY(1,1) PRIMARY KEY,
     ID_CongDan INT,
-    MaSoThue nvarchar(100),
+    MaSoThue varchar(100),
     NgayCapNhat DATE,
     FOREIGN KEY (ID_CongDan) REFERENCES CongDan(ID_CongDan)
 );
@@ -48,7 +49,7 @@ CREATE TABLE Thue (
 CREATE TABLE SoHoKhau (
     ID_SoHoKhau INT IDENTITY(1,1) PRIMARY KEY,
     ID_CongDan INT,
-    SoHoKhau nvarchar(100),
+    SoHoKhau varchar(100),
     NgayCapNhat DATE,
     FOREIGN KEY (ID_CongDan) REFERENCES CongDan(ID_CongDan)
 );
@@ -60,7 +61,7 @@ CREATE TABLE KhaiSinh (
     ID_NguoiYeuCau INT,
     ID_Cha INT,
     ID_Me INT,
-    NoiDangKy Nnvarchar(100),
+    NoiDangKy NVARCHAR(100),
     NgayThucHien DATE,
 
     FOREIGN KEY (ID_CongDan) REFERENCES CongDan(ID_CongDan),
@@ -75,7 +76,7 @@ CREATE TABLE HonNhan (
     ID_CongDan1 INT,
     ID_CongDan2 INT,
     NgayDangKy DATE,
-    NoiDangKy nvarchar(100),
+    NoiDangKy varchar(100),
     FOREIGN KEY (ID_CongDan1) REFERENCES CongDan(ID_CongDan),
     FOREIGN KEY (ID_CongDan2) REFERENCES CongDan(ID_CongDan)
 );
