@@ -28,6 +28,11 @@ namespace QuanLyCongDan
         {
             FKhaiSinh f = new FKhaiSinh();
             f.Show();
+	}
+        private void btnCCCD_Click(object sender, EventArgs e)
+        {
+            FCCCD fCCCD = new FCCCD();
+            fCCCD.Show();
         }
     }
 }

@@ -57,6 +57,7 @@
             this.btnCCCD.TabIndex = 1;
             this.btnCCCD.Text = "CCCD";
             this.btnCCCD.UseVisualStyleBackColor = true;
+            this.btnCCCD.Click += new System.EventHandler(this.btnCCCD_Click);
             // 
             // btnHonNhan
             // 
