@@ -64,6 +64,12 @@
     <Compile Include="FCongDan.Designer.cs">
       <DependentUpon>FCongDan.cs</DependentUpon>
     </Compile>
+    <Compile Include="FKhaiSinh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FKhaiSinh.Designer.cs">
+      <DependentUpon>FKhaiSinh.cs</DependentUpon>
+    </Compile>
     <Compile Include="FMemu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,8 @@
     </Compile>
     <Compile Include="CongDan.cs" />
     <Compile Include="CongDanDAO.cs" />
+    <Compile Include="KhaiSinh.cs" />
+    <Compile Include="KhaiSinhDAO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FCCCD.resx">
