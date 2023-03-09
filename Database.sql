@@ -121,3 +121,4 @@ INSERT INTO HonNhan (ID_CongDan1, ID_CongDan2, NgayDangKy, NoiDangKy)
 VALUES (1, 2, '2022-01-01', 'TP.HCM'),
 (2, 1, '2022-02-01', 'TP.HCM');
 
+select * from CCCD
