@@ -123,10 +123,6 @@ namespace QuanLyCongDan
             IDMe = iDMe;
             NoiDangKy = noiDangKy;
             NgayThucHien = ngayThucHien;
-        }
-
-        public KhaiSinh(int iD, int iDCongDan, int iDNguoiYeuCau, int iDCha, int iDMe, string noiDangKy, DateTime ngayThucHien)
-        {
             ID = iD;
             IDCongDan = iDCongDan;
             IDNguoiYeuCau = iDNguoiYeuCau;
