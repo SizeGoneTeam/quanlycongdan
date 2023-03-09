@@ -60,7 +60,7 @@ CREATE TABLE KhaiSinh (
     ID_NguoiYeuCau INT,
     ID_Cha INT,
     ID_Me INT,
-    NoiDangKy Nnvarchar(100),
+    NoiDangKy nvarchar(100),
     NgayThucHien DATE,
 
     FOREIGN KEY (ID_CongDan) REFERENCES CongDan(ID_CongDan),
@@ -82,9 +82,12 @@ CREATE TABLE HonNhan (
 
 
 -- Insert into CongDan table
-INSERT INTO CongDan ( HoTen, GioiTinh, NgaySinh, QueQuan, DiaChi, QuocTich, DanToc, TonGiao, SDT, Email)
-VALUES ('Nguyen Van A', 'Nam', '2000-01-01', 'TP.HCM', '123 Nguyen Van Cu, Quan 1, TP.HCM', 'Viet Nam', 'Kinh', 'Khong' , '0986596214', 'giotocdo@gmail.com'),
-('Tran Thi B', 'Nu', '2000-02-01', 'Ha Noi', '456 Nguyen Van Cu, Quan 2, TP.HCM', 'Viet Nam', 'Kinh', 'Khong', '0986592314', 'cantho2@gmail.com');
+
+--Đâu có cái QuocTich đâu
+
+--INSERT INTO CongDan ( HoTen, GioiTinh, NgaySinh, QueQuan, DiaChi, QuocTich, DanToc, TonGiao, SDT, Email)
+--VALUES ('Nguyen Van A', 'Nam', '2000-01-01', 'TP.HCM', '123 Nguyen Van Cu, Quan 1, TP.HCM', 'Viet Nam', 'Kinh', 'Khong' , '0986596214', 'giotocdo@gmail.com'),
+--('Tran Thi B', 'Nu', '2000-02-01', 'Ha Noi', '456 Nguyen Van Cu, Quan 2, TP.HCM', 'Viet Nam', 'Kinh', 'Khong', '0986592314', 'cantho2@gmail.com');
 
 
 -- Insert into TamTruTamVang table

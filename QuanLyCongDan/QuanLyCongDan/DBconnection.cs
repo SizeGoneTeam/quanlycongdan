@@ -65,7 +65,7 @@ namespace Week2
             }
             return dtds;
         }
-        public void ThucThi(String sqlStr)
+        public bool ThucThi(String sqlStr)
         {
             try
             {
@@ -74,11 +74,13 @@ namespace Week2
                 SqlCommand cmd = new SqlCommand(sqlStr, conn);
                 if (cmd.ExecuteNonQuery() > 0)
                     MessageBox.Show("Thanh cong");
+                return true;
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show("That bai" + ex);
+                return false;
             }
             finally
             {
