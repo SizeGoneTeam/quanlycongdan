@@ -14,19 +14,19 @@ namespace QuanLyCongDan
         DBconnection dbConn = new DBconnection();
         public void Them(CCCD cc)
         {
-            String sqlStr = string.Format("INSERT INTO CCCD(ID_CCCD, ID_CongDan, SoCCCD, NoiCap, NgayCap) VALUES ('{0}','{1}','{2}','{3}','{4}')", cc.ID,cc.CD, cc.IDCC, cc.Add, cc.NgayCap);
+            String sqlStr = string.Format("INSERT INTO CCCD(ID_CongDan,SoCCCD, NoiCap, NgayCap) VALUES ('{0}','{1}','{2}','{3}')",cc.CD, cc.IDCC, cc.Add, cc.NgayCap);
             dbConn.ThucThi(sqlStr);
         }
 
-        public void Xoa(CCCD cd)
+        public void Xoa(CCCD cc)
         {
-            String sqlStr = string.Format("DELETE FROM CCCD WHERE ID_CCCD = ('{0}')", cd.ID);
+            String sqlStr = string.Format("DELETE FROM CCCD WHERE ID_CongDan = ('{0}')", cc.CD);
             dbConn.ThucThi(sqlStr);
         }
 
-        public void Sua(CCCD cd)
+        public void Sua(CCCD cc)
         {
-            String sqlStr = string.Format("UPDATE CCCD SET ID_CCCD = '{0}', ID_CongDan = '{1}', SoCCCD = '{2}', NoiCap = '{3}',NgayCap = '{4}'", cd.ID, cd.CD, cd.IDCC, cd.Add, cd.NgayCap);
+            String sqlStr = string.Format("UPDATE CCCD SET SoCCCD = '{0}', NoiCap = '{1}',NgayCap = '{2}' where ID_CongDan = '{3}'", cc.IDCC, cc.Add, cc.NgayCap, cc.CD);
             dbConn.ThucThi(sqlStr);
         }
 

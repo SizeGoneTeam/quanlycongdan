@@ -29,21 +29,22 @@ namespace QuanLyCongDan
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
-            //cd = new CongDan(txtID.Text, txtHoTen.Text, txtQueQuan.Text, txtCMND.Text, dTPNgaySinh.Value.Date, txtEmail.Text, txtSDT.Text);
-            /*if (string.IsNullOrEmpty(ccDao.KiemTraDuLieu(cc)))*/ ccDao.Them(cc);
+            cc = new CCCD(txtCD.Text,txtSOCC.Text, txtAdd.Text, dTPNgayCap.Value.Date);
+            ccDao.Them(cc);
             //else MessageBox.Show(ccDao.KiemTraDuLieu(cc));
             HienThiDanhSach();
         }
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            //cd = new CongDan(txtID.Text, txtHoTen.Text, txtQueQuan.Text, txtCMND.Text, dTPNgaySinh.Value.Date, txtEmail.Text, txtSDT.Text);
+            cc = new CCCD(txtCD.Text, txtSOCC.Text, txtAdd.Text, dTPNgayCap.Value.Date);
             ccDao.Xoa(cc);
             HienThiDanhSach();
         }
         private void btnSua_Click(object sender, EventArgs e)
         {
-            //cd = new CongDan(txtID.Text, txtHoTen.Text, txtQueQuan.Text, txtCMND.Text, dTPNgaySinh.Value.Date, txtEmail.Text, txtSDT.Text);
-            /*if (string.IsNullOrEmpty(ccDao.KiemTraDuLieu(cc)))*/ ccDao.Sua(cc);
+            cc = new CCCD(txtCD.Text, txtSOCC.Text, txtAdd.Text, dTPNgayCap.Value.Date);
+            /*if (string.IsNullOrEmpty(ccDao.KiemTraDuLieu(cc)))*/
+            ccDao.Sua(cc);
             //else MessageBox.Show(ccDao.KiemTraDuLieu(cc));
             HienThiDanhSach();
         }
@@ -53,7 +54,6 @@ namespace QuanLyCongDan
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = gvCCCD.Rows[e.RowIndex];
-                txtIDCCCD.Text = row.Cells[0].Value.ToString();
                 txtCD.Text = row.Cells[1].Value.ToString();
                 txtSOCC.Text = row.Cells[2].Value.ToString();
                 txtAdd.Text = row.Cells[3].Value.ToString();
@@ -70,9 +70,26 @@ namespace QuanLyCongDan
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //cd = new CongDan(txtID.Text, txtHoTen.Text, txtQueQuan.Text, txtCMND.Text, dTPNgaySinh.Value.Date, txtEmail.Text, txtSDT.Text);
-            /*if (string.IsNullOrEmpty(cdDao.KiemTraDuLieu(cc)))*/ ccDao.Them(cc);
+            cc = new CCCD(txtCD.Text, txtSOCC.Text, txtAdd.Text, dTPNgayCap.Value.Date);
+            /*if (string.IsNullOrEmpty(cdDao.KiemTraDuLieu(cc)))*/
+            ccDao.Them(cc);
             //else MessageBox.Show(cdDao.KiemTraDuLieu(cc));
+            HienThiDanhSach();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            cc = new CCCD(txtCD.Text, txtSOCC.Text, txtAdd.Text, dTPNgayCap.Value.Date);
+            ccDao.Xoa(cc);
+            HienThiDanhSach();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            cc = new CCCD(txtCD.Text, txtSOCC.Text, txtAdd.Text, dTPNgayCap.Value.Date);
+            /*if (string.IsNullOrEmpty(ccDao.KiemTraDuLieu(cc)))*/
+            ccDao.Sua(cc);
+            //else MessageBox.Show(ccDao.KiemTraDuLieu(cc));
             HienThiDanhSach();
         }
     }
