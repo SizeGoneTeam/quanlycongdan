@@ -9,10 +9,12 @@ CREATE TABLE CongDan (
     GioiTinh nvarchar(100),
     NgaySinh DATE,
     QueQuan nvarchar(100),
+	NoiSinh nvarchar(100),
     DanToc nvarchar(100),
     TonGiao nvarchar(100),
 	SDT nvarchar(100),
-	Email nvarchar(100)
+	Email nvarchar(100),
+	QuocTich nvarchar(100),	
 );
 
 -- Tạo bảng tạm trú tạm vắng
