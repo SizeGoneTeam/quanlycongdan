@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HonNhan.cs" />
     <Compile Include="CCCD.cs" />
     <Compile Include="CCCDDAO.cs" />
     <Compile Include="DBconnection.cs" />
@@ -63,6 +64,12 @@
     </Compile>
     <Compile Include="FCongDan.Designer.cs">
       <DependentUpon>FCongDan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FHonNhan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FHonNhan.Designer.cs">
+      <DependentUpon>FHonNhan.cs</DependentUpon>
     </Compile>
     <Compile Include="FKhaiSinh.cs">
       <SubType>Form</SubType>
@@ -87,6 +94,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FCongDan.resx">
       <DependentUpon>FCongDan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FHonNhan.resx">
+      <DependentUpon>FHonNhan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FMemu.resx">
       <DependentUpon>FMemu.cs</DependentUpon>

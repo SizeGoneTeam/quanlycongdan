@@ -34,5 +34,11 @@ namespace QuanLyCongDan
             FCCCD fCCCD = new FCCCD();
             fCCCD.Show();
         }
+
+        private void btnHonNhan_Click(object sender, EventArgs e)
+        {
+            FHonNhan fHonNhan = new FHonNhan();
+            fHonNhan.Show();
+        }
     }
 }
