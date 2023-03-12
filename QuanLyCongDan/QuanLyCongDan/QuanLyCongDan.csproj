@@ -85,6 +85,7 @@
     </Compile>
     <Compile Include="CongDan.cs" />
     <Compile Include="CongDanDAO.cs" />
+    <Compile Include="HonNhanDAO.cs" />
     <Compile Include="KhaiSinh.cs" />
     <Compile Include="KhaiSinhDAO.cs" />
     <Compile Include="Program.cs" />

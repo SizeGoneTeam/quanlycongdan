@@ -13,7 +13,7 @@ namespace QuanLyCongDan
         private int idVo;
         private DateTime ngayDangKy;
         private string noiDangKy;
-        private bool trangThai;
+        private Boolean trangThai;
 
         public HonNhan()
         {
@@ -29,7 +29,17 @@ namespace QuanLyCongDan
             this.trangThai = trangThai;
         }
 
-        public bool TrangThai { get => trangThai; set => trangThai = value; }
+        public HonNhan(int idChong, int idVo, string noiDangKy)
+        {
+            DateTime now = DateTime.Now;
+            this.idChong = idChong;
+            this.idVo = idVo;
+            this.noiDangKy = noiDangKy;
+            this.trangThai = true;
+            this.NgayDangKy = now;
+        }
+
+        public Boolean TrangThai { get => trangThai; set => trangThai = value; }
         public string NoiDangKy { get => noiDangKy; set => noiDangKy = value; }
         public int IdHonNhan { get => idHonNhan; set => idHonNhan = value; }
         public int IdChong { get => idChong; set => idChong = value; }
