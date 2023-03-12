@@ -1,4 +1,4 @@
-create database QLCongDan;
+ create database QLCongDan;
 GO
 use QLCongDan;
 

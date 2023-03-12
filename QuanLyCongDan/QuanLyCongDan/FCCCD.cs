@@ -27,27 +27,6 @@ namespace QuanLyCongDan
         {
             HienThiDanhSach();
         }
-        private void btnThem_Click(object sender, EventArgs e)
-        {
-            cc = new CCCD(txtCD.Text,txtSOCC.Text, txtAdd.Text, dTPNgayCap.Value.Date);
-            ccDao.Them(cc);
-            //else MessageBox.Show(ccDao.KiemTraDuLieu(cc));
-            HienThiDanhSach();
-        }
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-            cc = new CCCD(txtCD.Text, txtSOCC.Text, txtAdd.Text, dTPNgayCap.Value.Date);
-            ccDao.Xoa(cc);
-            HienThiDanhSach();
-        }
-        private void btnSua_Click(object sender, EventArgs e)
-        {
-            cc = new CCCD(txtCD.Text, txtSOCC.Text, txtAdd.Text, dTPNgayCap.Value.Date);
-            /*if (string.IsNullOrEmpty(ccDao.KiemTraDuLieu(cc)))*/
-            ccDao.Sua(cc);
-            //else MessageBox.Show(ccDao.KiemTraDuLieu(cc));
-            HienThiDanhSach();
-        }
 
         private void gvCCCD_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -71,9 +50,7 @@ namespace QuanLyCongDan
         private void button1_Click(object sender, EventArgs e)
         {
             cc = new CCCD(txtCD.Text, txtSOCC.Text, txtAdd.Text, dTPNgayCap.Value.Date);
-            /*if (string.IsNullOrEmpty(cdDao.KiemTraDuLieu(cc)))*/
             ccDao.Them(cc);
-            //else MessageBox.Show(cdDao.KiemTraDuLieu(cc));
             HienThiDanhSach();
         }
 
@@ -87,9 +64,7 @@ namespace QuanLyCongDan
         private void button3_Click(object sender, EventArgs e)
         {
             cc = new CCCD(txtCD.Text, txtSOCC.Text, txtAdd.Text, dTPNgayCap.Value.Date);
-            /*if (string.IsNullOrEmpty(ccDao.KiemTraDuLieu(cc)))*/
             ccDao.Sua(cc);
-            //else MessageBox.Show(ccDao.KiemTraDuLieu(cc));
             HienThiDanhSach();
         }
     }

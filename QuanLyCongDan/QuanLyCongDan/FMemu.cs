@@ -34,5 +34,17 @@ namespace QuanLyCongDan
             FCCCD fCCCD = new FCCCD();
             fCCCD.Show();
         }
+
+        private void btnThue_Click(object sender, EventArgs e)
+        {
+            FThue f = new FThue();
+            f.Show();
+        }
+
+        private void btnTTTV_Click(object sender, EventArgs e)
+        {
+            FTamTruTamVang f = new FTamTruTamVang();
+            f.Show();
+        }
     }
 }
