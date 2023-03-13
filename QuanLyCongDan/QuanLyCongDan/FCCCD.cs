@@ -35,7 +35,7 @@ namespace QuanLyCongDan
                 DataGridViewRow row = gvCCCD.Rows[e.RowIndex];
                 txtCD.Text = row.Cells[1].Value.ToString();
                 txtSOCC.Text = row.Cells[2].Value.ToString();
-                txtAdd.Text = row.Cells[3].Value.ToString();
+                add.Text = row.Cells[3].Value.ToString();
                 try
                 {
                     dTPNgayCap.Value = (DateTime)row.Cells[4].Value;
@@ -49,23 +49,33 @@ namespace QuanLyCongDan
 
         private void button1_Click(object sender, EventArgs e)
         {
-            cc = new CCCD(txtCD.Text, txtSOCC.Text, txtAdd.Text, dTPNgayCap.Value.Date);
+            cc = new CCCD(txtCD.Text, txtSOCC.Text, add.Text, dTPNgayCap.Value.Date);
             ccDao.Them(cc);
             HienThiDanhSach();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            cc = new CCCD(txtCD.Text, txtSOCC.Text, txtAdd.Text, dTPNgayCap.Value.Date);
+            cc = new CCCD(txtCD.Text, txtSOCC.Text, add.Text, dTPNgayCap.Value.Date);
             ccDao.Xoa(cc);
             HienThiDanhSach();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            cc = new CCCD(txtCD.Text, txtSOCC.Text, txtAdd.Text, dTPNgayCap.Value.Date);
+            cc = new CCCD(txtCD.Text, txtSOCC.Text, add.Text, dTPNgayCap.Value.Date);
             ccDao.Sua(cc);
             HienThiDanhSach();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
