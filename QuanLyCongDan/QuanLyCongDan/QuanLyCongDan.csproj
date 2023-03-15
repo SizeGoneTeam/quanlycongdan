@@ -64,12 +64,6 @@
     <Compile Include="FCongDan.Designer.cs">
       <DependentUpon>FCongDan.cs</DependentUpon>
     </Compile>
-    <Compile Include="FKhaiSinh.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FKhaiSinh.Designer.cs">
-      <DependentUpon>FKhaiSinh.cs</DependentUpon>
-    </Compile>
     <Compile Include="FMemu.cs">
       <SubType>Form</SubType>
     </Compile>
