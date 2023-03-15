@@ -186,4 +186,3 @@ VALUES
 (6, 5, '2022-08-08', N'Thành phố Hồ Chí Minh', 1),
 (8, 7, '2022-09-09', N'Thành phố Hồ Chí Minh', 1),
 (10, 9, '2022-10-10', N'Thành phố Hồ Chí Minh', 1);
-

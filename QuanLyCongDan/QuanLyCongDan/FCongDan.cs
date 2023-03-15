@@ -103,7 +103,7 @@ namespace Week2
                     cboTonGiao.SelectedItem = "Bahá'í";
                 else if (cd.TonGiao.Equals("Hindu"))
                     cboTonGiao.SelectedItem = "Hindu";
-                else if (cd.TonGiao.Equals("Sikh")) ;
+                else if (cd.TonGiao.Equals("Sikh"));
 
                 if (cd.DanToc.Equals("Kinh"))
                     cboDanToc.SelectedItem = "Kinh";

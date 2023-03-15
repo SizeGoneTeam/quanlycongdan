@@ -115,6 +115,9 @@
     <EmbeddedResource Include="FHonNhan.resx">
       <DependentUpon>FHonNhan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FKhaiSinh.resx">
+      <DependentUpon>FKhaiSinh.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FMemu.resx">
       <DependentUpon>FMemu.cs</DependentUpon>
     </EmbeddedResource>

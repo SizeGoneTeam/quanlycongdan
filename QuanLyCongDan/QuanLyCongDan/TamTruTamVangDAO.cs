@@ -13,7 +13,7 @@ namespace QuanLyCongDan
         DBconnection dbConn = new DBconnection();
         public void Them(TamTruTamVang tt)
         {
-            String sqlStr = string.Format("INSERT INTO TamTruTamVang(ID_CongDan,NgayDen,NgayDi,DiaChi) VALUES ('{0}','{1}','{2}','{3}')", tt.IDCD, tt.Come, tt.Leave, tt.Add);
+            String sqlStr = string.Format("INSERT INTO TamTruTamVang(ID_CongDan,NgayDen,DiaChi,LiDo) VALUES ('{0}','{1}','{2}','{3}')", tt.IDCD, tt.Come, tt.Add,tt.Why);
             dbConn.ThucThi(sqlStr);
         }
 
@@ -25,7 +25,7 @@ namespace QuanLyCongDan
 
         public void Sua(TamTruTamVang tt)
         {
-            String sqlStr = string.Format("UPDATE TamTruTamVang SET ID_CongDan = '{0}', NgayDen = '{1}',NgayDi = '{2}',DiaChi='{3}' where ID_TamTru = '{4}'", tt.IDCD, tt.Come, tt.Leave, tt.Add,tt.IDTT);
+            String sqlStr = string.Format("UPDATE TamTruTamVang SET ID_CongDan = '{0}', NgayDen = '{1}',LiDo = '{2}',DiaChi='{3}' where ID_TamTru = '{4}'", tt.IDCD, tt.Come, tt.Why, tt.Add,tt.IDTT);
             dbConn.ThucThi(sqlStr);
         }
 

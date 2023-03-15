@@ -32,39 +32,38 @@ namespace QuanLyCongDan
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = gvTTTV.Rows[e.RowIndex];
-                txtIDTT.Text = row.Cells[1].Value.ToString();
-                txtIDCD.Text = row.Cells[2].Value.ToString();
-                txtAdd.Text = row.Cells[5].Value.ToString();
+                txtIDTT.Text = row.Cells[0].Value.ToString();
+                txtIDCD.Text = row.Cells[1].Value.ToString();
+                txtAdd.Text = row.Cells[3].Value.ToString();
+                txtLido.Text = row.Cells[4].Value.ToString();
                 try
                 {
-                    Come.Value = (DateTime)row.Cells[3].Value;
-                    Leave.Value = (DateTime)row.Cells[4].Value;
+                    Come.Value = (DateTime)row.Cells[2].Value;
                 }
                 catch
                 {
                     Come.Value = DateTime.Now;
-                    Leave.Value = DateTime.Now;
                 }
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            tt = new TamTruTamVang(txtIDTT.Text, txtIDCD.Text, Come.Value.Date, Leave.Value.Date, txtAdd.Text);
+            tt = new TamTruTamVang(txtIDTT.Text, txtIDCD.Text, Come.Value.Date, txtAdd.Text,txtLido.Text);
             ttdao.Them(tt);
             HienThiDanhSach();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            tt = new TamTruTamVang(txtIDTT.Text, txtIDCD.Text, Come.Value.Date, Leave.Value.Date, txtAdd.Text);
+            tt = new TamTruTamVang(txtIDTT.Text, txtIDCD.Text, Come.Value.Date, txtAdd.Text, txtLido.Text);
             ttdao.Xoa(tt);
             HienThiDanhSach();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            tt = new TamTruTamVang(txtIDTT.Text, txtIDCD.Text, Come.Value.Date, Leave.Value.Date, txtAdd.Text);
+            tt = new TamTruTamVang(txtIDTT.Text, txtIDCD.Text, Come.Value.Date, txtAdd.Text, txtLido.Text);
             ttdao.Sua(tt);
             HienThiDanhSach();
         }
