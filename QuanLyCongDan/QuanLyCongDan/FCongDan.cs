@@ -223,25 +223,33 @@ namespace Week2
 
         private void btnTimKiem_Click_1(object sender, EventArgs e)
         {
-            TimKiemCongDan(txtID.Text);
-            if (String.IsNullOrEmpty(txtHoTen.Text))
+            try
             {
-                txtHoTen.Clear();
-                txtQueQuan.Clear();
-                dTPNgaySinh.Value = DateTime.Now;
-                cboGioiTinh.SelectedIndex = 0;
-                cboDanToc.SelectedIndex = 0;
-                cboTonGiao.SelectedIndex = 0;
-                txtSDT.Clear();
-                txtEmail.Clear();
-                btnSua.Enabled = false;
-                btnXoa.Enabled = false;
+                TimKiemCongDan(txtID.Text);
+                if (String.IsNullOrEmpty(txtHoTen.Text))
+                {
+                    txtHoTen.Clear();
+                    txtQueQuan.Clear();
+                    dTPNgaySinh.Value = DateTime.Now;
+                    cboGioiTinh.SelectedIndex = 0;
+                    cboDanToc.SelectedIndex = 0;
+                    cboTonGiao.SelectedIndex = 0;
+                    txtSDT.Clear();
+                    txtEmail.Clear();
+                    btnSua.Enabled = false;
+                    btnXoa.Enabled = false;
+                }
+                else
+                {
+                    btnSua.Enabled = true;
+                    btnXoa.Enabled = true;
+                }
             }
-            else
+            catch
             {
-                btnSua.Enabled = true;
-                btnXoa.Enabled = true;
+
             }
+            
         }
     }
 }
