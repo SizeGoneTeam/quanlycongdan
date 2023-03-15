@@ -64,7 +64,7 @@
             // 
             this.label1.AllowDrop = true;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 39);
+            this.label1.Location = new System.Drawing.Point(16, 90);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 16);
             this.label1.TabIndex = 13;
@@ -73,7 +73,7 @@
             // txtID
             // 
             this.txtID.AllowDrop = true;
-            this.txtID.Location = new System.Drawing.Point(115, 39);
+            this.txtID.Location = new System.Drawing.Point(115, 90);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(230, 22);
             this.txtID.TabIndex = 14;
@@ -81,7 +81,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 80);
+            this.label3.Location = new System.Drawing.Point(16, 51);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 16);
             this.label3.TabIndex = 6;
@@ -112,7 +112,7 @@
             // 
             // txtIDT
             // 
-            this.txtIDT.Location = new System.Drawing.Point(115, 80);
+            this.txtIDT.Location = new System.Drawing.Point(115, 51);
             this.txtIDT.Name = "txtIDT";
             this.txtIDT.Size = new System.Drawing.Size(230, 22);
             this.txtIDT.TabIndex = 10;
