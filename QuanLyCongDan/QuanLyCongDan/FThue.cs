@@ -29,9 +29,18 @@ namespace QuanLyCongDan
 
         private void button1_Click(object sender, EventArgs e)
         {
-            thue = new Thue(txtIDT.Text, txtID.Text, txtMso.Text, dTPNgayUp.Value.Date);
-            thueDAO.Them(thue);
-            HienThiDanhSach();
+            if (String.IsNullOrEmpty(txtIDT.Text) ||
+                String.IsNullOrEmpty(txtID.Text) ||
+                String.IsNullOrEmpty(txtMso.Text))
+            {
+                MessageBox.Show("Them That bai");
+            }
+            else
+            {
+                thue = new Thue(txtIDT.Text, txtID.Text, txtMso.Text, dTPNgayUp.Value.Date);
+                thueDAO.Them(thue);
+                HienThiDanhSach();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -43,9 +52,18 @@ namespace QuanLyCongDan
 
         private void button3_Click(object sender, EventArgs e)
         {
-            thue = new Thue(txtIDT.Text, txtID.Text, txtMso.Text, dTPNgayUp.Value.Date);
-            thueDAO.Sua(thue);
-            HienThiDanhSach();
+            if (String.IsNullOrEmpty(txtIDT.Text) ||
+                String.IsNullOrEmpty(txtID.Text) ||
+                String.IsNullOrEmpty(txtMso.Text))
+            {
+                MessageBox.Show("Sua That bai");
+            }
+            else
+            {
+                thue = new Thue(txtIDT.Text, txtID.Text, txtMso.Text, dTPNgayUp.Value.Date);
+                thueDAO.Sua(thue);
+                HienThiDanhSach();
+            }
         }
         private void gvThue_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {

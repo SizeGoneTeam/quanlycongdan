@@ -49,9 +49,18 @@ namespace QuanLyCongDan
 
         private void button1_Click(object sender, EventArgs e)
         {
-            cc = new CCCD(txtCD.Text, txtSOCC.Text, add.Text, dTPNgayCap.Value.Date);
-            ccDao.Them(cc);
-            HienThiDanhSach();
+            if (String.IsNullOrEmpty(txtCD.Text) ||
+                String.IsNullOrEmpty(txtSOCC.Text) ||
+                String.IsNullOrEmpty(add.Text))
+            {
+                MessageBox.Show("Them That bai");
+            }
+            else
+            {
+                cc = new CCCD(txtCD.Text, txtSOCC.Text, add.Text, dTPNgayCap.Value.Date);
+                ccDao.Them(cc);
+                HienThiDanhSach();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -63,19 +72,18 @@ namespace QuanLyCongDan
 
         private void button3_Click(object sender, EventArgs e)
         {
-            cc = new CCCD(txtCD.Text, txtSOCC.Text, add.Text, dTPNgayCap.Value.Date);
-            ccDao.Sua(cc);
-            HienThiDanhSach();
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            if (String.IsNullOrEmpty(txtCD.Text) ||
+                String.IsNullOrEmpty(txtSOCC.Text) ||
+                String.IsNullOrEmpty(add.Text))
+            {
+                MessageBox.Show("Sua That bai");
+            }
+            else
+            {
+                cc = new CCCD(txtCD.Text, txtSOCC.Text, add.Text, dTPNgayCap.Value.Date);
+                ccDao.Sua(cc);
+                HienThiDanhSach();
+            }
         }
     }
 }

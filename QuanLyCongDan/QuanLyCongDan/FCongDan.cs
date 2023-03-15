@@ -28,11 +28,6 @@ namespace Week2
             cboDanToc.SelectedIndex = 0;
             cboTonGiao.SelectedIndex = 0;
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-        }
-
         private void btnThem_Click(object sender, EventArgs e)
         {
             cd = new CongDan(txtHoTen.Text, txtQueQuan.Text, cboGioiTinh.SelectedItem.ToString(), dTPNgaySinh.Value, cboDanToc.SelectedItem.ToString(), cboTonGiao.SelectedItem.ToString(), txtSDT.Text, txtEmail.Text);

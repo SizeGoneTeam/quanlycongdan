@@ -369,7 +369,6 @@
             this.Controls.Add(this.lblHoTen);
             this.Name = "FCongDan";
             this.Text = "Quản Lý Công Dân";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

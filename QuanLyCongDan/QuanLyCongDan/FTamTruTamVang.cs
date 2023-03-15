@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Week2;
 
 namespace QuanLyCongDan
 {
@@ -49,9 +50,18 @@ namespace QuanLyCongDan
 
         private void button1_Click(object sender, EventArgs e)
         {
-            tt = new TamTruTamVang(txtIDTT.Text, txtIDCD.Text, Come.Value.Date, txtAdd.Text,txtLido.Text);
-            ttdao.Them(tt);
-            HienThiDanhSach();
+            if (String.IsNullOrEmpty(txtIDCD.Text) ||
+                String.IsNullOrEmpty(txtAdd.Text) ||
+                String.IsNullOrEmpty(txtLido.Text))
+            {
+                MessageBox.Show("Them That bai");
+            }
+            else
+            {
+                tt = new TamTruTamVang(txtIDTT.Text, txtIDCD.Text, Come.Value.Date, txtAdd.Text, txtLido.Text);
+                ttdao.Them(tt);
+                HienThiDanhSach();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -63,9 +73,18 @@ namespace QuanLyCongDan
 
         private void button3_Click(object sender, EventArgs e)
         {
-            tt = new TamTruTamVang(txtIDTT.Text, txtIDCD.Text, Come.Value.Date, txtAdd.Text, txtLido.Text);
-            ttdao.Sua(tt);
-            HienThiDanhSach();
+            if (String.IsNullOrEmpty(txtIDTT.Text) ||
+                String.IsNullOrEmpty(txtAdd.Text) ||
+                String.IsNullOrEmpty(txtLido.Text))
+            {
+                MessageBox.Show("Sua That bai");
+            }
+            else
+            {
+                tt = new TamTruTamVang(txtIDTT.Text, txtIDCD.Text, Come.Value.Date, txtAdd.Text, txtLido.Text);
+                ttdao.Sua(tt);
+                HienThiDanhSach();
+            }
         }
     }
 }
