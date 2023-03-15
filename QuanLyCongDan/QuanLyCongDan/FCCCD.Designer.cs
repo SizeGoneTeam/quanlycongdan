@@ -35,12 +35,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtSOCC = new System.Windows.Forms.TextBox();
-            this.txtAdd = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCD = new System.Windows.Forms.TextBox();
+            this.add = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.gvCCCD)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -69,7 +69,7 @@
             // 
             // dTPNgayCap
             // 
-            this.dTPNgayCap.Location = new System.Drawing.Point(114, 171);
+            this.dTPNgayCap.Location = new System.Drawing.Point(114, 165);
             this.dTPNgayCap.Name = "dTPNgayCap";
             this.dTPNgayCap.Size = new System.Drawing.Size(230, 22);
             this.dTPNgayCap.TabIndex = 3;
@@ -86,7 +86,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 171);
+            this.label4.Location = new System.Drawing.Point(16, 170);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 16);
             this.label4.TabIndex = 7;
@@ -107,13 +107,6 @@
             this.txtSOCC.Name = "txtSOCC";
             this.txtSOCC.Size = new System.Drawing.Size(230, 22);
             this.txtSOCC.TabIndex = 10;
-            // 
-            // txtAdd
-            // 
-            this.txtAdd.Location = new System.Drawing.Point(114, 127);
-            this.txtAdd.Name = "txtAdd";
-            this.txtAdd.Size = new System.Drawing.Size(230, 22);
-            this.txtAdd.TabIndex = 12;
             // 
             // button2
             // 
@@ -137,11 +130,11 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.add);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtCD);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.dTPNgayCap);
-            this.panel1.Controls.Add(this.txtAdd);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.txtSOCC);
             this.panel1.Controls.Add(this.label4);
@@ -167,6 +160,17 @@
             this.txtCD.Name = "txtCD";
             this.txtCD.Size = new System.Drawing.Size(230, 22);
             this.txtCD.TabIndex = 14;
+            // 
+            // add
+            // 
+            this.add.FormattingEnabled = true;
+            this.add.Items.AddRange(new object[] {
+            "Cuc Canh sat quan ly hanh chinh ve trat tu xa hoi.",
+            "Cuc Canh sat ĐKQL cu tru va DLQG ve dan cu."});
+            this.add.Location = new System.Drawing.Point(114, 124);
+            this.add.Name = "add";
+            this.add.Size = new System.Drawing.Size(230, 24);
+            this.add.TabIndex = 15;
             // 
             // FCCCD
             // 
@@ -196,11 +200,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtSOCC;
-        private System.Windows.Forms.TextBox txtAdd;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCD;
+        private System.Windows.Forms.ComboBox add;
     }
 }

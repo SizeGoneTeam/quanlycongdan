@@ -79,6 +79,7 @@
             this.btnTTTV.TabIndex = 3;
             this.btnTTTV.Text = "Tạm Trú Tạm Vắng";
             this.btnTTTV.UseVisualStyleBackColor = true;
+            this.btnTTTV.Click += new System.EventHandler(this.btnTTTV_Click);
             // 
             // btnThue
             // 
@@ -89,6 +90,7 @@
             this.btnThue.TabIndex = 4;
             this.btnThue.Text = "Thuế";
             this.btnThue.UseVisualStyleBackColor = true;
+            this.btnThue.Click += new System.EventHandler(this.btnThue_Click);
             // 
             // btnSoHoKhau
             // 
