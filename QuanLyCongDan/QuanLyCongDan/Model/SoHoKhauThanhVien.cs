@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Week2;
 
 namespace QuanLyCongDan.Model
@@ -16,13 +12,12 @@ namespace QuanLyCongDan.Model
         private string noiThuongTruTruoc;
         private string canBoDangKy;
         private DateTime ngayDangKy;
-        private string lyDo;
 
         public SoHoKhauThanhVien()
         {
         }
 
-        public SoHoKhauThanhVien(int iDSoHoKhau, CongDan congDan, string quanHe, string ngheNghiepNoiLamViec, string noiThuongTruTruoc, string canBoDangKy, DateTime ngayDangKy, string lyDo)
+        public SoHoKhauThanhVien(int iDSoHoKhau, CongDan congDan, string quanHe, string ngheNghiepNoiLamViec, string noiThuongTruTruoc, string canBoDangKy, DateTime ngayDangKy)
         {
             IDSoHoKhau = iDSoHoKhau;
             CongDan = congDan;
@@ -31,7 +26,6 @@ namespace QuanLyCongDan.Model
             NoiThuongTruTruoc = noiThuongTruTruoc;
             CanBoDangKy = canBoDangKy;
             NgayDangKy = ngayDangKy;
-            LyDo = lyDo;
         }
 
         public int IDSoHoKhau
@@ -125,17 +119,5 @@ namespace QuanLyCongDan.Model
             }
         }
 
-        public string LyDo
-        {
-            get
-            {
-                return lyDo;
-            }
-
-            set
-            {
-                lyDo = value;
-            }
-        }
     }
 }

@@ -36,7 +36,7 @@ namespace QuanLyCongDan.DAO
                         string noiThuongTruTruoc = dr["NoiThuongTruTruoc"].ToString();
                         string canBoDangKy = dr["CanBoDangKy"].ToString();
                         DateTime ngayDangKy = Convert.ToDateTime(dr["NgayDangKy"].ToString());
-                        string lyDo = dr["LyDo"].ToString();
+
                         CongDanDAO dao = new CongDanDAO();
 
                         list.Add(new SoHoKhauThanhVien(
@@ -46,8 +46,7 @@ namespace QuanLyCongDan.DAO
                             ngheNghiepNoiLamViec,
                             noiThuongTruTruoc,
                             canBoDangKy,
-                            ngayDangKy,
-                            lyDo));
+                            ngayDangKy));
                         
                     }
                 }
@@ -60,16 +59,15 @@ namespace QuanLyCongDan.DAO
         {
             string sqlStr = string.Format(
                 @"INSERT INTO CongDan_SoHoKhau
-                (ID_SoHoKhau, ID_CongDan, QuanHe, NgheNghiep_NoiLamViec, NoiThuongTruTruoc, CanBoDangKy, NgayDangKy, LyDo)
-                VALUES ('{0}', '{1}', N'{2}', N'{3}', N'{4}', N'{5}', '{6}', N'{7}')",
+                (ID_SoHoKhau, ID_CongDan, QuanHe, NgheNghiep_NoiLamViec, NoiThuongTruTruoc, CanBoDangKy, NgayDangKy)
+                VALUES ('{0}', '{1}', N'{2}', N'{3}', N'{4}', N'{5}', '{6}')",
                 soHoKhauThanhVien.IDSoHoKhau,
                 soHoKhauThanhVien.CongDan.Id,
                 soHoKhauThanhVien.QuanHe,
                 soHoKhauThanhVien.NgheNghiepNoiLamViec,
                 soHoKhauThanhVien.NoiThuongTruTruoc,
                 soHoKhauThanhVien.CanBoDangKy,
-                soHoKhauThanhVien.NgayDangKy,
-                soHoKhauThanhVien.LyDo);
+                soHoKhauThanhVien.NgayDangKy);
 
             return con.ThucThi(sqlStr);
         }

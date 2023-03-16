@@ -68,7 +68,6 @@ CREATE TABLE CongDan_SoHoKhau(
     NoiThuongTruTruoc NVARCHAR(100),
     CanBoDangKy NVARCHAR(100),
     NgayDangKy DATE,
-    LyDo NVARCHAR(100),
     PRIMARY KEY (ID_SoHoKhau, ID_CongDan),
     FOREIGN KEY (ID_SoHoKhau) REFERENCES SoHoKhau(ID_SoHoKhau),
     FOREIGN KEY (ID_CongDan) REFERENCES CongDan(ID_CongDan)
