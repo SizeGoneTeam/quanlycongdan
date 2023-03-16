@@ -25,6 +25,7 @@ CREATE TABLE TamTruTamVang (
     ID_TamTru INT IDENTITY(1,1) PRIMARY KEY,
     ID_CongDan INT,
     NgayDen DATE,
+	NgayDi DATE,
     DiaChi nvarchar(100),
 	LiDo NVARCHAR(100),
     FOREIGN KEY (ID_CongDan) REFERENCES CongDan(ID_CongDan)
@@ -34,7 +35,7 @@ CREATE TABLE TamTruTamVang (
 CREATE TABLE CCCD (
     ID_CCCD INT IDENTITY(1,1) PRIMARY KEY,
     ID_CongDan INT,
-    SoCCCD nvarchar(100),
+    SoCCCD VARCHAR(12),
     NgayCap DATE,
     NoiCap nvarchar(100),
     FOREIGN KEY (ID_CongDan) REFERENCES CongDan(ID_CongDan)
@@ -105,18 +106,18 @@ VALUES
 (N'Lê Thị K', N'Nữ', '1991-09-22', N'Hà Nội', N'Hà Nội', N'Hà Nội', N'Kinh', N'Không', '0987654321', 'lethik@gmail.com', N'Việt Nam');
 
 -- Insert into TamTruTamVang table
-INSERT INTO TamTruTamVang (ID_CongDan, NgayDen, DiaChi, LiDo)
-VALUES
-(1, '2022-01-01', N'123 đường ABC, Hà Nội', N'Làm việc tại Hà Nội'),
-(2, '2022-02-01', N'456 đường XYZ, Hà Nội', N'Học tập tại Hà Nội'),
-(3, '2022-03-01', N'789 đường DEF, Hà Nội', N'Làm việc tại Hà Nội'),
-(4, '2022-04-01', N'1011 đường GHI, Hà Nội', N'Học tập tại Hà Nội'),
-(5, '2022-05-01', N'1213 đường JKL, Hà Nội', N'Làm việc tại Hà Nội'),
-(6, '2022-06-01', N'1415 đường MNO, Hà Nội', N'Học tập tại Hà Nội'),
-(7, '2022-07-01', N'1617 đường PQR, Hà Nội', N'Làm việc tại Hà Nội'),
-(8, '2022-08-01', N'1819 đường STU, Hà Nội', N'Học tập tại Hà Nội'),
-(9, '2022-09-01', N'2021 đường VWX, Hà Nội', N'Làm việc tại Hà Nội'),
-(10, '2022-10-01', N'2223 đường YZ, Hà Nội', N'Học tập tại Hà Nội');
+INSERT INTO TamTruTamVang (ID_CongDan, NgayDen, NgayDi, DiaChi, LiDo)
+VALUES 
+(1, '2022-01-01', '2022-01-10', N'123 Đường A, Quận 1, TP.HCM', N'Du lịch'),
+(2, '2022-02-01', '2022-02-10', N'456 Đường B, Quận 2, TP.HCM', N'Công tác'),
+(3, '2022-03-01', '2022-03-10', N'789 Đường C, Quận 3, TP.HCM', N'Học tập'),
+(4, '2022-04-01', '2022-04-10', N'321 Đường D, Quận 4, TP.HCM', N'Y tế'),
+(5, '2022-05-01', '2022-05-10', N'654 Đường E, Quận 5, TP.HCM', N'Du lịch'),
+(6, '2022-06-01', '2022-06-10', N'987 Đường F, Quận 6, TP.HCM', N'Công tác'),
+(7, '2022-07-01', '2022-07-10', N'135 Đường G, Quận 7, TP.HCM', N'Học tập'),
+(8, '2022-08-01', '2022-08-10', N'246 Đường H, Quận 8, TP.HCM', N'Y tế'),
+(9, '2022-09-01', '2022-09-10', N'357 Đường I, Quận 9, TP.HCM', N'Du lịch'),
+(10, '2022-10-01', '2022-10-10', N'468 Đường K, Quận 10, TP.HCM', N'Công tác');
 
 -- Insert into CCCD table
 INSERT INTO CCCD (ID_CongDan, SoCCCD, NgayCap, NoiCap)

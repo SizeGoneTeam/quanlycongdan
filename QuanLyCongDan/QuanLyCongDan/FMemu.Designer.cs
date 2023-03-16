@@ -128,6 +128,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FMemu";
             this.Text = "Menu";
+            this.Load += new System.EventHandler(this.FMemu_Load);
             this.ResumeLayout(false);
 
         }
