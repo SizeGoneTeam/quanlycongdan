@@ -1,5 +1,6 @@
 ﻿using QuanLyCongDan.DAO;
 using QuanLyCongDan.Model;
+using QuanLyCongDan.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -46,12 +47,7 @@ namespace QuanLyCongDan
 
                     foreach (SoHoKhauThanhVien thanhVien in thanhVienDAO.LayDanhSach(soHoKhau.ID))
                     {
-                        UCThanhVien uc = new UCThanhVien();
-                        var txtQuanHe = uc.Controls.Find("txtQuanHe", false).First();
-                        txtQuanHe.Text = thanhVien.QuanHe;
-                        var txtHoTen = uc.Controls.Find("txtHoTen", false).First();
-                        txtHoTen.Text = thanhVien.CongDan.HoTen;
-                        fpnThanhVien.Controls.Add(uc);
+                        fpnThanhVien.Controls.Add(new UCThanhVien(thanhVien));
                     }
                 }
             }
@@ -130,7 +126,8 @@ namespace QuanLyCongDan
 
         private void btnThemThanhVien_Click(object sender, EventArgs e)
         {
-
+            FThanhVien f =  new FThanhVien();
+            f.ShowDialog();
         }
     }
 }
