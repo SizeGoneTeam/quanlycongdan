@@ -115,6 +115,17 @@ namespace QuanLyCongDan
 
         }
 
+        public KhaiSinh(int iD, int iDCongDan, int iDNguoiYeuCau, int iDCha, int iDMe, string noiDangKy, DateTime ngayThucHien)
+        {
+            this.iD = iD;
+            this.iDCongDan = iDCongDan;
+            this.iDNguoiYeuCau = iDNguoiYeuCau;
+            this.iDCha = iDCha;
+            this.iDMe = iDMe;
+            this.noiDangKy = noiDangKy;
+            this.ngayThucHien = ngayThucHien;
+        }
+
         public KhaiSinh(int iDCongDan, int iDNguoiYeuCau, int iDCha, int iDMe, string noiDangKy, DateTime ngayThucHien)
         {
             IDCongDan = iDCongDan;
@@ -135,6 +146,7 @@ namespace QuanLyCongDan
             NoiDangKy = noiDangKy;
             NgayThucHien = ngayThucHien;
         }
+
         #endregion
 
     }

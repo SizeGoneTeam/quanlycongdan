@@ -39,10 +39,10 @@
             // 
             // btnCongDan
             // 
-            this.btnCongDan.Location = new System.Drawing.Point(46, 32);
-            this.btnCongDan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCongDan.Location = new System.Drawing.Point(61, 39);
+            this.btnCongDan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCongDan.Name = "btnCongDan";
-            this.btnCongDan.Size = new System.Drawing.Size(107, 31);
+            this.btnCongDan.Size = new System.Drawing.Size(143, 38);
             this.btnCongDan.TabIndex = 0;
             this.btnCongDan.Text = "Công Dân";
             this.btnCongDan.UseVisualStyleBackColor = true;
@@ -50,10 +50,10 @@
             // 
             // btnCCCD
             // 
-            this.btnCCCD.Location = new System.Drawing.Point(222, 32);
-            this.btnCCCD.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCCCD.Location = new System.Drawing.Point(296, 39);
+            this.btnCCCD.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCCCD.Name = "btnCCCD";
-            this.btnCCCD.Size = new System.Drawing.Size(96, 31);
+            this.btnCCCD.Size = new System.Drawing.Size(128, 38);
             this.btnCCCD.TabIndex = 1;
             this.btnCCCD.Text = "CCCD";
             this.btnCCCD.UseVisualStyleBackColor = true;
@@ -61,50 +61,53 @@
             // 
             // btnHonNhan
             // 
-            this.btnHonNhan.Location = new System.Drawing.Point(393, 32);
-            this.btnHonNhan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnHonNhan.Location = new System.Drawing.Point(524, 39);
+            this.btnHonNhan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnHonNhan.Name = "btnHonNhan";
-            this.btnHonNhan.Size = new System.Drawing.Size(96, 31);
+            this.btnHonNhan.Size = new System.Drawing.Size(128, 38);
             this.btnHonNhan.TabIndex = 2;
             this.btnHonNhan.Text = "Hôn Nhân";
             this.btnHonNhan.UseVisualStyleBackColor = true;
+            this.btnHonNhan.Click += new System.EventHandler(this.btnHonNhan_Click);
             // 
             // btnTTTV
             // 
-            this.btnTTTV.Location = new System.Drawing.Point(46, 116);
-            this.btnTTTV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTTTV.Location = new System.Drawing.Point(61, 143);
+            this.btnTTTV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTTTV.Name = "btnTTTV";
-            this.btnTTTV.Size = new System.Drawing.Size(107, 31);
+            this.btnTTTV.Size = new System.Drawing.Size(143, 38);
             this.btnTTTV.TabIndex = 3;
             this.btnTTTV.Text = "Tạm Trú Tạm Vắng";
             this.btnTTTV.UseVisualStyleBackColor = true;
+            this.btnTTTV.Click += new System.EventHandler(this.btnTTTV_Click);
             // 
             // btnThue
             // 
-            this.btnThue.Location = new System.Drawing.Point(222, 116);
-            this.btnThue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnThue.Location = new System.Drawing.Point(296, 143);
+            this.btnThue.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThue.Name = "btnThue";
-            this.btnThue.Size = new System.Drawing.Size(96, 31);
+            this.btnThue.Size = new System.Drawing.Size(128, 38);
             this.btnThue.TabIndex = 4;
             this.btnThue.Text = "Thuế";
             this.btnThue.UseVisualStyleBackColor = true;
+            this.btnThue.Click += new System.EventHandler(this.btnThue_Click);
             // 
             // btnSoHoKhau
             // 
-            this.btnSoHoKhau.Location = new System.Drawing.Point(393, 116);
-            this.btnSoHoKhau.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSoHoKhau.Location = new System.Drawing.Point(524, 143);
+            this.btnSoHoKhau.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSoHoKhau.Name = "btnSoHoKhau";
-            this.btnSoHoKhau.Size = new System.Drawing.Size(96, 31);
+            this.btnSoHoKhau.Size = new System.Drawing.Size(128, 38);
             this.btnSoHoKhau.TabIndex = 5;
             this.btnSoHoKhau.Text = "Sổ Hổ Khẩu";
             this.btnSoHoKhau.UseVisualStyleBackColor = true;
             // 
             // btnKhaiSinh
             // 
-            this.btnKhaiSinh.Location = new System.Drawing.Point(46, 208);
-            this.btnKhaiSinh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnKhaiSinh.Location = new System.Drawing.Point(61, 256);
+            this.btnKhaiSinh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnKhaiSinh.Name = "btnKhaiSinh";
-            this.btnKhaiSinh.Size = new System.Drawing.Size(107, 30);
+            this.btnKhaiSinh.Size = new System.Drawing.Size(143, 37);
             this.btnKhaiSinh.TabIndex = 6;
             this.btnKhaiSinh.Text = "Khai Sinh";
             this.btnKhaiSinh.UseVisualStyleBackColor = true;
@@ -112,9 +115,9 @@
             // 
             // FMemu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnKhaiSinh);
             this.Controls.Add(this.btnSoHoKhau);
             this.Controls.Add(this.btnThue);
@@ -122,9 +125,10 @@
             this.Controls.Add(this.btnHonNhan);
             this.Controls.Add(this.btnCCCD);
             this.Controls.Add(this.btnCongDan);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FMemu";
             this.Text = "Menu";
+            this.Load += new System.EventHandler(this.FMemu_Load);
             this.ResumeLayout(false);
 
         }

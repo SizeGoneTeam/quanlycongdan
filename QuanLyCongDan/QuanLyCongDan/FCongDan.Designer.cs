@@ -46,11 +46,12 @@
             this.lblSDT = new System.Windows.Forms.Label();
             this.txtSDT = new System.Windows.Forms.TextBox();
             this.lblDanToc = new System.Windows.Forms.Label();
-            this.txtDanToc = new System.Windows.Forms.TextBox();
             this.lblTonGiao = new System.Windows.Forms.Label();
-            this.txtTonGiao = new System.Windows.Forms.TextBox();
             this.lblGioiTinh = new System.Windows.Forms.Label();
             this.cboGioiTinh = new System.Windows.Forms.ComboBox();
+            this.cboTonGiao = new System.Windows.Forms.ComboBox();
+            this.cboDanToc = new System.Windows.Forms.ComboBox();
+            this.btnTimKiem = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblHoTen
@@ -208,13 +209,6 @@
             this.lblDanToc.TabIndex = 21;
             this.lblDanToc.Text = "Dân Tộc";
             // 
-            // txtDanToc
-            // 
-            this.txtDanToc.Location = new System.Drawing.Point(183, 272);
-            this.txtDanToc.Name = "txtDanToc";
-            this.txtDanToc.Size = new System.Drawing.Size(245, 22);
-            this.txtDanToc.TabIndex = 20;
-            // 
             // lblTonGiao
             // 
             this.lblTonGiao.AutoSize = true;
@@ -223,13 +217,6 @@
             this.lblTonGiao.Size = new System.Drawing.Size(63, 16);
             this.lblTonGiao.TabIndex = 23;
             this.lblTonGiao.Text = "Tôn Giáo";
-            // 
-            // txtTonGiao
-            // 
-            this.txtTonGiao.Location = new System.Drawing.Point(183, 315);
-            this.txtTonGiao.Name = "txtTonGiao";
-            this.txtTonGiao.Size = new System.Drawing.Size(245, 22);
-            this.txtTonGiao.TabIndex = 22;
             // 
             // lblGioiTinh
             // 
@@ -254,17 +241,115 @@
             this.cboGioiTinh.Size = new System.Drawing.Size(125, 24);
             this.cboGioiTinh.TabIndex = 25;
             // 
+            // cboTonGiao
+            // 
+            this.cboTonGiao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTonGiao.FormattingEnabled = true;
+            this.cboTonGiao.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.cboTonGiao.Items.AddRange(new object[] {
+            "Không",
+            "Phật giáo",
+            "Thiên chúa giáo",
+            "Công giáo Rôma",
+            "Hòa hảo",
+            "Cao đài",
+            "Hồi giáo",
+            "Tin Lành",
+            "Baháí",
+            "Hindu",
+            "Sikh"});
+            this.cboTonGiao.Location = new System.Drawing.Point(183, 313);
+            this.cboTonGiao.Name = "cboTonGiao";
+            this.cboTonGiao.Size = new System.Drawing.Size(125, 24);
+            this.cboTonGiao.TabIndex = 26;
+            // 
+            // cboDanToc
+            // 
+            this.cboDanToc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDanToc.FormattingEnabled = true;
+            this.cboDanToc.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.cboDanToc.Items.AddRange(new object[] {
+            "Kinh",
+            "Tày",
+            "Thái",
+            "Mường",
+            "Khmer",
+            "Hoa",
+            "Nùng",
+            "H\'Mông",
+            "Dao",
+            "Gia Rai",
+            "Ê Đê",
+            "Ba Na",
+            "Sán Chay",
+            "Chăm",
+            "Kơ Ho",
+            "Xơ Đăng",
+            "Sán Dìu",
+            "Hrê",
+            "Ra Glai",
+            "Mnông",
+            "Thổ",
+            "Stiêng",
+            "Khơ mú",
+            "Bru - Vân Kiều",
+            "Cơ Tu",
+            "Giáy",
+            "Tà Ôi",
+            "Mạ",
+            "Giẻ-Triêng",
+            "Co",
+            "Chơ Ro",
+            "Xinh Mun",
+            "Hà Nhì",
+            "Chu Ru",
+            "Lào",
+            "La Chí",
+            "Kháng",
+            "Phù Lá",
+            "La Hủ",
+            "La Ha",
+            "Pà Thẻn",
+            "Lự",
+            "Ngái",
+            "Chứt",
+            "Lô Lô",
+            "Mảng",
+            "Cơ Lao",
+            "Bố Y",
+            "Cống",
+            "Si La",
+            "Pu Péo",
+            "Rơ Măm",
+            "Brâu",
+            "Ơ Đu"});
+            this.cboDanToc.Location = new System.Drawing.Point(183, 275);
+            this.cboDanToc.Name = "cboDanToc";
+            this.cboDanToc.Size = new System.Drawing.Size(125, 24);
+            this.cboDanToc.TabIndex = 27;
+            // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.Location = new System.Drawing.Point(447, 18);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(75, 23);
+            this.btnTimKiem.TabIndex = 28;
+            this.btnTimKiem.Text = "Tìm Kiếm";
+            this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click_1);
+            // 
             // FCongDan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(578, 535);
+            this.Controls.Add(this.btnTimKiem);
+            this.Controls.Add(this.cboDanToc);
+            this.Controls.Add(this.cboTonGiao);
             this.Controls.Add(this.cboGioiTinh);
             this.Controls.Add(this.lblGioiTinh);
             this.Controls.Add(this.lblTonGiao);
-            this.Controls.Add(this.txtTonGiao);
             this.Controls.Add(this.lblDanToc);
-            this.Controls.Add(this.txtDanToc);
             this.Controls.Add(this.lblSDT);
             this.Controls.Add(this.txtSDT);
             this.Controls.Add(this.lblEmail);
@@ -310,11 +395,12 @@
         private System.Windows.Forms.Label lblSDT;
         private System.Windows.Forms.TextBox txtSDT;
         private System.Windows.Forms.Label lblDanToc;
-        private System.Windows.Forms.TextBox txtDanToc;
         private System.Windows.Forms.Label lblTonGiao;
-        private System.Windows.Forms.TextBox txtTonGiao;
         private System.Windows.Forms.Label lblGioiTinh;
         private System.Windows.Forms.ComboBox cboGioiTinh;
+        private System.Windows.Forms.ComboBox cboTonGiao;
+        private System.Windows.Forms.ComboBox cboDanToc;
+        private System.Windows.Forms.Button btnTimKiem;
     }
 }
 
