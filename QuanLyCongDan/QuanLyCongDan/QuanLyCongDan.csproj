@@ -142,6 +142,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FSoHoKhau.resx">
       <DependentUpon>FSoHoKhau.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FTamTruTamVang.resx">
       <DependentUpon>FTamTruTamVang.cs</DependentUpon>
     </EmbeddedResource>
