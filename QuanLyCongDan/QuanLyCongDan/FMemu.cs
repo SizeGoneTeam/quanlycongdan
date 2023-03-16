@@ -40,5 +40,11 @@ namespace QuanLyCongDan
             FHonNhan fHonNhan = new FHonNhan();
             fHonNhan.Show();
         }
+
+        private void btnSoHoKhau_Click(object sender, EventArgs e)
+        {
+            FSoHoKhau f = new FSoHoKhau();
+            f.Show();
+        }
     }
 }
