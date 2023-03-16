@@ -24,11 +24,6 @@ namespace QuanLyCongDan
             fCongDan.Show();
         }
 
-        private void btnKhaiSinh_Click(object sender, EventArgs e)
-        {
-            FKhaiSinh f = new FKhaiSinh();
-            f.Show();
-	}
         private void btnCCCD_Click(object sender, EventArgs e)
         {
             FCCCD fCCCD = new FCCCD();
@@ -45,6 +40,27 @@ namespace QuanLyCongDan
         {
             FSoHoKhau f = new FSoHoKhau();
             f.Show();
+        }
+        private void btnKhaiSinh_Click(object sender, EventArgs e)
+        {
+            FKhaiSinh f = new FKhaiSinh();
+            f.Show();
+        }
+        private void btnThue_Click(object sender, EventArgs e)
+        {
+            FThue f = new FThue();
+            f.Show();
+        }
+
+        private void btnTTTV_Click(object sender, EventArgs e)
+        {
+            FTamTruTamVang f = new FTamTruTamVang();
+            f.Show();
+        }
+
+        private void FMemu_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -14,9 +14,11 @@ namespace QuanLyCongDan
     public partial class FHonNhan : Form
     {
         CongDan cd = new CongDan();
-        CongDanDAO cdDao = new CongDanDAO();
+        CongDanDAO cdDAO = new CongDanDAO();
         HonNhanDAO honNhanDAO = new HonNhanDAO();
         HonNhan hn;
+        CCCD cccd;
+        CCCDDAO cccdDAO = new CCCDDAO();
         public FHonNhan()
         {
             InitializeComponent();
@@ -30,7 +32,8 @@ namespace QuanLyCongDan
             //Chồng
             try
             {
-                cd = cdDao.TimKiem(txtID_Chong.Text);
+                cccd = cccdDAO.TimKiem_ID(txtID_Chong.Text);
+                cd = cdDAO.TimKiem(cccd.CD);
                 lblHoTenChong.Text = cd.HoTen;
                 lblNgaySinhChong.Text = cd.NgaySinh.Date.ToString();
                 if(lblHoTenChong.Text != "" && lblHoTenVo.Text != "") btnThem.Enabled=true;
@@ -38,6 +41,8 @@ namespace QuanLyCongDan
             }
             catch
             {
+                lblHoTenChong.Text = "";
+                lblNgaySinhChong.Text = "";
                 btnThem.Enabled = false;
             }
         }
@@ -47,7 +52,8 @@ namespace QuanLyCongDan
             //Vợ
             try
             {
-                cd = cdDao.TimKiem(txtID_Vo.Text);
+                cccd = cccdDAO.TimKiem_ID(txtID_Vo.Text);
+                cd = cdDAO.TimKiem(cccd.CD);
                 lblHoTenVo.Text = cd.HoTen;
                 lblNgaySinhVo.Text = cd.NgaySinh.Date.ToString();
                 if (lblHoTenChong.Text != "" && lblHoTenVo.Text != "") btnThem.Enabled = true;
@@ -55,6 +61,8 @@ namespace QuanLyCongDan
             }
             catch
             {
+                lblHoTenVo.Text = "";
+                lblNgaySinhVo.Text = "";
                 btnThem.Enabled = false;
             }
         }

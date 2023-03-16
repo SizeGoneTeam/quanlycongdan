@@ -28,7 +28,7 @@ namespace Week2
 
         public void Sua(CongDan cd)
         {
-            String sqlStr = string.Format("UPDATE CongDan SET HoTen = N'{0}', GioiTinh = '{1}', NgaySinh = '{2}', QueQuan = N'{3}', DanToc = N'{4}', TonGiao = N'{5}', SDT = '{6}', Email = '{7}' WHERE ID_CongDan = {8};", cd.HoTen, cd.GioiTinh, cd.NgaySinh, cd.QueQuan, cd.DanToc, cd.TonGiao, cd.Sdt, cd.Email, cd.Id);
+            String sqlStr = string.Format("UPDATE CongDan SET HoTen = N'{0}', GioiTinh = N'{1}', NgaySinh = '{2}', QueQuan = N'{3}', DanToc = N'{4}', TonGiao = N'{5}', SDT = '{6}', Email = '{7}' WHERE ID_CongDan = {8};", cd.HoTen, cd.GioiTinh, cd.NgaySinh, cd.QueQuan, cd.DanToc, cd.TonGiao, cd.Sdt, cd.Email, cd.Id);
             dbConn.ThucThi(sqlStr);
         }   
 
