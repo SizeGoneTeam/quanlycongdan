@@ -24,16 +24,15 @@ namespace QuanLyCongDan
             fCongDan.Show();
         }
 
-        private void btnCCCD_Click(object sender, EventArgs e)
-        {
-            FCCCD fCCCD = new FCCCD();
-            fCCCD.Show();
-        }
-
         private void btnKhaiSinh_Click(object sender, EventArgs e)
         {
             FKhaiSinh f = new FKhaiSinh();
             f.Show();
+	}
+        private void btnCCCD_Click(object sender, EventArgs e)
+        {
+            FCCCD fCCCD = new FCCCD();
+            fCCCD.Show();
         }
     }
 }

@@ -32,8 +32,8 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtIDNhap = new System.Windows.Forms.TextBox();
-            this.btnNhap = new System.Windows.Forms.Button();
+            this.txtID = new System.Windows.Forms.TextBox();
+            this.btnTimKiem = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -69,8 +69,10 @@
             this.txtDanToc = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.cbGioiTinh = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.pkNgaySinh = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
             this.txtHoTen = new System.Windows.Forms.TextBox();
@@ -124,8 +126,6 @@
             this.txtNoiDangKy = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
-            this.pkNgaySinh = new System.Windows.Forms.DateTimePicker();
-            this.cbGioiTinh = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -176,6 +176,7 @@
             this.btnXoa.TabIndex = 2;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 
@@ -185,36 +186,38 @@
             this.btnSua.TabIndex = 2;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.txtIDNhap);
-            this.panel1.Controls.Add(this.btnNhap);
+            this.panel1.Controls.Add(this.txtID);
+            this.panel1.Controls.Add(this.btnTimKiem);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(103, 11);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(240, 47);
             this.panel1.TabIndex = 3;
             // 
-            // txtIDNhap
+            // txtID
             // 
-            this.txtIDNhap.Location = new System.Drawing.Point(79, 19);
-            this.txtIDNhap.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtIDNhap.Name = "txtIDNhap";
-            this.txtIDNhap.Size = new System.Drawing.Size(76, 20);
-            this.txtIDNhap.TabIndex = 2;
+            this.txtID.Location = new System.Drawing.Point(79, 19);
+            this.txtID.Margin = new System.Windows.Forms.Padding(2);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(76, 20);
+            this.txtID.TabIndex = 2;
             // 
-            // btnNhap
+            // btnTimKiem
             // 
-            this.btnNhap.Location = new System.Drawing.Point(159, 19);
-            this.btnNhap.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnNhap.Name = "btnNhap";
-            this.btnNhap.Size = new System.Drawing.Size(56, 19);
-            this.btnNhap.TabIndex = 1;
-            this.btnNhap.Text = "Nhập";
-            this.btnNhap.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Location = new System.Drawing.Point(159, 19);
+            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(56, 19);
+            this.btnTimKiem.TabIndex = 1;
+            this.btnTimKiem.Text = "Nhập";
+            this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // label2
             // 
@@ -245,7 +248,7 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Location = new System.Drawing.Point(11, 62);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(382, 192);
             this.panel2.TabIndex = 4;
@@ -255,7 +258,7 @@
             this.panel7.Controls.Add(this.textBox5);
             this.panel7.Controls.Add(this.label8);
             this.panel7.Location = new System.Drawing.Point(29, 155);
-            this.panel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel7.Margin = new System.Windows.Forms.Padding(2);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(344, 30);
             this.panel7.TabIndex = 0;
@@ -263,7 +266,7 @@
             // textBox5
             // 
             this.textBox5.Location = new System.Drawing.Point(118, 5);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(2);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(224, 20);
             this.textBox5.TabIndex = 2;
@@ -283,7 +286,7 @@
             this.panel6.Controls.Add(this.txtCCCDNguoiYeuCau);
             this.panel6.Controls.Add(this.label7);
             this.panel6.Location = new System.Drawing.Point(29, 121);
-            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(344, 30);
             this.panel6.TabIndex = 0;
@@ -291,7 +294,7 @@
             // txtCCCDNguoiYeuCau
             // 
             this.txtCCCDNguoiYeuCau.Location = new System.Drawing.Point(118, 5);
-            this.txtCCCDNguoiYeuCau.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCCCDNguoiYeuCau.Margin = new System.Windows.Forms.Padding(2);
             this.txtCCCDNguoiYeuCau.Name = "txtCCCDNguoiYeuCau";
             this.txtCCCDNguoiYeuCau.ReadOnly = true;
             this.txtCCCDNguoiYeuCau.Size = new System.Drawing.Size(224, 20);
@@ -312,7 +315,7 @@
             this.panel5.Controls.Add(this.txtDiaChiNguoiYeuCau);
             this.panel5.Controls.Add(this.label6);
             this.panel5.Location = new System.Drawing.Point(29, 87);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(344, 30);
             this.panel5.TabIndex = 0;
@@ -320,7 +323,7 @@
             // txtDiaChiNguoiYeuCau
             // 
             this.txtDiaChiNguoiYeuCau.Location = new System.Drawing.Point(118, 5);
-            this.txtDiaChiNguoiYeuCau.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDiaChiNguoiYeuCau.Margin = new System.Windows.Forms.Padding(2);
             this.txtDiaChiNguoiYeuCau.Name = "txtDiaChiNguoiYeuCau";
             this.txtDiaChiNguoiYeuCau.ReadOnly = true;
             this.txtDiaChiNguoiYeuCau.Size = new System.Drawing.Size(224, 20);
@@ -351,7 +354,7 @@
             this.panel3.Controls.Add(this.txtHoTenNguoiYeuCau);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Location = new System.Drawing.Point(29, 53);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(344, 30);
             this.panel3.TabIndex = 0;
@@ -359,7 +362,7 @@
             // txtHoTenNguoiYeuCau
             // 
             this.txtHoTenNguoiYeuCau.Location = new System.Drawing.Point(118, 5);
-            this.txtHoTenNguoiYeuCau.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtHoTenNguoiYeuCau.Margin = new System.Windows.Forms.Padding(2);
             this.txtHoTenNguoiYeuCau.Name = "txtHoTenNguoiYeuCau";
             this.txtHoTenNguoiYeuCau.ReadOnly = true;
             this.txtHoTenNguoiYeuCau.Size = new System.Drawing.Size(224, 20);
@@ -382,7 +385,7 @@
             this.panel4.Controls.Add(this.label4);
             this.panel4.Controls.Add(this.label5);
             this.panel4.Location = new System.Drawing.Point(1, 2);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(240, 47);
             this.panel4.TabIndex = 3;
@@ -390,7 +393,7 @@
             // txtIDNguoiYeuCau
             // 
             this.txtIDNguoiYeuCau.Location = new System.Drawing.Point(79, 19);
-            this.txtIDNguoiYeuCau.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtIDNguoiYeuCau.Margin = new System.Windows.Forms.Padding(2);
             this.txtIDNguoiYeuCau.Name = "txtIDNguoiYeuCau";
             this.txtIDNguoiYeuCau.Size = new System.Drawing.Size(76, 20);
             this.txtIDNguoiYeuCau.TabIndex = 2;
@@ -398,7 +401,7 @@
             // btnTimKiemNguoiYeuCau
             // 
             this.btnTimKiemNguoiYeuCau.Location = new System.Drawing.Point(159, 19);
-            this.btnTimKiemNguoiYeuCau.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTimKiemNguoiYeuCau.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimKiemNguoiYeuCau.Name = "btnTimKiemNguoiYeuCau";
             this.btnTimKiemNguoiYeuCau.Size = new System.Drawing.Size(56, 19);
             this.btnTimKiemNguoiYeuCau.TabIndex = 1;
@@ -436,7 +439,7 @@
             this.panel8.Controls.Add(this.panel11);
             this.panel8.Controls.Add(this.panel12);
             this.panel8.Location = new System.Drawing.Point(11, 258);
-            this.panel8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel8.Margin = new System.Windows.Forms.Padding(2);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(382, 295);
             this.panel8.TabIndex = 4;
@@ -446,7 +449,7 @@
             this.panel15.Controls.Add(this.txtQueQuan);
             this.panel15.Controls.Add(this.label15);
             this.panel15.Location = new System.Drawing.Point(29, 257);
-            this.panel15.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel15.Margin = new System.Windows.Forms.Padding(2);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(344, 30);
             this.panel15.TabIndex = 0;
@@ -454,7 +457,7 @@
             // txtQueQuan
             // 
             this.txtQueQuan.Location = new System.Drawing.Point(118, 5);
-            this.txtQueQuan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtQueQuan.Margin = new System.Windows.Forms.Padding(2);
             this.txtQueQuan.Name = "txtQueQuan";
             this.txtQueQuan.Size = new System.Drawing.Size(224, 20);
             this.txtQueQuan.TabIndex = 2;
@@ -474,7 +477,7 @@
             this.panel14.Controls.Add(this.txtNoiSinh);
             this.panel14.Controls.Add(this.label14);
             this.panel14.Location = new System.Drawing.Point(29, 223);
-            this.panel14.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel14.Margin = new System.Windows.Forms.Padding(2);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(344, 30);
             this.panel14.TabIndex = 0;
@@ -482,7 +485,7 @@
             // txtNoiSinh
             // 
             this.txtNoiSinh.Location = new System.Drawing.Point(118, 5);
-            this.txtNoiSinh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNoiSinh.Margin = new System.Windows.Forms.Padding(2);
             this.txtNoiSinh.Name = "txtNoiSinh";
             this.txtNoiSinh.Size = new System.Drawing.Size(224, 20);
             this.txtNoiSinh.TabIndex = 2;
@@ -502,7 +505,7 @@
             this.panel13.Controls.Add(this.txtQuocTich);
             this.panel13.Controls.Add(this.label13);
             this.panel13.Location = new System.Drawing.Point(29, 189);
-            this.panel13.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel13.Margin = new System.Windows.Forms.Padding(2);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(344, 30);
             this.panel13.TabIndex = 0;
@@ -510,7 +513,7 @@
             // txtQuocTich
             // 
             this.txtQuocTich.Location = new System.Drawing.Point(118, 5);
-            this.txtQuocTich.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtQuocTich.Margin = new System.Windows.Forms.Padding(2);
             this.txtQuocTich.Name = "txtQuocTich";
             this.txtQuocTich.Size = new System.Drawing.Size(224, 20);
             this.txtQuocTich.TabIndex = 2;
@@ -530,7 +533,7 @@
             this.panel9.Controls.Add(this.txtDanToc);
             this.panel9.Controls.Add(this.label9);
             this.panel9.Location = new System.Drawing.Point(29, 155);
-            this.panel9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel9.Margin = new System.Windows.Forms.Padding(2);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(344, 30);
             this.panel9.TabIndex = 0;
@@ -538,7 +541,7 @@
             // txtDanToc
             // 
             this.txtDanToc.Location = new System.Drawing.Point(118, 5);
-            this.txtDanToc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDanToc.Margin = new System.Windows.Forms.Padding(2);
             this.txtDanToc.Name = "txtDanToc";
             this.txtDanToc.Size = new System.Drawing.Size(224, 20);
             this.txtDanToc.TabIndex = 2;
@@ -558,10 +561,22 @@
             this.panel10.Controls.Add(this.cbGioiTinh);
             this.panel10.Controls.Add(this.label10);
             this.panel10.Location = new System.Drawing.Point(29, 121);
-            this.panel10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel10.Margin = new System.Windows.Forms.Padding(2);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(344, 30);
             this.panel10.TabIndex = 0;
+            // 
+            // cbGioiTinh
+            // 
+            this.cbGioiTinh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbGioiTinh.FormattingEnabled = true;
+            this.cbGioiTinh.Items.AddRange(new object[] {
+            "Nam",
+            "Nữ"});
+            this.cbGioiTinh.Location = new System.Drawing.Point(118, 4);
+            this.cbGioiTinh.Name = "cbGioiTinh";
+            this.cbGioiTinh.Size = new System.Drawing.Size(223, 21);
+            this.cbGioiTinh.TabIndex = 1;
             // 
             // label10
             // 
@@ -578,10 +593,17 @@
             this.panel11.Controls.Add(this.pkNgaySinh);
             this.panel11.Controls.Add(this.label11);
             this.panel11.Location = new System.Drawing.Point(29, 87);
-            this.panel11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel11.Margin = new System.Windows.Forms.Padding(2);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(344, 30);
             this.panel11.TabIndex = 0;
+            // 
+            // pkNgaySinh
+            // 
+            this.pkNgaySinh.Location = new System.Drawing.Point(118, 5);
+            this.pkNgaySinh.Name = "pkNgaySinh";
+            this.pkNgaySinh.Size = new System.Drawing.Size(223, 20);
+            this.pkNgaySinh.TabIndex = 1;
             // 
             // label11
             // 
@@ -598,7 +620,7 @@
             this.panel12.Controls.Add(this.txtHoTen);
             this.panel12.Controls.Add(this.label12);
             this.panel12.Location = new System.Drawing.Point(29, 53);
-            this.panel12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel12.Margin = new System.Windows.Forms.Padding(2);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(344, 30);
             this.panel12.TabIndex = 0;
@@ -606,7 +628,7 @@
             // txtHoTen
             // 
             this.txtHoTen.Location = new System.Drawing.Point(118, 5);
-            this.txtHoTen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtHoTen.Margin = new System.Windows.Forms.Padding(2);
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.Size = new System.Drawing.Size(224, 20);
             this.txtHoTen.TabIndex = 2;
@@ -631,7 +653,7 @@
             this.panel16.Controls.Add(this.panel20);
             this.panel16.Controls.Add(this.panel21);
             this.panel16.Location = new System.Drawing.Point(480, 62);
-            this.panel16.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel16.Margin = new System.Windows.Forms.Padding(2);
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(382, 224);
             this.panel16.TabIndex = 4;
@@ -641,7 +663,7 @@
             this.panel22.Controls.Add(this.txtDiaChiNguoiMe);
             this.panel22.Controls.Add(this.label22);
             this.panel22.Location = new System.Drawing.Point(29, 189);
-            this.panel22.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel22.Margin = new System.Windows.Forms.Padding(2);
             this.panel22.Name = "panel22";
             this.panel22.Size = new System.Drawing.Size(344, 30);
             this.panel22.TabIndex = 0;
@@ -649,7 +671,7 @@
             // txtDiaChiNguoiMe
             // 
             this.txtDiaChiNguoiMe.Location = new System.Drawing.Point(118, 5);
-            this.txtDiaChiNguoiMe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDiaChiNguoiMe.Margin = new System.Windows.Forms.Padding(2);
             this.txtDiaChiNguoiMe.Name = "txtDiaChiNguoiMe";
             this.txtDiaChiNguoiMe.ReadOnly = true;
             this.txtDiaChiNguoiMe.Size = new System.Drawing.Size(224, 20);
@@ -670,7 +692,7 @@
             this.panel17.Controls.Add(this.txtQuocTichNguoiMe);
             this.panel17.Controls.Add(this.label16);
             this.panel17.Location = new System.Drawing.Point(29, 155);
-            this.panel17.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel17.Margin = new System.Windows.Forms.Padding(2);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(344, 30);
             this.panel17.TabIndex = 0;
@@ -678,7 +700,7 @@
             // txtQuocTichNguoiMe
             // 
             this.txtQuocTichNguoiMe.Location = new System.Drawing.Point(118, 5);
-            this.txtQuocTichNguoiMe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtQuocTichNguoiMe.Margin = new System.Windows.Forms.Padding(2);
             this.txtQuocTichNguoiMe.Name = "txtQuocTichNguoiMe";
             this.txtQuocTichNguoiMe.ReadOnly = true;
             this.txtQuocTichNguoiMe.Size = new System.Drawing.Size(224, 20);
@@ -699,7 +721,7 @@
             this.panel18.Controls.Add(this.txtDanTocNguoiMe);
             this.panel18.Controls.Add(this.label17);
             this.panel18.Location = new System.Drawing.Point(29, 121);
-            this.panel18.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel18.Margin = new System.Windows.Forms.Padding(2);
             this.panel18.Name = "panel18";
             this.panel18.Size = new System.Drawing.Size(344, 30);
             this.panel18.TabIndex = 0;
@@ -707,7 +729,7 @@
             // txtDanTocNguoiMe
             // 
             this.txtDanTocNguoiMe.Location = new System.Drawing.Point(118, 5);
-            this.txtDanTocNguoiMe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDanTocNguoiMe.Margin = new System.Windows.Forms.Padding(2);
             this.txtDanTocNguoiMe.Name = "txtDanTocNguoiMe";
             this.txtDanTocNguoiMe.ReadOnly = true;
             this.txtDanTocNguoiMe.Size = new System.Drawing.Size(224, 20);
@@ -738,7 +760,7 @@
             this.panel19.Controls.Add(this.txtNamSinhNguoiMe);
             this.panel19.Controls.Add(this.label18);
             this.panel19.Location = new System.Drawing.Point(29, 87);
-            this.panel19.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel19.Margin = new System.Windows.Forms.Padding(2);
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(344, 30);
             this.panel19.TabIndex = 0;
@@ -746,7 +768,7 @@
             // txtNamSinhNguoiMe
             // 
             this.txtNamSinhNguoiMe.Location = new System.Drawing.Point(118, 5);
-            this.txtNamSinhNguoiMe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNamSinhNguoiMe.Margin = new System.Windows.Forms.Padding(2);
             this.txtNamSinhNguoiMe.Name = "txtNamSinhNguoiMe";
             this.txtNamSinhNguoiMe.ReadOnly = true;
             this.txtNamSinhNguoiMe.Size = new System.Drawing.Size(224, 20);
@@ -767,7 +789,7 @@
             this.panel20.Controls.Add(this.txtHoTenNguoiMe);
             this.panel20.Controls.Add(this.label19);
             this.panel20.Location = new System.Drawing.Point(29, 53);
-            this.panel20.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel20.Margin = new System.Windows.Forms.Padding(2);
             this.panel20.Name = "panel20";
             this.panel20.Size = new System.Drawing.Size(344, 30);
             this.panel20.TabIndex = 0;
@@ -775,7 +797,7 @@
             // txtHoTenNguoiMe
             // 
             this.txtHoTenNguoiMe.Location = new System.Drawing.Point(118, 5);
-            this.txtHoTenNguoiMe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtHoTenNguoiMe.Margin = new System.Windows.Forms.Padding(2);
             this.txtHoTenNguoiMe.Name = "txtHoTenNguoiMe";
             this.txtHoTenNguoiMe.ReadOnly = true;
             this.txtHoTenNguoiMe.Size = new System.Drawing.Size(224, 20);
@@ -798,7 +820,7 @@
             this.panel21.Controls.Add(this.label20);
             this.panel21.Controls.Add(this.label21);
             this.panel21.Location = new System.Drawing.Point(1, 2);
-            this.panel21.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel21.Margin = new System.Windows.Forms.Padding(2);
             this.panel21.Name = "panel21";
             this.panel21.Size = new System.Drawing.Size(240, 47);
             this.panel21.TabIndex = 3;
@@ -806,7 +828,7 @@
             // txtIDNguoiMe
             // 
             this.txtIDNguoiMe.Location = new System.Drawing.Point(79, 19);
-            this.txtIDNguoiMe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtIDNguoiMe.Margin = new System.Windows.Forms.Padding(2);
             this.txtIDNguoiMe.Name = "txtIDNguoiMe";
             this.txtIDNguoiMe.Size = new System.Drawing.Size(76, 20);
             this.txtIDNguoiMe.TabIndex = 2;
@@ -814,7 +836,7 @@
             // btnTimKiemNguoiMe
             // 
             this.btnTimKiemNguoiMe.Location = new System.Drawing.Point(159, 19);
-            this.btnTimKiemNguoiMe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTimKiemNguoiMe.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimKiemNguoiMe.Name = "btnTimKiemNguoiMe";
             this.btnTimKiemNguoiMe.Size = new System.Drawing.Size(56, 19);
             this.btnTimKiemNguoiMe.TabIndex = 1;
@@ -852,7 +874,7 @@
             this.panel23.Controls.Add(this.panel28);
             this.panel23.Controls.Add(this.panel29);
             this.panel23.Location = new System.Drawing.Point(480, 311);
-            this.panel23.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel23.Margin = new System.Windows.Forms.Padding(2);
             this.panel23.Name = "panel23";
             this.panel23.Size = new System.Drawing.Size(382, 224);
             this.panel23.TabIndex = 4;
@@ -862,7 +884,7 @@
             this.panel24.Controls.Add(this.txtDiaChiNguoiCha);
             this.panel24.Controls.Add(this.label23);
             this.panel24.Location = new System.Drawing.Point(29, 189);
-            this.panel24.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel24.Margin = new System.Windows.Forms.Padding(2);
             this.panel24.Name = "panel24";
             this.panel24.Size = new System.Drawing.Size(344, 30);
             this.panel24.TabIndex = 0;
@@ -870,7 +892,7 @@
             // txtDiaChiNguoiCha
             // 
             this.txtDiaChiNguoiCha.Location = new System.Drawing.Point(118, 5);
-            this.txtDiaChiNguoiCha.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDiaChiNguoiCha.Margin = new System.Windows.Forms.Padding(2);
             this.txtDiaChiNguoiCha.Name = "txtDiaChiNguoiCha";
             this.txtDiaChiNguoiCha.ReadOnly = true;
             this.txtDiaChiNguoiCha.Size = new System.Drawing.Size(224, 20);
@@ -891,7 +913,7 @@
             this.panel25.Controls.Add(this.txtQuocTichNguoiCha);
             this.panel25.Controls.Add(this.label24);
             this.panel25.Location = new System.Drawing.Point(29, 155);
-            this.panel25.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel25.Margin = new System.Windows.Forms.Padding(2);
             this.panel25.Name = "panel25";
             this.panel25.Size = new System.Drawing.Size(344, 30);
             this.panel25.TabIndex = 0;
@@ -899,7 +921,7 @@
             // txtQuocTichNguoiCha
             // 
             this.txtQuocTichNguoiCha.Location = new System.Drawing.Point(118, 5);
-            this.txtQuocTichNguoiCha.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtQuocTichNguoiCha.Margin = new System.Windows.Forms.Padding(2);
             this.txtQuocTichNguoiCha.Name = "txtQuocTichNguoiCha";
             this.txtQuocTichNguoiCha.ReadOnly = true;
             this.txtQuocTichNguoiCha.Size = new System.Drawing.Size(224, 20);
@@ -920,7 +942,7 @@
             this.panel26.Controls.Add(this.txtDanTocNguoiCha);
             this.panel26.Controls.Add(this.label25);
             this.panel26.Location = new System.Drawing.Point(29, 121);
-            this.panel26.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel26.Margin = new System.Windows.Forms.Padding(2);
             this.panel26.Name = "panel26";
             this.panel26.Size = new System.Drawing.Size(344, 30);
             this.panel26.TabIndex = 0;
@@ -928,7 +950,7 @@
             // txtDanTocNguoiCha
             // 
             this.txtDanTocNguoiCha.Location = new System.Drawing.Point(118, 5);
-            this.txtDanTocNguoiCha.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDanTocNguoiCha.Margin = new System.Windows.Forms.Padding(2);
             this.txtDanTocNguoiCha.Name = "txtDanTocNguoiCha";
             this.txtDanTocNguoiCha.ReadOnly = true;
             this.txtDanTocNguoiCha.Size = new System.Drawing.Size(224, 20);
@@ -959,7 +981,7 @@
             this.panel27.Controls.Add(this.txtNamSinhNguoiCha);
             this.panel27.Controls.Add(this.label26);
             this.panel27.Location = new System.Drawing.Point(29, 87);
-            this.panel27.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel27.Margin = new System.Windows.Forms.Padding(2);
             this.panel27.Name = "panel27";
             this.panel27.Size = new System.Drawing.Size(344, 30);
             this.panel27.TabIndex = 0;
@@ -967,7 +989,7 @@
             // txtNamSinhNguoiCha
             // 
             this.txtNamSinhNguoiCha.Location = new System.Drawing.Point(118, 5);
-            this.txtNamSinhNguoiCha.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNamSinhNguoiCha.Margin = new System.Windows.Forms.Padding(2);
             this.txtNamSinhNguoiCha.Name = "txtNamSinhNguoiCha";
             this.txtNamSinhNguoiCha.ReadOnly = true;
             this.txtNamSinhNguoiCha.Size = new System.Drawing.Size(224, 20);
@@ -988,7 +1010,7 @@
             this.panel28.Controls.Add(this.txtHoTenNguoiCha);
             this.panel28.Controls.Add(this.label27);
             this.panel28.Location = new System.Drawing.Point(29, 53);
-            this.panel28.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel28.Margin = new System.Windows.Forms.Padding(2);
             this.panel28.Name = "panel28";
             this.panel28.Size = new System.Drawing.Size(344, 30);
             this.panel28.TabIndex = 0;
@@ -996,7 +1018,7 @@
             // txtHoTenNguoiCha
             // 
             this.txtHoTenNguoiCha.Location = new System.Drawing.Point(118, 5);
-            this.txtHoTenNguoiCha.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtHoTenNguoiCha.Margin = new System.Windows.Forms.Padding(2);
             this.txtHoTenNguoiCha.Name = "txtHoTenNguoiCha";
             this.txtHoTenNguoiCha.ReadOnly = true;
             this.txtHoTenNguoiCha.Size = new System.Drawing.Size(224, 20);
@@ -1019,7 +1041,7 @@
             this.panel29.Controls.Add(this.label28);
             this.panel29.Controls.Add(this.label29);
             this.panel29.Location = new System.Drawing.Point(1, 2);
-            this.panel29.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel29.Margin = new System.Windows.Forms.Padding(2);
             this.panel29.Name = "panel29";
             this.panel29.Size = new System.Drawing.Size(240, 47);
             this.panel29.TabIndex = 3;
@@ -1027,7 +1049,7 @@
             // txtIDNguoiCha
             // 
             this.txtIDNguoiCha.Location = new System.Drawing.Point(79, 19);
-            this.txtIDNguoiCha.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtIDNguoiCha.Margin = new System.Windows.Forms.Padding(2);
             this.txtIDNguoiCha.Name = "txtIDNguoiCha";
             this.txtIDNguoiCha.Size = new System.Drawing.Size(76, 20);
             this.txtIDNguoiCha.TabIndex = 2;
@@ -1035,7 +1057,7 @@
             // btnTimKiemNguoiCha
             // 
             this.btnTimKiemNguoiCha.Location = new System.Drawing.Point(159, 19);
-            this.btnTimKiemNguoiCha.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTimKiemNguoiCha.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimKiemNguoiCha.Name = "btnTimKiemNguoiCha";
             this.btnTimKiemNguoiCha.Size = new System.Drawing.Size(56, 19);
             this.btnTimKiemNguoiCha.TabIndex = 1;
@@ -1070,7 +1092,7 @@
             this.panel30.Controls.Add(this.label31);
             this.panel30.Controls.Add(this.label30);
             this.panel30.Location = new System.Drawing.Point(480, 567);
-            this.panel30.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel30.Margin = new System.Windows.Forms.Padding(2);
             this.panel30.Name = "panel30";
             this.panel30.Size = new System.Drawing.Size(436, 47);
             this.panel30.TabIndex = 3;
@@ -1085,7 +1107,7 @@
             // txtNoiDangKy
             // 
             this.txtNoiDangKy.Location = new System.Drawing.Point(48, 8);
-            this.txtNoiDangKy.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNoiDangKy.Margin = new System.Windows.Forms.Padding(2);
             this.txtNoiDangKy.Name = "txtNoiDangKy";
             this.txtNoiDangKy.Size = new System.Drawing.Size(108, 20);
             this.txtNoiDangKy.TabIndex = 2;
@@ -1109,25 +1131,6 @@
             this.label30.Size = new System.Drawing.Size(41, 13);
             this.label30.TabIndex = 0;
             this.label30.Text = "Làm tại";
-            // 
-            // pkNgaySinh
-            // 
-            this.pkNgaySinh.Location = new System.Drawing.Point(118, 5);
-            this.pkNgaySinh.Name = "pkNgaySinh";
-            this.pkNgaySinh.Size = new System.Drawing.Size(223, 20);
-            this.pkNgaySinh.TabIndex = 1;
-            // 
-            // cbGioiTinh
-            // 
-            this.cbGioiTinh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbGioiTinh.FormattingEnabled = true;
-            this.cbGioiTinh.Items.AddRange(new object[] {
-            "Nam",
-            "Nữ"});
-            this.cbGioiTinh.Location = new System.Drawing.Point(118, 4);
-            this.cbGioiTinh.Name = "cbGioiTinh";
-            this.cbGioiTinh.Size = new System.Drawing.Size(223, 21);
-            this.cbGioiTinh.TabIndex = 1;
             // 
             // FKhaiSinh
             // 
@@ -1213,8 +1216,8 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txtIDNhap;
-        private System.Windows.Forms.Button btnNhap;
+        private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
