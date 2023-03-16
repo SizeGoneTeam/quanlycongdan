@@ -35,7 +35,7 @@ CREATE TABLE TamTruTamVang (
 CREATE TABLE CCCD (
     ID_CCCD INT IDENTITY(1,1) PRIMARY KEY,
     ID_CongDan INT,
-    SoCCCD VARCHAR(12),
+    SoCCCD NVARCHAR(100),
     NgayCap DATE,
     NoiCap nvarchar(100),
     FOREIGN KEY (ID_CongDan) REFERENCES CongDan(ID_CongDan)
@@ -53,12 +53,24 @@ CREATE TABLE Thue (
 -- Tạo bảng Sổ hộ khẩu
 CREATE TABLE SoHoKhau (
     ID_SoHoKhau INT IDENTITY(1,1),
+    ID_HoSoHoKhau INT,
+    ID_SoDangKyThuongTru NVARCHAR(50),
+    ID_SoDangKyThuongTru_ToSo NVARCHAR(50),
+    NoiThuongTru NVARCHAR(100),
+    NgayDangKy DATE,
+	PRIMARY KEY(ID_SoHoKhau),
+);
+
+CREATE TABLE CongDan_SoHoKhau(
+    ID_SoHoKhau INT,
     ID_CongDan INT,
-    SoHoKhau nvarchar(12),
-    NgayCapNhat DATE,
-	QuanHe NVARCHAR(100),
-	NgayDangKy DATE,
-	PRIMARY KEY(ID_SoHoKhau,ID_CongDan),
+    QuanHe NVARCHAR(50),
+    NgheNghiep_NoiLamViec NVARCHAR(100),
+    NoiThuongTruTruoc NVARCHAR(100),
+    CanBoDangKy NVARCHAR(100),
+    NgayDangKy DATE,
+    PRIMARY KEY (ID_SoHoKhau, ID_CongDan),
+    FOREIGN KEY (ID_SoHoKhau) REFERENCES SoHoKhau(ID_SoHoKhau),
     FOREIGN KEY (ID_CongDan) REFERENCES CongDan(ID_CongDan)
 );
 
@@ -160,6 +172,7 @@ VALUES
 (8, '890123456789', '2022-08-08', N'Con', '2022-08-08'),
 (9, '901234567890', '2022-09-09', N'Vợ', '2022-09-09'),
 (10, '012345678901', '2022-10-10', N'Con', '2022-10-10');
+
 -- Insert into KhaiSinh table
 INSERT INTO KhaiSinh (ID_CongDan, ID_NguoiYeuCau, ID_Cha, ID_Me, NoiDangKy, NgayThucHien)
 VALUES
