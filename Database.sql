@@ -134,7 +134,7 @@ VALUES
 -- Insert into CCCD table
 INSERT INTO CCCD (ID_CongDan, SoCCCD, NgayCap, NoiCap)
 VALUES
-(1, '012345678901', '2020-01-01', N'Cục Cảnh sát quản lý xuất nhập cảnh'),
+(1, '312345678901', '2020-01-01', N'Cục Cảnh sát quản lý xuất nhập cảnh'),
 (2, '123456789012', '2019-02-02', N'Cục Cảnh sát quản lý xuất nhập cảnh'),
 (3, '234567890123', '2018-03-03', N'Cục Cảnh sát quản lý xuất nhập cảnh'),
 (4, '345678901234', '2017-04-04', N'Cục Cảnh sát quản lý xuất nhập cảnh'),

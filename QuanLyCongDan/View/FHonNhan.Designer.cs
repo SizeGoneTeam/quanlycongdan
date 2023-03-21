@@ -54,6 +54,8 @@
             this.lblTK_NgayDK_txt = new System.Windows.Forms.Label();
             this.lblTrangThai_txt = new System.Windows.Forms.Label();
             this.lblTK_NoiDK_txt = new System.Windows.Forms.Label();
+            this.lblID_CongDanChong = new System.Windows.Forms.Label();
+            this.lblID_CongDanVo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnTimKiemChong
@@ -85,7 +87,7 @@
             // lblNgaySinhChong
             // 
             this.lblNgaySinhChong.AutoSize = true;
-            this.lblNgaySinhChong.Location = new System.Drawing.Point(28, 113);
+            this.lblNgaySinhChong.Location = new System.Drawing.Point(31, 123);
             this.lblNgaySinhChong.Name = "lblNgaySinhChong";
             this.lblNgaySinhChong.Size = new System.Drawing.Size(0, 16);
             this.lblNgaySinhChong.TabIndex = 31;
@@ -93,7 +95,7 @@
             // lblHoTenChong
             // 
             this.lblHoTenChong.AutoSize = true;
-            this.lblHoTenChong.Location = new System.Drawing.Point(28, 84);
+            this.lblHoTenChong.Location = new System.Drawing.Point(31, 94);
             this.lblHoTenChong.Name = "lblHoTenChong";
             this.lblHoTenChong.Size = new System.Drawing.Size(0, 16);
             this.lblHoTenChong.TabIndex = 29;
@@ -127,7 +129,7 @@
             // lblNgaySinhVo
             // 
             this.lblNgaySinhVo.AutoSize = true;
-            this.lblNgaySinhVo.Location = new System.Drawing.Point(31, 275);
+            this.lblNgaySinhVo.Location = new System.Drawing.Point(31, 283);
             this.lblNgaySinhVo.Name = "lblNgaySinhVo";
             this.lblNgaySinhVo.Size = new System.Drawing.Size(0, 16);
             this.lblNgaySinhVo.TabIndex = 42;
@@ -135,7 +137,7 @@
             // lblHoTenVo
             // 
             this.lblHoTenVo.AutoSize = true;
-            this.lblHoTenVo.Location = new System.Drawing.Point(31, 246);
+            this.lblHoTenVo.Location = new System.Drawing.Point(31, 254);
             this.lblHoTenVo.Name = "lblHoTenVo";
             this.lblHoTenVo.Size = new System.Drawing.Size(0, 16);
             this.lblHoTenVo.TabIndex = 41;
@@ -348,11 +350,29 @@
             this.lblTK_NoiDK_txt.Size = new System.Drawing.Size(0, 16);
             this.lblTK_NoiDK_txt.TabIndex = 60;
             // 
+            // lblID_CongDanChong
+            // 
+            this.lblID_CongDanChong.AutoSize = true;
+            this.lblID_CongDanChong.Location = new System.Drawing.Point(31, 68);
+            this.lblID_CongDanChong.Name = "lblID_CongDanChong";
+            this.lblID_CongDanChong.Size = new System.Drawing.Size(0, 16);
+            this.lblID_CongDanChong.TabIndex = 61;
+            // 
+            // lblID_CongDanVo
+            // 
+            this.lblID_CongDanVo.AutoSize = true;
+            this.lblID_CongDanVo.Location = new System.Drawing.Point(31, 219);
+            this.lblID_CongDanVo.Name = "lblID_CongDanVo";
+            this.lblID_CongDanVo.Size = new System.Drawing.Size(0, 16);
+            this.lblID_CongDanVo.TabIndex = 62;
+            // 
             // FHonNhan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1016, 475);
+            this.Controls.Add(this.lblID_CongDanVo);
+            this.Controls.Add(this.lblID_CongDanChong);
             this.Controls.Add(this.lblTK_NoiDK_txt);
             this.Controls.Add(this.lblTrangThai_txt);
             this.Controls.Add(this.lblTK_NgayDK_txt);
@@ -414,5 +434,7 @@
         private System.Windows.Forms.Label lblTK_NgayDK_txt;
         private System.Windows.Forms.Label lblTrangThai_txt;
         private System.Windows.Forms.Label lblTK_NoiDK_txt;
+        private System.Windows.Forms.Label lblID_CongDanChong;
+        private System.Windows.Forms.Label lblID_CongDanVo;
     }
 }
