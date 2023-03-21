@@ -89,6 +89,20 @@ CREATE TABLE KhaiSinh (
     FOREIGN KEY (ID_Me) REFERENCES CongDan(ID_CongDan)
 );
 
+CREATE TABLE KhaiTu (
+    ID_KhaiTu INT IDENTITY(1, 1) PRIMARY KEY,
+    ID_CongDan INT,
+    ID_NguoiYeuCau INT,
+    QuanHe NVARCHAR(100),
+    ThoiGianChet DateTime,
+    NoiChet NVARCHAR(100),
+    NguyenNhan NVARCHAR(100),
+    NoiDangKy NVARCHAR(100),
+    NgayThucHien Date,
+    FOREIGN KEY (ID_CongDan) REFERENCES CongDan(ID_CongDan),
+    FOREIGN KEY (ID_NguoiYeuCau) REFERENCES CongDan(ID_CongDan)
+);
+
 -- Tạo bảng Hôn nhân
 CREATE TABLE HonNhan (
     ID_HonNhan INT IDENTITY(1,1) PRIMARY KEY,
