@@ -56,7 +56,7 @@ namespace QuanLyCongDan
 
         public HonNhan TimKiemId(int id)
         {
-            string sqlStr = string.Format("SELECT * FROM HonNhan WHERE ID_HonNhan = {0}", id);
+            string sqlStr = string.Format("SELECT * FROM HonNhan WHERE ID_HonNhan = '{0}'", id);
             DataTable dt = dbConn.LayDanhSach(sqlStr);
 
             if (dt != null)
@@ -78,6 +78,40 @@ namespace QuanLyCongDan
             return null;
         }
 
+        // True là đã kết hôn. False là chưa kết hôn
+        public Boolean TinhTrangHonNhanChong(int id)
+        {
+            string sqlStr = string.Format("SELECT * FROM HonNhan WHERE ID_Chong = {0} AND TrangThai = 1", id);
+            DataTable dt = dbConn.LayDanhSach(sqlStr);
+
+            if (dt != null)
+            {
+                if (dt.Rows.Count > 0)
+                {
+                    return true;
+
+                }
+            }
+
+            return false;
+        }
+
+        public Boolean TinhTrangHonNhanVo(int id)
+        {
+            string sqlStr = string.Format("SELECT * FROM HonNhan WHERE ID_Vo = {0} AND TrangThai = 1", id);
+            DataTable dt = dbConn.LayDanhSach(sqlStr);
+
+            if (dt != null)
+            {
+                if (dt.Rows.Count > 0)
+                {
+                    return true;
+
+                }
+            }
+
+            return false;
+        }
 
     }
 }

@@ -30,10 +30,25 @@ namespace QuanLyCongDan
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             //Chồng
+            if(txtID_Chong.Text != "")
             try
             {
                 cccd = cccdDAO.TimKiem_ID(txtID_Chong.Text);
                 cd = cdDAO.TimKiem(cccd.CD);
+                if(cd.GioiTinh == "Nam")
+                {
+                    if (honNhanDAO.TinhTrangHonNhanChong(int.Parse(cd.Id)))
+                    {
+                        MessageBox.Show("Vui lòng nhập người đang không đăng ký kết hôn");
+                        return;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng nhập giới tính Nam");
+                    return;
+                }
+                lblID_CongDanChong.Text = cd.Id;
                 lblHoTenChong.Text = cd.HoTen;
                 lblNgaySinhChong.Text = cd.NgaySinh.Date.ToString();
                 if(lblHoTenChong.Text != "" && lblHoTenVo.Text != "") btnThem.Enabled=true;
@@ -41,6 +56,7 @@ namespace QuanLyCongDan
             }
             catch
             {
+                lblID_CongDanVo.Text = "";
                 lblHoTenChong.Text = "";
                 lblNgaySinhChong.Text = "";
                 btnThem.Enabled = false;
@@ -50,10 +66,25 @@ namespace QuanLyCongDan
         private void button1_Click(object sender, EventArgs e)
         {
             //Vợ
+            if(txtID_Vo.Text != "")
             try
             {
                 cccd = cccdDAO.TimKiem_ID(txtID_Vo.Text);
                 cd = cdDAO.TimKiem(cccd.CD);
+                if (cd.GioiTinh == "Nữ")
+                {
+                    if (honNhanDAO.TinhTrangHonNhanVo(int.Parse(cd.Id)))
+                    {
+                        MessageBox.Show("Vui lòng nhập người đang không đăng ký kết hôn");
+                        throw new Exception();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng nhập giới tính Nữ");
+                    throw new Exception();
+                }
+                lblID_CongDanVo.Text = cd.Id;
                 lblHoTenVo.Text = cd.HoTen;
                 lblNgaySinhVo.Text = cd.NgaySinh.Date.ToString();
                 if (lblHoTenChong.Text != "" && lblHoTenVo.Text != "") btnThem.Enabled = true;
@@ -61,6 +92,7 @@ namespace QuanLyCongDan
             }
             catch
             {
+                lblID_CongDanVo.Text = "";
                 lblHoTenVo.Text = "";
                 lblNgaySinhVo.Text = "";
                 btnThem.Enabled = false;
@@ -69,13 +101,15 @@ namespace QuanLyCongDan
 
         private void cboThem_Click(object sender, EventArgs e)
         {
-            HonNhan honNhan = new HonNhan(Int32.Parse(txtID_Chong.Text), Int32.Parse(txtID_Vo.Text), cboNoiDK.SelectedItem.ToString());
+            HonNhan honNhan = new HonNhan(Int32.Parse(lblID_CongDanChong.Text), Int32.Parse(lblID_CongDanVo.Text), cboNoiDK.SelectedItem.ToString());
             honNhanDAO.Them(honNhan);
             HonNhanMoi();
+            btnThem.Enabled = false;
         }
 
         private void cboTimKiem_Click(object sender, EventArgs e)
         {
+            if(txtIdHonNhan.Text != "")
             TimKiemHonNhan(int.Parse(txtIdHonNhan.Text));
         }
 

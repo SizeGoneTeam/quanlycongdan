@@ -34,7 +34,7 @@ namespace QuanLyCongDan
         {
             try
             {
-                string sqlStr = string.Format("SELECT * FROM CCCD WHERE SoCCCD LIKE {0}", id);
+                string sqlStr = string.Format("SELECT * FROM CCCD WHERE SoCCCD LIKE '{0}'", id);
                 DataTable dt = dbConn.LayDanhSach(sqlStr);
 
                 if (dt != null)
