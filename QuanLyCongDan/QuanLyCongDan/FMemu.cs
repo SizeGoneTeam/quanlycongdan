@@ -51,5 +51,10 @@ namespace QuanLyCongDan
             FTamTruTamVang f = new FTamTruTamVang();
             f.Show();
         }
+
+        private void FMemu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
