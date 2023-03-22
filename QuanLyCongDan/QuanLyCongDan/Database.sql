@@ -189,6 +189,6 @@ VALUES
 (10, 9, '2022-10-10', N'Thành phố Hồ Chí Minh', 1);
 
 
-select * from TamTruTamVang A, CCCD B where A.ID_CongDan = B.ID_CongDan and B.SoCCCD=789012345678
-select * from TamTruTamVang
-delete from TamTruTamVang where ID_CongDan=2
+--select * from TamTruTamVang A, CCCD B where A.ID_CongDan = B.ID_CongDan and B.SoCCCD=789012345678
+--select * from TamTruTamVang
+--delete from TamTruTamVang where ID_CongDan=2

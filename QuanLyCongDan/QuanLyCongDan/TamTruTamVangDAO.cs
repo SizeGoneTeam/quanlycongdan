@@ -35,11 +35,6 @@ namespace QuanLyCongDan
             string sqlStr = string.Format("SELECT * FROM TamTruTamVang");
             return dbConn.LayDanhSach(sqlStr);
         }
-        public TamTruTamVang TimKiem(String id)
-        {
-            String sqlStr = string.Format("select ID_CongDan,NgayDen, NgayDi, DiaChi, LiDo from TamTruTamVang A, CCCD B where A.ID_CongDan = B.ID_CongDan and B.SoCCCD={'0'}", id);
-            return dbConn.TimKiemTT(sqlStr);
-        }
         public TamTruTamVang TimKiemTT(int id)
         {
             string sqlStr = string.Format("select * from TamTruTamVang where ID_CongDan={0}", id);

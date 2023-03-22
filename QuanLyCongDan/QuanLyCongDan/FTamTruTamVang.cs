@@ -15,6 +15,8 @@ namespace QuanLyCongDan
     {
         TamTruTamVang tt;
         TamTruTamVangDAO ttdao = new TamTruTamVangDAO();
+        CongDan cd;
+        CongDanDAO cddao = new CongDanDAO();
         public FTamTruTamVang()
         {
             InitializeComponent();
@@ -54,34 +56,22 @@ namespace QuanLyCongDan
                 ttdao.Sua(tt);
             }
         }
-        private void TimKiem(String id)
-        {
-            try
-            {
-                tt = ttdao.TimKiem(id);
-                txtIDCDs.Text = tt.IDCD;
-                Comes.Value = tt.Come;
-                Leaves.Value = tt.Leave;
-                txtADDtamtru.Text = tt.Add;
-                txtWhys.Text = tt.Why;
-            }
-            catch { }
-        }
         private void tim_Click(object sender, EventArgs e)
         {
-            //TimKiem(txtTCCCD.Text);
             int id;
-
             if (int.TryParse(txtTCCCD.Text, out id))
             {
                 TamTruTamVang tt = ttdao.TimKiemTT(id);
+                CongDan cd = cddao.TimKiem(txtTCCCD.Text);
                 if (tt != null)
                 {
                     txtIDCDs.Text = tt.IDCD;
                     Comes.Value = tt.Come;
                     Leave.Value = tt.Leave;
                     txtADDtamtru.Text = tt.Add;
-                    txtWhys.Text=tt.Why;
+                    txtWhys.Text = tt.Why;
+                    txtHoTen.Text = cd.HoTen;
+                    txtADDthuongtru.Text = cd.QueQuan;
                 }
             }
         }
