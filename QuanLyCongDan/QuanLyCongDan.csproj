@@ -49,8 +49,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\KhaiTuDAO.cs" />
     <Compile Include="DAO\SoHoKhauDAO.cs" />
     <Compile Include="DAO\SoHoKhauThanhVienDAO.cs" />
+    <Compile Include="Model\KhaiTu.cs" />
+    <Compile Include="View\FKhaiTu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FKhaiTu.Designer.cs">
+      <DependentUpon>FKhaiTu.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FSoHoKhau.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FHonNhan.resx">
       <DependentUpon>FHonNhan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FKhaiTu.resx">
+      <DependentUpon>FKhaiTu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FMemu.resx">
       <DependentUpon>FMemu.cs</DependentUpon>
