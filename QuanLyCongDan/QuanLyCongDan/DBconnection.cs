@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyCongDan;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -45,6 +46,63 @@ namespace Week2
                 conn.Close();
             }
             return cd;
+        }
+        public CCCD TimKiemCC(string sqlStr)
+        {
+            CCCD cc = new CCCD();
+            DataTable dtds = new DataTable();
+            try
+            {
+                conn.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter(sqlStr, conn);
+                adapter.Fill(dtds);
+                if (dtds.Rows.Count > 0)
+                {
+                    DataRow dr = dtds.Rows[0];
+                    cc.CD = dr["ID_CongDan"].ToString();
+                    cc.IDCC = dr["SoCCCD"].ToString();
+                    cc.Add = dr["NoiCap"].ToString();
+                    cc.NgayCap = Convert.ToDateTime(dr["NgayCap"]);
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return cc;
+        }
+        public TamTruTamVang TimKiemTT(string sqlStr)
+        {
+            TamTruTamVang tt = new TamTruTamVang();
+            DataTable dtds = new DataTable();
+            try
+            {
+                conn.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter(sqlStr, conn);
+                adapter.Fill(dtds);
+                if (dtds.Rows.Count > 0)
+                {
+                    DataRow dr = dtds.Rows[0];
+                    tt.IDCD = dr["ID_CongDan"].ToString();
+                    tt.Come = Convert.ToDateTime(dr["NgayDen"]);
+                    tt.Leave = Convert.ToDateTime(dr["NgayDi"]);
+                    tt.Add = dr["DiaChi"].ToString();
+                    tt.Why = dr["LiDo"].ToString();
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return tt;
         }
         public DataTable LayDanhSach(string sqlStr)
         {

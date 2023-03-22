@@ -36,5 +36,7 @@ namespace QuanLyCongDan
             this.ngayCap = ngayCap;
             this.soCCCD = soCCCD;
         }
+        public CCCD()
+        { }
     }
 }

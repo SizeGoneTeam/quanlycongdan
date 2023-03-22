@@ -15,38 +15,12 @@ namespace QuanLyCongDan
     {
         CCCD cc;
         CCCDDAO ccDao = new CCCDDAO();
+        CongDan cd;
+        CongDanDAO cdDao = new CongDanDAO();
         public FCCCD()
         {
             InitializeComponent();
         }
-        private void HienThiDanhSach()
-        {
-            this.gvCCCD.DataSource = ccDao.LayDanhSachCCCD();
-        }
-        private void FCCCD_Load(object sender, EventArgs e)
-        {
-            HienThiDanhSach();
-        }
-
-        private void gvCCCD_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = gvCCCD.Rows[e.RowIndex];
-                txtCD.Text = row.Cells[1].Value.ToString();
-                txtSOCC.Text = row.Cells[2].Value.ToString();
-                add.Text = row.Cells[3].Value.ToString();
-                try
-                {
-                    dTPNgayCap.Value = (DateTime)row.Cells[4].Value;
-                }
-                catch
-                {
-                    dTPNgayCap.Value = DateTime.Now;
-                }
-            }
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(txtCD.Text) ||
@@ -59,7 +33,6 @@ namespace QuanLyCongDan
             {
                 cc = new CCCD(txtCD.Text, txtSOCC.Text, add.Text, dTPNgayCap.Value.Date);
                 ccDao.Them(cc);
-                HienThiDanhSach();
             }
         }
 
@@ -67,7 +40,6 @@ namespace QuanLyCongDan
         {
             cc = new CCCD(txtCD.Text, txtSOCC.Text, add.Text, dTPNgayCap.Value.Date);
             ccDao.Xoa(cc);
-            HienThiDanhSach();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -82,8 +54,28 @@ namespace QuanLyCongDan
             {
                 cc = new CCCD(txtCD.Text, txtSOCC.Text, add.Text, dTPNgayCap.Value.Date);
                 ccDao.Sua(cc);
-                HienThiDanhSach();
             }
         }
+        //private void TimKiemCC(String id)
+        //{
+        //    try
+        //    {
+        //        cc = ccDao.TimKiem_ID(id);
+        //        cd = cdDao.TimKiem(id);
+        //        txtHoTen.Text = cd.HoTen;
+        //        IDs.Text = cd.Id;
+        //        txtQQ.Text = cd.QueQuan;
+        //        soCCCD.Text = cc.SoCCCD;
+        //        GioiTinh.Text = cd.GioiTinh;
+        //        birth.Value = cd.NgaySinh;
+        //        txtDanToc.Text = cd.DanToc;
+        //        txtTonGiao.Text = cd.TonGiao;
+        //    }
+        //    catch { }
+        //}
+        //private void tim_Click(object sender, EventArgs e)
+        //{
+        //    TimKiemCC(txtTCCCD.Text);
+        //}
     }
 }

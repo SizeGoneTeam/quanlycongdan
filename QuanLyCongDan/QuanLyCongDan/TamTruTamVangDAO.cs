@@ -12,9 +12,37 @@ namespace QuanLyCongDan
     internal class TamTruTamVangDAO
     {
         DBconnection dbConn = new DBconnection();
-        public TamTruTamVang TimKiem(int id)
+        public void Them(TamTruTamVang tt)
         {
-            string sqlStr = string.Format("select * from TamTruTamVang where ID_TamTru={0}", id);
+            String sqlStr = string.Format("INSERT INTO TamTruTamVang(ID_CongDan,NgayDen,NgayDi,DiaChi,LiDo) VALUES ('{0}','{1}','{2}','{3}','{4}')", tt.IDCD, tt.Come,tt.Leave, tt.Add,tt.Why);
+            dbConn.ThucThi(sqlStr);
+        }
+
+        public void Xoa(TamTruTamVang tt)
+        {
+            String sqlStr = string.Format("DELETE FROM TamTruTamVang WHERE ID_CongDan = ('{0}')", tt.IDCD);
+            dbConn.ThucThi(sqlStr);
+        }
+
+        public void Sua(TamTruTamVang tt)
+        {
+            String sqlStr = string.Format("UPDATE TamTruTamVang SET NgayDen = '{0}',NgayDi = '{1}',LiDo = '{2}',DiaChi='{3}' where ID_CongDan = '{4}'", tt.IDCD, tt.Come,tt.Leave, tt.Why, tt.Add,tt.IDCD);
+            dbConn.ThucThi(sqlStr);
+        }
+
+        public DataTable LayDanhSachTamTruTamVang()
+        {
+            string sqlStr = string.Format("SELECT * FROM TamTruTamVang");
+            return dbConn.LayDanhSach(sqlStr);
+        }
+        public TamTruTamVang TimKiem(String id)
+        {
+            String sqlStr = string.Format("select ID_CongDan,NgayDen, NgayDi, DiaChi, LiDo from TamTruTamVang A, CCCD B where A.ID_CongDan = B.ID_CongDan and B.SoCCCD={'0'}", id);
+            return dbConn.TimKiemTT(sqlStr);
+        }
+        public TamTruTamVang TimKiemTT(int id)
+        {
+            string sqlStr = string.Format("select * from TamTruTamVang where ID_CongDan={0}", id);
             DataTable dt = dbConn.LayDanhSach(sqlStr);
 
             if (dt != null)
@@ -23,37 +51,15 @@ namespace QuanLyCongDan
                 {
                     DataRow row = dt.Rows[0];
                     return new TamTruTamVang(
-                        row["ID_TamTru"].ToString(),
                         row["ID_CongDan"].ToString(),
-                        Convert.ToDateTime(row["NgayDen"].ToString()),
+                        Convert.ToDateTime(row["NgayDen"]),
+                        Convert.ToDateTime(row["NgayDi"]),
                         row["DiaChi"].ToString(),
-                        row["LiDo"].ToString());
+                        row["Lido"].ToString());
                 }
             }
+
             return null;
-        }
-        public void Them(TamTruTamVang tt)
-        {
-            String sqlStr = string.Format("INSERT INTO TamTruTamVang(ID_CongDan,NgayDen,DiaChi,LiDo) VALUES ('{0}','{1}','{2}','{3}')", tt.IDCD, tt.Come, tt.Add,tt.Why);
-            dbConn.ThucThi(sqlStr);
-        }
-
-        public void Xoa(TamTruTamVang tt)
-        {
-            String sqlStr = string.Format("DELETE FROM TamTruTamVang WHERE ID_TamTru = ('{0}')", tt.IDTT);
-            dbConn.ThucThi(sqlStr);
-        }
-
-        public void Sua(TamTruTamVang tt)
-        {
-            String sqlStr = string.Format("UPDATE TamTruTamVang SET ID_CongDan = '{0}', NgayDen = '{1}',LiDo = '{2}',DiaChi='{3}' where ID_TamTru = '{4}'", tt.IDCD, tt.Come, tt.Why, tt.Add,tt.IDTT);
-            dbConn.ThucThi(sqlStr);
-        }
-
-        public DataTable LayDanhSachTamTruTamVang()
-        {
-            string sqlStr = string.Format("SELECT * FROM TamTruTamVang");
-            return dbConn.LayDanhSach(sqlStr);
         }
     }
 }

@@ -32,33 +32,8 @@ namespace QuanLyCongDan
         
         public CCCD TimKiem_ID(String id)
         {
-            try
-            {
-                string sqlStr = string.Format("SELECT * FROM CCCD WHERE SoCCCD LIKE {0}", id);
-                DataTable dt = dbConn.LayDanhSach(sqlStr);
-
-                if (dt != null)
-                {
-                    if (dt.Rows.Count > 0)
-                    {
-                        DataRow row = dt.Rows[0];
-                        return new CCCD(
-                            row["ID_CCCD"].ToString(),
-                            row["ID_CongDan"].ToString(),
-                            row["NoiCap"].ToString(),
-                            Convert.ToDateTime(row["NgayCap"].ToString()),
-                            row["SoCCCD"].ToString()
-                        );
-                    }
-                }
-
-                return null;
-            }
-            catch
-            {
-                return null;
-            }
-            
+            string sqlStr = string.Format("SELECT * FROM CCCD WHERE SoCCCD LIKE {0}", id);
+            return dbConn.TimKiemCC(sqlStr);
         }
 
         public DataTable LayDanhSachCCCD()

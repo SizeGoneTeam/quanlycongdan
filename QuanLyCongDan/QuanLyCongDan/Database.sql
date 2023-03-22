@@ -25,6 +25,7 @@ CREATE TABLE TamTruTamVang (
     ID_TamTru INT IDENTITY(1,1) PRIMARY KEY,
     ID_CongDan INT,
     NgayDen DATE,
+    NgayDi DATE,
     DiaChi nvarchar(100),
 	LiDo NVARCHAR(100),
     FOREIGN KEY (ID_CongDan) REFERENCES CongDan(ID_CongDan)
@@ -186,3 +187,8 @@ VALUES
 (6, 5, '2022-08-08', N'Thành phố Hồ Chí Minh', 1),
 (8, 7, '2022-09-09', N'Thành phố Hồ Chí Minh', 1),
 (10, 9, '2022-10-10', N'Thành phố Hồ Chí Minh', 1);
+
+
+select * from TamTruTamVang A, CCCD B where A.ID_CongDan = B.ID_CongDan and B.SoCCCD=789012345678
+select * from TamTruTamVang
+delete from TamTruTamVang where ID_CongDan=2
