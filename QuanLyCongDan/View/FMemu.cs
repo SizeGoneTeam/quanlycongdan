@@ -62,5 +62,16 @@ namespace QuanLyCongDan.View
         {
 
         }
+
+        private void btnKhaiTu_Click(object sender, EventArgs e)
+        {
+            FKhaiTu f = new FKhaiTu();
+            f.Show();
+        }
+
+        private void btnCongTy_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
