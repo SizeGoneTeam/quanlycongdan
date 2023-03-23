@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyCongDan.Model;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -9,7 +10,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Week2
+namespace QuanLyCongDan.DAO
 {
     internal class CongDanDAO
     {

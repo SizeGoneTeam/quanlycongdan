@@ -11,10 +11,10 @@ using System.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Xml.Linq;
 using System.Text.RegularExpressions;
+using QuanLyCongDan.Model;
+using QuanLyCongDan.DAO;
 
-
-
-namespace Week2
+namespace QuanLyCongDan.View
 {
     public partial class FCongDan : Form
     {
