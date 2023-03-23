@@ -59,6 +59,7 @@
             this.soCCCD = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.birth = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.panel17 = new System.Windows.Forms.Panel();
             this.txtTonGiao = new System.Windows.Forms.TextBox();
@@ -77,7 +78,6 @@
             this.tim = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.birth = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -408,6 +408,13 @@
             this.panel2.Size = new System.Drawing.Size(459, 37);
             this.panel2.TabIndex = 3;
             // 
+            // birth
+            // 
+            this.birth.Location = new System.Drawing.Point(157, 4);
+            this.birth.Name = "birth";
+            this.birth.Size = new System.Drawing.Size(297, 22);
+            this.birth.TabIndex = 1;
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -567,6 +574,7 @@
             this.tim.TabIndex = 1;
             this.tim.Text = "Tim";
             this.tim.UseVisualStyleBackColor = true;
+            this.tim.Click += new System.EventHandler(this.tim_Click);
             // 
             // label20
             // 
@@ -585,13 +593,6 @@
             this.label21.Size = new System.Drawing.Size(62, 16);
             this.label21.TabIndex = 0;
             this.label21.Text = "Tìm kiếm";
-            // 
-            // birth
-            // 
-            this.birth.Location = new System.Drawing.Point(157, 4);
-            this.birth.Name = "birth";
-            this.birth.Size = new System.Drawing.Size(297, 22);
-            this.birth.TabIndex = 1;
             // 
             // FCCCD
             // 

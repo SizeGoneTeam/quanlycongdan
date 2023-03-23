@@ -17,13 +17,22 @@ namespace QuanLyCongDan
         TamTruTamVangDAO ttdao = new TamTruTamVangDAO();
         CongDan cd;
         CongDanDAO cddao = new CongDanDAO();
+        CCCDDAO cccdDAO = new CCCDDAO();
+        CCCD cccd;
         public FTamTruTamVang()
         {
             InitializeComponent();
         }
+        private void HienThiDanhSach()
+        {
+            cccd = cccdDAO.TimKiem_ID(txtTCCCD.Text);
+            this.Lichsudichuyen.DataSource = ttdao.LayDanhSachLichsu(cccd.CD);
+        }
         private void button1_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txtIDCD.Text) ||
+            cccd = cccdDAO.TimKiem_ID(txtsoCC.Text);
+            tt = new TamTruTamVang(cccd.CD, Come.Value.Date, Leave.Value.Date, txtAdd.Text, txtLido.Text);
+            if (String.IsNullOrEmpty(txtsoCC.Text) ||
                 String.IsNullOrEmpty(txtAdd.Text) ||
                 String.IsNullOrEmpty(txtLido.Text))
             {
@@ -31,20 +40,20 @@ namespace QuanLyCongDan
             }
             else
             {
-                tt = new TamTruTamVang(txtIDCD.Text, Come.Value.Date, Leave.Value.Date, txtAdd.Text, txtLido.Text);
                 ttdao.Them(tt);
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            tt = new TamTruTamVang(txtIDCD.Text, Come.Value.Date, Leave.Value.Date, txtAdd.Text, txtLido.Text);
+            cccd = cccdDAO.TimKiem_ID(txtsoCC.Text);
+            tt = new TamTruTamVang(cccd.CD, Come.Value.Date, Leave.Value.Date, txtAdd.Text, txtLido.Text);
             ttdao.Xoa(tt);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txtIDCD.Text) ||
+            if (String.IsNullOrEmpty(txtsoCC.Text) ||
                 String.IsNullOrEmpty(txtAdd.Text) ||
                 String.IsNullOrEmpty(txtLido.Text))
             {
@@ -52,28 +61,29 @@ namespace QuanLyCongDan
             }
             else
             {
-                tt = new TamTruTamVang(txtIDCD.Text, Come.Value.Date, Leave.Value.Date, txtAdd.Text, txtLido.Text);
+                cccd = cccdDAO.TimKiem_ID(txtsoCC.Text);
+                tt = new TamTruTamVang(cccd.CD, Come.Value.Date, Leave.Value.Date, txtAdd.Text, txtLido.Text);
                 ttdao.Sua(tt);
             }
         }
         private void tim_Click(object sender, EventArgs e)
         {
-            int id;
-            if (int.TryParse(txtTCCCD.Text, out id))
+            cccd = cccdDAO.TimKiem_ID(txtTCCCD.Text);
+            tt = ttdao.TimKiemTT(cccd.CD);
+            cd = cddao.TimKiem(cccd.CD);
+            if (tt != null)
             {
-                TamTruTamVang tt = ttdao.TimKiemTT(id);
-                CongDan cd = cddao.TimKiem(txtTCCCD.Text);
-                if (tt != null)
-                {
-                    txtIDCDs.Text = tt.IDCD;
-                    Comes.Value = tt.Come;
-                    Leave.Value = tt.Leave;
-                    txtADDtamtru.Text = tt.Add;
-                    txtWhys.Text = tt.Why;
-                    txtHoTen.Text = cd.HoTen;
-                    txtADDthuongtru.Text = cd.QueQuan;
-                }
+                txtIDCDs.Text = tt.IDCD;
+                txtHoTen.Text = cd.HoTen;
+                txtADDthuongtru.Text = cd.QueQuan;
             }
+            HienThiDanhSach();
         }
+
+        private void FTamTruTamVang_Load(object sender, EventArgs e)
+        {
+            HienThiDanhSach();
+        }
+
     }
 }

@@ -35,9 +35,9 @@ namespace QuanLyCongDan
             string sqlStr = string.Format("SELECT * FROM TamTruTamVang");
             return dbConn.LayDanhSach(sqlStr);
         }
-        public TamTruTamVang TimKiemTT(int id)
+        public TamTruTamVang TimKiemTT(string id)
         {
-            string sqlStr = string.Format("select * from TamTruTamVang where ID_CongDan={0}", id);
+            string sqlStr = string.Format("select ID_CongDan, NgayDen, NgayDi, DiaChi, Lido from TamTruTamVang where ID_CongDan = '{0}'", id);
             DataTable dt = dbConn.LayDanhSach(sqlStr);
 
             if (dt != null)
@@ -55,6 +55,11 @@ namespace QuanLyCongDan
             }
 
             return null;
+        }
+        public DataTable LayDanhSachLichsu(string id)
+        {
+            string sqlStr = string.Format("SELECT NgayDen as TuNgay, NgayDi as DenNgay, DiaChi, LiDo FROM TamTruTamVang where ID_CongDan = '{0}'",id);
+            return dbConn.LayDanhSach(sqlStr);
         }
     }
 }

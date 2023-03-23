@@ -15,7 +15,6 @@ namespace QuanLyCongDan
     {
         CCCD cc;
         CCCDDAO ccDao = new CCCDDAO();
-        CongDan cd;
         CongDanDAO cdDao = new CongDanDAO();
         public FCCCD()
         {
@@ -55,6 +54,11 @@ namespace QuanLyCongDan
                 cc = new CCCD(txtCD.Text, txtSOCC.Text, add.Text, dTPNgayCap.Value.Date);
                 ccDao.Sua(cc);
             }
+        }
+
+        private void tim_Click(object sender, EventArgs e)
+        {
+
         }
         //private void TimKiemCC(String id)
         //{

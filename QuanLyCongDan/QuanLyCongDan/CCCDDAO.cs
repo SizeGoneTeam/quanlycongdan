@@ -32,7 +32,7 @@ namespace QuanLyCongDan
         
         public CCCD TimKiem_ID(String id)
         {
-            string sqlStr = string.Format("SELECT * FROM CCCD WHERE SoCCCD LIKE {0}", id);
+            string sqlStr = string.Format("SELECT * FROM CCCD WHERE SoCCCD LIKE '{0}'", id);
             return dbConn.TimKiemCC(sqlStr);
         }
 
