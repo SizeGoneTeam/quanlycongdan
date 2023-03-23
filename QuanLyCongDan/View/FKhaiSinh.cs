@@ -15,7 +15,7 @@ namespace QuanLyCongDan
     {
 
         KhaiSinhDAO dao = new KhaiSinhDAO();
-        CongDanDAO cdao = new CongDanDAO();
+        CongDanDAO congDanDAO = new CongDanDAO();
 
         public FKhaiSinh()
         {
@@ -28,7 +28,7 @@ namespace QuanLyCongDan
 
             if (int.TryParse(txtIDNguoiYeuCau.Text, out id))
             {
-                CongDan dt = dao.TimKiemNguoi(id);
+                CongDan dt = congDanDAO.TimKiem(id.ToString());
                 if (dt != null)
                 {
                     txtHoTenNguoiYeuCau.Text = dt.HoTen;
@@ -44,7 +44,7 @@ namespace QuanLyCongDan
 
             if (int.TryParse(txtIDNguoiMe.Text, out id))
             {
-                CongDan dt = dao.TimKiemNguoi(id);
+                CongDan dt = congDanDAO.TimKiem(id.ToString());
                 if (dt != null)
                 {
                     txtHoTenNguoiMe.Text = dt.HoTen;
@@ -62,7 +62,7 @@ namespace QuanLyCongDan
 
             if (int.TryParse(txtIDNguoiCha.Text, out id))
             {
-                CongDan dt = dao.TimKiemNguoi(id);
+                CongDan dt = congDanDAO.TimKiem(id.ToString());
                 if (dt != null)
                 {
                     txtHoTenNguoiCha.Text = dt.HoTen;
@@ -77,8 +77,8 @@ namespace QuanLyCongDan
         private void btnThem_Click(object sender, EventArgs e)
         {
             CongDan cd = new CongDan(txtHoTen.Text, txtQueQuan.Text, cbGioiTinh.Text, pkNgaySinh.Value.Date, txtDanToc.Text, "", "", "");
-            cdao.Them(cd);
-            int id = cdao.LayDanhSachCongDan().Rows.Count;
+            congDanDAO.Them(cd);
+            int id = congDanDAO.LayDanhSachCongDan().Rows.Count;
             dao.Them(new KhaiSinh(id, int.Parse(txtIDNguoiYeuCau.Text), int.Parse(txtIDNguoiCha.Text), int.Parse(txtIDNguoiMe.Text), txtNoiDangKy.Text, pkNgayDangKy.Value.Date));
         }
 
@@ -91,11 +91,11 @@ namespace QuanLyCongDan
                 KhaiSinh ks = dao.TimKiem(id);
                 if (ks != null)
                 {
-                    CongDan dt = dao.TimKiemNguoi(id);
+                    CongDan dt = congDanDAO.TimKiem(id.ToString());
                     if (dt != null)
                     {
                         CongDan cd = new CongDan(dt.Id, txtHoTen.Text, txtQueQuan.Text, cbGioiTinh.Text, pkNgaySinh.Value.Date, txtDanToc.Text, "", "", "");
-                        cdao.Sua(cd);
+                        congDanDAO.Sua(cd);
                         dao.Sua(new KhaiSinh(id, int.Parse(dt.Id), int.Parse(txtIDNguoiYeuCau.Text), int.Parse(txtIDNguoiCha.Text), int.Parse(txtIDNguoiMe.Text), txtNoiDangKy.Text, pkNgayDangKy.Value.Date));
                     }
                 }
@@ -121,7 +121,7 @@ namespace QuanLyCongDan
                     txtNoiDangKy.Text = ks.NoiDangKy;
                     pkNgayDangKy.Value = ks.NgayThucHien;
 
-                    CongDan dt = dao.TimKiemNguoi(id);
+                    CongDan dt = congDanDAO.TimKiem(id.ToString());
                     if (dt != null)
                     {
                         txtHoTen.Text = dt.HoTen.ToString();
