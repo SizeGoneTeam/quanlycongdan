@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Week2
+namespace QuanLyCongDan.Model
 {
     public class CongDan
     {

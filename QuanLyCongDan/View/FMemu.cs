@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyCongDan.View;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,9 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Week2;
 
-namespace QuanLyCongDan
+namespace QuanLyCongDan.View
 {
     public partial class FMemu : Form
     {

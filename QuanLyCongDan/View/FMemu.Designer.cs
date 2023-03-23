@@ -1,4 +1,4 @@
-﻿namespace QuanLyCongDan
+﻿namespace QuanLyCongDan.View
 {
     partial class FMemu
     {

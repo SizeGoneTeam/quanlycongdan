@@ -1,5 +1,4 @@
 ﻿using System;
-using Week2;
 
 namespace QuanLyCongDan.Model
 {
