@@ -9,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Week2;
 
 namespace QuanLyCongDan.View
 {
@@ -27,9 +26,23 @@ namespace QuanLyCongDan.View
             InitializeComponent();
         }
 
+        #region Events
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (congDan != null && nguoiYeuCau != null)
+            if (congDan is null || nguoiYeuCau is null)
+            {
+                MessageBox.Show("Thiếu thông tin!");
+            }
+            else if (congDan.Id == nguoiYeuCau.Id)
+            {
+                MessageBox.Show("Người yêu cầu không là người tử!");
+
+                congDan = null;
+                nguoiYeuCau = null;
+
+                reload();
+            }
+            else
             {
                 if (khaiTuDAO.Them(new KhaiTu(
                             int.Parse(congDan.Id),
@@ -50,15 +63,24 @@ namespace QuanLyCongDan.View
                     MessageBox.Show("Thêm thất bại!");
                 }
             }
-            else
-            {
-                MessageBox.Show("Thiếu thông tin!");
-            }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (khaiTu != null && congDan != null && nguoiYeuCau != null)
+            if (congDan is null || nguoiYeuCau is null)
+            {
+                MessageBox.Show("Thiếu thông tin!");
+            }
+            else if (congDan.Id == nguoiYeuCau.Id)
+            {
+                MessageBox.Show("Người yêu cầu không là người tử!");
+
+                congDan = null;
+                nguoiYeuCau = null;
+
+                reload();
+            }
+            else
             {
                 if (khaiTuDAO.Sua(new KhaiTu(
                             khaiTu.ID,
@@ -80,15 +102,15 @@ namespace QuanLyCongDan.View
                     MessageBox.Show("Sửa thất bại!");
                 }
             }
-            else
-            {
-                MessageBox.Show("Thiếu thông tin!");
-            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (khaiTu != null)
+            if (khaiTu is null)
+            {
+                MessageBox.Show("Chưa chọn khai tử!");
+            }
+            else
             {
                 if (khaiTuDAO.Xoa(khaiTu.ID))
                 {
@@ -98,10 +120,6 @@ namespace QuanLyCongDan.View
                 {
                     MessageBox.Show("Xóa thất bại!");
                 }
-            }
-            else
-            {
-                MessageBox.Show("Xóa thất bại!");
             }
         }
 
@@ -116,8 +134,7 @@ namespace QuanLyCongDan.View
                 {
                     MessageBox.Show("Không tìm thấy!");
 
-                    Controls.Clear();
-                    InitializeComponent();
+                    reload();
                 }
                 else
                 {
@@ -135,8 +152,7 @@ namespace QuanLyCongDan.View
                 congDan = null;
                 nguoiYeuCau = null;
 
-                Controls.Clear();
-                InitializeComponent();
+                reload();
             }
         }
 
@@ -177,7 +193,9 @@ namespace QuanLyCongDan.View
                 txtHoVaTenNguoiYeuCau.Clear();
             }
         }
+        #endregion
 
+        #region Methods
         private void updateContent()
         {
             txtQuanHe.Text = khaiTu.QuanHe;
@@ -200,5 +218,12 @@ namespace QuanLyCongDan.View
         {
             txtHoVaTenNguoiYeuCau.Text = nguoiYeuCau.HoTen;
         }
+
+        private void reload()
+        {
+            Controls.Clear();
+            InitializeComponent();
+        }
+        #endregion
     }
 }
