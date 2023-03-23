@@ -1,4 +1,6 @@
-﻿using System;
+﻿using QuanLyCongDan.DAO;
+using QuanLyCongDan.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,9 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Week2;
 
-namespace QuanLyCongDan
+namespace QuanLyCongDan.View
 {
     public partial class FHonNhan : Form
     {

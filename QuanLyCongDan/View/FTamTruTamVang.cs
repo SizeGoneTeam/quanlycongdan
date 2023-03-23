@@ -1,4 +1,6 @@
-﻿using System;
+﻿using QuanLyCongDan.DAO;
+using QuanLyCongDan.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

@@ -1,4 +1,4 @@
-﻿namespace Week2
+﻿namespace QuanLyCongDan.View
 {
     partial class FCongDan
     {
