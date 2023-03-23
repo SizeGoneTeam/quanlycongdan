@@ -14,39 +14,6 @@ namespace Week2
     {
         SqlConnection conn = new SqlConnection(QuanLyCongDan.Properties.Settings.Default.connStr);
 
-        public CongDan TimKiemDB(string sqlStr)
-        {
-            CongDan cd = new CongDan();
-            DataTable dtds = new DataTable();
-            try
-            {
-                conn.Open();
-                SqlDataAdapter adapter = new SqlDataAdapter(sqlStr, conn);
-                adapter.Fill(dtds);
-                if (dtds.Rows.Count > 0)
-                {
-                    DataRow dr = dtds.Rows[0];
-                    cd.Id = dr["ID_CongDan"].ToString();
-                    cd.HoTen = dr["HoTen"].ToString();
-                    cd.GioiTinh = dr["GioiTinh"].ToString();
-                    cd.NgaySinh = Convert.ToDateTime(dr["NgaySinh"]);
-                    cd.QueQuan = dr["QueQuan"].ToString();
-                    cd.DanToc = dr["DanToc"].ToString();
-                    cd.TonGiao = dr["TonGiao"].ToString();
-                    cd.Sdt = dr["SDT"].ToString();
-                    cd.Email = dr["Email"].ToString();
-                }
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message);
-            }
-            finally
-            {
-                conn.Close();
-            }
-            return cd;
-        }
         public DataTable LayDanhSach(string sqlStr)
         {
             DataTable dtds = new DataTable();

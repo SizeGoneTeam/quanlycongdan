@@ -34,8 +34,28 @@ namespace Week2
 
         public CongDan TimKiem(String id)
         {
-            String sqlStr = string.Format("select * from CongDan where ID_CongDan = '{0}'", id);
-            return dbConn.TimKiemDB(sqlStr);
+            string sqlStr = string.Format("select * from CongDan where ID_CongDan={0}", id);
+            DataTable dt = dbConn.LayDanhSach(sqlStr);
+
+            if (dt != null)
+            {
+                if (dt.Rows.Count > 0)
+                {
+                    DataRow row = dt.Rows[0];
+                    return new CongDan(
+                        row["ID_CongDan"].ToString(),
+                        row["HoTen"].ToString(),
+                        row["QueQuan"].ToString(),
+                        row["GioiTinh"].ToString(),
+                        Convert.ToDateTime(row["NgaySinh"]),
+                        row["DanToc"].ToString(),
+                        row["TonGiao"].ToString(),
+                        row["SDT"].ToString(),
+                        row["Email"].ToString());
+                }
+            }
+
+            return null;
         }
 
         public DataTable LayDanhSachCongDan()
