@@ -17,7 +17,7 @@ namespace QuanLyCongDan
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FMemu());
+            Application.Run(new FMainMenu());
         }
     }
 }
