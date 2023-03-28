@@ -39,8 +39,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.add = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtCD = new System.Windows.Forms.TextBox();
             this.panel16 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -59,7 +57,7 @@
             this.soCCCD = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.birth = new System.Windows.Forms.DateTimePicker();
+            this.birth = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panel17 = new System.Windows.Forms.Panel();
             this.txtTonGiao = new System.Windows.Forms.TextBox();
@@ -74,7 +72,7 @@
             this.txtHoTen = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.panel21 = new System.Windows.Forms.Panel();
-            this.txtTCCCD = new System.Windows.Forms.TextBox();
+            this.txtTcccd = new System.Windows.Forms.TextBox();
             this.tim = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
@@ -96,7 +94,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(19, 212);
+            this.button1.Location = new System.Drawing.Point(19, 176);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -106,7 +104,7 @@
             // 
             // dTPNgayCap
             // 
-            this.dTPNgayCap.Location = new System.Drawing.Point(114, 162);
+            this.dTPNgayCap.Location = new System.Drawing.Point(114, 129);
             this.dTPNgayCap.Name = "dTPNgayCap";
             this.dTPNgayCap.Size = new System.Drawing.Size(230, 22);
             this.dTPNgayCap.TabIndex = 3;
@@ -114,7 +112,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 80);
+            this.label3.Location = new System.Drawing.Point(16, 47);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 16);
             this.label3.TabIndex = 6;
@@ -123,7 +121,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 167);
+            this.label4.Location = new System.Drawing.Point(16, 134);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 16);
             this.label4.TabIndex = 7;
@@ -132,7 +130,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(16, 124);
+            this.label5.Location = new System.Drawing.Point(16, 91);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 16);
             this.label5.TabIndex = 8;
@@ -141,14 +139,14 @@
             // txtSOCC
             // 
             this.txtSOCC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSOCC.Location = new System.Drawing.Point(114, 80);
+            this.txtSOCC.Location = new System.Drawing.Point(114, 47);
             this.txtSOCC.Name = "txtSOCC";
             this.txtSOCC.Size = new System.Drawing.Size(230, 22);
             this.txtSOCC.TabIndex = 10;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(146, 212);
+            this.button2.Location = new System.Drawing.Point(146, 176);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 13;
@@ -158,7 +156,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(269, 212);
+            this.button3.Location = new System.Drawing.Point(269, 176);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 14;
@@ -170,9 +168,7 @@
             // 
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.add);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.txtCD);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.button1);
@@ -200,29 +196,10 @@
             this.add.Items.AddRange(new object[] {
             "Cuc Canh sat quan ly hanh chinh ve trat tu xa hoi.",
             "Cuc Canh sat ĐKQL cu tru va DLQG ve dan cu."});
-            this.add.Location = new System.Drawing.Point(114, 121);
+            this.add.Location = new System.Drawing.Point(114, 88);
             this.add.Name = "add";
             this.add.Size = new System.Drawing.Size(230, 24);
             this.add.TabIndex = 15;
-            // 
-            // label1
-            // 
-            this.label1.AllowDrop = true;
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 39);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 16);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "ID_CongDan";
-            // 
-            // txtCD
-            // 
-            this.txtCD.AllowDrop = true;
-            this.txtCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCD.Location = new System.Drawing.Point(114, 39);
-            this.txtCD.Name = "txtCD";
-            this.txtCD.Size = new System.Drawing.Size(230, 22);
-            this.txtCD.TabIndex = 14;
             // 
             // panel16
             // 
@@ -300,6 +277,7 @@
             this.button6.TabIndex = 6;
             this.button6.Text = "Click for More";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // label9
             // 
@@ -328,6 +306,7 @@
             this.button5.TabIndex = 6;
             this.button5.Text = "Click for More";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // label7
             // 
@@ -410,10 +389,14 @@
             // 
             // birth
             // 
-            this.birth.Location = new System.Drawing.Point(157, 4);
+            this.birth.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.birth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.birth.Location = new System.Drawing.Point(157, 7);
+            this.birth.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.birth.Name = "birth";
+            this.birth.ReadOnly = true;
             this.birth.Size = new System.Drawing.Size(297, 22);
-            this.birth.TabIndex = 1;
+            this.birth.TabIndex = 3;
             // 
             // label8
             // 
@@ -547,27 +530,27 @@
             // panel21
             // 
             this.panel21.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel21.Controls.Add(this.txtTCCCD);
+            this.panel21.Controls.Add(this.txtTcccd);
             this.panel21.Controls.Add(this.tim);
             this.panel21.Controls.Add(this.label20);
             this.panel21.Controls.Add(this.label21);
-            this.panel21.Location = new System.Drawing.Point(1, 2);
+            this.panel21.Location = new System.Drawing.Point(3, 4);
             this.panel21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(320, 65);
+            this.panel21.Size = new System.Drawing.Size(504, 65);
             this.panel21.TabIndex = 3;
             // 
-            // txtTCCCD
+            // txtTcccd
             // 
-            this.txtTCCCD.Location = new System.Drawing.Point(105, 23);
-            this.txtTCCCD.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTCCCD.Name = "txtTCCCD";
-            this.txtTCCCD.Size = new System.Drawing.Size(100, 22);
-            this.txtTCCCD.TabIndex = 2;
+            this.txtTcccd.Location = new System.Drawing.Point(105, 23);
+            this.txtTcccd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTcccd.Name = "txtTcccd";
+            this.txtTcccd.Size = new System.Drawing.Size(186, 22);
+            this.txtTcccd.TabIndex = 2;
             // 
             // tim
             // 
-            this.tim.Location = new System.Drawing.Point(212, 23);
+            this.tim.Location = new System.Drawing.Point(315, 23);
             this.tim.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tim.Name = "tim";
             this.tim.Size = new System.Drawing.Size(75, 23);
@@ -643,8 +626,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtCD;
         private System.Windows.Forms.ComboBox add;
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.Panel panel6;
@@ -674,7 +655,7 @@
         private System.Windows.Forms.TextBox txtHoTen;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Panel panel21;
-        private System.Windows.Forms.TextBox txtTCCCD;
+        private System.Windows.Forms.TextBox txtTcccd;
         private System.Windows.Forms.Button tim;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
@@ -683,6 +664,6 @@
         private System.Windows.Forms.TextBox IDs;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.DateTimePicker birth;
+        private System.Windows.Forms.TextBox birth;
     }
 }

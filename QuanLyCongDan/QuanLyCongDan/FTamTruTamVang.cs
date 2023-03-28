@@ -23,15 +23,21 @@ namespace QuanLyCongDan
         {
             InitializeComponent();
         }
+        public FTamTruTamVang(string input): this()
+        {
+            string nhan;
+            nhan = input;
+            txtTCCCD.Text = nhan;
+        }
         private void HienThiDanhSach()
         {
             cccd = cccdDAO.TimKiem_ID(txtTCCCD.Text);
-            this.Lichsudichuyen.DataSource = ttdao.LayDanhSachLichsu(cccd.CD);
+            this.Lichsudichuyen.DataSource = ttdao.LayDanhSachLichsu(cccd.IDCD);
         }
         private void button1_Click(object sender, EventArgs e)
         {
             cccd = cccdDAO.TimKiem_ID(txtsoCC.Text);
-            tt = new TamTruTamVang(cccd.CD, Come.Value.Date, Leave.Value.Date, txtAdd.Text, txtLido.Text);
+            tt = new TamTruTamVang(cccd.IDCD, Come.Value.Date, Leave.Value.Date, txtAdd.Text, txtLido.Text);
             if (String.IsNullOrEmpty(txtsoCC.Text) ||
                 String.IsNullOrEmpty(txtAdd.Text) ||
                 String.IsNullOrEmpty(txtLido.Text))
@@ -47,7 +53,7 @@ namespace QuanLyCongDan
         private void button2_Click(object sender, EventArgs e)
         {
             cccd = cccdDAO.TimKiem_ID(txtsoCC.Text);
-            tt = new TamTruTamVang(cccd.CD, Come.Value.Date, Leave.Value.Date, txtAdd.Text, txtLido.Text);
+            tt = new TamTruTamVang(cccd.IDCD, Come.Value.Date, Leave.Value.Date, txtAdd.Text, txtLido.Text);
             ttdao.Xoa(tt);
         }
 
@@ -62,15 +68,15 @@ namespace QuanLyCongDan
             else
             {
                 cccd = cccdDAO.TimKiem_ID(txtsoCC.Text);
-                tt = new TamTruTamVang(cccd.CD, Come.Value.Date, Leave.Value.Date, txtAdd.Text, txtLido.Text);
+                tt = new TamTruTamVang(cccd.IDCD, Come.Value.Date, Leave.Value.Date, txtAdd.Text, txtLido.Text);
                 ttdao.Sua(tt);
             }
         }
         private void tim_Click(object sender, EventArgs e)
         {
             cccd = cccdDAO.TimKiem_ID(txtTCCCD.Text);
-            tt = ttdao.TimKiemTT(cccd.CD);
-            cd = cddao.TimKiem(cccd.CD);
+            tt = ttdao.TimKiemTT(cccd.IDCD);
+            cd = cddao.TimKiem(cccd.IDCD);
             if (tt != null)
             {
                 txtIDCDs.Text = tt.IDCD;
@@ -82,7 +88,13 @@ namespace QuanLyCongDan
 
         private void FTamTruTamVang_Load(object sender, EventArgs e)
         {
-            HienThiDanhSach();
+            if (string.IsNullOrEmpty(txtTCCCD.Text))
+                HienThiDanhSach();
+            else
+            {
+                HienThiDanhSach();
+                tim.PerformClick();
+            }
         }
 
     }

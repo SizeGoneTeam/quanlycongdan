@@ -59,8 +59,8 @@ namespace Week2
                 if (dtds.Rows.Count > 0)
                 {
                     DataRow dr = dtds.Rows[0];
-                    cc.CD = dr["ID_CongDan"].ToString();
-                    cc.IDCC = dr["SoCCCD"].ToString();
+                    cc.IDCD = dr["ID_CongDan"].ToString();
+                    cc.SoCC = dr["SoCCCD"].ToString();
                     cc.Add = dr["NoiCap"].ToString();
                     cc.NgayCap = Convert.ToDateTime(dr["NgayCap"]);
                 }

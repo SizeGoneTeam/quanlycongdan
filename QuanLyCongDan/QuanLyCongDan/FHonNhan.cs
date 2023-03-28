@@ -33,7 +33,7 @@ namespace QuanLyCongDan
             try
             {
                 cccd = cccdDAO.TimKiem_ID(txtID_Chong.Text);
-                cd = cdDAO.TimKiem(cccd.CD);
+                cd = cdDAO.TimKiem(cccd.IDCD);
                 lblHoTenChong.Text = cd.HoTen;
                 lblNgaySinhChong.Text = cd.NgaySinh.Date.ToString();
                 if(lblHoTenChong.Text != "" && lblHoTenVo.Text != "") btnThem.Enabled=true;
@@ -53,7 +53,7 @@ namespace QuanLyCongDan
             try
             {
                 cccd = cccdDAO.TimKiem_ID(txtID_Vo.Text);
-                cd = cdDAO.TimKiem(cccd.CD);
+                cd = cdDAO.TimKiem(cccd.IDCD);
                 lblHoTenVo.Text = cd.HoTen;
                 lblNgaySinhVo.Text = cd.NgaySinh.Date.ToString();
                 if (lblHoTenChong.Text != "" && lblHoTenVo.Text != "") btnThem.Enabled = true;

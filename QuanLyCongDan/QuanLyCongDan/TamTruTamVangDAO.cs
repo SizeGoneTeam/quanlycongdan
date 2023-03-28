@@ -14,7 +14,7 @@ namespace QuanLyCongDan
         DBconnection dbConn = new DBconnection();
         public void Them(TamTruTamVang tt)
         {
-            String sqlStr = string.Format("INSERT INTO TamTruTamVang(ID_CongDan,NgayDen,NgayDi,DiaChi,LiDo) VALUES ('{0}','{1}','{2}','{3}','{4}')", tt.IDCD, tt.Come,tt.Leave, tt.Add,tt.Why);
+            String sqlStr = string.Format("INSERT INTO TamTruTamVang(NgayDen,NgayDi,DiaChi,LiDo) VALUES ('{0}','{1}','{2}','{3}') ",tt.Come,tt.Leave, tt.Add,tt.Why);
             dbConn.ThucThi(sqlStr);
         }
 

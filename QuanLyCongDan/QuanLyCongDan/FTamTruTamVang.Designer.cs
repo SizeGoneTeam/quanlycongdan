@@ -385,7 +385,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1097, 527);
+            this.ClientSize = new System.Drawing.Size(1083, 527);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.Lichsudichuyen);
             this.Controls.Add(this.panel16);
