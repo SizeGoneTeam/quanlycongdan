@@ -35,30 +35,35 @@ CREATE TABLE TamTruTamVang (
 CREATE TABLE CCCD (
     ID_CCCD INT IDENTITY(1,1) PRIMARY KEY,
     ID_CongDan INT,
-    SoCCCD VARCHAR(12),
+    SoCCCD NVARCHAR(100),
     NgayCap DATE,
     NoiCap nvarchar(100),
     FOREIGN KEY (ID_CongDan) REFERENCES CongDan(ID_CongDan)
 );
 
--- Tạo bảng Thuế
-CREATE TABLE Thue (
-    ID_Thue INT IDENTITY(1,1) PRIMARY KEY,
-    ID_CongDan INT,
-    MaSoThue nvarchar(10),
-    NgayCapNhat DATE,
-    FOREIGN KEY (ID_CongDan) REFERENCES CongDan(ID_CongDan)
-);
+
 
 -- Tạo bảng Sổ hộ khẩu
 CREATE TABLE SoHoKhau (
     ID_SoHoKhau INT IDENTITY(1,1),
+    ID_HoSoHoKhau INT,
+    ID_SoDangKyThuongTru NVARCHAR(50),
+    ID_SoDangKyThuongTru_ToSo NVARCHAR(50),
+    NoiThuongTru NVARCHAR(100),
+    NgayDangKy DATE,
+	PRIMARY KEY(ID_SoHoKhau),
+);
+
+CREATE TABLE CongDan_SoHoKhau(
+    ID_SoHoKhau INT,
     ID_CongDan INT,
-    SoHoKhau nvarchar(12),
-    NgayCapNhat DATE,
-	QuanHe NVARCHAR(100),
-	NgayDangKy DATE,
-	PRIMARY KEY(ID_SoHoKhau,ID_CongDan),
+    QuanHe NVARCHAR(50),
+    NgheNghiep_NoiLamViec NVARCHAR(100),
+    NoiThuongTruTruoc NVARCHAR(100),
+    CanBoDangKy NVARCHAR(100),
+    NgayDangKy DATE,
+    PRIMARY KEY (ID_SoHoKhau, ID_CongDan),
+    FOREIGN KEY (ID_SoHoKhau) REFERENCES SoHoKhau(ID_SoHoKhau),
     FOREIGN KEY (ID_CongDan) REFERENCES CongDan(ID_CongDan)
 );
 
@@ -77,6 +82,20 @@ CREATE TABLE KhaiSinh (
     FOREIGN KEY (ID_Me) REFERENCES CongDan(ID_CongDan)
 );
 
+CREATE TABLE KhaiTu (
+    ID_KhaiTu INT IDENTITY(1, 1) PRIMARY KEY,
+    ID_CongDan INT,
+    ID_NguoiYeuCau INT,
+    QuanHe NVARCHAR(100),
+    ThoiGianChet DateTime,
+    NoiChet NVARCHAR(100),
+    NguyenNhan NVARCHAR(100),
+    NoiDangKy NVARCHAR(100),
+    NgayThucHien Date,
+    FOREIGN KEY (ID_CongDan) REFERENCES CongDan(ID_CongDan),
+    FOREIGN KEY (ID_NguoiYeuCau) REFERENCES CongDan(ID_CongDan)
+);
+
 -- Tạo bảng Hôn nhân
 CREATE TABLE HonNhan (
     ID_HonNhan INT IDENTITY(1,1) PRIMARY KEY,
@@ -87,6 +106,32 @@ CREATE TABLE HonNhan (
 	TrangThai BIT,
     FOREIGN KEY (ID_Chong) REFERENCES CongDan(ID_CongDan),
     FOREIGN KEY (ID_Vo) REFERENCES CongDan(ID_CongDan)
+);
+
+---
+CREATE TABLE CongTy (
+    ID_CongTy INT IDENTITY(1,1) PRIMARY KEY,
+    TenCongTy nvarchar(100),
+    NgayVao DATE,
+	Luong bigint,
+    TrangThai bit
+);
+
+-- Tạo bảng Thuế
+CREATE TABLE Thue (
+    ID_Thue INT IDENTITY(1,1) PRIMARY KEY,
+    ID_CongDan INT,
+    FOREIGN KEY (ID_CongDan) REFERENCES CongDan(ID_CongDan)
+);
+
+---
+
+CREATE TABLE LichSuThue (
+    ID_LichSuThue INT IDENTITY(1,1) PRIMARY KEY,
+    ID_CongDan INT REFERENCES CongDan(ID_CongDan),
+    ID_Thue INT REFERENCES Thue(ID_Thue),
+    NgayNop DATE,
+    SoTien DECIMAL(18,2)
 );
 
 
@@ -122,7 +167,7 @@ VALUES
 -- Insert into CCCD table
 INSERT INTO CCCD (ID_CongDan, SoCCCD, NgayCap, NoiCap)
 VALUES
-(1, '012345678901', '2020-01-01', N'Cục Cảnh sát quản lý xuất nhập cảnh'),
+(1, '312345678901', '2020-01-01', N'Cục Cảnh sát quản lý xuất nhập cảnh'),
 (2, '123456789012', '2019-02-02', N'Cục Cảnh sát quản lý xuất nhập cảnh'),
 (3, '234567890123', '2018-03-03', N'Cục Cảnh sát quản lý xuất nhập cảnh'),
 (4, '345678901234', '2017-04-04', N'Cục Cảnh sát quản lý xuất nhập cảnh'),
@@ -133,33 +178,20 @@ VALUES
 (9, '890123456789', '2012-09-09', N'Cục Cảnh sát quản lý xuất nhập cảnh'),
 (10, '901234567890', '2011-10-10', N'Cục Cảnh sát quản lý xuất nhập cảnh');
 
--- Insert into Thue table
-INSERT INTO Thue (ID_CongDan, MaSoThue, NgayCapNhat) 
-VALUES 
-(1, '1234567890', '2022-01-01'),
-(2, '2345678901', '2022-02-01'),
-(3, '3456789012', '2022-03-01'),
-(4, '4567890123', '2022-04-01'),
-(5, '5678901234', '2022-05-01'),
-(6, '6789012345', '2022-06-01'),
-(7, '7890123456', '2022-07-01'),
-(8, '8901234567', '2022-08-01'),
-(9, '9012345678', '2022-09-01'),
-(10, '0123456789', '2022-10-01');
+INSERT INTO SoHoKhau (ID_HoSoHoKhau, ID_SoDangKyThuongTru, ID_SoDangKyThuongTru_ToSo, NoiThuongTru, NgayDangKy)
+VALUES (1, '012345', '0123', '123 ABC Street, District 1, Ho Chi Minh City', '2022-01-01'),
+(2, '543210', '5432', '456 XYZ Street, District 2, Ho Chi Minh City', '2022-02-01'),
+(3, '987654', '9876', '789 DEF Street, District 3, Ho Chi Minh City', '2022-03-01'),
+(4, '654321', '6543', '321 GHI Street, District 4, Ho Chi Minh City', '2022-04-01'),
+(5, '135790', '1357', '246 JKL Street, District 5, Ho Chi Minh City', '2022-05-01');
 
--- Insert into SoHoKhau table
-INSERT INTO SoHoKhau (ID_CongDan, SoHoKhau, NgayCapNhat, QuanHe, NgayDangKy)
-VALUES
-(1, '123456789012', '2022-01-01', N'Chủ hộ', '2022-01-01'),
-(2, '234567890123', '2022-02-02', N'Con', '2022-02-02'),
-(3, '345678901234', '2022-03-03', N'Vợ', '2022-03-03'),
-(4, '456789012345', '2022-04-04', N'Con', '2022-04-04'),
-(5, '567890123456', '2022-05-05', N'Con', '2022-05-05'),
-(6, '678901234567', '2022-06-06', N'Vợ', '2022-06-06'),
-(7, '789012345678', '2022-07-07', N'Chủ hộ', '2022-07-07'),
-(8, '890123456789', '2022-08-08', N'Con', '2022-08-08'),
-(9, '901234567890', '2022-09-09', N'Vợ', '2022-09-09'),
-(10, '012345678901', '2022-10-10', N'Con', '2022-10-10');
+INSERT INTO CongDan_SoHoKhau (ID_SoHoKhau, ID_CongDan, QuanHe, NgheNghiep_NoiLamViec, NoiThuongTruTruoc, CanBoDangKy, NgayDangKy)
+VALUES (1, 1, 'Chủ hộ', 'Giáo viên', '123 XYZ Street, District 1, Ho Chi Minh City', 'Nguyen Van A', '2022-01-01'),
+(1, 2, 'Vợ', 'Bác sĩ', '789 DEF Street, District 3, Ho Chi Minh City', 'Tran Thi B', '2022-01-01'),
+(2, 3, 'Chủ hộ', 'Kỹ sư', '456 XYZ Street, District 2, Ho Chi Minh City', 'Le Van C', '2022-02-01'),
+(2, 4, 'Vợ', 'Nhân viên văn phòng', '321 GHI Street, District 4, Ho Chi Minh City', 'Pham Thi D', '2022-02-01'),
+(3, 5, 'Chủ hộ', 'Nhà báo', '789 DEF Street, District 3, Ho Chi Minh City', 'Vo Van E', '2022-03-01');
+
 -- Insert into KhaiSinh table
 INSERT INTO KhaiSinh (ID_CongDan, ID_NguoiYeuCau, ID_Cha, ID_Me, NoiDangKy, NgayThucHien)
 VALUES
@@ -187,4 +219,23 @@ VALUES
 (6, 5, '2022-08-08', N'Thành phố Hồ Chí Minh', 1),
 (8, 7, '2022-09-09', N'Thành phố Hồ Chí Minh', 1),
 (10, 9, '2022-10-10', N'Thành phố Hồ Chí Minh', 1);
+
+-- Thêm 3 bản ghi vào bảng CongTy
+INSERT INTO CongTy (TenCongTy, NgayVao, Luong, TrangThai) VALUES 
+('Cong ty ABC', '2020-01-01', 20000000, 1),
+('Cong ty XYZ', '2022-02-02', 25000000, 0),
+('Cong ty DEF', '2019-05-01', 18000000, 1);
+
+-- Thêm 3 bản ghi vào bảng Thue
+INSERT INTO Thue (ID_CongDan) VALUES 
+(1),
+(2),
+(3);
+
+-- Thêm 3 bản ghi vào bảng LichSuThue
+INSERT INTO LichSuThue (ID_CongDan, ID_Thue, NgayNop, SoTien) VALUES 
+(1, 1, '2021-03-01', 5000000),
+(2, 2, '2022-01-01', 7000000),
+(3, 3, '2021-05-15', 6000000);
+
 
