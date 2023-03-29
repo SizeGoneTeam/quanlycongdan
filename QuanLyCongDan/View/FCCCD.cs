@@ -1,5 +1,6 @@
 ﻿using QuanLyCongDan.DAO;
 using QuanLyCongDan.Model;
+using QuanLyCongDan.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,76 +19,159 @@ namespace QuanLyCongDan
         CongDanDAO cddao = new CongDanDAO();
         CCCDDAO cccdDAO = new CCCDDAO();
         CCCD cccd;
-
         public FCCCD()
         {
             InitializeComponent();
         }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            cccd = cccdDAO.TimKiem_ID(txtSOCC.Text);
-            cccd = new CCCD(cccd.IDCD, txtSOCC.Text, add.Text, dTPNgayCap.Value.Date);
-            if (String.IsNullOrEmpty(txtSOCC.Text) ||
-                String.IsNullOrEmpty(add.Text))
-            {
-                MessageBox.Show("Them That bai");
-            }
-            else
-            {
-                cccdDAO.Them(cccd);
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            cccd = cccdDAO.TimKiem_ID(txtSOCC.Text);
-            cccd = new CCCD(cccd.IDCD, txtSOCC.Text, add.Text, dTPNgayCap.Value.Date);
-            cccdDAO.Xoa(cccd);
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if (String.IsNullOrEmpty(txtSOCC.Text) ||
-                String.IsNullOrEmpty(txtSOCC.Text) ||
-                String.IsNullOrEmpty(add.Text))
-            {
-                MessageBox.Show("Sua That bai");
-            }
-            else
-            {
-                cccd = cccdDAO.TimKiem_ID(txtSOCC.Text);
-                cccd = new CCCD(cccd.IDCD, txtSOCC.Text, add.Text, dTPNgayCap.Value.Date);
-                cccdDAO.Sua(cccd);
-            }
-        }
-
         private void tim_Click(object sender, EventArgs e)
         {
             cccd = cccdDAO.TimKiem_ID(txtTcccd.Text);
-            cd = cddao.TimKiem(cccd.IDCD);
-            if (cd != null)
+            if (cccd != null)
             {
-                txtHoTen.Text = cd.HoTen;
-                IDs.Text = cd.Id;
-                soCCCD.Text = txtTcccd.Text;
-                GioiTinh.Text = cd.GioiTinh;
-                birth.Text= cd.NgaySinh.Date.ToString();
-                txtDanToc.Text = cd.DanToc;
-                txtTonGiao.Text = cd.TonGiao;
-                txtQQ.Text = cd.QueQuan;
+                cd = cddao.TimKiem(cccd.IDCD);
+                if (cd != null)
+                {
+                    txtHoTen.Text = cd.HoTen;
+                    IDs.Text = cd.Id;
+                    soCCCD.Text = txtTcccd.Text;
+                    GioiTinh.Text = cd.GioiTinh;
+                    birth.Text = cd.NgaySinh.Date.ToString();
+                    txtDanToc.Text = cd.DanToc;
+                    txtTonGiao.Text = cd.TonGiao;
+                    txtQQ.Text = cd.QueQuan;
+                    adds.Text = cccd.Add;
+                    dates.Text = cccd.NgayCap.Date.ToString();
+                }
+                else
+                    MessageBox.Show("Xin Nhập Số CCCD");
+            }
+            else
+                MessageBox.Show("Xin Nhập Số CCCD");
+        }
+        private void txtTcccd_Enter(object sender, EventArgs e)
+        {
+            if(txtTcccd.Text == "  CCCD")
+            {
+                txtTcccd.Text = "";
+                txtTcccd.ForeColor= Color.Black;
             }
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void txtHoTen_Enter(object sender, EventArgs e)
         {
-            FTamTruTamVang child = new FTamTruTamVang(txtTcccd.Text);
-            child.Show();
+            if( txtHoTen.Text =="  Họ Và Tên")
+            {
+                txtHoTen.Text = "";
+                txtHoTen.ForeColor= Color.Black;
+            }
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void IDs_Enter(object sender, EventArgs e)
         {
-            FKhaiSinh f = new FKhaiSinh();
-            f.Show();
+            if (IDs.Text == "  ID Công Dân")
+            {
+                IDs.Text = "";
+                IDs.ForeColor = Color.Black;
+            }
+        }
+
+        private void soCCCD_Enter(object sender, EventArgs e)
+        {
+            if (soCCCD.Text == "  Số CCCD")
+            {
+                soCCCD.Text = "";
+                soCCCD.ForeColor = Color.Black;
+            }
+        }
+
+        private void GioiTinh_Enter(object sender, EventArgs e)
+        {
+            if (GioiTinh.Text == "  Giới Tính")
+            {
+                GioiTinh.Text = "";
+                GioiTinh.ForeColor = Color.Black;
+            }
+        }
+
+        private void birth_Enter(object sender, EventArgs e)
+        {
+            if (birth.Text == "  Ngày Sinh")
+            {
+                birth.Text = "";
+                birth.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtDanToc_Enter(object sender, EventArgs e)
+        {
+            if (txtDanToc.Text == "  Dân Tộc")
+            {
+                txtDanToc.Text = "";
+                txtDanToc.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtTonGiao_Enter(object sender, EventArgs e)
+        {
+            if (txtTonGiao.Text == "  Tôn Giáo")
+            {
+                txtTonGiao.Text = "";
+                txtTonGiao.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtQQ_Enter(object sender, EventArgs e)
+        {
+            if (txtQQ.Text == "  Quê Quán")
+            {
+                txtQQ.Text = "";
+                txtQQ.ForeColor = Color.Black;
+            }
+        }
+
+        private void birth_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTonGiao_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDanToc_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtQQ_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void adds_Enter(object sender, EventArgs e)
+        {
+            if (adds.Text == "  Nơi Cấp")
+            {
+                adds.Text = "";
+                adds.ForeColor = Color.Black;
+            }
+        }
+
+        private void dates_Enter(object sender, EventArgs e)
+        {
+            if (dates.Text == "  Ngày Cấp")
+            {
+                dates.Text = "";
+                dates.ForeColor = Color.Black;
+            }
+        }
+
+        private void btndangky_Click(object sender, EventArgs e)
+        {
+            FDKCCCD dk =new FDKCCCD();
+            FMainMenu f =new FMainMenu();
+            f.OpenChildForm2(dk, sender);
         }
     }
 }

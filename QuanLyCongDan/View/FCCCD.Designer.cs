@@ -28,642 +28,323 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.dTPNgayCap = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtSOCC = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
-            this.add = new System.Windows.Forms.ComboBox();
-            this.panel16 = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
             this.IDs = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.button5 = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.GioiTinh = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.soCCCD = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.birth = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.panel17 = new System.Windows.Forms.Panel();
             this.txtTonGiao = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.panel18 = new System.Windows.Forms.Panel();
             this.txtDanToc = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.panel19 = new System.Windows.Forms.Panel();
             this.txtQQ = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.panel20 = new System.Windows.Forms.Panel();
             this.txtHoTen = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.panel21 = new System.Windows.Forms.Panel();
             this.txtTcccd = new System.Windows.Forms.TextBox();
             this.tim = new System.Windows.Forms.Button();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
-            this.panel16.SuspendLayout();
-            this.panel8.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btndangky = new System.Windows.Forms.Button();
+            this.dates = new System.Windows.Forms.TextBox();
+            this.adds = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
-            this.panel17.SuspendLayout();
-            this.panel18.SuspendLayout();
-            this.panel19.SuspendLayout();
-            this.panel20.SuspendLayout();
-            this.panel21.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(19, 176);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Them";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // dTPNgayCap
-            // 
-            this.dTPNgayCap.Location = new System.Drawing.Point(114, 129);
-            this.dTPNgayCap.Name = "dTPNgayCap";
-            this.dTPNgayCap.Size = new System.Drawing.Size(230, 22);
-            this.dTPNgayCap.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 47);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 16);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "SoCCCD";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 134);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 16);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "NgayCap";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(16, 91);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 16);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "NoiCap";
-            // 
-            // txtSOCC
-            // 
-            this.txtSOCC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSOCC.Location = new System.Drawing.Point(114, 47);
-            this.txtSOCC.Name = "txtSOCC";
-            this.txtSOCC.Size = new System.Drawing.Size(230, 22);
-            this.txtSOCC.TabIndex = 10;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(146, 176);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Xoa";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(269, 176);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 14;
-            this.button3.Text = "Sua";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.add);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.dTPNgayCap);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.txtSOCC);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Location = new System.Drawing.Point(30, 34);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(405, 240);
-            this.panel1.TabIndex = 15;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(7, 6);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(98, 16);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "Dang Ky CCCD";
-            // 
-            // add
-            // 
-            this.add.FormattingEnabled = true;
-            this.add.Items.AddRange(new object[] {
-            "Cuc Canh sat quan ly hanh chinh ve trat tu xa hoi.",
-            "Cuc Canh sat ĐKQL cu tru va DLQG ve dan cu."});
-            this.add.Location = new System.Drawing.Point(114, 88);
-            this.add.Name = "add";
-            this.add.Size = new System.Drawing.Size(230, 24);
-            this.add.TabIndex = 15;
-            // 
-            // panel16
-            // 
-            this.panel16.Controls.Add(this.panel8);
-            this.panel16.Controls.Add(this.panel21);
-            this.panel16.Location = new System.Drawing.Point(488, 34);
-            this.panel16.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(529, 520);
-            this.panel16.TabIndex = 22;
-            // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel8.Controls.Add(this.panel7);
-            this.panel8.Controls.Add(this.panel6);
-            this.panel8.Controls.Add(this.panel5);
-            this.panel8.Controls.Add(this.panel4);
-            this.panel8.Controls.Add(this.panel3);
-            this.panel8.Controls.Add(this.panel2);
-            this.panel8.Controls.Add(this.panel17);
-            this.panel8.Controls.Add(this.panel18);
-            this.panel8.Controls.Add(this.panel19);
-            this.panel8.Controls.Add(this.panel20);
-            this.panel8.Location = new System.Drawing.Point(31, 74);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(474, 421);
-            this.panel8.TabIndex = 7;
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.IDs);
-            this.panel7.Controls.Add(this.label11);
-            this.panel7.Location = new System.Drawing.Point(6, 47);
-            this.panel7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(459, 37);
-            this.panel7.TabIndex = 3;
             // 
             // IDs
             // 
             this.IDs.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.IDs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.IDs.Location = new System.Drawing.Point(157, 6);
+            this.IDs.Enabled = false;
+            this.IDs.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.IDs.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.IDs.Location = new System.Drawing.Point(18, 219);
             this.IDs.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.IDs.Name = "IDs";
             this.IDs.ReadOnly = true;
-            this.IDs.Size = new System.Drawing.Size(297, 22);
+            this.IDs.Size = new System.Drawing.Size(297, 30);
             this.IDs.TabIndex = 2;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(3, 9);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(83, 16);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "ID Cong Dan";
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.button6);
-            this.panel6.Controls.Add(this.label9);
-            this.panel6.Location = new System.Drawing.Point(6, 375);
-            this.panel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(459, 37);
-            this.panel6.TabIndex = 6;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(157, 1);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(297, 34);
-            this.button6.TabIndex = 6;
-            this.button6.Text = "Click for More";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 9);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(62, 16);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Khai Sinh";
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.button5);
-            this.panel5.Controls.Add(this.label7);
-            this.panel5.Location = new System.Drawing.Point(6, 334);
-            this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(459, 37);
-            this.panel5.TabIndex = 3;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(157, 1);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(297, 34);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "Click for More";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 9);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(124, 16);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Tam Tru Tam Vang";
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.GioiTinh);
-            this.panel4.Controls.Add(this.label6);
-            this.panel4.Location = new System.Drawing.Point(6, 129);
-            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(459, 37);
-            this.panel4.TabIndex = 4;
+            this.IDs.Text = "  ID Công Dân";
+            this.IDs.Enter += new System.EventHandler(this.IDs_Enter);
             // 
             // GioiTinh
             // 
             this.GioiTinh.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.GioiTinh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.GioiTinh.Location = new System.Drawing.Point(157, 6);
+            this.GioiTinh.Enabled = false;
+            this.GioiTinh.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.GioiTinh.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.GioiTinh.Location = new System.Drawing.Point(18, 320);
             this.GioiTinh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.GioiTinh.Name = "GioiTinh";
             this.GioiTinh.ReadOnly = true;
-            this.GioiTinh.Size = new System.Drawing.Size(297, 22);
+            this.GioiTinh.Size = new System.Drawing.Size(297, 30);
             this.GioiTinh.TabIndex = 2;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 9);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(60, 16);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Gioi Tinh";
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.soCCCD);
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Location = new System.Drawing.Point(6, 88);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(459, 37);
-            this.panel3.TabIndex = 3;
+            this.GioiTinh.Text = "  Giới Tính";
+            this.GioiTinh.Enter += new System.EventHandler(this.GioiTinh_Enter);
             // 
             // soCCCD
             // 
             this.soCCCD.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.soCCCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.soCCCD.Location = new System.Drawing.Point(157, 6);
+            this.soCCCD.Enabled = false;
+            this.soCCCD.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.soCCCD.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.soCCCD.Location = new System.Drawing.Point(18, 273);
             this.soCCCD.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.soCCCD.Name = "soCCCD";
             this.soCCCD.ReadOnly = true;
-            this.soCCCD.Size = new System.Drawing.Size(297, 22);
+            this.soCCCD.Size = new System.Drawing.Size(297, 30);
             this.soCCCD.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 16);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "So CCCD";
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.birth);
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Location = new System.Drawing.Point(6, 170);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(459, 37);
-            this.panel2.TabIndex = 3;
+            this.soCCCD.Text = "  Số CCCD";
+            this.soCCCD.Enter += new System.EventHandler(this.soCCCD_Enter);
             // 
             // birth
             // 
             this.birth.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.birth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.birth.Location = new System.Drawing.Point(157, 7);
+            this.birth.Enabled = false;
+            this.birth.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.birth.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.birth.Location = new System.Drawing.Point(361, 166);
             this.birth.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.birth.Name = "birth";
             this.birth.ReadOnly = true;
-            this.birth.Size = new System.Drawing.Size(297, 22);
+            this.birth.Size = new System.Drawing.Size(297, 30);
             this.birth.TabIndex = 3;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 9);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(69, 16);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Ngay Sinh";
-            // 
-            // panel17
-            // 
-            this.panel17.Controls.Add(this.txtTonGiao);
-            this.panel17.Controls.Add(this.label16);
-            this.panel17.Location = new System.Drawing.Point(6, 252);
-            this.panel17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(459, 37);
-            this.panel17.TabIndex = 0;
+            this.birth.Text = "  Ngày Sinh";
+            this.birth.TextChanged += new System.EventHandler(this.birth_TextChanged);
+            this.birth.Enter += new System.EventHandler(this.birth_Enter);
             // 
             // txtTonGiao
             // 
             this.txtTonGiao.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.txtTonGiao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTonGiao.Location = new System.Drawing.Point(157, 6);
+            this.txtTonGiao.Enabled = false;
+            this.txtTonGiao.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtTonGiao.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.txtTonGiao.Location = new System.Drawing.Point(361, 273);
             this.txtTonGiao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTonGiao.Name = "txtTonGiao";
             this.txtTonGiao.ReadOnly = true;
-            this.txtTonGiao.Size = new System.Drawing.Size(297, 22);
+            this.txtTonGiao.Size = new System.Drawing.Size(297, 30);
             this.txtTonGiao.TabIndex = 2;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(3, 9);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(63, 16);
-            this.label16.TabIndex = 0;
-            this.label16.Text = "Ton Giao";
-            // 
-            // panel18
-            // 
-            this.panel18.Controls.Add(this.txtDanToc);
-            this.panel18.Controls.Add(this.label17);
-            this.panel18.Location = new System.Drawing.Point(6, 211);
-            this.panel18.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(459, 37);
-            this.panel18.TabIndex = 0;
+            this.txtTonGiao.Text = "  Tôn Giáo";
+            this.txtTonGiao.TextChanged += new System.EventHandler(this.txtTonGiao_TextChanged);
+            this.txtTonGiao.Enter += new System.EventHandler(this.txtTonGiao_Enter);
             // 
             // txtDanToc
             // 
             this.txtDanToc.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.txtDanToc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDanToc.Location = new System.Drawing.Point(157, 6);
+            this.txtDanToc.Enabled = false;
+            this.txtDanToc.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtDanToc.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.txtDanToc.Location = new System.Drawing.Point(361, 219);
             this.txtDanToc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDanToc.Name = "txtDanToc";
             this.txtDanToc.ReadOnly = true;
-            this.txtDanToc.Size = new System.Drawing.Size(297, 22);
+            this.txtDanToc.Size = new System.Drawing.Size(297, 30);
             this.txtDanToc.TabIndex = 2;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(3, 9);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(59, 16);
-            this.label17.TabIndex = 0;
-            this.label17.Text = "Dan Toc";
-            // 
-            // panel19
-            // 
-            this.panel19.Controls.Add(this.txtQQ);
-            this.panel19.Controls.Add(this.label18);
-            this.panel19.Location = new System.Drawing.Point(6, 293);
-            this.panel19.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(459, 37);
-            this.panel19.TabIndex = 0;
+            this.txtDanToc.Text = "  Dân Tộc";
+            this.txtDanToc.TextChanged += new System.EventHandler(this.txtDanToc_TextChanged);
+            this.txtDanToc.Enter += new System.EventHandler(this.txtDanToc_Enter);
             // 
             // txtQQ
             // 
             this.txtQQ.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.txtQQ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtQQ.Location = new System.Drawing.Point(157, 6);
+            this.txtQQ.Enabled = false;
+            this.txtQQ.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtQQ.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.txtQQ.Location = new System.Drawing.Point(361, 320);
             this.txtQQ.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtQQ.Name = "txtQQ";
             this.txtQQ.ReadOnly = true;
-            this.txtQQ.Size = new System.Drawing.Size(297, 22);
+            this.txtQQ.Size = new System.Drawing.Size(297, 30);
             this.txtQQ.TabIndex = 2;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(3, 9);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(67, 16);
-            this.label18.TabIndex = 0;
-            this.label18.Text = "Que Quan";
-            // 
-            // panel20
-            // 
-            this.panel20.Controls.Add(this.txtHoTen);
-            this.panel20.Controls.Add(this.label19);
-            this.panel20.Location = new System.Drawing.Point(6, 6);
-            this.panel20.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(459, 37);
-            this.panel20.TabIndex = 0;
+            this.txtQQ.Text = "  Quê Quán";
+            this.txtQQ.TextChanged += new System.EventHandler(this.txtQQ_TextChanged);
+            this.txtQQ.Enter += new System.EventHandler(this.txtQQ_Enter);
             // 
             // txtHoTen
             // 
             this.txtHoTen.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.txtHoTen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtHoTen.Location = new System.Drawing.Point(157, 6);
+            this.txtHoTen.Enabled = false;
+            this.txtHoTen.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtHoTen.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.txtHoTen.Location = new System.Drawing.Point(18, 166);
             this.txtHoTen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.ReadOnly = true;
-            this.txtHoTen.Size = new System.Drawing.Size(297, 22);
+            this.txtHoTen.Size = new System.Drawing.Size(297, 30);
             this.txtHoTen.TabIndex = 2;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(3, 9);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(64, 16);
-            this.label19.TabIndex = 0;
-            this.label19.Text = "Họ và tên";
-            // 
-            // panel21
-            // 
-            this.panel21.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel21.Controls.Add(this.txtTcccd);
-            this.panel21.Controls.Add(this.tim);
-            this.panel21.Controls.Add(this.label20);
-            this.panel21.Controls.Add(this.label21);
-            this.panel21.Location = new System.Drawing.Point(3, 4);
-            this.panel21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(504, 65);
-            this.panel21.TabIndex = 3;
+            this.txtHoTen.Text = "  Họ và tên";
+            this.txtHoTen.Enter += new System.EventHandler(this.txtHoTen_Enter);
             // 
             // txtTcccd
             // 
-            this.txtTcccd.Location = new System.Drawing.Point(105, 23);
+            this.txtTcccd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTcccd.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtTcccd.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.txtTcccd.Location = new System.Drawing.Point(200, 114);
             this.txtTcccd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTcccd.Name = "txtTcccd";
-            this.txtTcccd.Size = new System.Drawing.Size(186, 22);
+            this.txtTcccd.Size = new System.Drawing.Size(297, 30);
             this.txtTcccd.TabIndex = 2;
+            this.txtTcccd.Text = "  CCCD";
+            this.txtTcccd.Enter += new System.EventHandler(this.txtTcccd_Enter);
             // 
             // tim
             // 
-            this.tim.Location = new System.Drawing.Point(315, 23);
+            this.tim.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.tim.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.tim.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.tim.ForeColor = System.Drawing.Color.White;
+            this.tim.Location = new System.Drawing.Point(44, 432);
             this.tim.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tim.Name = "tim";
-            this.tim.Size = new System.Drawing.Size(75, 23);
+            this.tim.Size = new System.Drawing.Size(290, 47);
             this.tim.TabIndex = 1;
-            this.tim.Text = "Tim";
-            this.tim.UseVisualStyleBackColor = true;
+            this.tim.Text = "Tìm";
+            this.tim.UseVisualStyleBackColor = false;
             this.tim.Click += new System.EventHandler(this.tim_Click);
             // 
-            // label20
+            // panel2
             // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(33, 26);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(44, 16);
-            this.label20.TabIndex = 0;
-            this.label20.Text = "CCCD";
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.btndangky);
+            this.panel2.Controls.Add(this.dates);
+            this.panel2.Controls.Add(this.adds);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.tim);
+            this.panel2.Controls.Add(this.txtTcccd);
+            this.panel2.Controls.Add(this.txtQQ);
+            this.panel2.Controls.Add(this.soCCCD);
+            this.panel2.Controls.Add(this.txtTonGiao);
+            this.panel2.Controls.Add(this.IDs);
+            this.panel2.Controls.Add(this.txtDanToc);
+            this.panel2.Controls.Add(this.GioiTinh);
+            this.panel2.Controls.Add(this.birth);
+            this.panel2.Controls.Add(this.txtHoTen);
+            this.panel2.Location = new System.Drawing.Point(10, 10);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(682, 510);
+            this.panel2.TabIndex = 16;
             // 
-            // label21
+            // btndangky
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(4, 4);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(62, 16);
-            this.label21.TabIndex = 0;
-            this.label21.Text = "Tìm kiếm";
+            this.btndangky.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.btndangky.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btndangky.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btndangky.ForeColor = System.Drawing.Color.White;
+            this.btndangky.Location = new System.Drawing.Point(340, 432);
+            this.btndangky.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btndangky.Name = "btndangky";
+            this.btndangky.Size = new System.Drawing.Size(291, 47);
+            this.btndangky.TabIndex = 8;
+            this.btndangky.Text = "Đăng Ký";
+            this.btndangky.UseVisualStyleBackColor = false;
+            this.btndangky.Click += new System.EventHandler(this.btndangky_Click);
+            // 
+            // dates
+            // 
+            this.dates.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dates.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.dates.Enabled = false;
+            this.dates.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.dates.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.dates.Location = new System.Drawing.Point(361, 367);
+            this.dates.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dates.Name = "dates";
+            this.dates.ReadOnly = true;
+            this.dates.Size = new System.Drawing.Size(297, 30);
+            this.dates.TabIndex = 7;
+            this.dates.Text = "  Ngày Cấp";
+            this.dates.Enter += new System.EventHandler(this.dates_Enter);
+            // 
+            // adds
+            // 
+            this.adds.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.adds.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.adds.Enabled = false;
+            this.adds.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.adds.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.adds.Location = new System.Drawing.Point(18, 367);
+            this.adds.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.adds.Name = "adds";
+            this.adds.ReadOnly = true;
+            this.adds.Size = new System.Drawing.Size(297, 30);
+            this.adds.TabIndex = 6;
+            this.adds.Text = "  Nơi Cấp";
+            this.adds.Enter += new System.EventHandler(this.adds_Enter);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label2.Location = new System.Drawing.Point(147, 60);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(407, 26);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Điền Số CCCD Để Tra Khảo Thông Tin";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label1.Location = new System.Drawing.Point(227, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(239, 33);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Thông Tin CCCD";
+            // 
+            // panel3
+            // 
+            this.panel3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel3.BackColor = System.Drawing.Color.Salmon;
+            this.panel3.Controls.Add(this.panel2);
+            this.panel3.Location = new System.Drawing.Point(255, 38);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(705, 534);
+            this.panel3.TabIndex = 17;
             // 
             // FCCCD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1055, 565);
-            this.Controls.Add(this.panel16);
-            this.Controls.Add(this.panel1);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ClientSize = new System.Drawing.Size(1190, 593);
+            this.Controls.Add(this.panel3);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "FCCCD";
-            this.Text = "FCCCD";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel16.ResumeLayout(false);
-            this.panel8.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Thông Tin CCCD";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel17.ResumeLayout(false);
-            this.panel17.PerformLayout();
-            this.panel18.ResumeLayout(false);
-            this.panel18.PerformLayout();
-            this.panel19.ResumeLayout(false);
-            this.panel19.PerformLayout();
-            this.panel20.ResumeLayout(false);
-            this.panel20.PerformLayout();
-            this.panel21.ResumeLayout(false);
-            this.panel21.PerformLayout();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DateTimePicker dTPNgayCap;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtSOCC;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ComboBox add;
-        private System.Windows.Forms.Panel panel16;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox GioiTinh;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox soCCCD;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.TextBox txtTonGiao;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.TextBox txtDanToc;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Panel panel19;
         private System.Windows.Forms.TextBox txtQQ;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Panel panel20;
         private System.Windows.Forms.TextBox txtHoTen;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Panel panel21;
         private System.Windows.Forms.TextBox txtTcccd;
         private System.Windows.Forms.Button tim;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.TextBox IDs;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.TextBox birth;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TextBox dates;
+        private System.Windows.Forms.TextBox adds;
+        private System.Windows.Forms.Button btndangky;
     }
 }

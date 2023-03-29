@@ -97,6 +97,21 @@ namespace QuanLyCongDan.View
             childForm.Show();
             lblTitle.Text = childForm.Text;
         }
+        public void OpenChildForm2(Form childForm, object btnSender)
+        {
+            if (activeForm != null)
+                activeForm.Close();
+            ActivateButton(btnSender);
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            this.pnDesktop.Controls.Add(childForm);
+            this.pnDesktop.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+            lblTitle.Text = childForm.Text;
+        }
 
         private void btnCloseChildForm_Click(object sender, EventArgs e)
         {

@@ -35,7 +35,7 @@ namespace QuanLyCongDan.View
             try
             {
                 cccd = cccdDAO.TimKiem_ID(txtID_Chong.Text);
-                cd = cdDAO.TimKiem(cccd.CD);
+                cd = cdDAO.TimKiem(cccd.IDCD);
                 if(cd.GioiTinh == "Nam")
                 {
                     if (honNhanDAO.TinhTrangHonNhanChong(int.Parse(cd.Id)))
@@ -71,7 +71,7 @@ namespace QuanLyCongDan.View
             try
             {
                 cccd = cccdDAO.TimKiem_ID(txtID_Vo.Text);
-                cd = cdDAO.TimKiem(cccd.CD);
+                cd = cdDAO.TimKiem(cccd.IDCD);
                 if (cd.GioiTinh == "Nữ")
                 {
                     if (honNhanDAO.TinhTrangHonNhanVo(int.Parse(cd.Id)))

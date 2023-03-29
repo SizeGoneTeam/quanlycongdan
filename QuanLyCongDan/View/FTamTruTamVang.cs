@@ -9,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Week2;
 
 namespace QuanLyCongDan
 {
@@ -34,7 +33,12 @@ namespace QuanLyCongDan
         private void HienThiDanhSach()
         {
             cccd = cccdDAO.TimKiem_ID(txtTCCCD.Text);
-            this.Lichsudichuyen.DataSource = ttdao.LayDanhSachLichsu(cccd.IDCD);
+            if(cccd != null)
+            {
+                this.Lichsudichuyen.DataSource = ttdao.LayDanhSachLichsu(cccd.IDCD);
+            }
+            else
+                this.Lichsudichuyen.DataSource = null;
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -98,6 +102,5 @@ namespace QuanLyCongDan
                 tim.PerformClick();
             }
         }
-
     }
 }
