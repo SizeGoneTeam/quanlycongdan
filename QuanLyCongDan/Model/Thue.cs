@@ -8,22 +8,18 @@ namespace QuanLyCongDan.Model
 {
     internal class Thue
     {
-        private string thue;
-        private string id;
+        private string id_thue;
+        private string id_congDan;
         private string maso;
-        private DateTime ngayUp;
 
-        public string IDThue { get => thue; set => thue = value; }
-        public string ID { get => id; set => id = value; }
-        public string Mso { get => maso; set => maso = value; }
-        public DateTime NgayUp { get => ngayUp; set => ngayUp = value; }
+        public string IDThue { get => id_thue; set => id_thue = value; }
+        public string IDCongDan { get => id_congDan; set => id_congDan = value; }
+        public string Maso { get => maso; set => maso = value; }
 
-        public Thue(string thue, string id, string maso, DateTime ngayUp)
+        public Thue(string idCD, string maso)
         {
-            this.thue = thue;
-            this.id = id;
+            this.id_congDan = idCD;
             this.maso = maso;
-            this.ngayUp = ngayUp;
         }
     }
 }

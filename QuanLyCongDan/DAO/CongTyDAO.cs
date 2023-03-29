@@ -1,6 +1,7 @@
 ﻿using QuanLyCongDan.Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,7 @@ namespace QuanLyCongDan.DAO
 
         public void ThemCongTy(CongTy ct)
         {
-            string sqlStr = string.Format("INSERT INTO CongTy(TenCongTy, NgayVao, Luong, TrangThai) VALUES ('{0}', '{1}', {2}, {3})", ct.TenCongTy, ct.NgayVao.ToString("yyyy-MM-dd"), ct.Luong, ct.TrangThai ? 1 : 0);
+            string sqlStr = string.Format("INSERT INTO CongTy(TenCongTy, NgayTao) VALUES ('{0}', '{1}')", ct.TenCongTy, ct.NgayTao.ToString("yyyy-MM-dd"));
             dbConn.ThucThi(sqlStr);
         }
 
@@ -26,8 +27,66 @@ namespace QuanLyCongDan.DAO
 
         public void SuaLuong(CongTy ct)
         {
-            string sqlStr = string.Format("UPDATE CongTy SET Luong = {0} WHERE ID_CongTy = {1}", ct.Luong, ct.Id_CongTy);
+            string sqlStr = string.Format("UPDATE CongTy SET Luong = {0} WHERE ID_CongTy = {1}", ct.TenCongTy, ct.Id_CongTy);
             dbConn.ThucThi(sqlStr);
+        }
+        public DataTable LayDanhSachCongTy()
+        {
+            string sqlStr = string.Format("SELECT * FROM CongTy ORDER BY ID_CongTy DESC");
+            return dbConn.LayDanhSach(sqlStr);
+        }
+
+        public DataTable LayDanhSachCongTyNhanVien()
+        {
+            string sqlStr = string.Format("SELECT * FROM CongTy_NhanVien ORDER BY ID_CongTyNhanVien DESC");
+            return dbConn.LayDanhSach(sqlStr);
+        }
+
+        public DataTable LayDanhSachCongTyNhanVien(CongDan cd)
+        {
+            string sqlStr = string.Format("SELECT * FROM CongTy_NhanVien Where ID_NhanVien = {0} ORDER BY ID_CongTyNhanVien DESC",cd.Id);
+            return dbConn.LayDanhSach(sqlStr);
+        }
+
+        public bool KiemTraCongTyTonTai(CongTy ct)
+        {
+            string sqlStr = string.Format("SELECT * FROM CongTy WHERE TenCongTy = N'{0}'", ct.TenCongTy);
+            DataTable data = dbConn.LayDanhSach(sqlStr);
+            return data.Rows.Count > 0;
+        }
+
+        public void ThemCongTyNhanVien(CongTyNhanVien ct_nv)
+        {
+            string sqlStr = string.Format("INSERT INTO CongTy_NhanVien(ID_CongTy, ID_NhanVien, Luong, NgayVao) VALUES ({0}, {1}, {2}, '{3}')", ct_nv.Id_CongTy, ct_nv.Id_NhanVien, ct_nv.Luong, ct_nv.NgayVao.ToString("yyyy-MM-dd"));
+            dbConn.ThucThi(sqlStr);
+        }
+
+        public CongTy TimKiem(string tenCongTy)
+        {
+            try
+            {
+                string sqlStr = string.Format("SELECT * FROM CongTy WHERE TenCongTy LIKE N'{0}'", tenCongTy);
+                DataTable dt = dbConn.LayDanhSach(sqlStr);
+
+                if (dt != null)
+                {
+                    if (dt.Rows.Count > 0)
+                    {
+                        DataRow row = dt.Rows[0];
+                        return new CongTy(
+                            Convert.ToInt32(row["ID_CongTy"].ToString()),
+                            row["TenCongTy"].ToString(),
+                            Convert.ToDateTime(row["NgayTao"].ToString())
+                        );
+                    }
+                }
+
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

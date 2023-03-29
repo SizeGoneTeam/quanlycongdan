@@ -1,4 +1,5 @@
-﻿using QuanLyCongDan.Model;
+﻿using QuanLyCongDan.DAO;
+using QuanLyCongDan.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,61 +16,36 @@ namespace QuanLyCongDan.View
     {
         Thue thue;
         ThueDAO thueDAO = new ThueDAO();
+        CCCDDAO cccdDAO = new CCCDDAO();
+        CongDanDAO cdDAO = new CongDanDAO();
+        CongDan cd;
+        CCCD cccd;
         public FThue()
         {
             InitializeComponent();
         }
-        private void HienThiDanhSach()
+        private void HienThiLichSuThue(int idCD)
         {
-            this.gvThue.DataSource = thueDAO.LayDanhSachThue();
+            this.gvThue.DataSource = thueDAO.LayLichSuThueTheoIDCongDan(idCD);
         }
         private void FThue_Load(object sender, EventArgs e)
         {
-            HienThiDanhSach();
+
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnXem_Click(object sender, EventArgs e)
         {
-            thue = new Thue(txtIDT.Text, txtID.Text, txtMso.Text, dTPNgayUp.Value.Date);
-            thueDAO.Them(thue);
-            HienThiDanhSach();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            thue = new Thue(txtIDT.Text, txtID.Text, txtMso.Text, dTPNgayUp.Value.Date);
-            thueDAO.Xoa(thue);
-            HienThiDanhSach();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            thue = new Thue(txtIDT.Text, txtID.Text, txtMso.Text, dTPNgayUp.Value.Date);
-            thueDAO.Sua(thue);
-            HienThiDanhSach();
-        }
-        private void gvThue_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
+            try
             {
-                DataGridViewRow row = gvThue.Rows[e.RowIndex];
-                txtIDT.Text = row.Cells[1].Value.ToString();
-                txtID.Text = row.Cells[2].Value.ToString();
-                txtMso.Text = row.Cells[3].Value.ToString();
-                try
-                {
-                    dTPNgayUp.Value = (DateTime)row.Cells[4].Value;
-                }
-                catch
-                {
-                    dTPNgayUp.Value = DateTime.Now;
-                }
+                CCCD cccd = cccdDAO.TimKiem_ID(txtCCCD.Text);
+                CongDan cd = cdDAO.TimKiem(cccd.IDCC);
+                this.gvThue.DataSource = thueDAO.LayLichSuThueTheoIDCongDan(int.Parse(cd.Id));
             }
-        }
+            catch
+            {
 
-        private void FThue_Load_1(object sender, EventArgs e)
-        {
-            HienThiDanhSach();
+            }
+
         }
     }
 }

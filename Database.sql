@@ -112,9 +112,16 @@ CREATE TABLE HonNhan (
 CREATE TABLE CongTy (
     ID_CongTy INT IDENTITY(1,1) PRIMARY KEY,
     TenCongTy nvarchar(100),
-    NgayVao DATE,
+    NgayTao DATE
+);
+
+CREATE TABLE CongTy_NhanVien (
+    ID_CongTyNhanVien INT IDENTITY(1,1) PRIMARY KEY,
+    ID_CongTy INT REFERENCES CongTy(ID_CongTy),
+    ID_NhanVien INT REFERENCES CongDan(ID_CongDan),
 	Luong bigint,
-    TrangThai bit
+	TrangThai BIT,
+    NgayVao DATE
 );
 
 -- Tạo bảng Thuế
@@ -131,6 +138,7 @@ CREATE TABLE LichSuThue (
     ID_CongDan INT REFERENCES CongDan(ID_CongDan),
     ID_Thue INT REFERENCES Thue(ID_Thue),
     NgayNop DATE,
+	NguoiNop nvarchar(100),
     SoTien DECIMAL(18,2)
 );
 
@@ -220,22 +228,28 @@ VALUES
 (8, 7, '2022-09-09', N'Thành phố Hồ Chí Minh', 1),
 (10, 9, '2022-10-10', N'Thành phố Hồ Chí Minh', 1);
 
--- Thêm 3 bản ghi vào bảng CongTy
-INSERT INTO CongTy (TenCongTy, NgayVao, Luong, TrangThai) VALUES 
-('Cong ty ABC', '2020-01-01', 20000000, 1),
-('Cong ty XYZ', '2022-02-02', 25000000, 0),
-('Cong ty DEF', '2019-05-01', 18000000, 1);
+-- Thêm bản ghi vào bảng CongTy
+INSERT INTO CongTy (TenCongTy, NgayTao)
+VALUES ('Công ty ABC', '2020-01-01');
 
--- Thêm 3 bản ghi vào bảng Thue
-INSERT INTO Thue (ID_CongDan) VALUES 
-(1),
-(2),
-(3);
+-- Thêm bản ghi vào bảng CongTy_NhanVien
+INSERT INTO CongTy_NhanVien (ID_CongTy, ID_NhanVien, Luong, NgayVao, TrangThai)
+VALUES (1, 1, 5000000, '2022-01-01', 1),
+       (1, 2, 4500000, '2022-01-02', 1),
+       (1, 3, 4000000, '2022-01-03', 1),
+       (1, 4, 3500000, '2022-01-04', 1);
 
--- Thêm 3 bản ghi vào bảng LichSuThue
-INSERT INTO LichSuThue (ID_CongDan, ID_Thue, NgayNop, SoTien) VALUES 
-(1, 1, '2021-03-01', 5000000),
-(2, 2, '2022-01-01', 7000000),
-(3, 3, '2021-05-15', 6000000);
+-- Thêm bản ghi vào bảng Thue
+INSERT INTO Thue (ID_CongDan)
+VALUES (1),
+       (2),
+       (3),
+       (4);
 
+-- Thêm bản ghi vào bảng LichSuThue
+INSERT INTO LichSuThue (ID_CongDan, ID_Thue, NgayNop, NguoiNop, SoTien)
+VALUES (1, 1, '2022-02-01', 'Công ty ABC', 1000000.50),
+       (2, 2, '2022-02-02', 'Công ty ABC', 1200000.75),
+       (3, 3, '2022-02-03', 'Công ty ABC', 800000.00),
+       (4, 4, '2022-02-04', 'Công ty ABC', 1500000.25);
 
