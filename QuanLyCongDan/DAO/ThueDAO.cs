@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace QuanLyCongDan.DAO
@@ -12,6 +13,19 @@ namespace QuanLyCongDan.DAO
     internal class ThueDAO
     {
         DBconnection dbConn = new DBconnection();
+
+        public void ThemThue(Thue thue)
+        {
+            string sqlStr = string.Format("INSERT INTO Thue(ID_CongDan) VALUES ({0})", thue.IDCongDan);
+            dbConn.ThucThi(sqlStr);
+        }
+
+        public void ThemLichSuThue(LichSuThue lichSuThue)
+        {
+            string sqlStr = string.Format("INSERT INTO LichSuThue(ID_CongDan, ID_Thue, NgayNop, NguoiNop, SoTien) VALUES ({0}, {1}, '{2}', '{3}', {4})",
+                                          lichSuThue.ID_CongDan, lichSuThue.ID_Thue, lichSuThue.NgayNop, lichSuThue.NguoiNop, lichSuThue.SoTien);
+            dbConn.ThucThi(sqlStr);
+        }
 
         public Thue TimKiem_ID(int id)
         {
@@ -26,8 +40,8 @@ namespace QuanLyCongDan.DAO
                     {
                         DataRow row = dt.Rows[0];
                         return new Thue(
-                            row["ID_Thue"].ToString(),
-                            row["ID_CongDan"].ToString()
+                            int.Parse(row["ID_Thue"].ToString()),
+                            int.Parse(row["ID_CongDan"].ToString())
                         );
                     }
                 }

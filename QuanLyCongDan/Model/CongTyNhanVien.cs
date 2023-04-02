@@ -11,10 +11,10 @@ namespace QuanLyCongDan.Model
         private int id_CongTyNhanVien;
         private int id_CongTy;
         private int id_NhanVien;
-        private long luong;
+        private decimal luong;
         private DateTime ngayVao;
 
-        public CongTyNhanVien(int idct, int idnv, long lg)
+        public CongTyNhanVien(int idct, int idnv, decimal lg)
         {
             id_CongTy = idct;
             id_NhanVien = idnv;
@@ -25,7 +25,7 @@ namespace QuanLyCongDan.Model
         public int Id_CongTyNhanVien { get => id_CongTyNhanVien; }
         public int Id_CongTy { get => id_CongTy; }
         public int Id_NhanVien { get => id_NhanVien; }
-        public long Luong { get => luong; set => luong = value; }
+        public decimal Luong { get => luong; set => luong = value; }
         public DateTime NgayVao { get => ngayVao; set => ngayVao = value; }
 
         public override string ToString()

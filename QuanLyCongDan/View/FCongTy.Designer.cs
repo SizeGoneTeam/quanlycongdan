@@ -63,6 +63,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(446, 288);
             this.panel1.TabIndex = 21;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // btnThemNhanVien
             // 
@@ -83,6 +84,7 @@
             this.btnXemCongTy.TabIndex = 17;
             this.btnXemCongTy.Text = "Xem";
             this.btnXemCongTy.UseVisualStyleBackColor = true;
+            this.btnXemCongTy.Click += new System.EventHandler(this.btnXemCongTy_Click);
             // 
             // btnXemCCCD
             // 
@@ -161,27 +163,27 @@
             // 
             // btnSuaLuong
             // 
-            this.btnSuaLuong.Location = new System.Drawing.Point(187, 347);
+            this.btnSuaLuong.Location = new System.Drawing.Point(185, 349);
             this.btnSuaLuong.Name = "btnSuaLuong";
-            this.btnSuaLuong.Size = new System.Drawing.Size(84, 35);
+            this.btnSuaLuong.Size = new System.Drawing.Size(129, 35);
             this.btnSuaLuong.TabIndex = 24;
             this.btnSuaLuong.Text = "Sửa Lương";
             this.btnSuaLuong.UseVisualStyleBackColor = true;
             // 
             // btnNghiViec
             // 
-            this.btnNghiViec.Location = new System.Drawing.Point(351, 347);
+            this.btnNghiViec.Location = new System.Drawing.Point(342, 347);
             this.btnNghiViec.Name = "btnNghiViec";
-            this.btnNghiViec.Size = new System.Drawing.Size(84, 35);
+            this.btnNghiViec.Size = new System.Drawing.Size(129, 35);
             this.btnNghiViec.TabIndex = 23;
             this.btnNghiViec.Text = "Nghỉ việc";
             this.btnNghiViec.UseVisualStyleBackColor = true;
             // 
             // btnTraLuong
             // 
-            this.btnTraLuong.Location = new System.Drawing.Point(45, 347);
+            this.btnTraLuong.Location = new System.Drawing.Point(28, 351);
             this.btnTraLuong.Name = "btnTraLuong";
-            this.btnTraLuong.Size = new System.Drawing.Size(84, 31);
+            this.btnTraLuong.Size = new System.Drawing.Size(129, 31);
             this.btnTraLuong.TabIndex = 25;
             this.btnTraLuong.Text = "Trả Lương";
             this.btnTraLuong.UseVisualStyleBackColor = true;
@@ -195,14 +197,14 @@
             this.gvCongTy.ReadOnly = true;
             this.gvCongTy.RowHeadersWidth = 51;
             this.gvCongTy.RowTemplate.Height = 24;
-            this.gvCongTy.Size = new System.Drawing.Size(591, 288);
+            this.gvCongTy.Size = new System.Drawing.Size(802, 288);
             this.gvCongTy.TabIndex = 26;
             // 
             // FCongTy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1095, 474);
+            this.ClientSize = new System.Drawing.Size(1331, 474);
             this.Controls.Add(this.gvCongTy);
             this.Controls.Add(this.btnTraLuong);
             this.Controls.Add(this.btnSuaLuong);
