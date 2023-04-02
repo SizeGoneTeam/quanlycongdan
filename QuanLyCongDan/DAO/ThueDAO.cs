@@ -56,7 +56,7 @@ namespace QuanLyCongDan.DAO
 
         public DataTable LayLichSuThueTheoIDCongDan(int id_congdan)
         {
-            string sqlStr = string.Format("SELECT * FROM LichSuThue WHERE ID_CongDan = '{0}'", id_congdan);
+            string sqlStr = string.Format("SELECT * FROM LichSuThue WHERE ID_CongDan = '{0}' ORDER BY ID_LichSuThue DESC", id_congdan);
             return dbConn.LayDanhSach(sqlStr);
         }
     }

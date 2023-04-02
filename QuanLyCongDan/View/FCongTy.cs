@@ -87,21 +87,19 @@ namespace QuanLyCongDan.View
         {
             if (string.IsNullOrWhiteSpace(txtCongTy.Text))
             {
-                TatButton();
+                btnThemCongTy.Enabled = false;
             }
             else
             {
                 KiemTraThemNhanVien();
                 try
                 {
-                    ct = ctDAO.LayCongTyBangTen(txtCongTy.Text);
-                    ctDAO.LayDanhSachCongTyNhanVien(ct);
-                    btnThemCongTy.Enabled = false;
-                    btnXemCongTy.Enabled = true;
+                    if(KiemTraCongTy(txtCongTy.Text)) btnThemCongTy.Enabled = false;
+                    else btnThemCongTy.Enabled=true;
                 }
                 catch
                 {
-                    btnThemCongTy.Enabled = true;
+                    btnThemCongTy.Enabled = false;
                 }
 
             }
@@ -114,8 +112,6 @@ namespace QuanLyCongDan.View
             btnNghiViec.Enabled = false;
             btnSuaLuong.Enabled = false;
             btnTraLuong.Enabled = false;
-            btnXemCongTy.Enabled = false;
-            btnXemCCCD.Enabled = false;
         }
 
         private void btnThemNhanVien_Click(object sender, EventArgs e)
@@ -154,8 +150,19 @@ namespace QuanLyCongDan.View
             if (KiemTraCCCDTonTai()) btnXemCCCD.Enabled = true;
             else btnXemCCCD.Enabled = false;
 
-            if (KiemTraCCCDDiLam()) btnTraLuong.Enabled = true;
-            else btnTraLuong.Enabled = false;
+            if (KiemTraCCCDDiLam())
+            {
+                btnTraLuong.Enabled = true;
+                btnSuaLuong.Enabled=true;
+                btnNghiViec.Enabled = true;
+            }
+
+            else
+            {
+                btnTraLuong.Enabled = false;
+                btnSuaLuong.Enabled = false;
+                btnNghiViec.Enabled = false;
+            }
 
         }
 
@@ -166,11 +173,9 @@ namespace QuanLyCongDan.View
                 cccd = cccdDAO.TimKiem_ID(txtCCCD.Text);
                 cd = cdDAO.TimKiem(cccd.IDCC);
                 this.gvCongTy.DataSource = ctDAO.LayDanhSachCongTyNhanVien(cd);
-                DataGridViewRow firstRow = gvCongTy.Rows[0];
-                ct = ctDAO.LayCongTy(int.Parse(firstRow.Cells["ID_CongTy"].Value.ToString()));
+                ctnv = ctDAO.LayCongTyNhanVienDangLam(int.Parse(cd.Id));
+                ct = ctDAO.LayCongTy(ctnv.Id_CongTy);
                 txtCongTy.Text = ct.TenCongTy;
-                btnThemCongTy.Enabled = false;
-                btnThemNhanVien.Enabled = false;
 
             }
             catch
@@ -218,11 +223,11 @@ namespace QuanLyCongDan.View
 
         }
 
-        private bool KiemTraCongTy()
+        private bool KiemTraCongTy(String tenCongTy)
         {
             try
             {
-                ct = ctDAO.TimKiem(txtCongTy.Text);
+                ct = ctDAO.TimKiem(tenCongTy);
                 return ct != null;
             }
             catch
@@ -234,14 +239,14 @@ namespace QuanLyCongDan.View
 
         private void KiemTraThemNhanVien()
         {
-            if (!string.IsNullOrWhiteSpace(txtCongTy.Text) && !KiemTraCCCDDiLam() && KiemTraCongTy() && !string.IsNullOrWhiteSpace(txtLuong.Text)) btnThemNhanVien.Enabled = true;
+            if (!string.IsNullOrWhiteSpace(txtCongTy.Text) && !KiemTraCCCDDiLam() && KiemTraCongTy(txtCongTy.Text) && !string.IsNullOrWhiteSpace(txtLuong.Text)) btnThemNhanVien.Enabled = true;
             else btnThemNhanVien.Enabled = false;
         }
 
         private void txtLuong_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(txtCongTy.Text) && !KiemTraCCCDDiLam() && KiemTraCongTy() && !string.IsNullOrWhiteSpace(txtLuong.Text)) btnThemNhanVien.Enabled = true;
-            else btnThemNhanVien.Enabled = false;
+            KiemTraThemNhanVien();
+
         }
 
         private void btnThemNhanVien_EnabledChanged(object sender, EventArgs e)
@@ -255,9 +260,6 @@ namespace QuanLyCongDan.View
             {
                 ct = ctDAO.LayCongTyBangTen(txtCongTy.Text);
                 this.gvCongTy.DataSource = ctDAO.LayDanhSachCongTyNhanVien(ct);
-                btnThemCongTy.Enabled = false;
-                btnThemNhanVien.Enabled = false;
-
             }
             catch
             {
@@ -268,6 +270,26 @@ namespace QuanLyCongDan.View
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnSuaLuong_Click(object sender, EventArgs e)
+        {
+            cccd = cccdDAO.TimKiem_ID(txtCCCD.Text);
+            cd = cdDAO.TimKiem(cccd.IDCC);
+            ctnv = ctDAO.LayCongTyNhanVienDangLam(int.Parse(cd.Id));
+            ctnv.Luong = decimal.Parse(txtLuong.Text);
+            ctDAO.SuaLuong(ctnv);
+            this.gvCongTy.DataSource = ctDAO.LayDanhSachCongTyNhanVien(cd);
+        }
+
+        private void btnNghiViec_Click(object sender, EventArgs e)
+        {
+            cccd = cccdDAO.TimKiem_ID(txtCCCD.Text);
+            cd = cdDAO.TimKiem(cccd.IDCC);
+            ctnv = ctDAO.LayCongTyNhanVienDangLam(int.Parse(cd.Id));
+            ctDAO.NghiViec(ctnv);
+            this.gvCongTy.DataSource = ctDAO.LayDanhSachCongTyNhanVien(cd);
+            TatButton();
         }
     }
 }

@@ -169,6 +169,7 @@
             this.btnSuaLuong.TabIndex = 24;
             this.btnSuaLuong.Text = "Sửa Lương";
             this.btnSuaLuong.UseVisualStyleBackColor = true;
+            this.btnSuaLuong.Click += new System.EventHandler(this.btnSuaLuong_Click);
             // 
             // btnNghiViec
             // 
@@ -178,6 +179,7 @@
             this.btnNghiViec.TabIndex = 23;
             this.btnNghiViec.Text = "Nghỉ việc";
             this.btnNghiViec.UseVisualStyleBackColor = true;
+            this.btnNghiViec.Click += new System.EventHandler(this.btnNghiViec_Click);
             // 
             // btnTraLuong
             // 

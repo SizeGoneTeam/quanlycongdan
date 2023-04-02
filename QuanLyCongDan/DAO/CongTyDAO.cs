@@ -75,6 +75,19 @@ namespace QuanLyCongDan.DAO
             dbConn.ThucThi(sqlStr);
         }
 
+        public void SuaLuong(CongTyNhanVien ct_nv)
+        {
+            string sqlStr = string.Format("UPDATE CongTy_NhanVien SET Luong = {0} WHERE ID_NhanVien = {1} and TrangThai = 1", ct_nv.Luong, ct_nv.Id_NhanVien);
+            dbConn.ThucThi(sqlStr);
+        }
+
+        public void NghiViec(CongTyNhanVien ct_nv)
+        {
+            string sqlStr = string.Format("UPDATE CongTy_NhanVien SET TrangThai = 0 WHERE ID_NhanVien = {0}", ct_nv.Id_NhanVien);
+            dbConn.ThucThi(sqlStr);
+        }
+
+
         public CongTy LayCongTy(int idCongTy)
         {
             try
