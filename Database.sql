@@ -119,7 +119,7 @@ CREATE TABLE CongTy_NhanVien (
     ID_CongTyNhanVien INT IDENTITY(1,1) PRIMARY KEY,
     ID_CongTy INT REFERENCES CongTy(ID_CongTy),
     ID_NhanVien INT REFERENCES CongDan(ID_CongDan),
-	Luong bigint,
+	Luong DECIMAL(18,2),
 	TrangThai BIT,
     NgayVao DATE
 );

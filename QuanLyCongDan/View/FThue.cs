@@ -14,12 +14,11 @@ namespace QuanLyCongDan.View
 {
     public partial class FThue : Form
     {
-        Thue thue;
         ThueDAO thueDAO = new ThueDAO();
         CCCDDAO cccdDAO = new CCCDDAO();
         CongDanDAO cdDAO = new CongDanDAO();
-        CongDan cd;
-        CCCD cccd;
+        CongTy ct;
+        CongTyDAO ctDAO = new CongTyDAO();
         public FThue()
         {
             InitializeComponent();
@@ -33,7 +32,7 @@ namespace QuanLyCongDan.View
 
         }
 
-        private void btnXem_Click(object sender, EventArgs e)
+        private void btnCCCD_Click(object sender, EventArgs e)
         {
             try
             {
@@ -45,7 +44,19 @@ namespace QuanLyCongDan.View
             {
 
             }
+        }
 
+        private void btnCongTy_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ct = ctDAO.LayCongTyBangTen(txtCongTy.Text);
+                this.gvThue.DataSource = thueDAO.LayLichSuThueTheoCongTY(ct.TenCongTy);
+            }
+            catch
+            {
+
+            }
         }
     }
 }
