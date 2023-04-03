@@ -29,8 +29,11 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCCCD = new System.Windows.Forms.Button();
+            this.lblCongTy = new System.Windows.Forms.Label();
+            this.txtCongTy = new System.Windows.Forms.TextBox();
             this.lblCCCD = new System.Windows.Forms.Label();
-            this.btnXem = new System.Windows.Forms.Button();
+            this.btnCongTy = new System.Windows.Forms.Button();
             this.txtCCCD = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtIDT = new System.Windows.Forms.TextBox();
@@ -41,8 +44,11 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnCCCD);
+            this.panel1.Controls.Add(this.lblCongTy);
+            this.panel1.Controls.Add(this.txtCongTy);
             this.panel1.Controls.Add(this.lblCCCD);
-            this.panel1.Controls.Add(this.btnXem);
+            this.panel1.Controls.Add(this.btnCongTy);
             this.panel1.Controls.Add(this.txtCCCD);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.txtIDT);
@@ -50,6 +56,34 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(405, 288);
             this.panel1.TabIndex = 20;
+            // 
+            // btnCCCD
+            // 
+            this.btnCCCD.Location = new System.Drawing.Point(19, 239);
+            this.btnCCCD.Name = "btnCCCD";
+            this.btnCCCD.Size = new System.Drawing.Size(104, 34);
+            this.btnCCCD.TabIndex = 21;
+            this.btnCCCD.Text = "Xem CCCD";
+            this.btnCCCD.UseVisualStyleBackColor = true;
+            this.btnCCCD.Click += new System.EventHandler(this.btnCCCD_Click);
+            // 
+            // lblCongTy
+            // 
+            this.lblCongTy.AllowDrop = true;
+            this.lblCongTy.AutoSize = true;
+            this.lblCongTy.Location = new System.Drawing.Point(16, 73);
+            this.lblCongTy.Name = "lblCongTy";
+            this.lblCongTy.Size = new System.Drawing.Size(58, 16);
+            this.lblCongTy.TabIndex = 20;
+            this.lblCongTy.Text = "Công Ty";
+            // 
+            // txtCongTy
+            // 
+            this.txtCongTy.AllowDrop = true;
+            this.txtCongTy.Location = new System.Drawing.Point(115, 73);
+            this.txtCongTy.Name = "txtCongTy";
+            this.txtCongTy.Size = new System.Drawing.Size(230, 22);
+            this.txtCongTy.TabIndex = 21;
             // 
             // lblCCCD
             // 
@@ -61,15 +95,15 @@
             this.lblCCCD.TabIndex = 13;
             this.lblCCCD.Text = "CCCD";
             // 
-            // btnXem
+            // btnCongTy
             // 
-            this.btnXem.Location = new System.Drawing.Point(241, 239);
-            this.btnXem.Name = "btnXem";
-            this.btnXem.Size = new System.Drawing.Size(104, 34);
-            this.btnXem.TabIndex = 19;
-            this.btnXem.Text = "Xem";
-            this.btnXem.UseVisualStyleBackColor = true;
-            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
+            this.btnCongTy.Location = new System.Drawing.Point(241, 239);
+            this.btnCongTy.Name = "btnCongTy";
+            this.btnCongTy.Size = new System.Drawing.Size(141, 34);
+            this.btnCongTy.TabIndex = 19;
+            this.btnCongTy.Text = "Xem Công Ty";
+            this.btnCongTy.UseVisualStyleBackColor = true;
+            this.btnCongTy.Click += new System.EventHandler(this.btnCongTy_Click);
             // 
             // txtCCCD
             // 
@@ -82,7 +116,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 80);
+            this.label3.Location = new System.Drawing.Point(16, 111);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 16);
             this.label3.TabIndex = 6;
@@ -90,7 +124,7 @@
             // 
             // txtIDT
             // 
-            this.txtIDT.Location = new System.Drawing.Point(115, 80);
+            this.txtIDT.Location = new System.Drawing.Point(115, 111);
             this.txtIDT.Name = "txtIDT";
             this.txtIDT.ReadOnly = true;
             this.txtIDT.Size = new System.Drawing.Size(230, 22);
@@ -130,7 +164,10 @@
         private System.Windows.Forms.TextBox txtCCCD;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtIDT;
-        private System.Windows.Forms.Button btnXem;
+        private System.Windows.Forms.Button btnCongTy;
         private System.Windows.Forms.DataGridView gvThue;
+        private System.Windows.Forms.Label lblCongTy;
+        private System.Windows.Forms.TextBox txtCongTy;
+        private System.Windows.Forms.Button btnCCCD;
     }
 }
