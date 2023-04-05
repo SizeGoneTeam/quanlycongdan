@@ -71,7 +71,8 @@ namespace QuanLyCongDan.View
 
         private void btnCongTy_Click(object sender, EventArgs e)
         {
-            
+            FCongTy f = new FCongTy();
+            f.Show();
         }
     }
 }
