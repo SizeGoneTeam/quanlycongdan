@@ -59,15 +59,15 @@
             this.panel1.Controls.Add(this.txtLuong);
             this.panel1.Controls.Add(this.lblLuong);
             this.panel1.Controls.Add(this.txtCongTy);
-            this.panel1.Location = new System.Drawing.Point(28, 29);
+            this.panel1.Location = new System.Drawing.Point(228, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(446, 288);
+            this.panel1.Size = new System.Drawing.Size(446, 217);
             this.panel1.TabIndex = 21;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // btnThemNhanVien
             // 
-            this.btnThemNhanVien.Location = new System.Drawing.Point(273, 233);
+            this.btnThemNhanVien.Location = new System.Drawing.Point(286, 173);
             this.btnThemNhanVien.Name = "btnThemNhanVien";
             this.btnThemNhanVien.Size = new System.Drawing.Size(143, 35);
             this.btnThemNhanVien.TabIndex = 27;
@@ -108,7 +108,7 @@
             // 
             // btnThemCongTy
             // 
-            this.btnThemCongTy.Location = new System.Drawing.Point(19, 233);
+            this.btnThemCongTy.Location = new System.Drawing.Point(32, 173);
             this.btnThemCongTy.Name = "btnThemCongTy";
             this.btnThemCongTy.Size = new System.Drawing.Size(144, 35);
             this.btnThemCongTy.TabIndex = 22;
@@ -163,7 +163,7 @@
             // 
             // btnSuaLuong
             // 
-            this.btnSuaLuong.Location = new System.Drawing.Point(185, 349);
+            this.btnSuaLuong.Location = new System.Drawing.Point(388, 544);
             this.btnSuaLuong.Name = "btnSuaLuong";
             this.btnSuaLuong.Size = new System.Drawing.Size(129, 35);
             this.btnSuaLuong.TabIndex = 24;
@@ -173,7 +173,7 @@
             // 
             // btnNghiViec
             // 
-            this.btnNghiViec.Location = new System.Drawing.Point(342, 347);
+            this.btnNghiViec.Location = new System.Drawing.Point(545, 542);
             this.btnNghiViec.Name = "btnNghiViec";
             this.btnNghiViec.Size = new System.Drawing.Size(129, 35);
             this.btnNghiViec.TabIndex = 23;
@@ -183,7 +183,7 @@
             // 
             // btnTraLuong
             // 
-            this.btnTraLuong.Location = new System.Drawing.Point(28, 351);
+            this.btnTraLuong.Location = new System.Drawing.Point(231, 546);
             this.btnTraLuong.Name = "btnTraLuong";
             this.btnTraLuong.Size = new System.Drawing.Size(129, 31);
             this.btnTraLuong.TabIndex = 25;
@@ -194,7 +194,7 @@
             // gvCongTy
             // 
             this.gvCongTy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gvCongTy.Location = new System.Drawing.Point(492, 29);
+            this.gvCongTy.Location = new System.Drawing.Point(55, 235);
             this.gvCongTy.Name = "gvCongTy";
             this.gvCongTy.ReadOnly = true;
             this.gvCongTy.RowHeadersWidth = 51;
@@ -206,7 +206,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1331, 474);
+            this.ClientSize = new System.Drawing.Size(1059, 589);
             this.Controls.Add(this.gvCongTy);
             this.Controls.Add(this.btnTraLuong);
             this.Controls.Add(this.btnSuaLuong);
