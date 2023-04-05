@@ -128,27 +128,6 @@ namespace QuanLyCongDan
                 txtQQ.ForeColor = Color.Black;
             }
         }
-
-        private void birth_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtTonGiao_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtDanToc_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtQQ_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void adds_Enter(object sender, EventArgs e)
         {
             if (adds.Text == "  Nơi Cấp")
@@ -166,12 +145,72 @@ namespace QuanLyCongDan
                 dates.ForeColor = Color.Black;
             }
         }
-
-        private void btndangky_Click(object sender, EventArgs e)
+        private void txtSOCC_Enter(object sender, EventArgs e)
         {
-            FDKCCCD dk =new FDKCCCD();
-            FMainMenu f =new FMainMenu();
-            f.OpenChildForm2(dk, sender);
+            if (txtSOCC.Text == "  Số CCCD")
+            {
+                txtSOCC.Text = "";
+                txtSOCC.ForeColor = Color.Black;
+            }
+        }
+
+        private void add_Enter(object sender, EventArgs e)
+        {
+            if (add.Text == "  Nơi Cấp")
+            {
+                add.Text = "";
+                add.ForeColor = Color.Black;
+            }
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            cccd = cccdDAO.TimKiem_ID(txtSOCC.Text);
+            cccd = new CCCD(cccd.IDCD,txtSOCC.Text,add.Text,dTPNgayCap.Value.Date);
+            if (String.IsNullOrEmpty(txtIDCD.Text) ||
+                String.IsNullOrEmpty(txtSOCC.Text) ||
+                String.IsNullOrEmpty(add.Text))
+            {
+                MessageBox.Show("Them That bai");
+            }
+            else
+            {
+                cccdDAO.Them(cccd);
+            }
+        }
+        private void txtIDCD_Enter(object sender, EventArgs e)
+        {
+            if (txtIDCD.Text == "  ID Công Dân")
+            {
+                txtIDCD.Text = "";
+                txtIDCD.ForeColor = Color.Black;
+            }
+        }
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtSOCC.Text) ||
+                String.IsNullOrEmpty(add.Text))
+            {
+                MessageBox.Show("Sua That bai");
+            }
+            else
+            {
+                cccd = new CCCD(txtIDCD.Text, txtSOCC.Text, add.Text, dTPNgayCap.Value.Date);
+                cccdDAO.Sua(cccd);
+            }
+        }
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            cccd = cccdDAO.TimKiem_ID(txtSOCC.Text);
+            if (cccd == null)
+            {
+                cccd = new CCCD(txtIDCD.Text, txtSOCC.Text, add.Text, dTPNgayCap.Value.Date);
+                cccdDAO.Xoa(cccd);
+            }
+            else
+            {
+                cccd = new CCCD(cccd.IDCD, txtSOCC.Text, add.Text, dTPNgayCap.Value.Date);
+                cccdDAO.Xoa(cccd);
+            }
         }
     }
 }

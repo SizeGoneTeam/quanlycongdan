@@ -53,6 +53,7 @@ namespace QuanLyCongDan
             else
             {
                 ttdao.Them(tt);
+                HienThiDanhSach();
             }
         }
 
@@ -76,6 +77,7 @@ namespace QuanLyCongDan
                 cccd = cccdDAO.TimKiem_ID(txtsoCC.Text);
                 tt = new TamTruTamVang(cccd.IDCD, Come.Value.Date, Leave.Value.Date, txtAdd.Text, txtLido.Text);
                 ttdao.Sua(tt);
+                HienThiDanhSach();
             }
         }
         private void tim_Click(object sender, EventArgs e)
@@ -94,12 +96,42 @@ namespace QuanLyCongDan
 
         private void FTamTruTamVang_Load(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtTCCCD.Text))
-                HienThiDanhSach();
-            else
+            HienThiDanhSach();
+        }
+
+        private void txtTCCCD_Enter(object sender, EventArgs e)
+        {
+            if (txtTCCCD.Text == "  CCCD")
             {
-                HienThiDanhSach();
-                tim.PerformClick();
+                txtTCCCD.Text = "";
+                txtTCCCD.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtsoCC_Enter(object sender, EventArgs e)
+        {
+            if (txtsoCC.Text == "  CCCD")
+            {
+                txtsoCC.Text = "";
+                txtsoCC.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtAdd_Enter(object sender, EventArgs e)
+        {
+            if (txtAdd.Text == "  Địa Chỉ")
+            {
+                txtAdd.Text = "";
+                txtAdd.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtLido_Enter(object sender, EventArgs e)
+        {
+            if (txtLido.Text == "  Lí Do")
+            {
+                txtLido.Text = "";
+                txtLido.ForeColor = Color.Black;
             }
         }
     }
