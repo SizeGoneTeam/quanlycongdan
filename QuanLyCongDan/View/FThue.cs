@@ -37,7 +37,7 @@ namespace QuanLyCongDan.View
             try
             {
                 CCCD cccd = cccdDAO.TimKiem_ID(txtCCCD.Text);
-                CongDan cd = cdDAO.TimKiem(cccd.IDCC);
+                CongDan cd = cdDAO.TimKiem(cccd.IDCD);
                 this.gvThue.DataSource = thueDAO.LayLichSuThueTheoIDCongDan(int.Parse(cd.Id));
             }
             catch
@@ -56,6 +56,33 @@ namespace QuanLyCongDan.View
             catch
             {
 
+            }
+        }
+
+        private void txtCCCD_Enter(object sender, EventArgs e)
+        {
+            if (txtCCCD.Text == "  CCCD")
+            {
+                txtCCCD.Text = "";
+                txtCCCD.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtCongTy_Enter(object sender, EventArgs e)
+        {
+            if (txtCongTy.Text == "  Tên Công Ty")
+            {
+                txtCongTy.Text = "";
+                txtCongTy.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtIDT_Enter(object sender, EventArgs e)
+        {
+            if (txtIDT.Text == "  ID Thuế")
+            {
+                txtIDT.Text = "";
+                txtIDT.ForeColor = Color.Black;
             }
         }
     }
