@@ -46,8 +46,8 @@ namespace QuanLyCongDan.DAO
                             row["ID_CCCD"].ToString(),
                             row["ID_CongDan"].ToString(),
                             row["NoiCap"].ToString(),
-                            Convert.ToDateTime(row["NgayCap"].ToString()),
-                            row["SoCCCD"].ToString()
+                            row["SoCCCD"].ToString(),
+                            Convert.ToDateTime(row["NgayCap"].ToString())
                         );
                     }
                 }

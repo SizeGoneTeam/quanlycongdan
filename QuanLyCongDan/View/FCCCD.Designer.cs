@@ -346,8 +346,8 @@
             this.add.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.add.FormattingEnabled = true;
             this.add.Items.AddRange(new object[] {
-            "Cuc Canh sat quan ly hanh chinh ve trat tu xa hoi.",
-            "Cuc Canh sat ĐKQL cu tru va DLQG ve dan cu."});
+            "Cục Cảnh Sát Quản Lý Hành Chính Về Trật Tự Xã Hội.",
+            "Cục Cảnh Sát ĐKQL Cư Trú Và DLQG Về Dân Cư."});
             this.add.Location = new System.Drawing.Point(91, 272);
             this.add.Name = "add";
             this.add.Size = new System.Drawing.Size(362, 31);

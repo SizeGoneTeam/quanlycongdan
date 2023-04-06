@@ -238,3 +238,4 @@ INSERT INTO LichSuThue (ID_CongDan, ID_Thue, NgayNop, SoTien) VALUES
 (2, 2, '2022-01-01', 7000000),
 (3, 3, '2021-05-15', 6000000);
 
+select * from CCCD

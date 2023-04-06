@@ -8,25 +8,28 @@ namespace QuanLyCongDan.Model
 {
     internal class CCCD
     {
+        private string idcc;
         private string idcd;
         private String socc;
         private String add;
         private DateTime ngayCap;
 
+        public string IDCC { get => idcc; set => idcc = value; }
         public string IDCD { get => idcd; set => idcd = value; }
         public string SoCC { get => socc; set => socc = value; }
         public String Add { get => add; set => add = value; }
         public DateTime NgayCap { get => ngayCap; set => ngayCap = value; }
 
-        public CCCD (string idcd, string socc, string add, DateTime ngayCap)
+        public CCCD (string idcc,string idcd, string socc, string add, DateTime ngayCap)
         {
+            this.idcc = idcc;
             this.idcd = idcd;
             this.socc = socc;
             this.add = add;
             this.ngayCap = ngayCap;
         }
 
-        public CCCD(string idcd, string socc, string add, DateTime ngayCap, string soCCCD)
+        public CCCD(string idcd, string socc, string add, DateTime ngayCap)
         {
             this.idcd = idcd;
             this.socc = socc;

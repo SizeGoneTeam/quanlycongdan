@@ -164,8 +164,6 @@ namespace QuanLyCongDan
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            cccd = cccdDAO.TimKiem_ID(txtSOCC.Text);
-            cccd = new CCCD(cccd.IDCD,txtSOCC.Text,add.Text,dTPNgayCap.Value.Date);
             if (String.IsNullOrEmpty(txtIDCD.Text) ||
                 String.IsNullOrEmpty(txtSOCC.Text) ||
                 String.IsNullOrEmpty(add.Text))
@@ -174,6 +172,7 @@ namespace QuanLyCongDan
             }
             else
             {
+                cccd = new CCCD(txtIDCD.Text, txtSOCC.Text, add.Text, dTPNgayCap.Value.Date);
                 cccdDAO.Them(cccd);
             }
         }
