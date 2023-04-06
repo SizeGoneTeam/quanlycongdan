@@ -291,5 +291,32 @@ namespace QuanLyCongDan.View
             this.gvCongTy.DataSource = ctDAO.LayDanhSachCongTyNhanVien(cd);
             TatButton();
         }
+
+        private void txtCCCD_Enter(object sender, EventArgs e)
+        {
+            if (txtCCCD.Text == "  CCCD")
+            {
+                txtCCCD.Text = "";
+                txtCCCD.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtCongTy_Enter(object sender, EventArgs e)
+        {
+            if (txtCongTy.Text == "  Tên Công Ty")
+            {
+                txtCongTy.Text = "";
+                txtCongTy.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtLuong_Enter(object sender, EventArgs e)
+        {
+            if (txtLuong.Text == "  Lương")
+            {
+                txtLuong.Text = "";
+                txtLuong.ForeColor = Color.Black;
+            }
+        }
     }
 }

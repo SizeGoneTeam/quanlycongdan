@@ -192,5 +192,10 @@ namespace QuanLyCongDan.View
             honNhanDAO.LyHon(lblTK_IdChong_txt.Text,lblTK_IdVo_txt.Text);
             TimKiemHonNhan(int.Parse(txtIdHonNhan.Text));
         }
+
+        private void FHonNhan_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

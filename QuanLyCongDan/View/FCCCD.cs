@@ -43,10 +43,10 @@ namespace QuanLyCongDan
                     dates.Text = cccd.NgayCap.Date.ToString();
                 }
                 else
-                    MessageBox.Show("Xin Nhập Số CCCD");
+                    MessageBox.Show("Số CCCD Sai, Xin Nhập Lại");
             }
             else
-                MessageBox.Show("Xin Nhập Số CCCD");
+                MessageBox.Show("Số CCCD Sai, Xin Nhập Lại");
         }
         private void txtTcccd_Enter(object sender, EventArgs e)
         {
@@ -164,11 +164,11 @@ namespace QuanLyCongDan
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txtIDCD.Text) ||
-                String.IsNullOrEmpty(txtSOCC.Text) ||
-                String.IsNullOrEmpty(add.Text))
+            if (txtIDCD.Text =="  ID Công Dân" ||
+                txtSOCC.Text == "  Số CCCD" ||
+                add.Text == "  Địa Chỉ")
             {
-                MessageBox.Show("Them That bai");
+                MessageBox.Show("Hãy Điền Thông Tin");
             }
             else
             {
@@ -186,10 +186,11 @@ namespace QuanLyCongDan
         }
         private void button3_Click_1(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txtSOCC.Text) ||
-                String.IsNullOrEmpty(add.Text))
+            if (txtIDCD.Text == "  ID Công Dân" ||
+                txtSOCC.Text == "  Số CCCD" ||
+                add.Text == "  Địa Chỉ")
             {
-                MessageBox.Show("Sua That bai");
+                MessageBox.Show("Hãy Điền Thông Tin");
             }
             else
             {
@@ -200,7 +201,13 @@ namespace QuanLyCongDan
         private void button2_Click_1(object sender, EventArgs e)
         {
             cccd = cccdDAO.TimKiem_ID(txtSOCC.Text);
-            if (cccd == null)
+            if (txtIDCD.Text == "  ID Công Dân" ||
+                txtSOCC.Text == "  Số CCCD" ||
+                add.Text == "  Địa Chỉ")
+            {
+                MessageBox.Show("Hãy Điền Thông Tin");
+            }
+            else if (cccd == null)
             {
                 cccd = new CCCD(txtIDCD.Text, txtSOCC.Text, add.Text, dTPNgayCap.Value.Date);
                 cccdDAO.Xoa(cccd);

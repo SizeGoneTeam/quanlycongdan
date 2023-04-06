@@ -401,6 +401,7 @@
             this.Controls.Add(this.lblHoTenChong);
             this.Name = "FHonNhan";
             this.Text = "FHonNhan";
+            this.Load += new System.EventHandler(this.FHonNhan_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -44,11 +44,12 @@ namespace QuanLyCongDan
         {
             cccd = cccdDAO.TimKiem_ID(txtsoCC.Text);
             tt = new TamTruTamVang(cccd.IDCD, Come.Value.Date, Leave.Value.Date, txtAdd.Text, txtLido.Text);
-            if (String.IsNullOrEmpty(txtsoCC.Text) ||
-                String.IsNullOrEmpty(txtAdd.Text) ||
-                String.IsNullOrEmpty(txtLido.Text))
+            if (txtsoCC.Text == "  ID Công Dân" ||
+                txtAdd.Text == "  Số CCCD" ||
+                txtLido.Text == "  Địa Chỉ" ||
+                Come.Value == Leave.Value)
             {
-                MessageBox.Show("Them That bai");
+                MessageBox.Show("Hãy Điền Thông Tin");
             }
             else
             {
@@ -66,11 +67,12 @@ namespace QuanLyCongDan
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txtsoCC.Text) ||
-                String.IsNullOrEmpty(txtAdd.Text) ||
-                String.IsNullOrEmpty(txtLido.Text))
+            if (txtsoCC.Text == "  ID Công Dân" ||
+                txtAdd.Text == "  Số CCCD" ||
+                txtLido.Text == "  Địa Chỉ"||
+                Come.Value == Leave.Value)
             {
-                MessageBox.Show("Sua That bai");
+                MessageBox.Show("Hãy Điền Thông Tin");
             }
             else
             {

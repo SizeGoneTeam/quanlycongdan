@@ -246,5 +246,59 @@ namespace QuanLyCongDan.View
             }
             
         }
+
+        private void txtID_Enter(object sender, EventArgs e)
+        {
+            if (txtID.Text == "  ID Công Dân")
+            {
+                txtID.Text = "";
+                txtID.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtHoTen_Enter(object sender, EventArgs e)
+        {
+            if (txtHoTen.Text == "  Họ và Tên")
+            {
+                txtHoTen.Text = "";
+                txtHoTen.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtQueQuan_Enter(object sender, EventArgs e)
+        {
+            if (txtQueQuan.Text == "  Quê Quán")
+            {
+                txtQueQuan.Text = "";
+                txtQueQuan.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtCMND_Enter(object sender, EventArgs e)
+        {
+            if (txtCMND.Text == "  Địa Chỉ")
+            {
+                txtCMND.Text = "";
+                txtCMND.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtEmail_Enter(object sender, EventArgs e)
+        {
+            if (txtEmail.Text == "  Email")
+            {
+                txtEmail.Text = "";
+                txtEmail.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtSDT_Enter(object sender, EventArgs e)
+        {
+            if (txtSDT.Text == "  Số Điện Thoại")
+            {
+                txtSDT.Text = "";
+                txtSDT.ForeColor = Color.Black;
+            }
+        }
     }
 }
