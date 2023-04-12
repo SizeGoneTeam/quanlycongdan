@@ -10,18 +10,18 @@ namespace QuanLyCongDan.Model
     {
         private int iD_LichSuThue;
         private int iD_CongDan;
-        private int iD_Thue;
-        private DateTime ngayNop;
-        private string nguoiNop;
+        private DateTime ngayTao;
+        private string tenCongTy;
         private decimal soTien;
+        private bool trangThai;
 
-        public LichSuThue(int iD_CongDan, int iD_Thue, string nguoiNop, decimal soTien)
+        public LichSuThue(int iD_CongDan, string tenCongTy, decimal soTien, DateTime ngayTao)
         {
             this.iD_CongDan = iD_CongDan;
-            this.iD_Thue = iD_Thue;
-            this.ngayNop = DateTime.Now;
-            this.nguoiNop = nguoiNop;
+            this.ngayTao = ngayTao;
+            this.tenCongTy = tenCongTy;
             this.soTien = soTien;
+            trangThai = false;
         }
 
         public int ID_LichSuThue
@@ -36,22 +36,10 @@ namespace QuanLyCongDan.Model
             set { iD_CongDan = value; }
         }
 
-        public int ID_Thue
+        public string TenCongTy
         {
-            get { return iD_Thue; }
-            set { iD_Thue = value; }
-        }
-
-        public DateTime NgayNop
-        {
-            get { return ngayNop; }
-            set { ngayNop = value; }
-        }
-
-        public string NguoiNop
-        {
-            get { return nguoiNop; }
-            set { nguoiNop = value; }
+            get { return tenCongTy; }
+            set { tenCongTy = value; }
         }
 
         public decimal SoTien
@@ -59,5 +47,8 @@ namespace QuanLyCongDan.Model
             get { return soTien; }
             set { soTien = value; }
         }
+
+        public bool TrangThai { get => trangThai; set => trangThai = value; }
+        public DateTime NgayTao { get => ngayTao; set => ngayTao = value; }
     }
 }

@@ -24,6 +24,15 @@ namespace QuanLyCongDan.Model
             trangThai = true;
         }
 
+        public CongTyNhanVien(int idct, int idnv, decimal lg, DateTime ngayVao)
+        {
+            id_CongTy = idct;
+            id_NhanVien = idnv;
+            luong = lg;
+            this.ngayVao = ngayVao;
+            trangThai = true;
+        }
+
         public int Id_CongTyNhanVien { get => id_CongTyNhanVien; }
         public int Id_CongTy { get => id_CongTy; }
         public int Id_NhanVien { get => id_NhanVien; }

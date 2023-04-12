@@ -22,7 +22,6 @@ namespace QuanLyCongDan.View
         CongDan cd;
         CongTyNhanVien ctnv;
         LichSuThue lichSuThue;
-        Thue thue;
         ThueDAO thueDAO = new ThueDAO();
         CCCD cccd;
         public FCongTy()
@@ -112,9 +111,6 @@ namespace QuanLyCongDan.View
             {
                 cccd = cccdDAO.TimKiem_ID(txtCCCD.Text);
                 cd = cdDAO.TimKiem(cccd.IDCD);
-                thue = thueDAO.TimKiem_ID(int.Parse(cd.Id));
-                if (thue == null) thue = new Thue(int.Parse(cd.Id));
-                thueDAO.ThemThue(thue);
             }
             catch
             {

@@ -14,45 +14,14 @@ namespace QuanLyCongDan.DAO
     {
         DBconnection dbConn = new DBconnection();
 
-        public void ThemThue(Thue thue)
-        {
-            string sqlStr = string.Format("INSERT INTO Thue(ID_CongDan) VALUES ({0})", thue.IDCongDan);
-            dbConn.ThucThi(sqlStr);
-        }
 
         public void ThemLichSuThue(LichSuThue lichSuThue)
         {
-            string sqlStr = string.Format("INSERT INTO LichSuThue(ID_CongDan, ID_Thue, NgayNop, NguoiNop, SoTien) VALUES ({0}, {1}, '{2}', '{3}', {4})",
-                                          lichSuThue.ID_CongDan, lichSuThue.ID_Thue, lichSuThue.NgayNop, lichSuThue.NguoiNop, lichSuThue.SoTien);
+            string sqlStr = string.Format("INSERT INTO LichSuThue(ID_CongDan, NgayTao, TenCongTy, SoTien, TrangThai) VALUES ({0}, '{1}', N'{2}', {3}, {4})",
+                                          lichSuThue.ID_CongDan, lichSuThue.NgayTao, lichSuThue.TenCongTy, lichSuThue.SoTien, 0);
             dbConn.ThucThi(sqlStr);
         }
 
-        public Thue TimKiem_ID(int id)
-        {
-            try
-            {
-                string sqlStr = string.Format("SELECT * FROM Thue WHERE ID_CongDan = '{0}'", id);
-                DataTable dt = dbConn.LayDanhSach(sqlStr);
-
-                if (dt != null)
-                {
-                    if (dt.Rows.Count > 0)
-                    {
-                        DataRow row = dt.Rows[0];
-                        return new Thue(
-                            int.Parse(row["ID_Thue"].ToString()),
-                            int.Parse(row["ID_CongDan"].ToString())
-                        );
-                    }
-                }
-
-                return null;
-            }
-            catch
-            {
-                return null;
-            }
-        }
 
         public DataTable LayLichSuThueTheoIDCongDan(int id_congdan)
         {
@@ -63,6 +32,26 @@ namespace QuanLyCongDan.DAO
         public DataTable LayLichSuThueTheoCongTY(String tenCongTy)
         {
             string sqlStr = string.Format("SELECT * FROM LichSuThue WHERE NguoiNop = N'{0}' ORDER BY ID_LichSuThue DESC", tenCongTy);
+            return dbConn.LayDanhSach(sqlStr);
+        }
+
+        public bool TimKiemThue(int idNhanVien, String tenCongTY, DateTime NgayTao)
+        {
+            string sqlStr = string.Format("SELECT * FROM LichSuThue WHERE ID_CongDan = '{0}' and NgayTao = '{1}' and TenCongTy = N'{2}'", idNhanVien, NgayTao.ToString("dd/MM/yy"), tenCongTY);
+            DataTable data = dbConn.LayDanhSach(sqlStr);
+            return data.Rows.Count > 0;
+        }
+
+        public void NopThue(int idNhanVien)
+        {
+            string sqlStr = string.Format("Update LichSuThue SET TrangThai = 1 WHERE ID_CongDan = '{0}'", idNhanVien);
+            dbConn.ThucThi(sqlStr);
+
+        }
+
+        public DataTable LayCongDanChuaDongThue()
+        {
+            string sqlStr = "SELECT ID_CongDan, COUNT(*) as Total FROM LichSuThue WHERE TrangThai = 0 GROUP BY ID_CongDan";
             return dbConn.LayDanhSach(sqlStr);
         }
     }   
