@@ -55,9 +55,9 @@ namespace QuanLyCongDan.DAO
             return dbConn.LayDanhSach(sqlStr);
         }
 
-        public bool KiemTraNhanVienCoDiLam(CongDan cd)
+        public bool KiemTraNhanVienCoDiLamCongTy(CongDan cd, int idCongTy)
         {
-            string sqlStr = string.Format("SELECT * FROM CongTy_NhanVien Where ID_NhanVien = {0} and TrangThai = 1", cd.Id);
+            string sqlStr = string.Format("SELECT * FROM CongTy_NhanVien Where ID_NhanVien = {0} and TrangThai = 1 and ID_CongTy = {1}", cd.Id, idCongTy);
             DataTable data = dbConn.LayDanhSach(sqlStr);
             return data.Rows.Count > 0;
         }
@@ -77,13 +77,13 @@ namespace QuanLyCongDan.DAO
 
         public void SuaLuong(CongTyNhanVien ct_nv)
         {
-            string sqlStr = string.Format("UPDATE CongTy_NhanVien SET Luong = {0} WHERE ID_NhanVien = {1} and TrangThai = 1", ct_nv.Luong, ct_nv.Id_NhanVien);
+            string sqlStr = string.Format("UPDATE CongTy_NhanVien SET Luong = {0} WHERE ID_NhanVien = {1} and TrangThai = 1 AND ID_CongTy = {2}", ct_nv.Luong, ct_nv.Id_NhanVien, ct_nv.Id_CongTy);
             dbConn.ThucThi(sqlStr);
         }
 
         public void NghiViec(CongTyNhanVien ct_nv)
         {
-            string sqlStr = string.Format("UPDATE CongTy_NhanVien SET TrangThai = 0 WHERE ID_NhanVien = {0}", ct_nv.Id_NhanVien);
+            string sqlStr = string.Format("UPDATE CongTy_NhanVien SET TrangThai = 0 WHERE ID_NhanVien = {0} AND ID_CongTy = {1}", ct_nv.Id_NhanVien, ct_nv.Id_CongTy);
             dbConn.ThucThi(sqlStr);
         }
 
@@ -116,11 +116,11 @@ namespace QuanLyCongDan.DAO
             }
         }
 
-        public CongTyNhanVien LayCongTyNhanVienDangLam(int idNhanVien)
+        public CongTyNhanVien LayCongTyNhanVien(int idNhanVien, int idCongTy)
         {
             try
             {
-                string sqlStr = string.Format("SELECT * FROM CongTy_NhanVien WHERE ID_NhanVien = '{0}' and TrangThai = 1 ", idNhanVien);
+                string sqlStr = string.Format("SELECT * FROM CongTy_NhanVien WHERE ID_NhanVien = '{0}' and TrangThai = 1 and ID_CongTy = {1}", idNhanVien,idCongTy);
                 DataTable dt = dbConn.LayDanhSach(sqlStr);
 
                 if (dt != null)

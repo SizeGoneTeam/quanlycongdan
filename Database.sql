@@ -138,7 +138,7 @@ CREATE TABLE LichSuThue (
     ID_CongDan INT REFERENCES CongDan(ID_CongDan),
     ID_Thue INT REFERENCES Thue(ID_Thue),
     NgayNop DATE,
-	NguoiNop nvarchar(100),
+	TrangThai BIT,
     SoTien DECIMAL(18,2)
 );
 

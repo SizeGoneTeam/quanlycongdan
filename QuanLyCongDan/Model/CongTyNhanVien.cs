@@ -13,6 +13,7 @@ namespace QuanLyCongDan.Model
         private int id_NhanVien;
         private decimal luong;
         private DateTime ngayVao;
+        private Boolean trangThai;
 
         public CongTyNhanVien(int idct, int idnv, decimal lg)
         {
@@ -20,6 +21,7 @@ namespace QuanLyCongDan.Model
             id_NhanVien = idnv;
             luong = lg;
             ngayVao = DateTime.Now;
+            trangThai = true;
         }
 
         public int Id_CongTyNhanVien { get => id_CongTyNhanVien; }
@@ -27,6 +29,7 @@ namespace QuanLyCongDan.Model
         public int Id_NhanVien { get => id_NhanVien; }
         public decimal Luong { get => luong; set => luong = value; }
         public DateTime NgayVao { get => ngayVao; set => ngayVao = value; }
+        public bool TrangThai { get => trangThai; set => trangThai = value; }
 
         public override string ToString()
         {

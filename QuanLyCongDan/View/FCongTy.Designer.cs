@@ -41,7 +41,6 @@
             this.txtCongTy = new System.Windows.Forms.TextBox();
             this.btnSuaLuong = new System.Windows.Forms.Button();
             this.btnNghiViec = new System.Windows.Forms.Button();
-            this.btnTraLuong = new System.Windows.Forms.Button();
             this.gvCongTy = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvCongTy)).BeginInit();
@@ -163,7 +162,7 @@
             // 
             // btnSuaLuong
             // 
-            this.btnSuaLuong.Location = new System.Drawing.Point(388, 544);
+            this.btnSuaLuong.Location = new System.Drawing.Point(275, 529);
             this.btnSuaLuong.Name = "btnSuaLuong";
             this.btnSuaLuong.Size = new System.Drawing.Size(129, 35);
             this.btnSuaLuong.TabIndex = 24;
@@ -173,23 +172,13 @@
             // 
             // btnNghiViec
             // 
-            this.btnNghiViec.Location = new System.Drawing.Point(545, 542);
+            this.btnNghiViec.Location = new System.Drawing.Point(554, 529);
             this.btnNghiViec.Name = "btnNghiViec";
             this.btnNghiViec.Size = new System.Drawing.Size(129, 35);
             this.btnNghiViec.TabIndex = 23;
             this.btnNghiViec.Text = "Nghỉ việc";
             this.btnNghiViec.UseVisualStyleBackColor = true;
             this.btnNghiViec.Click += new System.EventHandler(this.btnNghiViec_Click);
-            // 
-            // btnTraLuong
-            // 
-            this.btnTraLuong.Location = new System.Drawing.Point(231, 546);
-            this.btnTraLuong.Name = "btnTraLuong";
-            this.btnTraLuong.Size = new System.Drawing.Size(129, 31);
-            this.btnTraLuong.TabIndex = 25;
-            this.btnTraLuong.Text = "Trả Lương";
-            this.btnTraLuong.UseVisualStyleBackColor = true;
-            this.btnTraLuong.Click += new System.EventHandler(this.btnTraLuong_Click);
             // 
             // gvCongTy
             // 
@@ -208,7 +197,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1059, 589);
             this.Controls.Add(this.gvCongTy);
-            this.Controls.Add(this.btnTraLuong);
             this.Controls.Add(this.btnSuaLuong);
             this.Controls.Add(this.btnNghiViec);
             this.Controls.Add(this.panel1);
@@ -233,7 +221,6 @@
         private System.Windows.Forms.Button btnSuaLuong;
         private System.Windows.Forms.Button btnNghiViec;
         private System.Windows.Forms.Button btnThemCongTy;
-        private System.Windows.Forms.Button btnTraLuong;
         private System.Windows.Forms.Button btnXemCongTy;
         private System.Windows.Forms.Button btnXemCCCD;
         private System.Windows.Forms.DataGridView gvCongTy;

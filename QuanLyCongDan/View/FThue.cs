@@ -50,7 +50,6 @@ namespace QuanLyCongDan.View
         {
             try
             {
-                ct = ctDAO.LayCongTyBangTen(txtCongTy.Text);
                 this.gvThue.DataSource = thueDAO.LayLichSuThueTheoCongTY(ct.TenCongTy);
             }
             catch
@@ -70,20 +69,32 @@ namespace QuanLyCongDan.View
 
         private void txtCongTy_Enter(object sender, EventArgs e)
         {
-            if (txtCongTy.Text == "  Tên Công Ty")
-            {
-                txtCongTy.Text = "";
-                txtCongTy.ForeColor = Color.Black;
-            }
+
         }
 
         private void txtIDT_Enter(object sender, EventArgs e)
         {
-            if (txtIDT.Text == "  ID Thuế")
-            {
-                txtIDT.Text = "";
-                txtIDT.ForeColor = Color.Black;
-            }
+            
+        }
+
+        private void FThue_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnNopThue_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
