@@ -357,7 +357,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel4);
             this.Name = "FTamTruTamVang";
-            this.Text = "FTamTruTamVang";
+            this.Text = "Quản Lý Tạm Trú Tạm Vắng";
             this.Load += new System.EventHandler(this.FTamTruTamVang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Lichsudichuyen)).EndInit();
             this.panel4.ResumeLayout(false);

@@ -60,8 +60,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.tintrang = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.vochong.SuspendLayout();
@@ -523,17 +523,6 @@
             this.panel10.Size = new System.Drawing.Size(684, 543);
             this.panel10.TabIndex = 16;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label5.Location = new System.Drawing.Point(193, 25);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(300, 33);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Tình Trạng Hôn Nhân";
-            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.LightSeaGreen;
@@ -549,6 +538,17 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label5.Location = new System.Drawing.Point(193, 25);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(300, 33);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Tình Trạng Hôn Nhân";
+            // 
             // FHonNhan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
@@ -560,7 +560,7 @@
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FHonNhan";
-            this.Text = "FHonNhan";
+            this.Text = "Quản Lý Hôn Nhân";
             this.Load += new System.EventHandler(this.FHonNhan_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

@@ -57,5 +57,41 @@ namespace QuanLyCongDan
             txtCanBoDangKy.Text = ThanhVien.CanBoDangKy;
             pkNgayDangKy.Value = ThanhVien.NgayDangKy;
         }
+
+        private void txtQuanHe_Enter(object sender, EventArgs e)
+        {
+            if (txtQuanHe.Text == "  Quan Hệ Chủ Hộ")
+            {
+                txtQuanHe.Text = "";
+                txtQuanHe.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtNgheNghiepNoiLamViec_TextChanged(object sender, EventArgs e)
+        {
+            if (txtNgheNghiepNoiLamViec.Text == "  Nghề Nghiệp")
+            {
+                txtNgheNghiepNoiLamViec.Text = "";
+                txtNgheNghiepNoiLamViec.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtNoiThuongTruTruoc_Enter(object sender, EventArgs e)
+        {
+            if (txtNoiThuongTruTruoc.Text == "  Nơi Thường Trú Trước")
+            {
+                txtNoiThuongTruTruoc.Text = "";
+                txtNoiThuongTruTruoc.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtCanBoDangKy_Enter(object sender, EventArgs e)
+        {
+            if (txtCanBoDangKy.Text == "  Cán Bộ Đăng Ký")
+            {
+                txtCanBoDangKy.Text = "";
+                txtCanBoDangKy.ForeColor = Color.Black;
+            }
+        }
     }
 }

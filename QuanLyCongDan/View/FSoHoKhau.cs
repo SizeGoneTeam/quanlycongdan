@@ -129,5 +129,49 @@ namespace QuanLyCongDan.View
             FThanhVien f =  new FThanhVien();
             f.ShowDialog();
         }
+        private void txtTimKiem_Enter(object sender, EventArgs e)
+        {
+            if (txtTimKiem.Text == "  ID")
+            {
+                txtTimKiem.Text = "";
+                txtTimKiem.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtIDHoSoHoKhau_Enter(object sender, EventArgs e)
+        {
+            if (txtIDHoSoHoKhau.Text == "  Số Hồ Sơ")
+            {
+                txtIDHoSoHoKhau.Text = "";
+                txtIDHoSoHoKhau.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtNoiThuongTru_Enter(object sender, EventArgs e)
+        {
+            if (txtNoiThuongTru.Text == "  Nơi Thường Trú")
+            {
+                txtNoiThuongTru.Text = "";
+                txtNoiThuongTru.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtIDSoDangKyThuongTru_Enter(object sender, EventArgs e)
+        {
+            if (txtIDSoDangKyThuongTru.Text == "  Số Sổ Đăng Ký Thường Trú")
+            {
+                txtIDSoDangKyThuongTru.Text = "";
+                txtIDSoDangKyThuongTru.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtIDToSo_Enter(object sender, EventArgs e)
+        {
+            if (txtIDToSo.Text == "  Tờ Số")
+            {
+                txtIDToSo.Text = "";
+                txtIDToSo.ForeColor = Color.Black;
+            }
+        }
     }
 }

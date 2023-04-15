@@ -77,7 +77,7 @@ namespace QuanLyCongDan
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            CongDan cd = new CongDan(txtHoTen.Text, txtQueQuan.Text, cbGioiTinh.Text, pkNgaySinh.Value.Date, txtDanToc.Text, "", "", "");
+            CongDan cd = new CongDan(txtHoTen.Text, txtQueQuan.Text, cbGioiTinh.Text, pkNgaySinh.Value.Date, cboDanToc.Text, "", "", "");
             congDanDAO.Them(cd);
             int id = congDanDAO.LayDanhSachCongDan().Rows.Count;
             dao.Them(new KhaiSinh(id, int.Parse(txtIDNguoiYeuCau.Text), int.Parse(txtIDNguoiCha.Text), int.Parse(txtIDNguoiMe.Text), txtNoiDangKy.Text, pkNgayDangKy.Value.Date));
@@ -95,7 +95,7 @@ namespace QuanLyCongDan
                     CongDan dt = congDanDAO.TimKiem(id.ToString());
                     if (dt != null)
                     {
-                        CongDan cd = new CongDan(dt.Id, txtHoTen.Text, txtQueQuan.Text, cbGioiTinh.Text, pkNgaySinh.Value.Date, txtDanToc.Text, "", "", "");
+                        CongDan cd = new CongDan(dt.Id, txtHoTen.Text, txtQueQuan.Text, cbGioiTinh.Text, pkNgaySinh.Value.Date, cboDanToc.Text, "", "", "");
                         congDanDAO.Sua(cd);
                         dao.Sua(new KhaiSinh(id, int.Parse(dt.Id), int.Parse(txtIDNguoiYeuCau.Text), int.Parse(txtIDNguoiCha.Text), int.Parse(txtIDNguoiMe.Text), txtNoiDangKy.Text, pkNgayDangKy.Value.Date));
                     }
@@ -129,7 +129,7 @@ namespace QuanLyCongDan
                         txtQueQuan.Text = dt.QueQuan.ToString();
                         cbGioiTinh.Text = dt.GioiTinh.ToString();
                         pkNgaySinh.Value = dt.NgaySinh;
-                        txtDanToc.Text = dt.DanToc.ToString();
+                        cboDanToc.Text = dt.DanToc.ToString();
                     }
                 }
             }
@@ -152,5 +152,131 @@ namespace QuanLyCongDan
             }
         }
 
+        private void panel8_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtHoTen_Enter(object sender, EventArgs e)
+        {
+            if (txtHoTen.Text == "  Họ Và Tên")
+            {
+                txtHoTen.Text = "";
+                txtHoTen.ForeColor = Color.Black;
+            }
+        }
+
+        private void FKhaiSinh_Load(object sender, EventArgs e)
+        {
+            dangky.Visible = true;
+            cha.Visible = false;
+            me.Visible = false;
+            yc.Visible = false;
+        }
+
+        private void txtQuocTich_Enter(object sender, EventArgs e)
+        {
+            if (txtQuocTich.Text == "  Quốc Tịch")
+            {
+                txtQuocTich.Text = "";
+                txtQuocTich.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtNoiSinh_Enter(object sender, EventArgs e)
+        {
+            if (txtNoiSinh.Text == "  Nơi Sinh")
+            {
+                txtNoiSinh.Text = "";
+                txtNoiSinh.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtQueQuan_Enter(object sender, EventArgs e)
+        {
+            if (txtQueQuan.Text == "  Quê Quán")
+            {
+                txtQueQuan.Text = "";
+                txtQueQuan.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtNoiDangKy_Enter(object sender, EventArgs e)
+        {
+            if (txtNoiDangKy.Text == "  Làm Tại")
+            {
+                txtNoiDangKy.Text = "";
+                txtNoiDangKy.ForeColor = Color.Black;
+            }
+        }
+
+        private void next_Click(object sender, EventArgs e)
+        {
+            dangky.Visible = false;
+            me.Visible = true;
+        }
+
+        private void txtIDNguoiMe_Enter(object sender, EventArgs e)
+        {
+            if (txtIDNguoiMe.Text == "  ID")
+            {
+                txtIDNguoiMe.Text = "";
+                txtIDNguoiMe.ForeColor = Color.Black;
+            }
+        }
+
+        private void meprev_Click(object sender, EventArgs e)
+        {
+            dangky.Visible = true;
+            me.Visible = false;
+        }
+
+        private void menext_Click(object sender, EventArgs e)
+        {
+            me.Visible= false;
+            cha.Visible = true;
+        }
+
+        private void txtIDNguoiCha_Enter(object sender, EventArgs e)
+        {
+            if (txtIDNguoiCha.Text == "  ID")
+            {
+                txtIDNguoiCha.Text = "";
+                txtIDNguoiCha.ForeColor = Color.Black;
+            }
+        }
+
+        private void chaprev_Click(object sender, EventArgs e)
+        {
+            cha.Visible = false;
+            me.Visible= true;
+        }
+
+        private void chanext_Click(object sender, EventArgs e)
+        {
+            cha.Visible= false;
+            yc.Visible = true;
+        }
+
+        private void txtIDNguoiYeuCau_Enter(object sender, EventArgs e)
+        {
+            if (txtIDNguoiYeuCau.Text == "  ID")
+            {
+                txtIDNguoiYeuCau.Text = "";
+                txtIDNguoiYeuCau.ForeColor = Color.Black;
+            }
+        }
+
+        private void ycprev_Click(object sender, EventArgs e)
+        {
+            yc.Visible = false;
+            cha.Visible= true;
+        }
+
+        private void ycnext_Click(object sender, EventArgs e)
+        {
+            yc.Visible= false;
+            dangky.Visible = true;
+        }
     }
 }

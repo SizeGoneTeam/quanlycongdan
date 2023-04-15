@@ -252,5 +252,64 @@ namespace QuanLyCongDan.View
             InitializeComponent();
         }
         #endregion
+
+        private void txtHoVaTenCongDan_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtIDNguoiYeuCau_Enter(object sender, EventArgs e)
+        {
+            if (txtIDNguoiYeuCau.Text == "  ID Người Yêu Cầu")
+            {
+                txtIDNguoiYeuCau.Text = "";
+                txtIDNguoiYeuCau.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtIDCongDan_Enter(object sender, EventArgs e)
+        {
+            if (txtIDCongDan.Text == "  ID Người Tử")
+            {
+                txtIDCongDan.Text = "";
+                txtIDCongDan.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtQuanHe_Enter(object sender, EventArgs e)
+        {
+            if (txtQuanHe.Text == "  Quan Hệ")
+            {
+                txtQuanHe.Text = "";
+                txtQuanHe.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtNoiChet_Enter(object sender, EventArgs e)
+        {
+            if (txtNoiChet.Text == "  Nơi Chết")
+            {
+                txtNoiChet.Text = "";
+                txtNoiChet.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtTimKiem_Enter(object sender, EventArgs e)
+        {
+            if (txtTimKiem.Text == "  Số Khai Tử")
+            {
+                txtTimKiem.Text = "";
+                txtTimKiem.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtNoiDangKy_Enter(object sender, EventArgs e)
+        {
+            if (txtNoiDangKy.Text == "  Nơi Đăng Ký")
+            {
+                txtNoiDangKy.Text = "";
+                txtNoiDangKy.ForeColor = Color.Black;
+            }
+        }
     }
 }

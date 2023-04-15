@@ -218,5 +218,10 @@ namespace QuanLyCongDan
                 cccdDAO.Xoa(cccd);
             }
         }
+
+        private void FCCCD_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

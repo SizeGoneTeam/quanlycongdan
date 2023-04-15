@@ -164,6 +164,9 @@
     <EmbeddedResource Include="View\FHonNhan.resx">
       <DependentUpon>FHonNhan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FKhaiSinh.resx">
+      <DependentUpon>FKhaiSinh.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FKhaiTu.resx">
       <DependentUpon>FKhaiTu.cs</DependentUpon>
     </EmbeddedResource>
