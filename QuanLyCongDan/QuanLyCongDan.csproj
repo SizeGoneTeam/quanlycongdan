@@ -151,7 +151,6 @@
     </Compile>
     <Compile Include="Model\TamTruTamVang.cs" />
     <Compile Include="DAO\TamTruTamVangDAO.cs" />
-    <Compile Include="Model\Thue.cs" />
     <Compile Include="DAO\ThueDAO.cs" />
     <EmbeddedResource Include="View\FCCCD.resx">
       <DependentUpon>FCCCD.cs</DependentUpon>

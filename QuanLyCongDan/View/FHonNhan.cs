@@ -195,7 +195,49 @@ namespace QuanLyCongDan.View
 
         private void FHonNhan_Load(object sender, EventArgs e)
         {
+            if(vochong.Visible == false || tintrang.Visible == true)
+            {
+                vochong.Visible = true;
+                tintrang.Visible = false;
+            }
+        }
+        private void txtID_Chong_Enter(object sender, EventArgs e)
+        {
+            if (txtID_Chong.Text == "  CCCD Chồng")
+            {
+                txtID_Chong.Text = "";
+                txtID_Chong.ForeColor = Color.Black;
+            }
+        }
 
+        private void txtID_Vo_Enter(object sender, EventArgs e)
+        {
+            if (txtID_Vo.Text == "  CCCD Vợ")
+            {
+                txtID_Vo.Text = "";
+                txtID_Vo.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtIdHonNhan_Enter(object sender, EventArgs e)
+        {
+            if (txtIdHonNhan.Text == "  ID Hôn Nhân")
+            {
+                txtIdHonNhan.Text = "";
+                txtIdHonNhan.ForeColor = Color.Black;
+            }
+        }
+
+        private void kiemtra_Click(object sender, EventArgs e)
+        {
+            tintrang.Visible = true;
+            vochong.Visible = false;
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            tintrang.Visible = false;
+            vochong.Visible = true;
         }
     }
 }

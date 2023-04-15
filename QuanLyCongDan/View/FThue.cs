@@ -19,6 +19,8 @@ namespace QuanLyCongDan.View
         CongDanDAO cdDAO = new CongDanDAO();
         CongTy ct;
         CongTyDAO ctDAO = new CongTyDAO();
+        CongDan cd;
+
         public FThue()
         {
             InitializeComponent();
@@ -37,7 +39,25 @@ namespace QuanLyCongDan.View
             try
             {
                 CCCD cccd = cccdDAO.TimKiem_ID(txtCCCD.Text);
-                CongDan cd = cdDAO.TimKiem(cccd.IDCD);
+                cd = cdDAO.TimKiem(cccd.IDCD);
+                List<CongTyNhanVien> ctnvList = ctDAO.LayCongTyNhanVien(int.Parse(cd.Id));
+                foreach (CongTyNhanVien ctnv in ctnvList)
+                {
+                    ct = ctDAO.LayCongTy(ctnv.Id_CongTy);
+                    int yearDiff = GetYearsDiff(ctnv.NgayVao);
+                    if (yearDiff > 0)
+                    {
+                        for (int i = 0; i < yearDiff; i++)
+                        {
+                            if (!thueDAO.TimKiemThue(ctnv.Id_NhanVien, ct.TenCongTy, ctnv.NgayVao.AddYears(i+1)))
+                            {
+                                LichSuThue lsThue = new LichSuThue(ctnv.Id_CongTy, ct.TenCongTy, 200, ctnv.NgayVao.AddYears(i + 1));
+                                thueDAO.ThemLichSuThue(lsThue);
+                            }
+                        }
+                    }
+                }
+
                 this.gvThue.DataSource = thueDAO.LayLichSuThueTheoIDCongDan(int.Parse(cd.Id));
             }
             catch
@@ -50,7 +70,6 @@ namespace QuanLyCongDan.View
         {
             try
             {
-                ct = ctDAO.LayCongTyBangTen(txtCongTy.Text);
                 this.gvThue.DataSource = thueDAO.LayLichSuThueTheoCongTY(ct.TenCongTy);
             }
             catch
@@ -70,20 +89,48 @@ namespace QuanLyCongDan.View
 
         private void txtCongTy_Enter(object sender, EventArgs e)
         {
-            if (txtCongTy.Text == "  Tên Công Ty")
-            {
-                txtCongTy.Text = "";
-                txtCongTy.ForeColor = Color.Black;
-            }
+
         }
 
         private void txtIDT_Enter(object sender, EventArgs e)
         {
-            if (txtIDT.Text == "  ID Thuế")
+
+        }
+
+        private void FThue_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnNopThue_Click(object sender, EventArgs e)
+        {
+            thueDAO.NopThue(int.Parse(cd.Id));
+            this.gvThue.DataSource = thueDAO.LayLichSuThueTheoIDCongDan(int.Parse(cd.Id));
+        }
+
+        public int GetYearsDiff(DateTime firstDate)
+        {
+            int yearsDiff = DateTime.Now.Year - firstDate.Year;
+            if (yearsDiff > 0)
             {
-                txtIDT.Text = "";
-                txtIDT.ForeColor = Color.Black;
+                return yearsDiff;
             }
+            return 0;
+        }
+
+        private void btnChuaDongThue_Click(object sender, EventArgs e)
+        {
+            this.dgvDanhSach.DataSource = thueDAO.LayCongDanChuaDongThue();
         }
     }
 }

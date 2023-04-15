@@ -124,21 +124,15 @@ CREATE TABLE CongTy_NhanVien (
     NgayVao DATE
 );
 
--- Tạo bảng Thuế
-CREATE TABLE Thue (
-    ID_Thue INT IDENTITY(1,1) PRIMARY KEY,
-    ID_CongDan INT,
-    FOREIGN KEY (ID_CongDan) REFERENCES CongDan(ID_CongDan)
-);
 
 ---
 
 CREATE TABLE LichSuThue (
     ID_LichSuThue INT IDENTITY(1,1) PRIMARY KEY,
     ID_CongDan INT REFERENCES CongDan(ID_CongDan),
-    ID_Thue INT REFERENCES Thue(ID_Thue),
-    NgayNop DATE,
-	NguoiNop nvarchar(100),
+	TenCongTy nvarchar(100),
+    NgayTao DATE,
+	TrangThai BIT,
     SoTien DECIMAL(18,2)
 );
 
@@ -239,17 +233,5 @@ VALUES (1, 1, 5000000, '2022-01-01', 1),
        (1, 3, 4000000, '2022-01-03', 1),
        (1, 4, 3500000, '2022-01-04', 1);
 
--- Thêm bản ghi vào bảng Thue
-INSERT INTO Thue (ID_CongDan)
-VALUES (1),
-       (2),
-       (3),
-       (4);
 
--- Thêm bản ghi vào bảng LichSuThue
-INSERT INTO LichSuThue (ID_CongDan, ID_Thue, NgayNop, NguoiNop, SoTien)
-VALUES (1, 1, '2022-02-01', 'Công ty ABC', 1000000.50),
-       (2, 2, '2022-02-02', 'Công ty ABC', 1200000.75),
-       (3, 3, '2022-02-03', 'Công ty ABC', 800000.00),
-       (4, 4, '2022-02-04', 'Công ty ABC', 1500000.25);
 
