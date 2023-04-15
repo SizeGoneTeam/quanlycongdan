@@ -193,10 +193,5 @@ namespace QuanLyCongDan.View
         {
             OpenChildForm(new FThue(), sender);
         }
-
-        private void btnCongTy_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new FCongTy(), sender);
-        }
     }
 }
