@@ -61,5 +61,15 @@ namespace QuanLyCongDan.DAO
             string sqlStr = string.Format("SELECT NgayDen as TuNgay, NgayDi as DenNgay, DiaChi, LiDo FROM TamTruTamVang where ID_CongDan = '{0}'",id);
             return dbConn.LayDanhSach(sqlStr);
         }
+
+        public DataTable LayDanhSachQuaHan()
+        {
+            string sqlStr = string.Format(
+                @"SELECT *
+                FROM TamTruTamVang
+                WHERE DATEDIFF(DAY, NgayDi, GETDATE()) > 1"
+            );
+            return dbConn.LayDanhSach(sqlStr);
+        }
     }
 }
