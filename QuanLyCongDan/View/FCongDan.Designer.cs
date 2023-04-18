@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtCMND = new System.Windows.Forms.TextBox();
+            this.txtNoiThuongTru = new System.Windows.Forms.TextBox();
             this.dTPNgaySinh = new System.Windows.Forms.DateTimePicker();
             this.btnThem = new System.Windows.Forms.Button();
             this.txtQueQuan = new System.Windows.Forms.TextBox();
@@ -54,16 +54,16 @@
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // txtCMND
+            // txtNoiThuongTru
             // 
-            this.txtCMND.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCMND.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtCMND.Location = new System.Drawing.Point(18, 271);
-            this.txtCMND.Name = "txtCMND";
-            this.txtCMND.Size = new System.Drawing.Size(245, 30);
-            this.txtCMND.TabIndex = 1;
-            this.txtCMND.Text = "  Địa Chỉ";
-            this.txtCMND.Enter += new System.EventHandler(this.txtCMND_Enter);
+            this.txtNoiThuongTru.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNoiThuongTru.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtNoiThuongTru.Location = new System.Drawing.Point(18, 271);
+            this.txtNoiThuongTru.Name = "txtNoiThuongTru";
+            this.txtNoiThuongTru.Size = new System.Drawing.Size(245, 30);
+            this.txtNoiThuongTru.TabIndex = 1;
+            this.txtNoiThuongTru.Text = "  Nơi thường trú";
+            this.txtNoiThuongTru.Enter += new System.EventHandler(this.txtCMND_Enter);
             // 
             // dTPNgaySinh
             // 
@@ -209,7 +209,7 @@
             "Sikh"});
             this.cboTonGiao.Location = new System.Drawing.Point(319, 252);
             this.cboTonGiao.Name = "cboTonGiao";
-            this.cboTonGiao.Size = new System.Drawing.Size(125, 31);
+            this.cboTonGiao.Size = new System.Drawing.Size(227, 31);
             this.cboTonGiao.TabIndex = 26;
             // 
             // cboDanToc
@@ -323,7 +323,7 @@
             this.panel2.Controls.Add(this.txtHoTen);
             this.panel2.Controls.Add(this.txtEmail);
             this.panel2.Controls.Add(this.txtQueQuan);
-            this.panel2.Controls.Add(this.txtCMND);
+            this.panel2.Controls.Add(this.txtNoiThuongTru);
             this.panel2.Controls.Add(this.btnThem);
             this.panel2.Controls.Add(this.dTPNgaySinh);
             this.panel2.Location = new System.Drawing.Point(15, 24);
@@ -409,7 +409,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox txtCMND;
+        private System.Windows.Forms.TextBox txtNoiThuongTru;
         private System.Windows.Forms.DateTimePicker dTPNgaySinh;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.TextBox txtQueQuan;

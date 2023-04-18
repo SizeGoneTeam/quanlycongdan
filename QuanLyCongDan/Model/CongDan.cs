@@ -17,6 +17,8 @@ namespace QuanLyCongDan.Model
         private String tonGiao;
         private String sdt;
         private String email;
+        private String noiThuongTru;
+        private String noiSinh;
 
         public string Id { get => id; set => id = value; }
         public string HoTen { get => hoTen; set => hoTen = value; }
@@ -27,7 +29,24 @@ namespace QuanLyCongDan.Model
         public string TonGiao { get => tonGiao; set => tonGiao = value; }
         public string Sdt { get => sdt; set => sdt = value; }
         public string Email { get => email; set => email = value; }
- 
+        public string NoiThuongTru { get => noiThuongTru; set => noiThuongTru = value; }
+        public string NoiSinh { get => noiSinh; set => noiSinh = value; }
+
+
+        public CongDan(string id, string hoTen, string queQuan, string gioiTinh, DateTime ngaySinh, string danToc, string tonGiao, string sdt, string email, string noiThuongTru, string noiSinh)
+        {
+            this.hoTen = hoTen;
+            this.queQuan = queQuan;
+            this.gioiTinh = gioiTinh;
+            this.ngaySinh = ngaySinh;
+            this.danToc = danToc;
+            this.tonGiao = tonGiao;
+            this.sdt = sdt;
+            this.email = email;
+            this.noiThuongTru = noiThuongTru;
+            this.noiSinh = noiSinh;
+        }
+
         public CongDan(string hoTen, string queQuan, string gioiTinh, DateTime ngaySinh, string danToc, string tonGiao, string sdt, string email)
         {
             this.hoTen = hoTen;

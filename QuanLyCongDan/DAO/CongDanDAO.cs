@@ -52,7 +52,9 @@ namespace QuanLyCongDan.DAO
                         row["DanToc"].ToString(),
                         row["TonGiao"].ToString(),
                         row["SDT"].ToString(),
-                        row["Email"].ToString());
+                        row["Email"].ToString(),
+                        row["NoiThuongTru"].ToString(),
+                        row["NoiSinh"].ToString());
                 }
             }
 

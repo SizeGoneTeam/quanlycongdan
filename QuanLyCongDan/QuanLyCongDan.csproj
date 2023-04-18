@@ -109,12 +109,6 @@
     <Compile Include="View\FKhaiSinh.Designer.cs">
       <DependentUpon>FKhaiSinh.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\FMemu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\FMemu.Designer.cs">
-      <DependentUpon>FMemu.cs</DependentUpon>
-    </Compile>
     <Compile Include="Model\CongDan.cs" />
     <Compile Include="DAO\CongDanDAO.cs" />
     <Compile Include="DAO\HonNhanDAO.cs" />
@@ -172,9 +166,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FMainMenu.resx">
       <DependentUpon>FMainMenu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\FMemu.resx">
-      <DependentUpon>FMemu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FSoHoKhau.resx">
       <DependentUpon>FSoHoKhau.cs</DependentUpon>

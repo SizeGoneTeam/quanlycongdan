@@ -44,6 +44,7 @@ namespace QuanLyCongDan.View
         {
             cd = new CongDan(txtID.Text, txtHoTen.Text, txtQueQuan.Text, cboGioiTinh.SelectedItem.ToString(), dTPNgaySinh.Value, cboDanToc.SelectedItem.ToString(), cboTonGiao.SelectedItem.ToString(), txtSDT.Text, txtEmail.Text);
             cdDao.Sua(cd);
+            MessageBox.Show("Sửa thành công");
         }
 
         private void dTPNgaySinh_ValueChanged(object sender, EventArgs e)
@@ -67,6 +68,7 @@ namespace QuanLyCongDan.View
             {
                 cd = cdDao.TimKiem(id);
                 txtHoTen.Text = cd.HoTen;
+                txtNoiThuongTru.Text = cd.NoiThuongTru;
                 txtQueQuan.Text = cd.QueQuan;
                 dTPNgaySinh.Value = cd.NgaySinh;
                 txtSDT.Text = cd.Sdt;
@@ -276,10 +278,10 @@ namespace QuanLyCongDan.View
 
         private void txtCMND_Enter(object sender, EventArgs e)
         {
-            if (txtCMND.Text == "  Địa Chỉ")
+            if (txtNoiThuongTru.Text == "  Địa Chỉ")
             {
-                txtCMND.Text = "";
-                txtCMND.ForeColor = Color.Black;
+                txtNoiThuongTru.Text = "";
+                txtNoiThuongTru.ForeColor = Color.Black;
             }
         }
 

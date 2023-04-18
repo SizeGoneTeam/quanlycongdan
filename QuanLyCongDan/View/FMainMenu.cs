@@ -26,7 +26,8 @@ namespace QuanLyCongDan.View
             btnCloseChildForm.Visible = false;
             this.Text = string.Empty;
             this.ControlBox = false;
-            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+            //this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+            this.WindowState = FormWindowState.Maximized;
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
