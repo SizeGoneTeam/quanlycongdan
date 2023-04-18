@@ -1,5 +1,6 @@
 ﻿using QuanLyCongDan.DAO;
 using QuanLyCongDan.Model;
+using QuanLyCongDan.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -135,6 +136,12 @@ namespace QuanLyCongDan
                 txtLido.Text = "";
                 txtLido.ForeColor = Color.Black;
             }
+        }
+
+        private void btnDanhSachQuaHan_Click(object sender, EventArgs e)
+        {
+
+            Lichsudichuyen.DataSource = ttdao.LayDanhSachQuaHan();
         }
     }
 }
