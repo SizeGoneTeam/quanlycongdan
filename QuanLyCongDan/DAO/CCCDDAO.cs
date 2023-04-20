@@ -14,7 +14,7 @@ namespace QuanLyCongDan.DAO
         DBconnection dbConn = new DBconnection();
         public void Them(CCCD cc)
         {
-            String sqlStr = string.Format("INSERT INTO CCCD(ID_CongDan,SoCCCD, NoiCap, NgayCap) VALUES ('{0}','{1}',N'{2}','{3}')",cc.IDCD,cc.SoCC, cc.ADD, cc.NgayCap);
+            String sqlStr = string.Format("INSERT INTO CCCD(ID_CongDan,SoCCCD, NoiCap, NgayCap) VALUES ('{0}','{1}',N'{2}','{3}')",cc.IDCD,cc.SoCC, cc.ADD, cc.NgayCap.Date);
             dbConn.ThucThi(sqlStr);
         }
 
@@ -26,7 +26,7 @@ namespace QuanLyCongDan.DAO
 
         public void Sua(CCCD cc)
         {
-            String sqlStr = string.Format("UPDATE CCCD SET SoCCCD = '{0}', NoiCap = N'{1}',NgayCap = '{2}' where ID_CongDan = '{3}'", cc.SoCC, cc.ADD, cc.NgayCap, cc.IDCD);
+            String sqlStr = string.Format("UPDATE CCCD SET SoCCCD = '{0}', NoiCap = N'{1}',NgayCap = '{2}' where ID_CongDan = '{3}'", cc.SoCC, cc.ADD, cc.NgayCap.Date, cc.IDCD);
             dbConn.ThucThi(sqlStr);
         }
         

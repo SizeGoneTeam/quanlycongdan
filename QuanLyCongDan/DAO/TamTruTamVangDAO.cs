@@ -14,19 +14,19 @@ namespace QuanLyCongDan.DAO
         DBconnection dbConn = new DBconnection();
         public void Them(TamTruTamVang tt)
         {
-            String sqlStr = string.Format("INSERT INTO TamTruTamVang(ID_CongDan,NgayDen,NgayDi,DiaChi,LiDo) VALUES ('{0}','{1}','{2}',N'{3}',N'{4}') ",tt.IDCD,tt.Come,tt.Leave, tt.Add,tt.Why);
+            String sqlStr = string.Format("INSERT INTO TamTruTamVang(ID_CongDan,NgayDen,NgayDi,DiaChi,LiDo) VALUES ('{0}','{1}','{2}',N'{3}',N'{4}') ",tt.IDCD,tt.Come.Date,tt.Leave.Date, tt.Add,tt.Why);
             dbConn.ThucThi(sqlStr);
         }
 
         public void Xoa(TamTruTamVang tt)
         {
-            String sqlStr = string.Format("DELETE FROM TamTruTamVang WHERE ID_CongDan = ('{0}')", tt.IDCD);
+            String sqlStr = string.Format("UPDATE TamTruTamVang SET NgayDen = '',NgayDi = '', LiDo ='', DiaChi='' WHERE ID_CongDan = '{0}' and NgayDen='{1}'", tt.IDCD, tt.Come.Date);
             dbConn.ThucThi(sqlStr);
         }
 
         public void Sua(TamTruTamVang tt)
         {
-            String sqlStr = string.Format("UPDATE TamTruTamVang SET NgayDen = '{0}',NgayDi = '{1}',LiDo = N'{2}',DiaChi=N'{3}' where ID_CongDan = '{4}' and NgayDen ='{5}' and NgayDi ='{6}'", tt.Come,tt.Leave, tt.Why, tt.Add,tt.IDCD,tt.Come,tt.Leave);
+            String sqlStr = string.Format("UPDATE TamTruTamVang SET NgayDen = '{0}',NgayDi = '{1}',LiDo = N'{2}',DiaChi=N'{3}' where ID_CongDan = '{4}' and NgayDen ='{5}'", tt.Come,tt.Leave, tt.Why, tt.Add,tt.IDCD,tt.Come.Date);
             dbConn.ThucThi(sqlStr);
         }
 

@@ -75,7 +75,6 @@
             this.IDs.Size = new System.Drawing.Size(252, 30);
             this.IDs.TabIndex = 2;
             this.IDs.Text = "  ID Công Dân";
-            this.IDs.Enter += new System.EventHandler(this.IDs_Enter);
             // 
             // GioiTinh
             // 
@@ -91,7 +90,6 @@
             this.GioiTinh.Size = new System.Drawing.Size(252, 30);
             this.GioiTinh.TabIndex = 2;
             this.GioiTinh.Text = "  Giới Tính";
-            this.GioiTinh.Enter += new System.EventHandler(this.GioiTinh_Enter);
             // 
             // soCCCD
             // 
@@ -107,7 +105,6 @@
             this.soCCCD.Size = new System.Drawing.Size(252, 30);
             this.soCCCD.TabIndex = 2;
             this.soCCCD.Text = "  Số CCCD";
-            this.soCCCD.Enter += new System.EventHandler(this.soCCCD_Enter);
             // 
             // birth
             // 
@@ -123,7 +120,6 @@
             this.birth.Size = new System.Drawing.Size(251, 30);
             this.birth.TabIndex = 3;
             this.birth.Text = "  Ngày Sinh";
-            this.birth.Enter += new System.EventHandler(this.birth_Enter);
             // 
             // txtTonGiao
             // 
@@ -139,7 +135,6 @@
             this.txtTonGiao.Size = new System.Drawing.Size(251, 30);
             this.txtTonGiao.TabIndex = 2;
             this.txtTonGiao.Text = "  Tôn Giáo";
-            this.txtTonGiao.Enter += new System.EventHandler(this.txtTonGiao_Enter);
             // 
             // txtDanToc
             // 
@@ -155,7 +150,6 @@
             this.txtDanToc.Size = new System.Drawing.Size(251, 30);
             this.txtDanToc.TabIndex = 2;
             this.txtDanToc.Text = "  Dân Tộc";
-            this.txtDanToc.Enter += new System.EventHandler(this.txtDanToc_Enter);
             // 
             // txtQQ
             // 
@@ -171,7 +165,6 @@
             this.txtQQ.Size = new System.Drawing.Size(251, 30);
             this.txtQQ.TabIndex = 2;
             this.txtQQ.Text = "  Quê Quán";
-            this.txtQQ.Enter += new System.EventHandler(this.txtQQ_Enter);
             // 
             // txtHoTen
             // 
@@ -187,7 +180,6 @@
             this.txtHoTen.Size = new System.Drawing.Size(252, 30);
             this.txtHoTen.TabIndex = 2;
             this.txtHoTen.Text = "  Họ và tên";
-            this.txtHoTen.Enter += new System.EventHandler(this.txtHoTen_Enter);
             // 
             // txtTcccd
             // 
@@ -253,7 +245,6 @@
             this.dates.Size = new System.Drawing.Size(251, 30);
             this.dates.TabIndex = 7;
             this.dates.Text = "  Ngày Cấp";
-            this.dates.Enter += new System.EventHandler(this.dates_Enter);
             // 
             // adds
             // 
@@ -269,7 +260,6 @@
             this.adds.Size = new System.Drawing.Size(252, 30);
             this.adds.TabIndex = 6;
             this.adds.Text = "  Nơi Cấp";
-            this.adds.Enter += new System.EventHandler(this.adds_Enter);
             // 
             // label2
             // 
@@ -339,7 +329,7 @@
             this.txtIDCD.Size = new System.Drawing.Size(362, 30);
             this.txtIDCD.TabIndex = 16;
             this.txtIDCD.Text = "  ID Công Dân";
-            this.txtIDCD.Enter += new System.EventHandler(this.txtIDCD_Enter);
+            this.txtIDCD.Enter += new System.EventHandler(this.txtIDCD_Enter_1);
             // 
             // add
             // 
@@ -353,7 +343,6 @@
             this.add.Size = new System.Drawing.Size(362, 31);
             this.add.TabIndex = 15;
             this.add.Text = "  Nơi Cấp";
-            this.add.Enter += new System.EventHandler(this.add_Enter);
             // 
             // button3
             // 
@@ -451,7 +440,6 @@
             this.Name = "FCCCD";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản Lý CCCD";
-            this.Load += new System.EventHandler(this.FCCCD_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
