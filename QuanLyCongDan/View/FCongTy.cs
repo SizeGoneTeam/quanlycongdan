@@ -21,8 +21,6 @@ namespace QuanLyCongDan.View
         CongDanDAO cdDAO = new CongDanDAO();
         CongDan cd;
         CongTyNhanVien ctnv;
-        LichSuThue lichSuThue;
-        ThueDAO thueDAO = new ThueDAO();
         CCCD cccd;
         public FCongTy()
         {
@@ -165,6 +163,7 @@ namespace QuanLyCongDan.View
             {
                 cccd = cccdDAO.TimKiem_ID(txtCCCD.Text);
                 cd = cdDAO.TimKiem(cccd.IDCD);
+                if (cd == null) throw new Exception();
                 ct = ctDAO.TimKiem(txtCongTy.Text);
                 return ctDAO.KiemTraNhanVienCoDiLamCongTy(cd,ct.Id_CongTy);
             }
@@ -299,6 +298,21 @@ namespace QuanLyCongDan.View
                 txtLuong.Text = "";
                 txtLuong.ForeColor = Color.Black;
             }
+        }
+
+        private void txtCCCD_Enter_1(object sender, EventArgs e)
+        {
+            txtCCCD.Clear();
+        }
+
+        private void txtCongTy_Enter_1(object sender, EventArgs e)
+        {
+            txtCongTy.Clear();
+        }
+
+        private void txtLuong_Enter_1(object sender, EventArgs e)
+        {
+            txtLuong.Clear();
         }
     }
 }

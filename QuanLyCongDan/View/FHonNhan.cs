@@ -43,6 +43,15 @@ namespace QuanLyCongDan.View
                         MessageBox.Show("Vui lòng nhập người đang không đăng ký kết hôn");
                         return;
                     }
+                    else
+                    {
+                        if ((int)((DateTime.Now - cd.NgaySinh).TotalDays / 365) < 18)
+                            {
+                                MessageBox.Show("Số tuổi không hợp lệ (>=18 tuổi)");
+                                throw new Exception();
+                            }
+                            
+                    }
                 }
                 else
                 {
@@ -57,9 +66,9 @@ namespace QuanLyCongDan.View
             }
             catch
             {
-                lblID_CongDanVo.Text = "";
-                lblHoTenChong.Text = "";
-                lblNgaySinhChong.Text = "";
+                lblID_CongDanChong.Text = " ID Công Dân";
+                lblHoTenChong.Text = " Họ Tên";
+                lblNgaySinhChong.Text = " Ngày Sinh";
                 btnThem.Enabled = false;
             }
         }
@@ -79,6 +88,14 @@ namespace QuanLyCongDan.View
                         MessageBox.Show("Vui lòng nhập người đang không đăng ký kết hôn");
                         throw new Exception();
                     }
+                    else
+                    {
+                        if ((int)((DateTime.Now - cd.NgaySinh).TotalDays / 365) < 16)
+                            {
+                                MessageBox.Show("Số tuổi không hợp lệ (>=16 tuổi)");
+                                throw new Exception();
+                            } 
+                    }
                 }
                 else
                 {
@@ -93,9 +110,9 @@ namespace QuanLyCongDan.View
             }
             catch
             {
-                lblID_CongDanVo.Text = "";
-                lblHoTenVo.Text = "";
-                lblNgaySinhVo.Text = "";
+                lblID_CongDanVo.Text = " ID Công Dân";
+                lblHoTenVo.Text = " Họ Tên";
+                lblNgaySinhVo.Text = " Ngày Sinh";
                 btnThem.Enabled = false;
             }
         }
