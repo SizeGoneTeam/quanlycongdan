@@ -35,6 +35,21 @@ namespace QuanLyCongDan.Model
 
         public CongDan(string id, string hoTen, string queQuan, string gioiTinh, DateTime ngaySinh, string danToc, string tonGiao, string sdt, string email, string noiThuongTru, string noiSinh)
         {
+            this.id = id;
+            this.hoTen = hoTen;
+            this.queQuan = queQuan;
+            this.gioiTinh = gioiTinh;
+            this.ngaySinh = ngaySinh;
+            this.danToc = danToc;
+            this.tonGiao = tonGiao;
+            this.sdt = sdt;
+            this.email = email;
+            this.noiThuongTru = noiThuongTru;
+            this.noiSinh = noiSinh;
+        }
+
+        public CongDan(string hoTen, string queQuan, string gioiTinh, DateTime ngaySinh, string danToc, string tonGiao, string sdt, string email, string noiThuongTru, string noiSinh)
+        {
             this.hoTen = hoTen;
             this.queQuan = queQuan;
             this.gioiTinh = gioiTinh;

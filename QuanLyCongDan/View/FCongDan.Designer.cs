@@ -109,6 +109,7 @@
             this.txtHoTen.TabIndex = 9;
             this.txtHoTen.Text = "  Họ và Tên";
             this.txtHoTen.Enter += new System.EventHandler(this.txtHoTen_Enter);
+            this.txtHoTen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHoTen_KeyPress);
             // 
             // btnXoa
             // 
@@ -173,6 +174,7 @@
             this.txtSDT.TabIndex = 18;
             this.txtSDT.Text = "  Số Điện Thoại";
             this.txtSDT.Enter += new System.EventHandler(this.txtSDT_Enter);
+            this.txtSDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSDT_KeyPress);
             // 
             // cboGioiTinh
             // 
