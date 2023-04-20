@@ -32,7 +32,7 @@ namespace QuanLyCongDan
 
         public HonNhan TimKiem_ChongVo(int idChong, int idVo)
         {
-            string sqlStr = string.Format("SELECT * FROM HonNhan WHERE ID_Chong = {0} AND ID_Vo = {1}", idChong, idVo);
+            string sqlStr = string.Format("SELECT TOP 1 * FROM HonNhan WHERE ID_Chong = {0} OR ID_Vo = {0} OR ID_Chong = {1} OR ID_Vo = {1} ORDER BY ID_HonNhan DESC", idChong, idVo);
             DataTable dt = dbConn.LayDanhSach(sqlStr);
 
             if (dt != null)

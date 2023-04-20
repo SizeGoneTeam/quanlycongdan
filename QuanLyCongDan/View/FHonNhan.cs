@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 namespace QuanLyCongDan.View
 {
@@ -25,8 +26,7 @@ namespace QuanLyCongDan.View
             InitializeComponent();
             cboNoiDK.SelectedIndex = 0;
             btnLyHon.Enabled = false;
-            btnThem.Enabled = false;
-        }
+            btnThem.Enabled = false;        }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
@@ -106,37 +106,31 @@ namespace QuanLyCongDan.View
             honNhanDAO.Them(honNhan);
             HonNhanMoi();
             btnThem.Enabled = false;
+            tintrang.Visible = true;
+            vochong.Visible = false;
+            TimKiemHonNhan_ChongVo(int.Parse(cd.Id), int.Parse(cd.Id));
         }
 
         private void cboTimKiem_Click(object sender, EventArgs e)
         {
-            if(txtIdHonNhan.Text != "")
-            TimKiemHonNhan(int.Parse(txtIdHonNhan.Text));
-        }
-
-        private void TimKiemHonNhan(int idHonNhan)
-        {
             try
             {
-                hn = honNhanDAO.TimKiemId(idHonNhan);
-                lblTK_IdChong_txt.Text = hn.IdChong.ToString();
-                lblTK_IdVo_txt.Text = hn.IdVo.ToString();
-                lblTK_NgayDK_txt.Text = hn.NgayDangKy.ToString();
-                lblTK_NoiDK_txt.Text = hn.NoiDangKy.ToString();
-                if (hn.TrangThai) lblTrangThai_txt.Text = "Kết Hôn";
-                else lblTrangThai_txt.Text = "Ly Hôn";
-                btnLyHon.Enabled = true;
-
+                if (txtIdHonNhan.Text != "")
+                {
+                    cccd = cccdDAO.TimKiem_ID(txtIdHonNhan.Text);
+                    cd = cdDAO.TimKiem(cccd.IDCD);
+                    TimKiemHonNhan_ChongVo(int.Parse(cd.Id), int.Parse(cd.Id));
+                }
             }
             catch
             {
-                lblTK_IdChong_txt.Text = "";
-                lblTK_IdVo_txt.Text = "";
-                lblTK_NgayDK_txt.Text = "";
-                lblTK_NoiDK_txt.Text = "";
-                lblTrangThai_txt.Text = "";
-                btnLyHon.Enabled = false;
+                lblTK_IdChong_txt.Clear();
+                lblTK_IdVo_txt.Clear();
+                lblTK_NgayDK_txt.Clear();
+                lblTK_NoiDK_txt.Clear();
+                lblTrangThai_txt.Clear();
             }
+            
         }
 
         private void HonNhanMoi()
@@ -190,7 +184,7 @@ namespace QuanLyCongDan.View
         private void btnLyHon_Click(object sender, EventArgs e)
         {
             honNhanDAO.LyHon(lblTK_IdChong_txt.Text,lblTK_IdVo_txt.Text);
-            TimKiemHonNhan(int.Parse(txtIdHonNhan.Text));
+            TimKiemHonNhan_ChongVo(int.Parse(cd.Id), int.Parse(cd.Id));
         }
 
         private void FHonNhan_Load(object sender, EventArgs e)
@@ -221,11 +215,8 @@ namespace QuanLyCongDan.View
 
         private void txtIdHonNhan_Enter(object sender, EventArgs e)
         {
-            if (txtIdHonNhan.Text == "  ID Hôn Nhân")
-            {
                 txtIdHonNhan.Text = "";
                 txtIdHonNhan.ForeColor = Color.Black;
-            }
         }
 
         private void kiemtra_Click(object sender, EventArgs e)
@@ -239,5 +230,6 @@ namespace QuanLyCongDan.View
             tintrang.Visible = false;
             vochong.Visible = true;
         }
+
     }
 }
