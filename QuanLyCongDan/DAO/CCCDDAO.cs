@@ -14,19 +14,19 @@ namespace QuanLyCongDan.DAO
         DBconnection dbConn = new DBconnection();
         public void Them(CCCD cc)
         {
-            String sqlStr = string.Format("INSERT INTO CCCD(ID_CongDan,SoCCCD, NoiCap, NgayCap) VALUES ('{0}','{1}',N'{2}','{3}')",cc.IDCD,cc.SoCC, cc.Add, cc.NgayCap);
+            String sqlStr = string.Format("INSERT INTO CCCD(ID_CongDan,SoCCCD, NoiCap, NgayCap) VALUES ('{0}','{1}',N'{2}','{3}')",cc.IDCD,cc.SoCC, cc.ADD, cc.NgayCap);
             dbConn.ThucThi(sqlStr);
         }
 
         public void Xoa(CCCD cc)
         {
-            String sqlStr = string.Format("DELETE FROM CCCD WHERE ID_CongDan = ('{0}')", cc.IDCD);
+            String sqlStr = string.Format("UPDATE CCCD SET SoCCCD = '', NoiCap = '', NgayCap = '' where ID_CongDan = '{0}'", cc.IDCD);
             dbConn.ThucThi(sqlStr);
         }
 
         public void Sua(CCCD cc)
         {
-            String sqlStr = string.Format("UPDATE CCCD SET SoCCCD = '{0}', NoiCap = N'{1}',NgayCap = '{2}' where ID_CongDan = '{3}'", cc.SoCC, cc.Add, cc.NgayCap, cc.IDCD);
+            String sqlStr = string.Format("UPDATE CCCD SET SoCCCD = '{0}', NoiCap = N'{1}',NgayCap = '{2}' where ID_CongDan = '{3}'", cc.SoCC, cc.ADD, cc.NgayCap, cc.IDCD);
             dbConn.ThucThi(sqlStr);
         }
         
@@ -45,9 +45,9 @@ namespace QuanLyCongDan.DAO
                         return new CCCD(
                             row["ID_CCCD"].ToString(),
                             row["ID_CongDan"].ToString(),
-                            row["NoiCap"].ToString(),
                             row["SoCCCD"].ToString(),
-                            Convert.ToDateTime(row["NgayCap"].ToString())
+                            Convert.ToDateTime(row["NgayCap"].ToString()),
+                            row["NoiCap"].ToString()
                         );
                     }
                 }
@@ -60,7 +60,36 @@ namespace QuanLyCongDan.DAO
             }
             
         }
+        public CCCD TimKiem(String id)
+        {
+            try
+            {
+                string sqlStr = string.Format("SELECT * FROM CCCD WHERE ID_CongDan LIKE '{0}'", id);
+                DataTable dt = dbConn.LayDanhSach(sqlStr);
 
+                if (dt != null)
+                {
+                    if (dt.Rows.Count > 0)
+                    {
+                        DataRow row = dt.Rows[0];
+                        return new CCCD(
+                            row["ID_CCCD"].ToString(),
+                            row["ID_CongDan"].ToString(),
+                            row["SoCCCD"].ToString(),
+                            Convert.ToDateTime(row["NgayCap"].ToString()),
+                            row["NoiCap"].ToString()
+                        );
+                    }
+                }
+
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+
+        }
         public DataTable LayDanhSachCCCD()
         {
             string sqlStr = string.Format("SELECT * FROM CCCD");
