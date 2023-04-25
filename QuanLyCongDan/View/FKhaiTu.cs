@@ -19,18 +19,140 @@ namespace QuanLyCongDan.View
         private CongDan nguoiYeuCau;
 
         private KhaiTuDAO khaiTuDAO = new KhaiTuDAO();
-        private CongDanDAO congDanDAO = new CongDanDAO();
+        private CongDanDAO congDanDao = new CongDanDAO();
+        private CCCDDAO cccdDao = new CCCDDAO();
+
+        private bool isAddMode;
 
         public FKhaiTu()
         {
             InitializeComponent();
         }
 
+        #region Events
         private void FKhaiTu_Load(object sender, EventArgs e)
         {
             LoadTheme();
+            switchToAddMode();
         }
 
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            if (isAddMode)
+            {
+                updateFromContent();
+                if (isEnoughContext() && !isDublicate())
+                {
+                    if (khaiTuDAO.Them(khaiTu))
+                    {
+                        MessageBox.Show("Thêm thành công!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thêm thất bại!");
+                    }
+                }
+            }
+            else
+            {
+                switchToAddMode();
+            }
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            updateFromContent();
+            if (!isInAddMode() && isEnoughContext() && !isDublicate())
+            {
+                if (khaiTuDAO.Sua(khaiTu))
+                {
+                    MessageBox.Show("Sửa thành công!");
+                }
+                else
+                {
+                    MessageBox.Show("Sửa thất bại!");
+                }
+            }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (isAddMode)
+            {
+                MessageBox.Show("Đang ở add mode!");
+            }
+            else
+            {
+                if (isEnoughContext() && !isDublicate())
+                {
+                    if (khaiTuDAO.Xoa(khaiTu.ID))
+                    {
+                        MessageBox.Show("Xóa thành công!");
+                        khaiTu = null;
+                        updateContent();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa thất bại!");
+                    }
+                }
+            }
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            int iD;
+            
+            if (int.TryParse(txtTimKiem.Text, out iD))
+            {
+                khaiTu = khaiTuDAO.TimKiem(iD);
+                if (khaiTu is null)
+                {
+                    MessageBox.Show("Không tìm thấy!");
+                }
+                else
+                {
+                    switchToEditMode();
+                }
+            }
+            else
+            {
+                MessageBox.Show("ID không hợp lệ!");
+                khaiTu = null;
+            }
+            updateContent();
+        }
+
+        private void btnTimKiemCongDan_Click(object sender, EventArgs e)
+        {
+            string cccd = txtCCCDCongDan.Text;
+            int id = cccdDao.toIdCongDan(cccd);
+            congDan = congDanDao.TimKiem(id.ToString());
+
+            if (congDan is null)
+            {
+                MessageBox.Show("Không tìm thấy");
+            }
+            else
+            {
+                updateContentCongDan();
+            }
+        }
+
+        private void btnTimKiemNguoiYeuCau_Click(object sender, EventArgs e)
+        {
+            string cccd = txtCCCDNguoiYeuCau.Text;
+            int id = cccdDao.toIdCongDan(cccd);
+            nguoiYeuCau = congDanDao.TimKiem(id.ToString());
+            if (nguoiYeuCau is null)
+            {
+                MessageBox.Show("Không tìm thấy");
+            }
+            updateContentNguoiYeuCau();
+        }
+        #endregion
+
+        #region Methods
         private void LoadTheme()
         {
             foreach (Control pns in this.Controls)
@@ -49,267 +171,103 @@ namespace QuanLyCongDan.View
                     }
                 }
             }
-            //label4.ForeColor = ThemeColor.SecondaryColor;
-            //label5.ForeColor = ThemeColor.PrimaryColor;
         }
 
-        #region Events
-        private void btnThem_Click(object sender, EventArgs e)
+        private bool isEnoughContext()
         {
-            if (congDan is null || nguoiYeuCau is null)
+            if (congDan is null || nguoiYeuCau == null || khaiTu is null)
             {
-                MessageBox.Show("Thiếu thông tin!");
+                MessageBox.Show("Thiếu thông tin");
+                return false;
             }
-            else if (congDan.Id == nguoiYeuCau.Id)
+            return true;
+        }
+
+        private bool isDublicate()
+        {
+            if (congDan.Id == nguoiYeuCau.Id)
             {
                 MessageBox.Show("Người yêu cầu không là người tử!");
 
                 congDan = null;
                 nguoiYeuCau = null;
-
-                reload();
-            }
-            else
-            {
-                if (khaiTuDAO.Them(new KhaiTu(
-                            int.Parse(congDan.Id),
-                            int.Parse(nguoiYeuCau.Id),
-                            txtQuanHe.Text,
-                            pkThoiGianChet.Value,
-                            txtNoiChet.Text,
-                            txtNguyenNhan.Text,
-                            txtNoiDangKy.Text,
-                            pkNgayThucHien.Value.Date)
-                        )
-                    )
-                {
-                    MessageBox.Show("Thêm thành công!");
-                }
-                else
-                {
-                    MessageBox.Show("Thêm thất bại!");
-                }
-            }
-        }
-
-        private void btnSua_Click(object sender, EventArgs e)
-        {
-            if (congDan is null || nguoiYeuCau is null)
-            {
-                MessageBox.Show("Thiếu thông tin!");
-            }
-            else if (congDan.Id == nguoiYeuCau.Id)
-            {
-                MessageBox.Show("Người yêu cầu không là người tử!");
-
-                congDan = null;
-                nguoiYeuCau = null;
-
-                reload();
-            }
-            else
-            {
-                if (khaiTuDAO.Sua(new KhaiTu(
-                            khaiTu.ID,
-                            int.Parse(congDan.Id),
-                            int.Parse(nguoiYeuCau.Id),
-                            txtQuanHe.Text,
-                            pkThoiGianChet.Value,
-                            txtNoiChet.Text,
-                            txtNguyenNhan.Text,
-                            txtNoiDangKy.Text,
-                            pkNgayThucHien.Value.Date)
-                        )
-                    )
-                {
-                    MessageBox.Show("Sửa thành công!");
-                }
-                else
-                {
-                    MessageBox.Show("Sửa thất bại!");
-                }
-            }
-        }
-
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-            if (khaiTu is null)
-            {
-                MessageBox.Show("Chưa chọn khai tử!");
-            }
-            else
-            {
-                if (khaiTuDAO.Xoa(khaiTu.ID))
-                {
-                    MessageBox.Show("Xóa thành công!");
-                }
-                else
-                {
-                    MessageBox.Show("Xóa thất bại!");
-                }
-            }
-        }
-
-        private void btnTimKiem_Click(object sender, EventArgs e)
-        {
-            int iD;
-            
-            if (int.TryParse(txtTimKiem.Text, out iD))
-            {
-                khaiTu = khaiTuDAO.TimKiem(iD);
-                if (khaiTu is null)
-                {
-                    MessageBox.Show("Không tìm thấy!");
-
-                    reload();
-                }
-                else
-                {
-                    congDan = congDanDAO.TimKiem(khaiTu.IDCongDan.ToString());
-                    nguoiYeuCau = congDanDAO.TimKiem(khaiTu.IDNguoiYeuCau.ToString());
-                    
-                    updateContent();
-                }
-            }
-            else
-            {
-                MessageBox.Show("ID không hợp lệ!");
-
-                khaiTu = null;
-                congDan = null;
-                nguoiYeuCau = null;
-
-                reload();
-            }
-        }
-
-        private void btnTimKiemCongDan_Click(object sender, EventArgs e)
-        {
-            int iD;
-            
-            if (int.TryParse(txtIDCongDan.Text, out iD))
-            {
-                congDan = congDanDAO.TimKiem(iD.ToString());
 
                 updateContentCongDan();
-            }
-            else
-            {
-                MessageBox.Show("ID công dân không hợp lệ!");
-
-                congDan = null;
-                txtHoVaTenCongDan.Clear();
-            }
-        }
-
-        private void btnTimKiemNguoiYeuCau_Click(object sender, EventArgs e)
-        {
-            int iD;
-
-            if (int.TryParse(txtIDNguoiYeuCau.Text, out iD))
-            {
-                nguoiYeuCau = congDanDAO.TimKiem(iD.ToString());
-
                 updateContentNguoiYeuCau();
+                return true;
             }
-            else
-            {
-                MessageBox.Show("ID người yêu cầu không hợp lệ!");
-
-                nguoiYeuCau = null;
-                txtHoVaTenNguoiYeuCau.Clear();
-            }
+            return false;
         }
-        #endregion
 
-        #region Methods
+        private bool isInAddMode()
+        {
+            if (isAddMode)
+            {
+                MessageBox.Show("Đang ở add mode!");
+                return true;
+            }
+            return false;
+        }
+
+        private void switchToAddMode()
+        {
+            isAddMode = true;
+
+            btnSua.Enabled = false;
+            btnXoa.Enabled = false;
+        }
+
+        private void switchToEditMode()
+        {
+            isAddMode = false;
+
+            btnSua.Enabled = true;
+            btnXoa.Enabled = true;
+        }
+
+        private void updateFromContent()
+        {
+            if (isAddMode && khaiTu is null)
+            {
+                khaiTu = new KhaiTu();
+            }
+            khaiTu.QuanHe = txtQuanHe.Text;
+            khaiTu.NoiChet = txtNoiChet.Text;
+            khaiTu.ThoiGianChet = pkThoiGianChet.Value;
+            khaiTu.NoiDangKy = txtNoiDangKy.Text;
+            khaiTu.NgayThucHien = pkNgayThucHien.Value;
+            khaiTu.IDCongDan = int.Parse(congDan.Id);
+            khaiTu.IDNguoiYeuCau = int.Parse(nguoiYeuCau.Id);
+        }
+
         private void updateContent()
         {
-            txtQuanHe.Text = khaiTu.QuanHe;
-            txtNoiChet.Text = khaiTu.NoiChet;
-            txtNoiDangKy.Text = khaiTu.NoiDangKy;
-            txtNguyenNhan.Text = khaiTu.NguyenNhan;
-            pkThoiGianChet.Value = khaiTu.ThoiGianChet;
-            pkNgayThucHien.Value = khaiTu.NgayThucHien;
-            
+            txtTimKiem.Text = "";
+            txtQuanHe.Text = khaiTu is null ? "" : khaiTu.QuanHe;
+            txtNoiChet.Text = khaiTu is null ? "" : khaiTu.NoiChet;
+            txtNoiDangKy.Text = khaiTu is null ? "" : khaiTu.NoiDangKy;
+            txtNguyenNhan.Text = khaiTu is null ? "" : khaiTu.NguyenNhan;
+            pkThoiGianChet.Value = khaiTu is null ? DateTime.Now : khaiTu.ThoiGianChet;
+            pkNgayThucHien.Value = khaiTu is null ? DateTime.Now : khaiTu.NgayThucHien;
+
+            congDan = khaiTu is null ? null : congDanDao.TimKiem(khaiTu.IDCongDan.ToString());
+            nguoiYeuCau = khaiTu is null ? null : congDanDao.TimKiem(khaiTu.IDNguoiYeuCau.ToString());
+
             updateContentCongDan();
             updateContentNguoiYeuCau();
         }
 
         private void updateContentCongDan()
         {
-            txtHoVaTenCongDan.Text = congDan.HoTen;
+            txtCCCDCongDan.Text = "";
+            txtHoVaTenCongDan.Text = congDan is null ? "" : congDan.HoTen;
         }
 
         private void updateContentNguoiYeuCau()
         {
-            txtHoVaTenNguoiYeuCau.Text = nguoiYeuCau.HoTen;
-        }
-
-        private void reload()
-        {
-            Controls.Clear();
-            InitializeComponent();
+            txtCCCDNguoiYeuCau.Text = "";
+            txtHoVaTenNguoiYeuCau.Text = nguoiYeuCau is null ? "" : nguoiYeuCau.HoTen;
         }
         #endregion
-
-        private void txtHoVaTenCongDan_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtIDNguoiYeuCau_Enter(object sender, EventArgs e)
-        {
-            if (txtIDNguoiYeuCau.Text == "  ID Người Yêu Cầu")
-            {
-                txtIDNguoiYeuCau.Text = "";
-                txtIDNguoiYeuCau.ForeColor = Color.Black;
-            }
-        }
-
-        private void txtIDCongDan_Enter(object sender, EventArgs e)
-        {
-            if (txtIDCongDan.Text == "  ID Người Tử")
-            {
-                txtIDCongDan.Text = "";
-                txtIDCongDan.ForeColor = Color.Black;
-            }
-        }
-
-        private void txtQuanHe_Enter(object sender, EventArgs e)
-        {
-            if (txtQuanHe.Text == "  Quan Hệ")
-            {
-                txtQuanHe.Text = "";
-                txtQuanHe.ForeColor = Color.Black;
-            }
-        }
-
-        private void txtNoiChet_Enter(object sender, EventArgs e)
-        {
-            if (txtNoiChet.Text == "  Nơi Chết")
-            {
-                txtNoiChet.Text = "";
-                txtNoiChet.ForeColor = Color.Black;
-            }
-        }
-
-        private void txtTimKiem_Enter(object sender, EventArgs e)
-        {
-            if (txtTimKiem.Text == "  Số Khai Tử")
-            {
-                txtTimKiem.Text = "";
-                txtTimKiem.ForeColor = Color.Black;
-            }
-        }
-
-        private void txtNoiDangKy_Enter(object sender, EventArgs e)
-        {
-            if (txtNoiDangKy.Text == "  Nơi Đăng Ký")
-            {
-                txtNoiDangKy.Text = "";
-                txtNoiDangKy.ForeColor = Color.Black;
-            }
-        }
     }
 }
