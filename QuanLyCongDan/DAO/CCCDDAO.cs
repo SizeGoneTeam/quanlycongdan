@@ -66,5 +66,22 @@ namespace QuanLyCongDan.DAO
             string sqlStr = string.Format("SELECT * FROM CCCD");
             return dbConn.LayDanhSach(sqlStr);
         }
+
+        public int toIdCongDan(String soCCCD)
+        {
+            string sqlStr = string.Format("SELECT * FROM CCCD WHERE SoCCCD LIKE '{0}'", soCCCD);
+            DataTable dt = dbConn.LayDanhSach(sqlStr);
+
+            if (dt != null)
+            {
+                if (dt.Rows.Count > 0)
+                {
+                    DataRow row = dt.Rows[0];
+                    return int.Parse(row["ID_CongDan"].ToString());
+                }
+            }
+
+            return -1;
+        }
     }
 }
