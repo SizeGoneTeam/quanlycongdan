@@ -31,11 +31,8 @@
             this.btnThem = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
-            this.txtID = new System.Windows.Forms.TextBox();
-            this.btnTimKiem = new System.Windows.Forms.Button();
-            this.txtIDNguoiYeuCau = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.txtCCCDNguoiYeuCau = new System.Windows.Forms.TextBox();
+            this.txtQuanHe = new System.Windows.Forms.TextBox();
             this.txtDiaChiNguoiYeuCau = new System.Windows.Forms.TextBox();
             this.txtHoTenNguoiYeuCau = new System.Windows.Forms.TextBox();
             this.next = new System.Windows.Forms.Button();
@@ -55,7 +52,7 @@
             this.txtDanTocNguoiMe = new System.Windows.Forms.TextBox();
             this.txtNamSinhNguoiMe = new System.Windows.Forms.TextBox();
             this.txtHoTenNguoiMe = new System.Windows.Forms.TextBox();
-            this.txtIDNguoiMe = new System.Windows.Forms.TextBox();
+            this.txtCCCDNguoiMe = new System.Windows.Forms.TextBox();
             this.btnTimKiemNguoiMe = new System.Windows.Forms.Button();
             this.txtHoTenNguoiCha = new System.Windows.Forms.TextBox();
             this.txtNamSinhNguoiCha = new System.Windows.Forms.TextBox();
@@ -63,7 +60,7 @@
             this.txtQuocTichNguoiCha = new System.Windows.Forms.TextBox();
             this.txtDiaChiNguoiCha = new System.Windows.Forms.TextBox();
             this.btnTimKiemNguoiCha = new System.Windows.Forms.Button();
-            this.txtIDNguoiCha = new System.Windows.Forms.TextBox();
+            this.txtCCCDNguoiCha = new System.Windows.Forms.TextBox();
             this.yc = new System.Windows.Forms.Panel();
             this.panel32 = new System.Windows.Forms.Panel();
             this.ycprev = new System.Windows.Forms.Button();
@@ -89,6 +86,8 @@
             this.label41 = new System.Windows.Forms.Label();
             this.cboDanToc = new System.Windows.Forms.ComboBox();
             this.label42 = new System.Windows.Forms.Label();
+            this.txtID = new System.Windows.Forms.TextBox();
+            this.btnTimKiem = new System.Windows.Forms.Button();
             this.yc.SuspendLayout();
             this.panel32.SuspendLayout();
             this.cha.SuspendLayout();
@@ -141,61 +140,25 @@
             this.btnSua.UseVisualStyleBackColor = false;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
-            // txtID
-            // 
-            this.txtID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtID.Location = new System.Drawing.Point(206, 412);
-            this.txtID.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(137, 30);
-            this.txtID.TabIndex = 2;
-            this.txtID.Text = "  ID";
-            // 
-            // btnTimKiem
-            // 
-            this.btnTimKiem.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.btnTimKiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTimKiem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnTimKiem.Location = new System.Drawing.Point(357, 409);
-            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(103, 33);
-            this.btnTimKiem.TabIndex = 1;
-            this.btnTimKiem.Text = "Nhập";
-            this.btnTimKiem.UseVisualStyleBackColor = false;
-            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
-            // 
-            // txtIDNguoiYeuCau
-            // 
-            this.txtIDNguoiYeuCau.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtIDNguoiYeuCau.Location = new System.Drawing.Point(141, 147);
-            this.txtIDNguoiYeuCau.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
-            this.txtIDNguoiYeuCau.Name = "txtIDNguoiYeuCau";
-            this.txtIDNguoiYeuCau.Size = new System.Drawing.Size(240, 30);
-            this.txtIDNguoiYeuCau.TabIndex = 2;
-            this.txtIDNguoiYeuCau.Text = "  ID";
-            this.txtIDNguoiYeuCau.Enter += new System.EventHandler(this.txtIDNguoiYeuCau_Enter);
-            // 
-            // textBox5
-            // 
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox5.Location = new System.Drawing.Point(141, 357);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(408, 30);
-            this.textBox5.TabIndex = 2;
-            this.textBox5.Text = "  Quan Hệ";
-            // 
             // txtCCCDNguoiYeuCau
             // 
             this.txtCCCDNguoiYeuCau.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCCCDNguoiYeuCau.Location = new System.Drawing.Point(141, 300);
+            this.txtCCCDNguoiYeuCau.Location = new System.Drawing.Point(141, 147);
             this.txtCCCDNguoiYeuCau.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.txtCCCDNguoiYeuCau.Name = "txtCCCDNguoiYeuCau";
-            this.txtCCCDNguoiYeuCau.ReadOnly = true;
-            this.txtCCCDNguoiYeuCau.Size = new System.Drawing.Size(408, 30);
+            this.txtCCCDNguoiYeuCau.Size = new System.Drawing.Size(240, 30);
             this.txtCCCDNguoiYeuCau.TabIndex = 2;
-            this.txtCCCDNguoiYeuCau.Text = "  CCCD";
+            this.txtCCCDNguoiYeuCau.Text = "  ID";
+            // 
+            // txtQuanHe
+            // 
+            this.txtQuanHe.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtQuanHe.Location = new System.Drawing.Point(141, 295);
+            this.txtQuanHe.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
+            this.txtQuanHe.Name = "txtQuanHe";
+            this.txtQuanHe.Size = new System.Drawing.Size(408, 30);
+            this.txtQuanHe.TabIndex = 2;
+            this.txtQuanHe.Text = "  Quan Hệ";
             // 
             // txtDiaChiNguoiYeuCau
             // 
@@ -280,7 +243,6 @@
             this.txtQueQuan.Size = new System.Drawing.Size(310, 30);
             this.txtQueQuan.TabIndex = 2;
             this.txtQueQuan.Text = "  Quê Quán";
-            this.txtQueQuan.Enter += new System.EventHandler(this.txtQueQuan_Enter);
             // 
             // txtNoiDangKy
             // 
@@ -291,7 +253,6 @@
             this.txtNoiDangKy.Size = new System.Drawing.Size(310, 30);
             this.txtNoiDangKy.TabIndex = 2;
             this.txtNoiDangKy.Text = "  Làm Tại";
-            this.txtNoiDangKy.Enter += new System.EventHandler(this.txtNoiDangKy_Enter);
             // 
             // txtNoiSinh
             // 
@@ -302,7 +263,6 @@
             this.txtNoiSinh.Size = new System.Drawing.Size(310, 30);
             this.txtNoiSinh.TabIndex = 2;
             this.txtNoiSinh.Text = "  Nơi Sinh";
-            this.txtNoiSinh.Enter += new System.EventHandler(this.txtNoiSinh_Enter);
             // 
             // txtQuocTich
             // 
@@ -313,7 +273,6 @@
             this.txtQuocTich.Size = new System.Drawing.Size(310, 30);
             this.txtQuocTich.TabIndex = 2;
             this.txtQuocTich.Text = "  Quốc Tịch";
-            this.txtQuocTich.Enter += new System.EventHandler(this.txtQuocTich_Enter);
             // 
             // pkNgaySinh
             // 
@@ -345,7 +304,6 @@
             this.txtHoTen.Size = new System.Drawing.Size(297, 30);
             this.txtHoTen.TabIndex = 2;
             this.txtHoTen.Text = "  Họ Và Tên";
-            this.txtHoTen.Enter += new System.EventHandler(this.txtHoTen_Enter);
             // 
             // txtDiaChiNguoiMe
             // 
@@ -402,16 +360,15 @@
             this.txtHoTenNguoiMe.TabIndex = 2;
             this.txtHoTenNguoiMe.Text = "  Họ Và Tên";
             // 
-            // txtIDNguoiMe
+            // txtCCCDNguoiMe
             // 
-            this.txtIDNguoiMe.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtIDNguoiMe.Location = new System.Drawing.Point(148, 117);
-            this.txtIDNguoiMe.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
-            this.txtIDNguoiMe.Name = "txtIDNguoiMe";
-            this.txtIDNguoiMe.Size = new System.Drawing.Size(212, 30);
-            this.txtIDNguoiMe.TabIndex = 2;
-            this.txtIDNguoiMe.Text = "  ID";
-            this.txtIDNguoiMe.Enter += new System.EventHandler(this.txtIDNguoiMe_Enter);
+            this.txtCCCDNguoiMe.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCCCDNguoiMe.Location = new System.Drawing.Point(148, 117);
+            this.txtCCCDNguoiMe.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
+            this.txtCCCDNguoiMe.Name = "txtCCCDNguoiMe";
+            this.txtCCCDNguoiMe.Size = new System.Drawing.Size(212, 30);
+            this.txtCCCDNguoiMe.TabIndex = 2;
+            this.txtCCCDNguoiMe.Text = "  ID";
             // 
             // btnTimKiemNguoiMe
             // 
@@ -496,16 +453,15 @@
             this.btnTimKiemNguoiCha.UseVisualStyleBackColor = false;
             this.btnTimKiemNguoiCha.Click += new System.EventHandler(this.btnTimKiemNguoiCha_Click);
             // 
-            // txtIDNguoiCha
+            // txtCCCDNguoiCha
             // 
-            this.txtIDNguoiCha.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtIDNguoiCha.Location = new System.Drawing.Point(141, 137);
-            this.txtIDNguoiCha.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
-            this.txtIDNguoiCha.Name = "txtIDNguoiCha";
-            this.txtIDNguoiCha.Size = new System.Drawing.Size(212, 30);
-            this.txtIDNguoiCha.TabIndex = 2;
-            this.txtIDNguoiCha.Text = "  ID";
-            this.txtIDNguoiCha.Enter += new System.EventHandler(this.txtIDNguoiCha_Enter);
+            this.txtCCCDNguoiCha.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCCCDNguoiCha.Location = new System.Drawing.Point(141, 137);
+            this.txtCCCDNguoiCha.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
+            this.txtCCCDNguoiCha.Name = "txtCCCDNguoiCha";
+            this.txtCCCDNguoiCha.Size = new System.Drawing.Size(212, 30);
+            this.txtCCCDNguoiCha.TabIndex = 2;
+            this.txtCCCDNguoiCha.Text = "  ID";
             // 
             // yc
             // 
@@ -522,14 +478,11 @@
             // panel32
             // 
             this.panel32.BackColor = System.Drawing.Color.White;
-            this.panel32.Controls.Add(this.txtID);
             this.panel32.Controls.Add(this.ycprev);
-            this.panel32.Controls.Add(this.txtIDNguoiYeuCau);
-            this.panel32.Controls.Add(this.textBox5);
-            this.panel32.Controls.Add(this.ycnext);
-            this.panel32.Controls.Add(this.btnTimKiem);
-            this.panel32.Controls.Add(this.label35);
             this.panel32.Controls.Add(this.txtCCCDNguoiYeuCau);
+            this.panel32.Controls.Add(this.txtQuanHe);
+            this.panel32.Controls.Add(this.ycnext);
+            this.panel32.Controls.Add(this.label35);
             this.panel32.Controls.Add(this.label36);
             this.panel32.Controls.Add(this.btnTimKiemNguoiYeuCau);
             this.panel32.Controls.Add(this.txtDiaChiNguoiYeuCau);
@@ -629,7 +582,7 @@
             this.panel34.Controls.Add(this.label38);
             this.panel34.Controls.Add(this.txtDiaChiNguoiCha);
             this.panel34.Controls.Add(this.btnTimKiemNguoiCha);
-            this.panel34.Controls.Add(this.txtIDNguoiCha);
+            this.panel34.Controls.Add(this.txtCCCDNguoiCha);
             this.panel34.Location = new System.Drawing.Point(21, 34);
             this.panel34.Margin = new System.Windows.Forms.Padding(4);
             this.panel34.Name = "panel34";
@@ -710,7 +663,7 @@
             this.panel36.Controls.Add(this.txtNamSinhNguoiMe);
             this.panel36.Controls.Add(this.txtHoTenNguoiMe);
             this.panel36.Controls.Add(this.label40);
-            this.panel36.Controls.Add(this.txtIDNguoiMe);
+            this.panel36.Controls.Add(this.txtCCCDNguoiMe);
             this.panel36.Controls.Add(this.btnTimKiemNguoiMe);
             this.panel36.Location = new System.Drawing.Point(21, 34);
             this.panel36.Margin = new System.Windows.Forms.Padding(4);
@@ -783,6 +736,8 @@
             // panel38
             // 
             this.panel38.BackColor = System.Drawing.Color.White;
+            this.panel38.Controls.Add(this.txtID);
+            this.panel38.Controls.Add(this.btnTimKiem);
             this.panel38.Controls.Add(this.label4);
             this.panel38.Controls.Add(this.label41);
             this.panel38.Controls.Add(this.cboDanToc);
@@ -906,6 +861,29 @@
             this.label42.TabIndex = 4;
             this.label42.Text = "Thông Tin Đăng Ký";
             // 
+            // txtID
+            // 
+            this.txtID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtID.Location = new System.Drawing.Point(479, 58);
+            this.txtID.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(137, 30);
+            this.txtID.TabIndex = 31;
+            this.txtID.Text = "  ID";
+            // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.btnTimKiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTimKiem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnTimKiem.Location = new System.Drawing.Point(630, 55);
+            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(103, 33);
+            this.btnTimKiem.TabIndex = 30;
+            this.btnTimKiem.Text = "Nhập";
+            this.btnTimKiem.UseVisualStyleBackColor = false;
+            // 
             // FKhaiSinh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
@@ -913,9 +891,9 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1274, 939);
             this.Controls.Add(this.dangky);
-            this.Controls.Add(this.me);
             this.Controls.Add(this.yc);
             this.Controls.Add(this.cha);
+            this.Controls.Add(this.me);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FKhaiSinh";
@@ -941,13 +919,10 @@
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnSua;
-        private System.Windows.Forms.TextBox txtID;
-        private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.TextBox txtHoTenNguoiYeuCau;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox txtCCCDNguoiYeuCau;
+        private System.Windows.Forms.TextBox txtQuanHe;
         private System.Windows.Forms.TextBox txtDiaChiNguoiYeuCau;
-        private System.Windows.Forms.TextBox txtIDNguoiYeuCau;
+        private System.Windows.Forms.TextBox txtCCCDNguoiYeuCau;
         private System.Windows.Forms.TextBox txtQueQuan;
         private System.Windows.Forms.TextBox txtNoiSinh;
         private System.Windows.Forms.TextBox txtQuocTich;
@@ -956,14 +931,14 @@
         private System.Windows.Forms.TextBox txtQuocTichNguoiMe;
         private System.Windows.Forms.TextBox txtNamSinhNguoiMe;
         private System.Windows.Forms.TextBox txtHoTenNguoiMe;
-        private System.Windows.Forms.TextBox txtIDNguoiMe;
+        private System.Windows.Forms.TextBox txtCCCDNguoiMe;
         private System.Windows.Forms.Button btnTimKiemNguoiMe;
         private System.Windows.Forms.TextBox txtDiaChiNguoiCha;
         private System.Windows.Forms.TextBox txtQuocTichNguoiCha;
         private System.Windows.Forms.TextBox txtDanTocNguoiCha;
         private System.Windows.Forms.TextBox txtNamSinhNguoiCha;
         private System.Windows.Forms.TextBox txtHoTenNguoiCha;
-        private System.Windows.Forms.TextBox txtIDNguoiCha;
+        private System.Windows.Forms.TextBox txtCCCDNguoiCha;
         private System.Windows.Forms.Button btnTimKiemNguoiCha;
         private System.Windows.Forms.DateTimePicker pkNgayDangKy;
         private System.Windows.Forms.TextBox txtNoiDangKy;
@@ -999,5 +974,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cboDanToc;
         private System.Windows.Forms.Button btnTimKiemNguoiYeuCau;
+        private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.Button btnTimKiem;
     }
 }
