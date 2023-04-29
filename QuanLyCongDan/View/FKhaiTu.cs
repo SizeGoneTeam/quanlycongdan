@@ -215,8 +215,8 @@ namespace QuanLyCongDan.View
             khaiTu.ThoiGianChet = pkThoiGianChet.Value;
             khaiTu.NoiDangKy = txtNoiDangKy.Text;
             khaiTu.NgayThucHien = pkNgayThucHien.Value;
-            khaiTu.IDCongDan = int.Parse(congDan.Id);
-            khaiTu.IDNguoiYeuCau = int.Parse(nguoiYeuCau.Id);
+            khaiTu.IDCongDan = congDan is null ? -1 : int.Parse(congDan.Id);
+            khaiTu.IDNguoiYeuCau = nguoiYeuCau is null ? -1 : int.Parse(nguoiYeuCau.Id);
         }
 
         private void updateContent()
