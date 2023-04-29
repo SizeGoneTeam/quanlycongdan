@@ -32,7 +32,6 @@ namespace QuanLyCongDan.View
         #region Events
         private void FKhaiTu_Load(object sender, EventArgs e)
         {
-            LoadTheme();
             switchToAddMode();
         }
 
@@ -153,29 +152,9 @@ namespace QuanLyCongDan.View
         #endregion
 
         #region Methods
-        private void LoadTheme()
-        {
-            foreach (Control pns in this.Controls)
-            {
-                if (pns.GetType() == typeof(Panel))
-                {
-                    foreach (Control btns in pns.Controls)
-                    {
-                        if (btns.GetType() == typeof(Button))
-                        {
-                            Button btn = (Button)btns;
-                            btn.BackColor = ThemeColor.PrimaryColor;
-                            btn.ForeColor = Color.White;
-                            btn.FlatAppearance.BorderColor = ThemeColor.SecondaryColor;
-                        }
-                    }
-                }
-            }
-        }
-
         private bool isEnoughContext()
         {
-            if (congDan is null || nguoiYeuCau == null || khaiTu is null)
+            if (congDan is null || nguoiYeuCau is null || khaiTu is null)
             {
                 MessageBox.Show("Thiếu thông tin");
                 return false;
