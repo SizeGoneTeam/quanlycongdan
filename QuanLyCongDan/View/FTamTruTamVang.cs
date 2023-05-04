@@ -44,42 +44,69 @@ namespace QuanLyCongDan
         private void button1_Click(object sender, EventArgs e)
         {
             cccd = cccdDAO.TimKiem_ID(txtsoCC.Text);
-            tt = new TamTruTamVang(cccd.IDCD, Come.Value.Date, Leave.Value.Date, txtAdd.Text, txtLido.Text);
+            TamTruTamVang ttold;
+            TamTruTamVang ttnew;
+            ttold = ttdao.TimKiemTT(cccd.IDCD);
+            ttnew = new TamTruTamVang(cccd.IDCD, Come.Value.Date, Leave.Value.Date, txtAdd.Text, txtLido.Text);
             if (txtsoCC.Text == "  ID Công Dân" ||
                 txtAdd.Text == "  Số CCCD" ||
                 txtLido.Text == "  Địa Chỉ" ||
-                Come.Value == Leave.Value)
+                txtsoCC.Text == "" ||
+                txtAdd.Text == "" ||
+                txtLido.Text == "" ||
+                Come.Value >= Leave.Value)
             {
-                MessageBox.Show("Hãy Điền Thông Tin");
+                if (Come.Value >= Leave.Value) MessageBox.Show("Ngày đến không được vượt quá ngày đi.");
+                else MessageBox.Show("Hãy Điền Thông Tin");
+            }
+            else if(ttnew.Come.Date >= ttold.Come.Date && ttnew.Come.Date <= ttold.Leave || ttnew.Leave.Date <= ttold.Leave.Date && ttnew.Leave.Date >= ttold.Come.Date)
+            {
+                MessageBox.Show("Trong Cùng Thời Gian Không Thể Tạm Trú Ở Hai Nơi Cùng Lúc.");
             }
             else
             {
-                ttdao.Them(tt);
+                ttdao.Them(ttnew);
+                MessageBox.Show("Hoàn Thành.");
                 HienThiDanhSach();
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            cccd = cccdDAO.TimKiem_ID(txtsoCC.Text);
-            tt = new TamTruTamVang(cccd.IDCD, Come.Value.Date, Leave.Value.Date, txtAdd.Text, txtLido.Text);
-            ttdao.Xoa(tt);
+            if (txtsoCC.Text == "  ID Công Dân" ||
+                txtsoCC.Text == "")
+            {
+                MessageBox.Show("Hãy Điền Thông Tin.");
+            }
+            else
+            {
+                cccd = cccdDAO.TimKiem_ID(txtsoCC.Text);
+                tt = new TamTruTamVang(cccd.IDCD, Come.Value.Date, Leave.Value.Date, txtAdd.Text, txtLido.Text);
+                ttdao.Xoa(tt);
+                MessageBox.Show("Hoàn Thành.");
+                HienThiDanhSach();
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             if (txtsoCC.Text == "  ID Công Dân" ||
                 txtAdd.Text == "  Số CCCD" ||
-                txtLido.Text == "  Địa Chỉ"||
-                Come.Value == Leave.Value)
+                txtLido.Text == "  Địa Chỉ" ||
+                txtsoCC.Text == "" ||
+                txtAdd.Text == "" ||
+                txtLido.Text == "" ||
+                Come.Value >= Leave.Value)
             {
-                MessageBox.Show("Hãy Điền Thông Tin");
+                if (Come.Value >= Leave.Value) MessageBox.Show("Ngày đến không được vượt quá ngày đi.");
+                else MessageBox.Show("Hãy Điền Thông Tin");
             }
             else
             {
                 cccd = cccdDAO.TimKiem_ID(txtsoCC.Text);
                 tt = new TamTruTamVang(cccd.IDCD, Come.Value.Date, Leave.Value.Date, txtAdd.Text, txtLido.Text);
                 ttdao.Sua(tt);
+                MessageBox.Show("Hoàn Thành.");
                 HienThiDanhSach();
             }
         }
@@ -101,46 +128,36 @@ namespace QuanLyCongDan
         {
             HienThiDanhSach();
         }
-
+        public static void enter(TextBox a)
+        {
+            if (a.Text != null || a.Text !="")
+            {
+                a.Text = "";
+                a.ForeColor = Color.Black;
+            }
+        }
         private void txtTCCCD_Enter(object sender, EventArgs e)
         {
-            if (txtTCCCD.Text == "  CCCD")
-            {
-                txtTCCCD.Text = "";
-                txtTCCCD.ForeColor = Color.Black;
-            }
+            enter(txtTCCCD);
         }
 
         private void txtsoCC_Enter(object sender, EventArgs e)
         {
-            if (txtsoCC.Text == "  CCCD")
-            {
-                txtsoCC.Text = "";
-                txtsoCC.ForeColor = Color.Black;
-            }
+            enter(txtsoCC);
         }
 
         private void txtAdd_Enter(object sender, EventArgs e)
         {
-            if (txtAdd.Text == "  Địa Chỉ")
-            {
-                txtAdd.Text = "";
-                txtAdd.ForeColor = Color.Black;
-            }
+            enter(txtAdd);
         }
 
         private void txtLido_Enter(object sender, EventArgs e)
         {
-            if (txtLido.Text == "  Lí Do")
-            {
-                txtLido.Text = "";
-                txtLido.ForeColor = Color.Black;
-            }
+            enter(txtLido);
         }
 
         private void btnDanhSachQuaHan_Click(object sender, EventArgs e)
         {
-
             Lichsudichuyen.DataSource = ttdao.LayDanhSachQuaHan();
         }
     }
