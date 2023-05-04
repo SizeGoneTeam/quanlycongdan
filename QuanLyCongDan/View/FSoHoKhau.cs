@@ -47,7 +47,7 @@ namespace QuanLyCongDan.View
 
                     foreach (SoHoKhauThanhVien thanhVien in thanhVienDAO.LayDanhSach(soHoKhau.ID))
                     {
-                        fpnThanhVien.Controls.Add(new UCThanhVien(thanhVien));
+                        //fpnThanhVien.Controls.Add(new UCThanhVien(thanhVien));
                     }
                 }
             }
@@ -121,7 +121,7 @@ namespace QuanLyCongDan.View
             txtIDToSo.Text = "";
             txtNoiThuongTru.Text = "";
             pkNgayDangKy.Value = DateTime.Now;
-            fpnThanhVien.Controls.Clear();
+            //fpnThanhVien.Controls.Clear();
         }
 
         private void btnThemThanhVien_Click(object sender, EventArgs e)

@@ -16,10 +16,5 @@ namespace QuanLyCongDan.View
         {
             InitializeComponent();
         }
-
-        private void ucThanhVien1_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

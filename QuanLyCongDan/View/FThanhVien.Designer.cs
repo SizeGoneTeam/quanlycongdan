@@ -38,24 +38,23 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ucThanhVien1.BackColor = System.Drawing.Color.White;
             this.ucThanhVien1.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.ucThanhVien1.Location = new System.Drawing.Point(14, 14);
-            this.ucThanhVien1.Margin = new System.Windows.Forms.Padding(15);
-            this.ucThanhVien1.MinimumSize = new System.Drawing.Size(15, 15);
+            this.ucThanhVien1.Location = new System.Drawing.Point(10, 11);
+            this.ucThanhVien1.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
+            this.ucThanhVien1.MinimumSize = new System.Drawing.Size(11, 12);
             this.ucThanhVien1.Name = "ucThanhVien1";
-            this.ucThanhVien1.Size = new System.Drawing.Size(761, 452);
+            this.ucThanhVien1.Size = new System.Drawing.Size(577, 372);
             this.ucThanhVien1.TabIndex = 0;
-            this.ucThanhVien1.Load += new System.EventHandler(this.ucThanhVien1_Load);
             // 
             // FThanhVien
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Salmon;
-            this.ClientSize = new System.Drawing.Size(791, 477);
+            this.ClientSize = new System.Drawing.Size(599, 393);
             this.Controls.Add(this.ucThanhVien1);
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(18, 47);
+            this.MinimumSize = new System.Drawing.Size(18, 45);
             this.Name = "FThanhVien";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FThanhVien";
             this.ResumeLayout(false);
 
