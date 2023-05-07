@@ -241,7 +241,7 @@
             this.cboTimKiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboTimKiem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.cboTimKiem.Location = new System.Drawing.Point(390, 85);
+            this.cboTimKiem.Location = new System.Drawing.Point(428, 85);
             this.cboTimKiem.Margin = new System.Windows.Forms.Padding(4);
             this.cboTimKiem.Name = "cboTimKiem";
             this.cboTimKiem.Size = new System.Drawing.Size(136, 40);
@@ -256,9 +256,9 @@
             this.txtIdHonNhan.Location = new System.Drawing.Point(125, 91);
             this.txtIdHonNhan.Margin = new System.Windows.Forms.Padding(4);
             this.txtIdHonNhan.Name = "txtIdHonNhan";
-            this.txtIdHonNhan.Size = new System.Drawing.Size(202, 30);
+            this.txtIdHonNhan.Size = new System.Drawing.Size(250, 30);
             this.txtIdHonNhan.TabIndex = 49;
-            this.txtIdHonNhan.Text = "  ID Hôn Nhân";
+            this.txtIdHonNhan.Text = "Nhập CMND";
             this.txtIdHonNhan.Enter += new System.EventHandler(this.txtIdHonNhan_Enter);
             // 
             // panel1
@@ -356,6 +356,7 @@
             // lblTK_NoiDK_txt
             // 
             this.lblTK_NoiDK_txt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblTK_NoiDK_txt.Enabled = false;
             this.lblTK_NoiDK_txt.Location = new System.Drawing.Point(125, 398);
             this.lblTK_NoiDK_txt.Name = "lblTK_NoiDK_txt";
             this.lblTK_NoiDK_txt.Size = new System.Drawing.Size(401, 30);
@@ -365,6 +366,7 @@
             // lblTrangThai_txt
             // 
             this.lblTrangThai_txt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblTrangThai_txt.Enabled = false;
             this.lblTrangThai_txt.Location = new System.Drawing.Point(125, 332);
             this.lblTrangThai_txt.Name = "lblTrangThai_txt";
             this.lblTrangThai_txt.Size = new System.Drawing.Size(401, 30);
@@ -374,6 +376,7 @@
             // lblTK_NgayDK_txt
             // 
             this.lblTK_NgayDK_txt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblTK_NgayDK_txt.Enabled = false;
             this.lblTK_NgayDK_txt.Location = new System.Drawing.Point(125, 270);
             this.lblTK_NgayDK_txt.Margin = new System.Windows.Forms.Padding(4);
             this.lblTK_NgayDK_txt.Name = "lblTK_NgayDK_txt";
@@ -384,6 +387,7 @@
             // lblTK_IdVo_txt
             // 
             this.lblTK_IdVo_txt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblTK_IdVo_txt.Enabled = false;
             this.lblTK_IdVo_txt.Location = new System.Drawing.Point(125, 213);
             this.lblTK_IdVo_txt.Margin = new System.Windows.Forms.Padding(4);
             this.lblTK_IdVo_txt.Name = "lblTK_IdVo_txt";
@@ -394,6 +398,7 @@
             // lblTK_IdChong_txt
             // 
             this.lblTK_IdChong_txt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblTK_IdChong_txt.Enabled = false;
             this.lblTK_IdChong_txt.Location = new System.Drawing.Point(125, 155);
             this.lblTK_IdChong_txt.Margin = new System.Windows.Forms.Padding(4);
             this.lblTK_IdChong_txt.Name = "lblTK_IdChong_txt";

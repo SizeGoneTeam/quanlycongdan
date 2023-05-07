@@ -16,7 +16,7 @@ namespace QuanLyCongDan.DAO
 
         public void ThemCongTy(CongTy ct)
         {
-            string sqlStr = string.Format("INSERT INTO CongTy(tenCongTy, NgayTao) VALUES ('{0}', '{1}')", ct.TenCongTy, ct.NgayTao.ToString("yyyy-MM-dd"));
+            string sqlStr = string.Format("INSERT INTO CongTy(tenCongTy, NgayTao) VALUES (N'{0}', '{1}')", ct.TenCongTy, ct.NgayTao.ToString("yyyy-MM-dd"));
             dbConn.ThucThi(sqlStr);
         }
 

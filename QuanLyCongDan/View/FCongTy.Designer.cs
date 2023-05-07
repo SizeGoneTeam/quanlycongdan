@@ -176,6 +176,7 @@
             this.txtCCCD.TabIndex = 14;
             this.txtCCCD.Text = "  CCCD";
             this.txtCCCD.TextChanged += new System.EventHandler(this.txtCCCD_TextChanged);
+            this.txtCCCD.Enter += new System.EventHandler(this.txtCCCD_Enter_1);
             this.txtCCCD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCCCD_KeyPress);
             // 
             // txtLuong
@@ -188,6 +189,7 @@
             this.txtLuong.TabIndex = 12;
             this.txtLuong.Text = "  Lương";
             this.txtLuong.TextChanged += new System.EventHandler(this.txtLuong_TextChanged);
+            this.txtLuong.Enter += new System.EventHandler(this.txtLuong_Enter_1);
             this.txtLuong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLuong_KeyPress);
             // 
             // txtCongTy
@@ -200,6 +202,7 @@
             this.txtCongTy.TabIndex = 10;
             this.txtCongTy.Text = "  Tên Công Ty";
             this.txtCongTy.TextChanged += new System.EventHandler(this.txtCongTy_TextChanged);
+            this.txtCongTy.Enter += new System.EventHandler(this.txtCongTy_Enter_1);
             // 
             // panel3
             // 
