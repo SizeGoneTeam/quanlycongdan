@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e87ecedfaec44814a7e6aed2eeff8434" Name="Diagram1">
+        <EntityTypeShape EntityType="QLCongDanModel.CCCD" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLCongDanModel.CongDan" Width="1.5" PointX="0.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLCongDanModel.CongDan_SoHoKhau" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLCongDanModel.CongTy" Width="1.5" PointX="3.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLCongDanModel.CongTy_NhanVien" Width="1.5" PointX="6" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLCongDanModel.HonNhan" Width="1.5" PointX="3" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLCongDanModel.KhaiSinh" Width="1.5" PointX="3" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLCongDanModel.KhaiTu" Width="1.5" PointX="3" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLCongDanModel.LichSuThue" Width="1.5" PointX="3" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLCongDanModel.SoHoKhau" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLCongDanModel.TamTruTamVang" Width="1.5" PointX="3" PointY="29.5" IsExpanded="true" />
+        <AssociationConnector Association="QLCongDanModel.FK__CCCD__ID_CongDan__058EC7FB" ManuallyRouted="false" />
+        <AssociationConnector Association="QLCongDanModel.FK__CongDan_S__ID_Co__0B47A151" ManuallyRouted="false" />
+        <AssociationConnector Association="QLCongDanModel.FK__CongTy_Nh__ID_Nh__1E5A75C5" ManuallyRouted="false" />
+        <AssociationConnector Association="QLCongDanModel.FK__HonNhan__ID_Chon__17AD7836" ManuallyRouted="false" />
+        <AssociationConnector Association="QLCongDanModel.FK__HonNhan__ID_Vo__18A19C6F" ManuallyRouted="false" />
+        <AssociationConnector Association="QLCongDanModel.FK__KhaiSinh__ID_Cha__100C566E" ManuallyRouted="false" />
+        <AssociationConnector Association="QLCongDanModel.FK__KhaiSinh__ID_Con__0E240DFC" ManuallyRouted="false" />
+        <AssociationConnector Association="QLCongDanModel.FK__KhaiSinh__ID_Me__11007AA7" ManuallyRouted="false" />
+        <AssociationConnector Association="QLCongDanModel.FK__KhaiSinh__ID_Ngu__0F183235" ManuallyRouted="false" />
+        <AssociationConnector Association="QLCongDanModel.FK__KhaiTu__ID_CongD__13DCE752" ManuallyRouted="false" />
+        <AssociationConnector Association="QLCongDanModel.FK__KhaiTu__ID_Nguoi__14D10B8B" ManuallyRouted="false" />
+        <AssociationConnector Association="QLCongDanModel.FK__LichSuThu__ID_Co__2136E270" ManuallyRouted="false" />
+        <AssociationConnector Association="QLCongDanModel.FK__TamTruTam__ID_Co__02B25B50" ManuallyRouted="false" />
+        <AssociationConnector Association="QLCongDanModel.FK__CongDan_S__ID_So__0A537D18" ManuallyRouted="false" />
+        <AssociationConnector Association="QLCongDanModel.FK__CongTy_Nh__ID_Co__1D66518C" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
