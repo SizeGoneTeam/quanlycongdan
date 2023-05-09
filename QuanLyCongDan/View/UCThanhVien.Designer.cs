@@ -143,7 +143,6 @@
             this.txtNgheNghiepNoiLamViec.Name = "txtNgheNghiepNoiLamViec";
             this.txtNgheNghiepNoiLamViec.Size = new System.Drawing.Size(221, 24);
             this.txtNgheNghiepNoiLamViec.TabIndex = 0;
-            this.txtNgheNghiepNoiLamViec.TextChanged += new System.EventHandler(this.txtNgheNghiepNoiLamViec_TextChanged);
             // 
             // txtNoiThuongTruTruoc
             // 

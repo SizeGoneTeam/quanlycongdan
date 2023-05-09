@@ -18,6 +18,8 @@ namespace QuanLyCongDan.View
         private SoHoKhauDAO dao = new SoHoKhauDAO();
         private SoHoKhauThanhVienDAO thanhVienDAO = new SoHoKhauThanhVienDAO();
 
+        private FThanhVien fThanhVien = new FThanhVien();
+
         public FSoHoKhau()
         {
             InitializeComponent();
@@ -64,10 +66,10 @@ namespace QuanLyCongDan.View
 
             if (dao.Them(
                 new SoHoKhau(
-                    idHoSoHoKhau, 
-                    txtIDSoDangKyThuongTru.Text, 
-                    txtIDToSo.Text, 
-                    txtNoiThuongTru.Text, 
+                    idHoSoHoKhau,
+                    txtIDSoDangKyThuongTru.Text,
+                    txtIDToSo.Text,
+                    txtNoiThuongTru.Text,
                     pkNgayDangKy.Value.Date)))
             {
                 MessageBox.Show("Thêm thành công");
@@ -85,11 +87,11 @@ namespace QuanLyCongDan.View
 
             if (dao.Sua(
                 new SoHoKhau(
-                    int.Parse(txtID.Text), 
-                    idHoSoHoKhau, 
-                    txtIDSoDangKyThuongTru.Text, 
-                    txtIDToSo.Text, 
-                    txtNoiThuongTru.Text, 
+                    int.Parse(txtID.Text),
+                    idHoSoHoKhau,
+                    txtIDSoDangKyThuongTru.Text,
+                    txtIDToSo.Text,
+                    txtNoiThuongTru.Text,
                     pkNgayDangKy.Value.Date)))
             {
                 MessageBox.Show("Sửa thành công");
@@ -106,7 +108,7 @@ namespace QuanLyCongDan.View
             {
                 MessageBox.Show("Xóa thành công");
                 clear();
-            } 
+            }
             else
             {
                 MessageBox.Show("Xóa thất bại");
@@ -126,8 +128,18 @@ namespace QuanLyCongDan.View
 
         private void btnThemThanhVien_Click(object sender, EventArgs e)
         {
-            FThanhVien f =  new FThanhVien();
-            f.ShowDialog();
+            fThanhVien.ShowDialog();
+            if (!fThanhVien.Canceled)
+            {
+                gvThanhVien.Rows.Add(
+                    fThanhVien.ThanhVien.CongDan.Id, 
+                    fThanhVien.ThanhVien.CongDan.HoTen, 
+                    fThanhVien.ThanhVien.QuanHe,
+                    fThanhVien.ThanhVien.NgheNghiepNoiLamViec,
+                    fThanhVien.ThanhVien.NoiThuongTruTruoc,
+                    fThanhVien.ThanhVien.CanBoDangKy,
+                    fThanhVien.ThanhVien.NgayDangKy.ToShortDateString());
+            }
         }
         private void txtTimKiem_Enter(object sender, EventArgs e)
         {
@@ -171,6 +183,14 @@ namespace QuanLyCongDan.View
             {
                 txtIDToSo.Text = "";
                 txtIDToSo.ForeColor = Color.Black;
+            }
+        }
+
+        private void gvThanhVien_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                fThanhVien.ShowDialog();
             }
         }
     }
