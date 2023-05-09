@@ -128,6 +128,7 @@ namespace QuanLyCongDan.View
 
         private void btnThemThanhVien_Click(object sender, EventArgs e)
         {
+            fThanhVien.ModeAdd();
             fThanhVien.ShowDialog();
             if (!fThanhVien.Canceled)
             {

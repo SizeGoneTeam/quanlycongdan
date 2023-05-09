@@ -352,7 +352,6 @@
             this.Name = "FThanhVien";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FThanhVien";
-            this.Load += new System.EventHandler(this.FThanhVien_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

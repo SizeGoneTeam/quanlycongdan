@@ -15,7 +15,8 @@ namespace QuanLyCongDan.View
     public partial class FThanhVien : Form
     {
         
-        private SoHoKhauThanhVien thanhVien = new SoHoKhauThanhVien();
+        private SoHoKhauThanhVien thanhVien;
+        private CongDan congDan;
         private List<string> usedIdCongDan = new List<string>();
 
         private CongDanDAO congDanDAO = new CongDanDAO();
@@ -45,8 +46,21 @@ namespace QuanLyCongDan.View
         public bool Canceled { get => canceled; }
 
         #region Methods
+        public void ModeAdd()
+        {
+            switchToAddMode();
+            thanhVien = null;
+            congDan = null;
+            updateContent();
+            updateFromContent();
+        }
+
         private void updateFromContent()
         {
+            if (isAddMode && thanhVien is null)
+            {
+                thanhVien = new SoHoKhauThanhVien();
+            }
             ThanhVien.QuanHe = txtQuanHe.Text;
             ThanhVien.NgheNghiepNoiLamViec = txtNgheNghiepNoiLamViec.Text;
             ThanhVien.NoiThuongTruTruoc = txtNoiThuongTruTruoc.Text;
@@ -63,10 +77,10 @@ namespace QuanLyCongDan.View
             pkNgayDangKy.Value = ThanhVien is null || ThanhVien.NgayDangKy == DateTime.MinValue ? DateTime.Now : ThanhVien.NgayDangKy;
 
             txtCCCD.Text = "";
-            txtHoTen.Text = ThanhVien.CongDan is null ? "" : ThanhVien.CongDan.HoTen;
-            txtNgaySinh.Text = ThanhVien.CongDan is null ? "" : ThanhVien.CongDan.NgaySinh.ToShortDateString();
-            txtGioiTinh.Text = ThanhVien.CongDan is null ? "" : ThanhVien.CongDan.GioiTinh;
-            txtNguyenQuan.Text = ThanhVien.CongDan is null ? "" : ThanhVien.CongDan.QueQuan;
+            txtHoTen.Text = congDan is null ? "" : congDan.HoTen;
+            txtNgaySinh.Text = congDan is null ? "" : congDan.NgaySinh.ToShortDateString();
+            txtGioiTinh.Text = congDan is null ? "" : congDan.GioiTinh;
+            txtNguyenQuan.Text = congDan is null ? "" : congDan.QueQuan;
             //txtDanToc.Text = ThanhVien.CongDan.DanToc;
             //txtQuocTich.Text = ThanhVien.CongDan.QuocTich;
         }
@@ -124,27 +138,20 @@ namespace QuanLyCongDan.View
 
         }
 
-        
-
         #region Events
-        private void FThanhVien_Load(object sender, EventArgs e)
-        {
-            switchToAddMode();
-        }
-
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             string cccd = txtCCCD.Text;
             int id = cccdDAO.toIdCongDan(cccd);
-            thanhVien.CongDan = congDanDAO.TimKiem(id.ToString());
-            if (thanhVien.CongDan is null)
+            congDan = thanhVien.CongDan = congDanDAO.TimKiem(id.ToString());
+            if (congDan is null)
             {
                 MessageBox.Show("Không tìm thấy");
             }
             else if (isDublicate())
             {
                 MessageBox.Show("Trùng người!");
-                thanhVien.CongDan = null;
+                congDan = null;
             }
             updateContent();
         }
