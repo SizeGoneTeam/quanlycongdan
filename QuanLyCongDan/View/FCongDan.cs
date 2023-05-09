@@ -30,21 +30,31 @@ namespace QuanLyCongDan.View
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
-            cd = new CongDan(txtHoTen.Text, txtQueQuan.Text, cboGioiTinh.SelectedItem.ToString(), dTPNgaySinh.Value, cboDanToc.SelectedItem.ToString(), cboTonGiao.SelectedItem.ToString(), txtSDT.Text, txtEmail.Text);
-            cdDao.Them(cd);
+            if (KiemTraThongTin())
+            {
+                cd = new CongDan(txtHoTen.Text, txtQueQuan.Text, cboGioiTinh.SelectedItem.ToString(), dTPNgaySinh.Value, cboDanToc.SelectedItem.ToString(), cboTonGiao.SelectedItem.ToString(), txtSDT.Text, txtEmail.Text, txtNoiThuongTru.Text, "");
+                cdDao.Them(cd);
+                MessageBox.Show("Thêm thành công");
+            }
+           
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            cd = new CongDan(txtID.Text,txtHoTen.Text, txtQueQuan.Text, cboGioiTinh.SelectedItem.ToString(), dTPNgaySinh.Value, cboDanToc.SelectedItem.ToString(), cboTonGiao.SelectedItem.ToString(), txtSDT.Text, txtEmail.Text);
+            cd = new CongDan(txtID.Text,txtHoTen.Text, txtQueQuan.Text, cboGioiTinh.SelectedItem.ToString(), dTPNgaySinh.Value, cboDanToc.SelectedItem.ToString(), cboTonGiao.SelectedItem.ToString(), txtSDT.Text, txtEmail.Text, txtNoiThuongTru.Text, "");
             cdDao.Xoa(cd);
+            MessageBox.Show("Xoá thành công");
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            cd = new CongDan(txtID.Text, txtHoTen.Text, txtQueQuan.Text, cboGioiTinh.SelectedItem.ToString(), dTPNgaySinh.Value, cboDanToc.SelectedItem.ToString(), cboTonGiao.SelectedItem.ToString(), txtSDT.Text, txtEmail.Text);
-            cdDao.Sua(cd);
-            MessageBox.Show("Sửa thành công");
+            if (KiemTraThongTin())
+            {
+                cd = new CongDan(txtID.Text, txtHoTen.Text, txtQueQuan.Text, cboGioiTinh.SelectedItem.ToString(), dTPNgaySinh.Value, cboDanToc.SelectedItem.ToString(), cboTonGiao.SelectedItem.ToString(), txtSDT.Text, txtEmail.Text, txtNoiThuongTru.Text, "");
+                cdDao.Sua(cd);
+                MessageBox.Show("Sửa thành công");
+            }
+            
         }
 
         private void dTPNgaySinh_ValueChanged(object sender, EventArgs e)
@@ -74,145 +84,27 @@ namespace QuanLyCongDan.View
                 txtSDT.Text = cd.Sdt;
                 txtEmail.Text = cd.Email;
 
-                if (cd.GioiTinh.Equals("Nam"))
-                    cboGioiTinh.SelectedItem = "Nam";
-                else if (cd.GioiTinh.Equals("Nữ"))
-                    cboGioiTinh.SelectedItem = "Nữ";
-                else cboGioiTinh.SelectedItem = 2;
+                int index = cboGioiTinh.FindStringExact(cd.GioiTinh);
+                if (index >= 0)
+                {
+                    cboGioiTinh.SelectedIndex = index;
+                }
 
-                if (cd.TonGiao.Equals("Không"))
-                    cboTonGiao.SelectedItem = "Không";
-                else if (cd.TonGiao.Equals("Phật giáo"))
-                    cboTonGiao.SelectedItem = "Phật giáo";
-                else if (cd.TonGiao.Equals("Thiên chúa giáo"))
-                    cboTonGiao.SelectedItem = "Thiên chúa giáo";
-                else if (cd.TonGiao.Equals("Công giáo Rôma"))
-                    cboTonGiao.SelectedItem = "Công giáo Rôma";
-                else if (cd.TonGiao.Equals("Hòa hảo"))
-                    cboTonGiao.SelectedItem = "Hòa hảo";
-                else if (cd.TonGiao.Equals("Cao đài"))
-                    cboTonGiao.SelectedItem = "Cao đài";
-                else if (cd.TonGiao.Equals("Hồi giáo"))
-                    cboTonGiao.SelectedItem = "Hồi giáo";
-                else if (cd.TonGiao.Equals("Tin Lành"))
-                    cboTonGiao.SelectedItem = "Tin Lành";
-                else if (cd.TonGiao.Equals("Bahá'í"))
-                    cboTonGiao.SelectedItem = "Bahá'í";
-                else if (cd.TonGiao.Equals("Hindu"))
-                    cboTonGiao.SelectedItem = "Hindu";
-                else if (cd.TonGiao.Equals("Sikh"));
+                index = cboDanToc.FindStringExact(cd.DanToc);
+                if (index >= 0)
+                {
+                    cboDanToc.SelectedIndex = index;
+                }
 
-                if (cd.DanToc.Equals("Kinh"))
-                    cboDanToc.SelectedItem = "Kinh";
-                else if (cd.DanToc.Equals("Tày"))
-                    cboDanToc.SelectedItem = "Tày";
-                else if (cd.DanToc.Equals("Thái"))
-                    cboDanToc.SelectedItem = "Thái";
-                else if (cd.DanToc.Equals("Mường"))
-                    cboDanToc.SelectedItem = "Mường";
-                else if (cd.DanToc.Equals("Khmer"))
-                    cboDanToc.SelectedItem = "Khmer";
-                else if (cd.DanToc.Equals("Hoa"))
-                    cboDanToc.SelectedItem = "Hoa";
-                else if (cd.DanToc.Equals("Nùng"))
-                    cboDanToc.SelectedItem = "Nùng";
-                else if (cd.DanToc.Equals("H'Mông"))
-                    cboDanToc.SelectedItem = "H'Mông";
-                else if (cd.DanToc.Equals("Dao"))
-                    cboDanToc.SelectedItem = "Dao";
-                else if (cd.DanToc.Equals("Gia Rai"))
-                    cboDanToc.SelectedItem = "Gia Rai";
-                else if (cd.DanToc.Equals("Ê Đê"))
-                    cboDanToc.SelectedItem = "Ê Đê";
-                else if (cd.DanToc.Equals("Ba Na"))
-                    cboDanToc.SelectedItem = "Ba Na";
-                else if (cd.DanToc.Equals("Sán Chay"))
-                    cboDanToc.SelectedItem = "Sán Chay";
-                else if (cd.DanToc.Equals("Chăm"))
-                    cboDanToc.SelectedItem = "Chăm";
-                else if (cd.DanToc.Equals("Kơ Ho"))
-                    cboDanToc.SelectedItem = "Kơ Ho";
-                else if (cd.DanToc.Equals("Xơ Đăng"))
-                    cboDanToc.SelectedItem = "Xơ Đăng";
-                else if (cd.DanToc.Equals("Sán Dìu"))
-                    cboDanToc.SelectedItem = "Sán Dìu";
-                else if (cd.DanToc.Equals("Hrê"))
-                    cboDanToc.SelectedItem = "Hrê";
-                else if (cd.DanToc.Equals("Ra Glai"))
-                    cboDanToc.SelectedItem = "Ra Glai";
-                else if (cd.DanToc.Equals("Mnông"))
-                    cboDanToc.SelectedItem = "Mnông";
-                else if (cd.DanToc.Equals("Thổ"))
-                    cboDanToc.SelectedItem = "Thổ";
-                else if (cd.DanToc.Equals("Stiêng"))
-                    cboDanToc.SelectedItem = "Stiêng";
-                else if (cd.DanToc.Equals("Khơ mú"))
-                    cboDanToc.SelectedItem = "Khơ mú";
-                else if (cd.DanToc.Equals("Bru - Vân Kiều"))
-                    cboDanToc.SelectedItem = "Bru - Vân Kiều";
-                else if (cd.DanToc.Equals("Cơ Tu"))
-                    cboDanToc.SelectedItem = "Cơ Tu";
-                else if (cd.DanToc.Equals("Giáy"))
-                    cboDanToc.SelectedItem = "Giáy";
-                else if (cd.DanToc.Equals("Tà Ôi"))
-                    cboDanToc.SelectedItem = "Tà Ôi";
-                else if (cd.DanToc.Equals("Mạ"))
-                    cboDanToc.SelectedItem = "Mạ";
-                else if (cd.DanToc.Equals("Giẻ-Triêng"))
-                    cboDanToc.SelectedItem = "Giẻ-Triêng";
-                else if (cd.DanToc.Equals("Co"))
-                    cboDanToc.SelectedItem = "Co";
-                else if (cd.DanToc.Equals("Chơ Ro"))
-                    cboDanToc.SelectedItem = "Chơ Ro";
-                else if (cd.DanToc.Equals("Xinh Mun"))
-                    cboDanToc.SelectedItem = "Xinh Mun";
-                else if (cd.DanToc.Equals("Hà Nhì"))
-                    cboDanToc.SelectedItem = "Hà Nhì";
-                else if (cd.DanToc.Equals("Chu Ru"))
-                    cboDanToc.SelectedItem = "Chu Ru";
-                else if (cd.DanToc.Equals("Lào"))
-                    cboDanToc.SelectedItem = "Lào";
-                else if (cd.DanToc.Equals("La Chí"))
-                    cboDanToc.SelectedItem = "La Chí";
-                else if (cd.DanToc.Equals("Kháng"))
-                    cboDanToc.SelectedItem = "Kháng";
-                else if (cd.DanToc.Equals("Phù Lá"))
-                    cboDanToc.SelectedItem = "Phù Lá";
-                else if (cd.DanToc.Equals("La Hủ"))
-                    cboDanToc.SelectedItem = "La Hủ";
-                else if (cd.DanToc.Equals("La Ha"))
-                    cboDanToc.SelectedItem = "La Ha";
-                else if (cd.DanToc.Equals("Pà Thẻn"))
-                    cboDanToc.SelectedItem = "Pà Thẻn";
-                else if (cd.DanToc.Equals("Lự"))
-                    cboDanToc.SelectedItem = "Lự";
-                else if (cd.DanToc.Equals("Ngái"))
-                    cboDanToc.SelectedItem = "Ngái";
-                else if (cd.DanToc.Equals("Chứt"))
-                    cboDanToc.SelectedItem = "Chứt";
-                else if (cd.DanToc.Equals("Lô Lô"))
-                    cboDanToc.SelectedItem = "Lô Lô";
-                else if (cd.DanToc.Equals("Mảng"))
-                    cboDanToc.SelectedItem = "Mảng";
-                else if (cd.DanToc.Equals("Cơ Lao"))
-                    cboDanToc.SelectedItem = "Cơ Lao";
-                else if (cd.DanToc.Equals("Bố Y"))
-                    cboDanToc.SelectedItem = "Bố Y";
-                else if (cd.DanToc.Equals("Cống"))
-                    cboDanToc.SelectedItem = "Cống";
-                else if (cd.DanToc.Equals("Si La"))
-                    cboDanToc.SelectedItem = "Si La";
-                else if (cd.DanToc.Equals("Pu Péo"))
-                    cboDanToc.SelectedItem = "Pu Péo";
-                else if (cd.DanToc.Equals("Rơ Măm"))
-                    cboDanToc.SelectedItem = "Rơ Măm";
-                else if (cd.DanToc.Equals("Brâu"))
-                    cboDanToc.SelectedItem = "Brâu";
-                else if (cd.DanToc.Equals("Ơ Đu"))
-                    cboDanToc.SelectedItem = "Ơ Đu";
+                index = cboTonGiao.FindStringExact(cd.TonGiao);
+                if (index >= 0)
+                {
+                    cboTonGiao.SelectedIndex = index;
+                }
             }
             catch
             {
+                txtHoTen.Text = "";
 
             }
             
@@ -233,6 +125,7 @@ namespace QuanLyCongDan.View
                     cboTonGiao.SelectedIndex = 0;
                     txtSDT.Clear();
                     txtEmail.Clear();
+                    txtNoiThuongTru.Clear();
                     btnSua.Enabled = false;
                     btnXoa.Enabled = false;
                 }
@@ -300,6 +193,58 @@ namespace QuanLyCongDan.View
             {
                 txtSDT.Text = "";
                 txtSDT.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtHoTen_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtSDT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar) || e.KeyChar == ' ')
+            {
+                e.Handled = true;
+            }
+
+            if (txtSDT.Text.Length >= 10 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private Boolean KiemTraThongTin()
+        {
+            if(!Regex.IsMatch(txtHoTen.Text, @"[a-z]{1,49}$") || string.IsNullOrEmpty(txtQueQuan.Text) || string.IsNullOrEmpty(txtNoiThuongTru.Text) || !IsValidEmail(txtEmail.Text) || !Regex.IsMatch(txtSDT.Text, @"^[0-9]{10}$") || (dTPNgaySinh.Value > DateTime.Now))
+            {
+                MessageBox.Show("Vui lòng nhập thông tin hợp lệ");
+                return false;
+            }
+            return true;
+        }
+
+        public static bool IsValidEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
+
+            try
+            {
+                // Kiểm tra định dạng email với biểu thức chính quy
+                return Regex.IsMatch(email,
+                    @"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|"
+                    + @"([a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*))"
+                    + @"(?<!\.)@[a-zA-Z0-9][a-zA-Z0-9-]{0,63}"
+                    + @"(?:\.[a-zA-Z0-9][a-zA-Z0-9-]{0,63})+$",
+                    RegexOptions.IgnoreCase);
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
     }

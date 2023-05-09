@@ -37,7 +37,7 @@ namespace QuanLyCongDan.DAO
 
         public bool TimKiemThue(int idNhanVien, String tenCongTY, DateTime NgayTao)
         {
-            string sqlStr = string.Format("SELECT * FROM LichSuThue WHERE ID_CongDan = '{0}' and NgayTao = '{1}' and TenCongTy = N'{2}'", idNhanVien, NgayTao.ToString("dd/MM/yy"), tenCongTY);
+            string sqlStr = string.Format("SELECT * FROM LichSuThue WHERE ID_CongDan = '{0}' and NgayTao = '{1}' and TenCongTy = N'{2}'", idNhanVien, NgayTao.ToString("MM/dd/yy"), tenCongTY);
             DataTable data = dbConn.LayDanhSach(sqlStr);
             return data.Rows.Count > 0;
         }
@@ -51,7 +51,7 @@ namespace QuanLyCongDan.DAO
 
         public DataTable LayCongDanChuaDongThue()
         {
-            string sqlStr = "SELECT ID_CongDan, COUNT(*) as Total FROM LichSuThue WHERE TrangThai = 0 GROUP BY ID_CongDan";
+            string sqlStr = "SELECT ID_CongDan, COUNT(*) as SoPhieu, SUM(SoTien) as TongTien FROM LichSuThue WHERE TrangThai = 0 GROUP BY ID_CongDan";
             return dbConn.LayDanhSach(sqlStr);
         }
     }   

@@ -17,7 +17,7 @@ namespace QuanLyCongDan.DAO
         DBconnection dbConn = new DBconnection();
         public void Them(CongDan cd)
         {
-            String sqlStr = string.Format("INSERT INTO CongDan (HoTen, GioiTinh, NgaySinh, QueQuan, DanToc, TonGiao, SDT, Email) VALUES (N'{0}', '{1}', '{2}', 'N{3}', 'N{4}', 'N{5}', '{6}', '{7}');", cd.HoTen, cd.GioiTinh, cd.NgaySinh, cd.QueQuan, cd.DanToc, cd.TonGiao, cd.Sdt, cd.Email);
+            String sqlStr = string.Format("INSERT INTO CongDan (HoTen, GioiTinh, NgaySinh, QueQuan, DanToc, TonGiao, SDT, Email, NoiThuongTru) VALUES (N'{0}', '{1}', '{2}', N'{3}', N'{4}', N'{5}', '{6}', '{7}', N'{8}');", cd.HoTen, cd.GioiTinh, cd.NgaySinh, cd.QueQuan, cd.DanToc, cd.TonGiao, cd.Sdt, cd.Email, cd.NoiThuongTru);
             dbConn.ThucThi(sqlStr);
         }
 
@@ -29,7 +29,7 @@ namespace QuanLyCongDan.DAO
 
         public void Sua(CongDan cd)
         {
-            String sqlStr = string.Format("UPDATE CongDan SET HoTen = N'{0}', GioiTinh = N'{1}', NgaySinh = '{2}', QueQuan = N'{3}', DanToc = N'{4}', TonGiao = N'{5}', SDT = '{6}', Email = '{7}' WHERE ID_CongDan = {8};", cd.HoTen, cd.GioiTinh, cd.NgaySinh, cd.QueQuan, cd.DanToc, cd.TonGiao, cd.Sdt, cd.Email, cd.Id);
+            String sqlStr = string.Format("UPDATE CongDan SET HoTen = N'{0}', GioiTinh = N'{1}', NgaySinh = '{2}', QueQuan = N'{3}', DanToc = N'{4}', TonGiao = N'{5}', SDT = '{6}', Email = '{7}', NoiThuongTru = N'{8}'  WHERE ID_CongDan = {9};", cd.HoTen, cd.GioiTinh, cd.NgaySinh, cd.QueQuan, cd.DanToc, cd.TonGiao, cd.Sdt, cd.Email, cd.NoiThuongTru ,cd.Id);
             dbConn.ThucThi(sqlStr);
         }   
 

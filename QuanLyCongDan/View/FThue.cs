@@ -51,7 +51,7 @@ namespace QuanLyCongDan.View
                         {
                             if (!thueDAO.TimKiemThue(ctnv.Id_NhanVien, ct.TenCongTy, ctnv.NgayVao.AddYears(i+1)))
                             {
-                                LichSuThue lsThue = new LichSuThue(ctnv.Id_CongTy, ct.TenCongTy, 200, ctnv.NgayVao.AddYears(i + 1));
+                                LichSuThue lsThue = new LichSuThue(ctnv.Id_NhanVien, ct.TenCongTy, ctnv.Luong * 20/100, ctnv.NgayVao.AddYears(i + 1));
                                 thueDAO.ThemLichSuThue(lsThue);
                             }
                         }
