@@ -191,6 +191,7 @@ namespace QuanLyCongDan.View
         {
             if (e.RowIndex >= 0)
             {
+                fThanhVien.ModeUpdate();
                 fThanhVien.ShowDialog();
             }
         }

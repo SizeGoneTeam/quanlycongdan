@@ -17,7 +17,7 @@ namespace QuanLyCongDan.View
         
         private SoHoKhauThanhVien thanhVien;
         private CongDan congDan;
-        private List<string> usedIdCongDan = new List<string>();
+        private List<SoHoKhauThanhVien> danhSachThanhVien = new List<SoHoKhauThanhVien>();
 
         private CongDanDAO congDanDAO = new CongDanDAO();
         private CCCDDAO cccdDAO = new CCCDDAO();
@@ -53,6 +53,12 @@ namespace QuanLyCongDan.View
             congDan = null;
             updateContent();
             updateFromContent();
+        }
+
+        public void ModeUpdate()
+        {
+            switchToEditMode();
+            updateContent();
         }
 
         private void updateFromContent()
@@ -111,7 +117,7 @@ namespace QuanLyCongDan.View
 
         private bool isDublicate()
         {
-            return usedIdCongDan.Contains(thanhVien.CongDan.Id);
+            return danhSachThanhVien.Any(tv => tv.CongDan.Id == congDan.Id);
         }
         #endregion
 
@@ -127,7 +133,10 @@ namespace QuanLyCongDan.View
             if (isEnoughContext())
             {
                 updateFromContent();
-                usedIdCongDan.Add(thanhVien.CongDan.Id);
+                if (isAddMode)
+                {
+                    danhSachThanhVien.Add(thanhVien);
+                }
                 canceled = false;
                 this.Close();
             }
