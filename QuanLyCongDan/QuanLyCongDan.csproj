@@ -57,6 +57,7 @@
     <Compile Include="Model\CongTyNhanVien.cs" />
     <Compile Include="Model\KhaiTu.cs" />
     <Compile Include="Model\LichSuThue.cs" />
+    <Compile Include="Model\SoHoKhauThanhVienRow.cs" />
     <Compile Include="View\FCongTy.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,12 +132,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\ThemeColor.cs" />
-    <Compile Include="View\UCThanhVien.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\UCThanhVien.Designer.cs">
-      <DependentUpon>UCThanhVien.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\FThanhVien.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,9 +182,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="View\UCThanhVien.resx">
-      <DependentUpon>UCThanhVien.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\FThanhVien.resx">
       <DependentUpon>FThanhVien.cs</DependentUpon>
     </EmbeddedResource>

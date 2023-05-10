@@ -71,5 +71,27 @@ namespace QuanLyCongDan.DAO
             return con.ThucThi(sqlStr);
         }
 
+        public bool Them(int idSoHoKhau, SoHoKhauThanhVien soHoKhauThanhVien)
+        {
+            string sqlStr = string.Format(
+                @"INSERT INTO CongDan_SoHoKhau
+                (ID_SoHoKhau, ID_CongDan, QuanHe, NgheNghiep_NoiLamViec, NoiThuongTruTruoc, CanBoDangKy, NgayDangKy)
+                VALUES ('{0}', '{1}', N'{2}', N'{3}', N'{4}', N'{5}', '{6}')",
+                idSoHoKhau,
+                soHoKhauThanhVien.CongDan.Id,
+                soHoKhauThanhVien.QuanHe,
+                soHoKhauThanhVien.NgheNghiepNoiLamViec,
+                soHoKhauThanhVien.NoiThuongTruTruoc,
+                soHoKhauThanhVien.CanBoDangKy,
+                soHoKhauThanhVien.NgayDangKy);
+
+            return con.ThucThi(sqlStr);
+        }
+
+        public bool Xoa(int id)
+        {
+            string sqlStr = string.Format("DELETE FROM CongDan_SoHoKhau WHERE ID_SoHoKhau = '{0}'", id);
+            return con.ThucThi(sqlStr);
+        }
     }
 }
