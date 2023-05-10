@@ -440,6 +440,7 @@
             this.Name = "FCCCD";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản Lý CCCD";
+            this.Load += new System.EventHandler(this.FCCCD_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
