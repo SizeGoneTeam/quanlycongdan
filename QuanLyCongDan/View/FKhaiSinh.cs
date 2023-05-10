@@ -89,12 +89,18 @@ namespace QuanLyCongDan
                 if (isEnoughContext())
                 {
                     congDanDao.Them(congDan);
-                    int count = congDanDao.LayDanhSachCongDan().Rows.Count;
-                    congDan.Id = congDanDao.LayDanhSachCongDan().Rows[count - 1]["ID_CongDan"].ToString();
+                    congDan.Id = congDanDao.getLatestRowIndex().ToString();
+                    //int count = congDanDao.LayDanhSachCongDan().Rows.Count;
+                    //congDan.Id = congDanDao.LayDanhSachCongDan().Rows[count - 1]["ID_CongDan"].ToString();
                     khaiSinh.IDCongDan = int.Parse(congDan.Id);
                     if (khaiSinhDao.Them(khaiSinh))
                     {  
                         MessageBox.Show("Thêm thành công!");
+                        khaiSinh.ID = khaiSinhDao.getLatestRowIndex();
+                        khaiSinh = khaiSinhDao.TimKiem(khaiSinh.ID);
+                        congDan = congDanDao.TimKiem(khaiSinh.IDCongDan.ToString());
+                        switchToEditMode();
+                        updateContent();
                     }
                     else
                     {
@@ -173,15 +179,6 @@ namespace QuanLyCongDan
             }
         }
 
-        private void txtHoTen_Enter(object sender, EventArgs e)
-        {
-            if (txtHoTen.Text == "  Họ Và Tên")
-            {
-                txtHoTen.Text = "";
-                txtHoTen.ForeColor = Color.Black;
-            }
-        }
-
         private void FKhaiSinh_Load(object sender, EventArgs e)
         {
             dangky.Visible = true;
@@ -210,15 +207,6 @@ namespace QuanLyCongDan
             cha.Visible = true;
         }
 
-        private void txtIDNguoiCha_Enter(object sender, EventArgs e)
-        {
-            if (txtCCCDNguoiCha.Text == "  ID")
-            {
-                txtCCCDNguoiCha.Text = "";
-                txtCCCDNguoiCha.ForeColor = Color.Black;
-            }
-        }
-
         private void chaprev_Click(object sender, EventArgs e)
         {
             cha.Visible = false;
@@ -229,15 +217,6 @@ namespace QuanLyCongDan
         {
             cha.Visible= false;
             yc.Visible = true;
-        }
-
-        private void txtIDNguoiYeuCau_Enter(object sender, EventArgs e)
-        {
-            if (txtCCCDNguoiYeuCau.Text == "  ID")
-            {
-                txtCCCDNguoiYeuCau.Text = "";
-                txtCCCDNguoiYeuCau.ForeColor = Color.Black;
-            }
         }
 
         private void ycprev_Click(object sender, EventArgs e)
@@ -298,6 +277,9 @@ namespace QuanLyCongDan
 
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
+
+            clear();
+            updateContent();
         }
 
         private void switchToEditMode()
@@ -384,6 +366,12 @@ namespace QuanLyCongDan
             txtHoTenNguoiYeuCau.Text = nguoiYeuCau is null ? "" : nguoiYeuCau.HoTen;
             txtDiaChiNguoiYeuCau.Text = nguoiYeuCau is null ? "" : nguoiYeuCau.NoiThuongTru;
             txtQuanHe.Text = khaiSinh is null ? "" : "Quan hệ";
+        }
+
+        private void clear()
+        {
+            khaiSinh = null;
+            congDan = null;
         }
         #endregion
     }
