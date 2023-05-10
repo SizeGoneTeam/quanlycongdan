@@ -227,6 +227,7 @@ namespace QuanLyCongDan.View
                         soHoKhau = null;
                         fThanhVien.DanhSachThanhVien = null;
                         updateContent();
+                        switchToAddMode();
                     }
                     else
                     {

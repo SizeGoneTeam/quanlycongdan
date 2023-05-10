@@ -168,6 +168,7 @@ namespace QuanLyCongDan
                         MessageBox.Show("Xóa thành công!");
                         khaiSinh = null;
                         updateContent();
+                        switchToAddMode();
                     }
                     else
                     {
