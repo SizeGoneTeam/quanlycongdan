@@ -17,7 +17,7 @@ namespace QuanLyCongDan.View
         
         private SoHoKhauThanhVien thanhVien;
         private CongDan congDan;
-        private List<SoHoKhauThanhVien> danhSachThanhVien = new List<SoHoKhauThanhVien>();
+        private List<SoHoKhauThanhVien> danhSachThanhVien;
 
         private CongDanDAO congDanDAO = new CongDanDAO();
         private CCCDDAO cccdDAO = new CCCDDAO();
@@ -58,6 +58,7 @@ namespace QuanLyCongDan.View
         {
             switchToEditMode();
             thanhVien = DanhSachThanhVien.FirstOrDefault(tv => tv.CongDan.Id == id);
+            congDan = thanhVien.CongDan;
             updateContent();
         }
 
