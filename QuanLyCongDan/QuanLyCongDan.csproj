@@ -57,6 +57,7 @@
     <Compile Include="Model\CongTyNhanVien.cs" />
     <Compile Include="Model\KhaiTu.cs" />
     <Compile Include="Model\LichSuThue.cs" />
+    <Compile Include="Model\SoHoKhauThanhVienRow.cs" />
     <Compile Include="View\FCongTy.cs">
       <SubType>Form</SubType>
     </Compile>

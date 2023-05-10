@@ -23,7 +23,6 @@ namespace QuanLyCongDan.View
         private CCCDDAO cccdDAO = new CCCDDAO();
 
         private bool isAddMode;
-        private bool canceled;
 
         public FThanhVien()
         {
@@ -43,7 +42,7 @@ namespace QuanLyCongDan.View
             }
         }
 
-        public bool Canceled { get => canceled; }
+        internal List<SoHoKhauThanhVien> DanhSachThanhVien { get => danhSachThanhVien; }
 
         #region Methods
         public void ModeAdd()
@@ -55,9 +54,10 @@ namespace QuanLyCongDan.View
             updateFromContent();
         }
 
-        public void ModeUpdate()
+        public void ModeUpdate(string id)
         {
             switchToEditMode();
+            thanhVien = DanhSachThanhVien.FirstOrDefault(tv => tv.CongDan.Id == id);
             updateContent();
         }
 
@@ -107,7 +107,7 @@ namespace QuanLyCongDan.View
 
         private bool isEnoughContext()
         {
-            if (thanhVien.CongDan is null)
+            if (congDan is null)
             {
                 MessageBox.Show("Thiếu thông tin");
                 return false;
@@ -117,14 +117,13 @@ namespace QuanLyCongDan.View
 
         private bool isDublicate()
         {
-            return danhSachThanhVien.Any(tv => tv.CongDan.Id == congDan.Id);
+            return DanhSachThanhVien.Any(tv => tv.CongDan.Id == congDan.Id);
         }
         #endregion
 
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            canceled = true;
             this.Close();
         }
 
@@ -135,16 +134,24 @@ namespace QuanLyCongDan.View
                 updateFromContent();
                 if (isAddMode)
                 {
-                    danhSachThanhVien.Add(thanhVien);
+                    DanhSachThanhVien.Add(thanhVien);
                 }
-                canceled = false;
+                else
+                {
+
+                }
                 this.Close();
             }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-
+            SoHoKhauThanhVien thanhVienToRemove = danhSachThanhVien.FirstOrDefault(tv => tv.CongDan.Id == congDan.Id);
+            if (thanhVienToRemove != null)
+            {
+                danhSachThanhVien.Remove(thanhVienToRemove);
+            }
+            this.Close();
         }
 
         #region Events

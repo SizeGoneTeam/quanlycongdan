@@ -25,6 +25,23 @@ namespace QuanLyCongDan.View
             InitializeComponent();
         }
 
+        private void updateGridView()
+        {
+            List<SoHoKhauThanhVienRow> rows = fThanhVien.DanhSachThanhVien.Select(tv => new SoHoKhauThanhVienRow(tv)).ToList();
+            gvThanhVien.DataSource = rows;
+
+            // Set HeaderText for each column
+            gvThanhVien.Columns[nameof(SoHoKhauThanhVienRow.HoTen)].HeaderText = "Họ tên";
+            gvThanhVien.Columns[nameof(SoHoKhauThanhVienRow.QuanHe)].HeaderText = "Quan hệ";
+            gvThanhVien.Columns[nameof(SoHoKhauThanhVienRow.NgheNghiepNoiLamViec)].HeaderText = "Nghề nghiệp / Nơi làm việc";
+            gvThanhVien.Columns[nameof(SoHoKhauThanhVienRow.NoiThuongTruTruoc)].HeaderText = "Nơi thường trú trước";
+            gvThanhVien.Columns[nameof(SoHoKhauThanhVienRow.CanBoDangKy)].HeaderText = "Cán bộ đăng ký";
+            gvThanhVien.Columns[nameof(SoHoKhauThanhVienRow.NgayDangKy)].HeaderText = "Ngày đăng ký";
+
+            // Hide ID_CongDan column
+            gvThanhVien.Columns[nameof(SoHoKhauThanhVienRow.Id)].Visible = false;
+        }
+
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             int id;
@@ -130,18 +147,9 @@ namespace QuanLyCongDan.View
         {
             fThanhVien.ModeAdd();
             fThanhVien.ShowDialog();
-            if (!fThanhVien.Canceled)
-            {
-                gvThanhVien.Rows.Add(
-                    fThanhVien.ThanhVien.CongDan.Id, 
-                    fThanhVien.ThanhVien.CongDan.HoTen, 
-                    fThanhVien.ThanhVien.QuanHe,
-                    fThanhVien.ThanhVien.NgheNghiepNoiLamViec,
-                    fThanhVien.ThanhVien.NoiThuongTruTruoc,
-                    fThanhVien.ThanhVien.CanBoDangKy,
-                    fThanhVien.ThanhVien.NgayDangKy.ToShortDateString());
-            }
+            updateGridView();
         }
+
         private void txtTimKiem_Enter(object sender, EventArgs e)
         {
             if (txtTimKiem.Text == "  ID")
@@ -191,8 +199,9 @@ namespace QuanLyCongDan.View
         {
             if (e.RowIndex >= 0)
             {
-                fThanhVien.ModeUpdate();
+                fThanhVien.ModeUpdate(gvThanhVien.Rows[e.RowIndex].Cells[0].Value.ToString());
                 fThanhVien.ShowDialog();
+                updateGridView();
             }
         }
     }

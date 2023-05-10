@@ -46,13 +46,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.ID_CongDan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoVaTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuanHe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgheNghiep = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiThuongTruTruoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CanBoDangKy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayDangKy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvThanhVien)).BeginInit();
@@ -243,14 +236,6 @@
             // 
             this.gvThanhVien.AllowUserToAddRows = false;
             this.gvThanhVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gvThanhVien.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID_CongDan,
-            this.HoVaTen,
-            this.QuanHe,
-            this.NgheNghiep,
-            this.NoiThuongTruTruoc,
-            this.CanBoDangKy,
-            this.NgayDangKy});
             this.gvThanhVien.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.gvThanhVien.Location = new System.Drawing.Point(73, 386);
             this.gvThanhVien.Name = "gvThanhVien";
@@ -291,56 +276,6 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Thông Tin Hộ Khẩu";
             // 
-            // ID_CongDan
-            // 
-            this.ID_CongDan.HeaderText = "ID_CongDan";
-            this.ID_CongDan.MinimumWidth = 6;
-            this.ID_CongDan.Name = "ID_CongDan";
-            this.ID_CongDan.Visible = false;
-            this.ID_CongDan.Width = 125;
-            // 
-            // HoVaTen
-            // 
-            this.HoVaTen.HeaderText = "Họ và tên";
-            this.HoVaTen.MinimumWidth = 6;
-            this.HoVaTen.Name = "HoVaTen";
-            this.HoVaTen.Width = 125;
-            // 
-            // QuanHe
-            // 
-            this.QuanHe.HeaderText = "Quan Hệ";
-            this.QuanHe.MinimumWidth = 6;
-            this.QuanHe.Name = "QuanHe";
-            this.QuanHe.Width = 125;
-            // 
-            // NgheNghiep
-            // 
-            this.NgheNghiep.HeaderText = "Nghề Nghiệp";
-            this.NgheNghiep.MinimumWidth = 6;
-            this.NgheNghiep.Name = "NgheNghiep";
-            this.NgheNghiep.Width = 125;
-            // 
-            // NoiThuongTruTruoc
-            // 
-            this.NoiThuongTruTruoc.HeaderText = "Nơi thường trú trước";
-            this.NoiThuongTruTruoc.MinimumWidth = 6;
-            this.NoiThuongTruTruoc.Name = "NoiThuongTruTruoc";
-            this.NoiThuongTruTruoc.Width = 125;
-            // 
-            // CanBoDangKy
-            // 
-            this.CanBoDangKy.HeaderText = "Cán bộ đăng ký";
-            this.CanBoDangKy.MinimumWidth = 6;
-            this.CanBoDangKy.Name = "CanBoDangKy";
-            this.CanBoDangKy.Width = 125;
-            // 
-            // NgayDangKy
-            // 
-            this.NgayDangKy.HeaderText = "Ngày đăng ký";
-            this.NgayDangKy.MinimumWidth = 6;
-            this.NgayDangKy.Name = "NgayDangKy";
-            this.NgayDangKy.Width = 125;
-            // 
             // FSoHoKhau
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
@@ -379,12 +314,5 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView gvThanhVien;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_CongDan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HoVaTen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QuanHe;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NgheNghiep;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NoiThuongTruTruoc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CanBoDangKy;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NgayDangKy;
     }
 }
