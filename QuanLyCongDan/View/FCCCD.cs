@@ -1,7 +1,4 @@
-﻿using QuanLyCongDan.DAO;
-using QuanLyCongDan.Model;
-using QuanLyCongDan.View;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,18 +12,18 @@ namespace QuanLyCongDan
 {
     public partial class FCCCD : Form
     {
-        CongDan cd;
+        /*CongDan cd;
         CongDanDAO cddao = new CongDanDAO();
         CCCDDAO cccdDAO = new CCCDDAO();
         CCCD cccd;
-        CCCD cccdt;
+        CCCD cccdt;*/
         public FCCCD()
         {
             InitializeComponent();
         }
         private void tim_Click(object sender, EventArgs e)
         {
-            cccd = cccdDAO.TimKiem_ID(txtTcccd.Text);
+            /*cccd = cccdDAO.TimKiem_ID(txtTcccd.Text);
             if (cccd != null)
             {
                 cd = cddao.TimKiem(cccd.IDCD);
@@ -47,7 +44,7 @@ namespace QuanLyCongDan
                     MessageBox.Show("Số CCCD Sai, Xin Nhập Lại");
             }
             else
-                MessageBox.Show("Số CCCD Sai, Xin Nhập Lại");
+                MessageBox.Show("Số CCCD Sai, Xin Nhập Lại");*/
         }
         public static void enter(TextBox a)
         {
@@ -71,10 +68,10 @@ namespace QuanLyCongDan
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            DateTime now;
+            /*DateTime now;
             now = DateTime.Now;
             cccdt = cccdDAO.TimKiem(txtIDCD.Text);
-            if (txtIDCD.Text =="  ID Công Dân" ||
+            if (txtIDCD.Text == "  ID Công Dân" ||
                 txtSOCC.Text == "  Số CCCD" ||
                 add.Text == "  Địa Chỉ" ||
                 txtIDCD.Text == "" ||
@@ -85,7 +82,7 @@ namespace QuanLyCongDan
                 if (dTPNgayCap.Value.Date > now) MessageBox.Show("Ngày cấp không được ở tương lai.");
                 else MessageBox.Show("Hãy Điền Thông Tin.");
             }
-            else if(cccdt.SoCC != "")
+            else if (cccdt.SoCC != "")
             {
                 MessageBox.Show("Đã có căn cước công dân.\nXin hãy kiểm tra lại.");
             }
@@ -94,11 +91,11 @@ namespace QuanLyCongDan
                 cccd = new CCCD(txtIDCD.Text, txtSOCC.Text, dTPNgayCap.Value.Date, add.Text);
                 cccdDAO.Them(cccd);
                 MessageBox.Show("Hoàn Thành.");
-            }
+            }*/
         }
         private void button3_Click_1(object sender, EventArgs e)
         {
-            DateTime now;
+            /*DateTime now;
             now = DateTime.Now;
             if (txtIDCD.Text == "  ID Công Dân" ||
                 txtSOCC.Text == "  Số CCCD" ||
@@ -116,12 +113,12 @@ namespace QuanLyCongDan
                 cccd = new CCCD(txtIDCD.Text, txtSOCC.Text, dTPNgayCap.Value.Date, add.Text);
                 cccdDAO.Sua(cccd);
                 MessageBox.Show("Hoàn Thành.");
-            }
+            }*/
         }
         private void button2_Click_1(object sender, EventArgs e)
         {
-            cccd = new CCCD(txtIDCD.Text, txtSOCC.Text, dTPNgayCap.Value.Date, add.Text);
-            if (txtIDCD.Text == "  ID Công Dân"||
+            /*cccd = new CCCD(txtIDCD.Text, txtSOCC.Text, dTPNgayCap.Value.Date, add.Text);
+            if (txtIDCD.Text == "  ID Công Dân" ||
                 txtIDCD.Text == "")
             {
                 MessageBox.Show("Hãy Điền ID Công Dân để xóa.");
@@ -130,7 +127,7 @@ namespace QuanLyCongDan
             {
                 cccdDAO.Xoa(cccd);
                 MessageBox.Show("Hoàn Thành.");
-            }
+            }*/
         }
     }
 }

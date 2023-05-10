@@ -1,6 +1,4 @@
-﻿using QuanLyCongDan.DAO;
-using QuanLyCongDan.Model;
-using QuanLyCongDan.View;
+﻿using QuanLyCongDan.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,10 +14,10 @@ namespace QuanLyCongDan
     public partial class FTamTruTamVang : Form
     {
         TamTruTamVang tt;
-        TamTruTamVangDAO ttdao = new TamTruTamVangDAO();
+        /*TamTruTamVangDAO ttdao = new TamTruTamVangDAO();*/
         CongDan cd;
-        CongDanDAO cddao = new CongDanDAO();
-        CCCDDAO cccdDAO = new CCCDDAO();
+        /*CongDanDAO cddao = new CongDanDAO();
+        CCCDDAO cccdDAO = new CCCDDAO();*/
         CCCD cccd;
         public FTamTruTamVang()
         {
@@ -33,17 +31,17 @@ namespace QuanLyCongDan
         }
         private void HienThiDanhSach()
         {
-            cccd = cccdDAO.TimKiem_ID(txtTCCCD.Text);
+            /*cccd = cccdDAO.TimKiem_ID(txtTCCCD.Text);
             if(cccd != null)
             {
                 this.Lichsudichuyen.DataSource = ttdao.LayDanhSachLichsu(cccd.IDCD);
             }
             else
-                this.Lichsudichuyen.DataSource = null;
+                this.Lichsudichuyen.DataSource = null;*/
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            cccd = cccdDAO.TimKiem_ID(txtsoCC.Text);
+            /*cccd = cccdDAO.TimKiem_ID(txtsoCC.Text);
             TamTruTamVang ttold;
             TamTruTamVang ttnew;
             ttold = ttdao.TimKiemTT(cccd.IDCD);
@@ -68,12 +66,12 @@ namespace QuanLyCongDan
                 ttdao.Them(ttnew);
                 MessageBox.Show("Hoàn Thành.");
                 HienThiDanhSach();
-            }
+            }*/
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (txtsoCC.Text == "  ID Công Dân" ||
+            /*if (txtsoCC.Text == "  ID Công Dân" ||
                 txtsoCC.Text == "")
             {
                 MessageBox.Show("Hãy Điền Thông Tin.");
@@ -85,7 +83,7 @@ namespace QuanLyCongDan
                 ttdao.Xoa(tt);
                 MessageBox.Show("Hoàn Thành.");
                 HienThiDanhSach();
-            }
+            }*/
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -103,16 +101,16 @@ namespace QuanLyCongDan
             }
             else
             {
-                cccd = cccdDAO.TimKiem_ID(txtsoCC.Text);
+                /*cccd = cccdDAO.TimKiem_ID(txtsoCC.Text);
                 tt = new TamTruTamVang(cccd.IDCD, Come.Value.Date, Leave.Value.Date, txtAdd.Text, txtLido.Text);
                 ttdao.Sua(tt);
                 MessageBox.Show("Hoàn Thành.");
-                HienThiDanhSach();
+                HienThiDanhSach();*/
             }
         }
         private void tim_Click(object sender, EventArgs e)
         {
-            cccd = cccdDAO.TimKiem_ID(txtTCCCD.Text);
+            /*cccd = cccdDAO.TimKiem_ID(txtTCCCD.Text);
             tt = ttdao.TimKiemTT(cccd.IDCD);
             cd = cddao.TimKiem(cccd.IDCD);
             if (tt != null)
@@ -121,7 +119,7 @@ namespace QuanLyCongDan
                 txtHoTen.Text = cd.HoTen;
                 txtADDthuongtru.Text = cd.QueQuan;
             }
-            HienThiDanhSach();
+            HienThiDanhSach();*/
         }
 
         private void FTamTruTamVang_Load(object sender, EventArgs e)
@@ -158,7 +156,7 @@ namespace QuanLyCongDan
 
         private void btnDanhSachQuaHan_Click(object sender, EventArgs e)
         {
-            Lichsudichuyen.DataSource = ttdao.LayDanhSachQuaHan();
+            /*Lichsudichuyen.DataSource = ttdao.LayDanhSachQuaHan();*/
         }
     }
 }

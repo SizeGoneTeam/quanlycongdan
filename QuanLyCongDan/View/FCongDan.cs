@@ -11,16 +11,14 @@ using System.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Xml.Linq;
 using System.Text.RegularExpressions;
-using QuanLyCongDan.Model;
-using QuanLyCongDan.DAO;
 
 namespace QuanLyCongDan.View
 {
     public partial class FCongDan : Form
     {
         CongDan cd;
-        CongDanDAO cdDao = new CongDanDAO();
-
+/*        CongDanDAO cdDao = new CongDanDAO();
+*/
         public FCongDan()
         {
             InitializeComponent();
@@ -30,30 +28,30 @@ namespace QuanLyCongDan.View
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (KiemTraThongTin())
+            /*if (KiemTraThongTin())
             {
                 cd = new CongDan(txtHoTen.Text, txtQueQuan.Text, cboGioiTinh.SelectedItem.ToString(), dTPNgaySinh.Value, cboDanToc.SelectedItem.ToString(), cboTonGiao.SelectedItem.ToString(), txtSDT.Text, txtEmail.Text, txtNoiThuongTru.Text, "");
                 cdDao.Them(cd);
                 MessageBox.Show("Thêm thành công");
-            }
+            }*/
            
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            cd = new CongDan(txtID.Text,txtHoTen.Text, txtQueQuan.Text, cboGioiTinh.SelectedItem.ToString(), dTPNgaySinh.Value, cboDanToc.SelectedItem.ToString(), cboTonGiao.SelectedItem.ToString(), txtSDT.Text, txtEmail.Text, txtNoiThuongTru.Text, "");
+            /*cd = new CongDan(txtID.Text,txtHoTen.Text, txtQueQuan.Text, cboGioiTinh.SelectedItem.ToString(), dTPNgaySinh.Value, cboDanToc.SelectedItem.ToString(), cboTonGiao.SelectedItem.ToString(), txtSDT.Text, txtEmail.Text, txtNoiThuongTru.Text, "");
             cdDao.Xoa(cd);
-            MessageBox.Show("Xoá thành công");
+            MessageBox.Show("Xoá thành công");*/
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (KiemTraThongTin())
+            /*if (KiemTraThongTin())
             {
                 cd = new CongDan(txtID.Text, txtHoTen.Text, txtQueQuan.Text, cboGioiTinh.SelectedItem.ToString(), dTPNgaySinh.Value, cboDanToc.SelectedItem.ToString(), cboTonGiao.SelectedItem.ToString(), txtSDT.Text, txtEmail.Text, txtNoiThuongTru.Text, "");
                 cdDao.Sua(cd);
                 MessageBox.Show("Sửa thành công");
-            }
+            }*/
             
         }
 
@@ -74,7 +72,7 @@ namespace QuanLyCongDan.View
 
         private void TimKiemCongDan(String id)
         {
-            try
+            /*try
             {
                 cd = cdDao.TimKiem(id);
                 txtHoTen.Text = cd.HoTen;
@@ -106,7 +104,7 @@ namespace QuanLyCongDan.View
             {
                 txtHoTen.Text = "";
 
-            }
+            }*/
             
         }
 

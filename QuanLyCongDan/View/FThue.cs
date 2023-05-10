@@ -1,6 +1,4 @@
-﻿using QuanLyCongDan.DAO;
-using QuanLyCongDan.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,12 +12,12 @@ namespace QuanLyCongDan.View
 {
     public partial class FThue : Form
     {
-        ThueDAO thueDAO = new ThueDAO();
+        /*ThueDAO thueDAO = new ThueDAO();
         CCCDDAO cccdDAO = new CCCDDAO();
-        CongDanDAO cdDAO = new CongDanDAO();
+        CongDanDAO cdDAO = new CongDanDAO();*/
         CongTy ct;
-        CongTyDAO ctDAO = new CongTyDAO();
-        CongDan cd;
+/*        CongTyDAO ctDAO = new CongTyDAO();
+*/        CongDan cd;
 
         public FThue()
         {
@@ -27,8 +25,8 @@ namespace QuanLyCongDan.View
         }
         private void HienThiLichSuThue(int idCD)
         {
-            this.gvThue.DataSource = thueDAO.LayLichSuThueTheoIDCongDan(idCD);
-        }
+/*            this.gvThue.DataSource = thueDAO.LayLichSuThueTheoIDCongDan(idCD);
+*/        }
         private void FThue_Load(object sender, EventArgs e)
         {
 
@@ -36,7 +34,7 @@ namespace QuanLyCongDan.View
 
         private void btnCCCD_Click(object sender, EventArgs e)
         {
-            try
+            /*try
             {
                 CCCD cccd = cccdDAO.TimKiem_ID(txtCCCD.Text);
                 cd = cdDAO.TimKiem(cccd.IDCD);
@@ -63,19 +61,19 @@ namespace QuanLyCongDan.View
             catch
             {
 
-            }
+            }*/
         }
 
         private void btnCongTy_Click(object sender, EventArgs e)
         {
-            try
+            /*try
             {
                 this.gvThue.DataSource = thueDAO.LayLichSuThueTheoCongTY(ct.TenCongTy);
             }
             catch
             {
 
-            }
+            }*/
         }
 
         private void txtCCCD_Enter(object sender, EventArgs e)
@@ -114,8 +112,8 @@ namespace QuanLyCongDan.View
 
         private void btnNopThue_Click(object sender, EventArgs e)
         {
-            thueDAO.NopThue(int.Parse(cd.Id));
-            this.gvThue.DataSource = thueDAO.LayLichSuThueTheoIDCongDan(int.Parse(cd.Id));
+            /*thueDAO.NopThue(int.Parse(cd.Id));
+            this.gvThue.DataSource = thueDAO.LayLichSuThueTheoIDCongDan(int.Parse(cd.Id));*/
         }
 
         public int GetYearsDiff(DateTime firstDate)
@@ -130,7 +128,7 @@ namespace QuanLyCongDan.View
 
         private void btnChuaDongThue_Click(object sender, EventArgs e)
         {
-            this.dgvDanhSach.DataSource = thueDAO.LayCongDanChuaDongThue();
+           /* this.dgvDanhSach.DataSource = thueDAO.LayCongDanChuaDongThue();*/
         }
     }
 }

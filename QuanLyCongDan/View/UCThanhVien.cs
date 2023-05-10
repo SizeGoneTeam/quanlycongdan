@@ -1,5 +1,4 @@
-﻿using QuanLyCongDan.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,23 +13,23 @@ namespace QuanLyCongDan
 {
     internal partial class UCThanhVien : UserControl
     {
-        private SoHoKhauThanhVien thanhVien;
+        /*private SoHoKhauThanhVien thanhVien;*/
 
         public UCThanhVien()
         {
             InitializeComponent();
         }
 
-        public UCThanhVien(SoHoKhauThanhVien thanhVien)
+        /*public UCThanhVien(SoHoKhauThanhVien thanhVien)
         {
             InitializeComponent();
 
             ThanhVien = thanhVien;
 
             UpdateContent();
-        }
+        }*/
 
-        internal SoHoKhauThanhVien ThanhVien
+        /*internal SoHoKhauThanhVien ThanhVien
         {
             get
             {
@@ -41,11 +40,11 @@ namespace QuanLyCongDan
             {
                 thanhVien = value;
             }
-        }
+        }*/
 
         public void UpdateContent()
         {
-            txtQuanHe.Text = ThanhVien.QuanHe;
+            /*txtQuanHe.Text = ThanhVien.QuanHe;
             txtHoTen.Text = ThanhVien.CongDan.HoTen;
             txtNgaySinh.Text = ThanhVien.CongDan.NgaySinh.ToShortDateString();
             txtGioiTinh.Text = ThanhVien.CongDan.GioiTinh;
@@ -55,7 +54,7 @@ namespace QuanLyCongDan
             txtNgheNghiepNoiLamViec.Text = ThanhVien.NgheNghiepNoiLamViec;
             txtNoiThuongTruTruoc.Text = ThanhVien.NoiThuongTruTruoc;
             txtCanBoDangKy.Text = ThanhVien.CanBoDangKy;
-            pkNgayDangKy.Value = ThanhVien.NgayDangKy;
+            pkNgayDangKy.Value = ThanhVien.NgayDangKy;*/
         }
 
         private void txtQuanHe_Enter(object sender, EventArgs e)

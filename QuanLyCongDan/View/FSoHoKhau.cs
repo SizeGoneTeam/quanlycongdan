@@ -1,6 +1,4 @@
-﻿using QuanLyCongDan.DAO;
-using QuanLyCongDan.Model;
-using QuanLyCongDan.View;
+﻿using QuanLyCongDan.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,8 +13,8 @@ namespace QuanLyCongDan.View
 {
     public partial class FSoHoKhau : Form
     {
-        private SoHoKhauDAO dao = new SoHoKhauDAO();
-        private SoHoKhauThanhVienDAO thanhVienDAO = new SoHoKhauThanhVienDAO();
+        /*private SoHoKhauDAO dao = new SoHoKhauDAO();
+        private SoHoKhauThanhVienDAO thanhVienDAO = new SoHoKhauThanhVienDAO();*/
 
         public FSoHoKhau()
         {
@@ -27,7 +25,7 @@ namespace QuanLyCongDan.View
         {
             int id;
 
-            if (int.TryParse(txtTimKiem.Text, out id))
+            /*if (int.TryParse(txtTimKiem.Text, out id))
             {
                 SoHoKhau soHoKhau = dao.TimKiem(id);
 
@@ -54,7 +52,7 @@ namespace QuanLyCongDan.View
             else
             {
                 MessageBox.Show("ID Tìm kiếm không hợp lệ");
-            }
+            }*/
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -62,7 +60,7 @@ namespace QuanLyCongDan.View
             int idHoSoHoKhau;
             int.TryParse(txtIDHoSoHoKhau.Text, out idHoSoHoKhau);
 
-            if (dao.Them(
+            /*if (dao.Them(
                 new SoHoKhau(
                     idHoSoHoKhau, 
                     txtIDSoDangKyThuongTru.Text, 
@@ -75,7 +73,7 @@ namespace QuanLyCongDan.View
             else
             {
                 MessageBox.Show("Thêm thất bại");
-            }
+            }*/
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -83,7 +81,7 @@ namespace QuanLyCongDan.View
             int idHoSoHoKhau;
             int.TryParse(txtIDHoSoHoKhau.Text, out idHoSoHoKhau);
 
-            if (dao.Sua(
+            /*if (dao.Sua(
                 new SoHoKhau(
                     int.Parse(txtID.Text), 
                     idHoSoHoKhau, 
@@ -97,12 +95,12 @@ namespace QuanLyCongDan.View
             else
             {
                 MessageBox.Show("Sửa thất bại");
-            }
+            }*/
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (dao.Xoa(int.Parse(txtID.Text)))
+            /*if (dao.Xoa(int.Parse(txtID.Text)))
             {
                 MessageBox.Show("Xóa thành công");
                 clear();
@@ -110,7 +108,7 @@ namespace QuanLyCongDan.View
             else
             {
                 MessageBox.Show("Xóa thất bại");
-            }
+            }*/
         }
 
         private void clear()
