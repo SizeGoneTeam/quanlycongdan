@@ -39,7 +39,7 @@ namespace QuanLyCongDan
         public bool Them(KhaiSinh ks)
         {
             string sqlStr = string.Format(
-                "Insert into KhaiSinh(ID_CongDan, ID_NguoiYeuCau, ID_Cha, ID_Me, NoiDangKy, NgayThucHien) values('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')",
+                "Insert into KhaiSinh(ID_CongDan, ID_NguoiYeuCau, ID_Cha, ID_Me, NoiDangKy, NgayThucHien) values('{0}', '{1}', '{2}', '{3}', N'{4}', '{5}')",
                 ks.IDCongDan,
                 ks.IDNguoiYeuCau,
                 ks.IDCha,
@@ -53,7 +53,7 @@ namespace QuanLyCongDan
         public bool Sua(KhaiSinh ks)
         {
             string sqlStr = string.Format(
-                "Update KhaiSinh set ID_CongDan = '{0}', ID_NguoiYeuCau = '{1}', ID_Cha = '{2}', ID_Me = '{3}', NoiDangKy = '{4}', NgayThucHien = '{5}' where ID_KhaiSinh = '{6}'",
+                "Update KhaiSinh set ID_CongDan = '{0}', ID_NguoiYeuCau = '{1}', ID_Cha = '{2}', ID_Me = '{3}', NoiDangKy = N'{4}', NgayThucHien = '{5}' where ID_KhaiSinh = '{6}'",
                 ks.IDCongDan,
                 ks.IDNguoiYeuCau,
                 ks.IDCha,

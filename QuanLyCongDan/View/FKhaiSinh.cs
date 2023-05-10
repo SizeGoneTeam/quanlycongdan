@@ -90,8 +90,6 @@ namespace QuanLyCongDan
                 {
                     congDanDao.Them(congDan);
                     congDan.Id = congDanDao.getLatestRowIndex().ToString();
-                    //int count = congDanDao.LayDanhSachCongDan().Rows.Count;
-                    //congDan.Id = congDanDao.LayDanhSachCongDan().Rows[count - 1]["ID_CongDan"].ToString();
                     khaiSinh.IDCongDan = int.Parse(congDan.Id);
                     if (khaiSinhDao.Them(khaiSinh))
                     {  

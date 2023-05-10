@@ -102,5 +102,17 @@ namespace QuanLyCongDan.DAO
 
             return con.ThucThi(sqlStr);
         }
+
+        public int getLatestRowIndex()
+        {
+            string sqlStr = string.Format("SELECT MAX(ID_KhaiTu) FROM KhaiTu");
+            DataTable dt = con.LayDanhSach(sqlStr);
+            int latestIndex = -1;
+            if (dt.Rows.Count > 0 && dt.Rows[0][0] != DBNull.Value)
+            {
+                latestIndex = Convert.ToInt32(dt.Rows[0][0]);
+            }
+            return latestIndex;
+        }
     }
 }
