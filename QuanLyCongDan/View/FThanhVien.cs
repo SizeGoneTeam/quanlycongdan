@@ -42,7 +42,7 @@ namespace QuanLyCongDan.View
             }
         }
 
-        internal List<SoHoKhauThanhVien> DanhSachThanhVien { get => danhSachThanhVien; }
+        internal List<SoHoKhauThanhVien> DanhSachThanhVien { get => danhSachThanhVien; set => danhSachThanhVien = value; }
 
         #region Methods
         public void ModeAdd()
@@ -121,10 +121,22 @@ namespace QuanLyCongDan.View
         }
         #endregion
 
-
-        private void btnHuy_Click(object sender, EventArgs e)
+        #region Events
+        private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            string cccd = txtCCCD.Text;
+            int id = cccdDAO.toIdCongDan(cccd);
+            congDan = thanhVien.CongDan = congDanDAO.TimKiem(id.ToString());
+            if (congDan is null)
+            {
+                MessageBox.Show("Không tìm thấy");
+            }
+            else if (isDublicate())
+            {
+                MessageBox.Show("Trùng người!");
+                congDan = null;
+            }
+            updateContent();
         }
 
         private void btnXacNhan_Click(object sender, EventArgs e)
@@ -144,6 +156,11 @@ namespace QuanLyCongDan.View
             }
         }
 
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void btnXoa_Click(object sender, EventArgs e)
         {
             SoHoKhauThanhVien thanhVienToRemove = danhSachThanhVien.FirstOrDefault(tv => tv.CongDan.Id == congDan.Id);
@@ -152,24 +169,6 @@ namespace QuanLyCongDan.View
                 danhSachThanhVien.Remove(thanhVienToRemove);
             }
             this.Close();
-        }
-
-        #region Events
-        private void btnTimKiem_Click(object sender, EventArgs e)
-        {
-            string cccd = txtCCCD.Text;
-            int id = cccdDAO.toIdCongDan(cccd);
-            congDan = thanhVien.CongDan = congDanDAO.TimKiem(id.ToString());
-            if (congDan is null)
-            {
-                MessageBox.Show("Không tìm thấy");
-            }
-            else if (isDublicate())
-            {
-                MessageBox.Show("Trùng người!");
-                congDan = null;
-            }
-            updateContent();
         }
         #endregion
     }
