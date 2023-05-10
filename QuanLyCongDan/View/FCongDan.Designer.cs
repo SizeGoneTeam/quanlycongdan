@@ -72,7 +72,6 @@
             this.dTPNgaySinh.Name = "dTPNgaySinh";
             this.dTPNgaySinh.Size = new System.Drawing.Size(227, 30);
             this.dTPNgaySinh.TabIndex = 2;
-            this.dTPNgaySinh.ValueChanged += new System.EventHandler(this.dTPNgaySinh_ValueChanged);
             // 
             // btnThem
             // 
@@ -150,7 +149,6 @@
             this.txtID.Size = new System.Drawing.Size(245, 30);
             this.txtID.TabIndex = 13;
             this.txtID.Text = "  ID Công Dân";
-            this.txtID.TextChanged += new System.EventHandler(this.txtID_TextChanged);
             this.txtID.Enter += new System.EventHandler(this.txtID_Enter);
             // 
             // txtEmail
