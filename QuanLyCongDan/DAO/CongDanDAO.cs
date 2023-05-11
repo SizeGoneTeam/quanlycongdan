@@ -74,5 +74,17 @@ namespace QuanLyCongDan.DAO
             if (isValidPhoneNumber && isValidEmail) return true;
             return false;
         }
+
+        public int getLatestRowIndex()
+        {
+            string sqlStr = string.Format("SELECT MAX(ID_CongDan) FROM CongDan");
+            DataTable dt = dbConn.LayDanhSach(sqlStr);
+            int latestIndex = -1;
+            if (dt.Rows.Count > 0 && dt.Rows[0][0] != DBNull.Value)
+            {
+                latestIndex = Convert.ToInt32(dt.Rows[0][0]);
+            }
+            return latestIndex;
+        }
     }
 }
