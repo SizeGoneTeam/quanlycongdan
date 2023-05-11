@@ -39,7 +39,12 @@ namespace QuanLyCongDan
                 this.Lichsudichuyen.DataSource = ttdao.LayDanhSachLichsu(cccd.IDCD);
             }
             else
-                this.Lichsudichuyen.DataSource = null;
+            {
+                cccd = cccdDAO.TimKiem_ID(txtsoCC.Text);
+                if(cccd!=null) this.Lichsudichuyen.DataSource = ttdao.LayDanhSachLichsu(cccd.IDCD);
+                else this.Lichsudichuyen.DataSource = null;
+            }
+                
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -48,27 +53,41 @@ namespace QuanLyCongDan
             TamTruTamVang ttnew;
             ttold = ttdao.TimKiemTT(cccd.IDCD);
             ttnew = new TamTruTamVang(cccd.IDCD, Come.Value.Date, Leave.Value.Date, txtAdd.Text, txtLido.Text);
-            if (txtsoCC.Text == "  ID Công Dân" ||
-                txtAdd.Text == "  Số CCCD" ||
-                txtLido.Text == "  Địa Chỉ" ||
-                txtsoCC.Text == "" ||
-                txtAdd.Text == "" ||
-                txtLido.Text == "" ||
-                Come.Value >= Leave.Value)
+            try
             {
-                if (Come.Value >= Leave.Value) MessageBox.Show("Ngày đến không được vượt quá ngày đi.");
-                else MessageBox.Show("Hãy Điền Thông Tin");
+                if (txtsoCC.Text == "  ID Công Dân" ||
+                    txtAdd.Text == "  Số CCCD" ||
+                    txtLido.Text == "  Địa Chỉ" ||
+                    txtsoCC.Text == "" ||
+                    txtAdd.Text == "" ||
+                    txtLido.Text == "" ||
+                    Come.Value >= Leave.Value)
+                {
+                    if (Come.Value >= Leave.Value) MessageBox.Show("Ngày đến không được vượt quá ngày đi.");
+                    else MessageBox.Show("Hãy Điền Thông Tin");
+                }
+                else if (ttnew.Come.Date >= ttold.Come.Date && ttnew.Come.Date <= ttold.Leave || ttnew.Leave.Date <= ttold.Leave.Date && ttnew.Leave.Date >= ttold.Come.Date)
+                {
+                    MessageBox.Show("Trong Cùng Thời Gian Không Thể Tạm Trú Ở Hai Nơi Cùng Lúc.");
+                }
+                else
+                {
+                    ttdao.Them(ttnew);
+                    MessageBox.Show("Hoàn Thành.");
+                    HienThiDanhSach();
+                }
             }
-            else if(ttnew.Come.Date >= ttold.Come.Date && ttnew.Come.Date <= ttold.Leave || ttnew.Leave.Date <= ttold.Leave.Date && ttnew.Leave.Date >= ttold.Come.Date)
+            catch
             {
-                MessageBox.Show("Trong Cùng Thời Gian Không Thể Tạm Trú Ở Hai Nơi Cùng Lúc.");
+                if(ttold == null)
+                {
+                    ttdao.Them(ttnew);
+                    MessageBox.Show("Hoàn Thành.");
+                    HienThiDanhSach();
+                }
+                else MessageBox.Show("Thất bại");
             }
-            else
-            {
-                ttdao.Them(ttnew);
-                MessageBox.Show("Hoàn Thành.");
-                HienThiDanhSach();
-            }
+            
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -71,9 +71,11 @@ namespace QuanLyCongDan
         }
         private void button1_Click(object sender, EventArgs e)
         {
+
             DateTime now;
             now = DateTime.Now;
-            cccdt = cccdDAO.TimKiem(txtIDCD.Text);
+            cd = cddao.TimKiem(txtIDCD.Text);
+            cccd = cccdDAO.TimKiem(txtIDCD.Text);
             if (txtIDCD.Text =="  ID Công Dân" ||
                 txtSOCC.Text == "  Số CCCD" ||
                 add.Text == "  Địa Chỉ" ||
@@ -85,7 +87,7 @@ namespace QuanLyCongDan
                 if (dTPNgayCap.Value.Date > now) MessageBox.Show("Ngày cấp không được ở tương lai.");
                 else MessageBox.Show("Hãy Điền Thông Tin.");
             }
-            else if(cccdt.SoCC != "")
+            else if(cccd != null && cccd.SoCC != "")
             {
                 MessageBox.Show("Đã có căn cước công dân.\nXin hãy kiểm tra lại.");
             }
