@@ -45,6 +45,10 @@ namespace QuanLyCongDan.View
                     if (khaiTuDAO.Them(khaiTu))
                     {
                         MessageBox.Show("Thêm thành công!");
+                        khaiTu.ID = khaiTuDAO.getLatestRowIndex();
+                        khaiTu = khaiTuDAO.TimKiem(khaiTu.ID);
+                        switchToEditMode();
+                        updateContent();
                     }
                     else
                     {
@@ -89,6 +93,7 @@ namespace QuanLyCongDan.View
                         MessageBox.Show("Xóa thành công!");
                         khaiTu = null;
                         updateContent();
+                        switchToAddMode();
                     }
                     else
                     {
@@ -194,6 +199,9 @@ namespace QuanLyCongDan.View
 
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
+
+            clear();
+            updateContent();
         }
 
         private void switchToEditMode()
@@ -246,6 +254,13 @@ namespace QuanLyCongDan.View
         {
             txtCCCDNguoiYeuCau.Text = "";
             txtHoVaTenNguoiYeuCau.Text = nguoiYeuCau is null ? "" : nguoiYeuCau.HoTen;
+        }
+
+        private void clear()
+        {
+            khaiTu = null;
+            congDan = null;
+            nguoiYeuCau = null;
         }
         #endregion
     }
