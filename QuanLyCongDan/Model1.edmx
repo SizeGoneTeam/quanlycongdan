@@ -1,0 +1,975 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QLCongDanModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CCCD">
+          <Key>
+            <PropertyRef Name="ID_CCCD" />
+          </Key>
+          <Property Name="ID_CCCD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_CongDan" Type="int" />
+          <Property Name="SoCCCD" Type="nvarchar" MaxLength="100" />
+          <Property Name="NgayCap" Type="date" />
+          <Property Name="NoiCap" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="CongDan">
+          <Key>
+            <PropertyRef Name="ID_CongDan" />
+          </Key>
+          <Property Name="ID_CongDan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="100" />
+          <Property Name="GioiTinh" Type="nvarchar" MaxLength="100" />
+          <Property Name="NgaySinh" Type="date" />
+          <Property Name="QueQuan" Type="nvarchar" MaxLength="100" />
+          <Property Name="NoiSinh" Type="nvarchar" MaxLength="100" />
+          <Property Name="NoiThuongTru" Type="nvarchar" MaxLength="100" />
+          <Property Name="DanToc" Type="nvarchar" MaxLength="100" />
+          <Property Name="TonGiao" Type="nvarchar" MaxLength="100" />
+          <Property Name="SDT" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="QuocTich" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="CongDan_SoHoKhau">
+          <Key>
+            <PropertyRef Name="ID_SoHoKhau" />
+            <PropertyRef Name="ID_CongDan" />
+          </Key>
+          <Property Name="ID_SoHoKhau" Type="int" Nullable="false" />
+          <Property Name="ID_CongDan" Type="int" Nullable="false" />
+          <Property Name="QuanHe" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgheNghiep_NoiLamViec" Type="nvarchar" MaxLength="100" />
+          <Property Name="NoiThuongTruTruoc" Type="nvarchar" MaxLength="100" />
+          <Property Name="CanBoDangKy" Type="nvarchar" MaxLength="100" />
+          <Property Name="NgayDangKy" Type="date" />
+        </EntityType>
+        <EntityType Name="CongTy">
+          <Key>
+            <PropertyRef Name="ID_CongTy" />
+          </Key>
+          <Property Name="ID_CongTy" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenCongTy" Type="nvarchar" MaxLength="100" />
+          <Property Name="NgayTao" Type="date" />
+        </EntityType>
+        <EntityType Name="CongTy_NhanVien">
+          <Key>
+            <PropertyRef Name="ID_CongTyNhanVien" />
+          </Key>
+          <Property Name="ID_CongTyNhanVien" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_CongTy" Type="int" />
+          <Property Name="ID_NhanVien" Type="int" />
+          <Property Name="Luong" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TrangThai" Type="bit" />
+          <Property Name="NgayVao" Type="date" />
+        </EntityType>
+        <EntityType Name="HonNhan">
+          <Key>
+            <PropertyRef Name="ID_HonNhan" />
+          </Key>
+          <Property Name="ID_HonNhan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Chong" Type="int" />
+          <Property Name="ID_Vo" Type="int" />
+          <Property Name="NgayDangKy" Type="date" />
+          <Property Name="NoiDangKy" Type="nvarchar" MaxLength="100" />
+          <Property Name="TrangThai" Type="bit" />
+        </EntityType>
+        <EntityType Name="KhaiSinh">
+          <Key>
+            <PropertyRef Name="ID_KhaiSinh" />
+          </Key>
+          <Property Name="ID_KhaiSinh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_CongDan" Type="int" />
+          <Property Name="ID_NguoiYeuCau" Type="int" />
+          <Property Name="ID_Cha" Type="int" />
+          <Property Name="ID_Me" Type="int" />
+          <Property Name="NoiDangKy" Type="nvarchar" MaxLength="100" />
+          <Property Name="NgayThucHien" Type="date" />
+        </EntityType>
+        <EntityType Name="KhaiTu">
+          <Key>
+            <PropertyRef Name="ID_KhaiTu" />
+          </Key>
+          <Property Name="ID_KhaiTu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_CongDan" Type="int" />
+          <Property Name="ID_NguoiYeuCau" Type="int" />
+          <Property Name="QuanHe" Type="nvarchar" MaxLength="100" />
+          <Property Name="ThoiGianChet" Type="datetime" />
+          <Property Name="NoiChet" Type="nvarchar" MaxLength="100" />
+          <Property Name="NguyenNhan" Type="nvarchar" MaxLength="100" />
+          <Property Name="NoiDangKy" Type="nvarchar" MaxLength="100" />
+          <Property Name="NgayThucHien" Type="date" />
+        </EntityType>
+        <EntityType Name="LichSuThue">
+          <Key>
+            <PropertyRef Name="ID_LichSuThue" />
+          </Key>
+          <Property Name="ID_LichSuThue" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_CongDan" Type="int" />
+          <Property Name="TenCongTy" Type="nvarchar" MaxLength="100" />
+          <Property Name="NgayTao" Type="date" />
+          <Property Name="TrangThai" Type="bit" />
+          <Property Name="SoTien" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="SoHoKhau">
+          <Key>
+            <PropertyRef Name="ID_SoHoKhau" />
+          </Key>
+          <Property Name="ID_SoHoKhau" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_HoSoHoKhau" Type="int" />
+          <Property Name="ID_SoDangKyThuongTru" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID_SoDangKyThuongTru_ToSo" Type="nvarchar" MaxLength="50" />
+          <Property Name="NoiThuongTru" Type="nvarchar" MaxLength="100" />
+          <Property Name="NgayDangKy" Type="date" />
+        </EntityType>
+        <EntityType Name="TamTruTamVang">
+          <Key>
+            <PropertyRef Name="ID_TamTru" />
+          </Key>
+          <Property Name="ID_TamTru" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_CongDan" Type="int" />
+          <Property Name="NgayDen" Type="date" />
+          <Property Name="NgayDi" Type="date" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
+          <Property Name="LiDo" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK__CCCD__ID_CongDan__058EC7FB">
+          <End Role="CongDan" Type="Self.CongDan" Multiplicity="0..1" />
+          <End Role="CCCD" Type="Self.CCCD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CongDan">
+              <PropertyRef Name="ID_CongDan" />
+            </Principal>
+            <Dependent Role="CCCD">
+              <PropertyRef Name="ID_CongDan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CongDan_S__ID_Co__0B47A151">
+          <End Role="CongDan" Type="Self.CongDan" Multiplicity="1" />
+          <End Role="CongDan_SoHoKhau" Type="Self.CongDan_SoHoKhau" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CongDan">
+              <PropertyRef Name="ID_CongDan" />
+            </Principal>
+            <Dependent Role="CongDan_SoHoKhau">
+              <PropertyRef Name="ID_CongDan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CongDan_S__ID_So__0A537D18">
+          <End Role="SoHoKhau" Type="Self.SoHoKhau" Multiplicity="1" />
+          <End Role="CongDan_SoHoKhau" Type="Self.CongDan_SoHoKhau" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoHoKhau">
+              <PropertyRef Name="ID_SoHoKhau" />
+            </Principal>
+            <Dependent Role="CongDan_SoHoKhau">
+              <PropertyRef Name="ID_SoHoKhau" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CongTy_Nh__ID_Co__1D66518C">
+          <End Role="CongTy" Type="Self.CongTy" Multiplicity="0..1" />
+          <End Role="CongTy_NhanVien" Type="Self.CongTy_NhanVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CongTy">
+              <PropertyRef Name="ID_CongTy" />
+            </Principal>
+            <Dependent Role="CongTy_NhanVien">
+              <PropertyRef Name="ID_CongTy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CongTy_Nh__ID_Nh__1E5A75C5">
+          <End Role="CongDan" Type="Self.CongDan" Multiplicity="0..1" />
+          <End Role="CongTy_NhanVien" Type="Self.CongTy_NhanVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CongDan">
+              <PropertyRef Name="ID_CongDan" />
+            </Principal>
+            <Dependent Role="CongTy_NhanVien">
+              <PropertyRef Name="ID_NhanVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HonNhan__ID_Chon__17AD7836">
+          <End Role="CongDan" Type="Self.CongDan" Multiplicity="0..1" />
+          <End Role="HonNhan" Type="Self.HonNhan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CongDan">
+              <PropertyRef Name="ID_CongDan" />
+            </Principal>
+            <Dependent Role="HonNhan">
+              <PropertyRef Name="ID_Chong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HonNhan__ID_Vo__18A19C6F">
+          <End Role="CongDan" Type="Self.CongDan" Multiplicity="0..1" />
+          <End Role="HonNhan" Type="Self.HonNhan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CongDan">
+              <PropertyRef Name="ID_CongDan" />
+            </Principal>
+            <Dependent Role="HonNhan">
+              <PropertyRef Name="ID_Vo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KhaiSinh__ID_Cha__100C566E">
+          <End Role="CongDan" Type="Self.CongDan" Multiplicity="0..1" />
+          <End Role="KhaiSinh" Type="Self.KhaiSinh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CongDan">
+              <PropertyRef Name="ID_CongDan" />
+            </Principal>
+            <Dependent Role="KhaiSinh">
+              <PropertyRef Name="ID_Cha" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KhaiSinh__ID_Con__0E240DFC">
+          <End Role="CongDan" Type="Self.CongDan" Multiplicity="0..1" />
+          <End Role="KhaiSinh" Type="Self.KhaiSinh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CongDan">
+              <PropertyRef Name="ID_CongDan" />
+            </Principal>
+            <Dependent Role="KhaiSinh">
+              <PropertyRef Name="ID_CongDan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KhaiSinh__ID_Me__11007AA7">
+          <End Role="CongDan" Type="Self.CongDan" Multiplicity="0..1" />
+          <End Role="KhaiSinh" Type="Self.KhaiSinh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CongDan">
+              <PropertyRef Name="ID_CongDan" />
+            </Principal>
+            <Dependent Role="KhaiSinh">
+              <PropertyRef Name="ID_Me" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KhaiSinh__ID_Ngu__0F183235">
+          <End Role="CongDan" Type="Self.CongDan" Multiplicity="0..1" />
+          <End Role="KhaiSinh" Type="Self.KhaiSinh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CongDan">
+              <PropertyRef Name="ID_CongDan" />
+            </Principal>
+            <Dependent Role="KhaiSinh">
+              <PropertyRef Name="ID_NguoiYeuCau" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KhaiTu__ID_CongD__13DCE752">
+          <End Role="CongDan" Type="Self.CongDan" Multiplicity="0..1" />
+          <End Role="KhaiTu" Type="Self.KhaiTu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CongDan">
+              <PropertyRef Name="ID_CongDan" />
+            </Principal>
+            <Dependent Role="KhaiTu">
+              <PropertyRef Name="ID_CongDan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KhaiTu__ID_Nguoi__14D10B8B">
+          <End Role="CongDan" Type="Self.CongDan" Multiplicity="0..1" />
+          <End Role="KhaiTu" Type="Self.KhaiTu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CongDan">
+              <PropertyRef Name="ID_CongDan" />
+            </Principal>
+            <Dependent Role="KhaiTu">
+              <PropertyRef Name="ID_NguoiYeuCau" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LichSuThu__ID_Co__2136E270">
+          <End Role="CongDan" Type="Self.CongDan" Multiplicity="0..1" />
+          <End Role="LichSuThue" Type="Self.LichSuThue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CongDan">
+              <PropertyRef Name="ID_CongDan" />
+            </Principal>
+            <Dependent Role="LichSuThue">
+              <PropertyRef Name="ID_CongDan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TamTruTam__ID_Co__02B25B50">
+          <End Role="CongDan" Type="Self.CongDan" Multiplicity="0..1" />
+          <End Role="TamTruTamVang" Type="Self.TamTruTamVang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CongDan">
+              <PropertyRef Name="ID_CongDan" />
+            </Principal>
+            <Dependent Role="TamTruTamVang">
+              <PropertyRef Name="ID_CongDan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLCongDanModelStoreContainer">
+          <EntitySet Name="CCCD" EntityType="Self.CCCD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CongDan" EntityType="Self.CongDan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CongDan_SoHoKhau" EntityType="Self.CongDan_SoHoKhau" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CongTy" EntityType="Self.CongTy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CongTy_NhanVien" EntityType="Self.CongTy_NhanVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HonNhan" EntityType="Self.HonNhan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KhaiSinh" EntityType="Self.KhaiSinh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KhaiTu" EntityType="Self.KhaiTu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LichSuThue" EntityType="Self.LichSuThue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoHoKhau" EntityType="Self.SoHoKhau" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TamTruTamVang" EntityType="Self.TamTruTamVang" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__CCCD__ID_CongDan__058EC7FB" Association="Self.FK__CCCD__ID_CongDan__058EC7FB">
+            <End Role="CongDan" EntitySet="CongDan" />
+            <End Role="CCCD" EntitySet="CCCD" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CongDan_S__ID_Co__0B47A151" Association="Self.FK__CongDan_S__ID_Co__0B47A151">
+            <End Role="CongDan" EntitySet="CongDan" />
+            <End Role="CongDan_SoHoKhau" EntitySet="CongDan_SoHoKhau" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CongDan_S__ID_So__0A537D18" Association="Self.FK__CongDan_S__ID_So__0A537D18">
+            <End Role="SoHoKhau" EntitySet="SoHoKhau" />
+            <End Role="CongDan_SoHoKhau" EntitySet="CongDan_SoHoKhau" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CongTy_Nh__ID_Co__1D66518C" Association="Self.FK__CongTy_Nh__ID_Co__1D66518C">
+            <End Role="CongTy" EntitySet="CongTy" />
+            <End Role="CongTy_NhanVien" EntitySet="CongTy_NhanVien" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CongTy_Nh__ID_Nh__1E5A75C5" Association="Self.FK__CongTy_Nh__ID_Nh__1E5A75C5">
+            <End Role="CongDan" EntitySet="CongDan" />
+            <End Role="CongTy_NhanVien" EntitySet="CongTy_NhanVien" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HonNhan__ID_Chon__17AD7836" Association="Self.FK__HonNhan__ID_Chon__17AD7836">
+            <End Role="CongDan" EntitySet="CongDan" />
+            <End Role="HonNhan" EntitySet="HonNhan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HonNhan__ID_Vo__18A19C6F" Association="Self.FK__HonNhan__ID_Vo__18A19C6F">
+            <End Role="CongDan" EntitySet="CongDan" />
+            <End Role="HonNhan" EntitySet="HonNhan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KhaiSinh__ID_Cha__100C566E" Association="Self.FK__KhaiSinh__ID_Cha__100C566E">
+            <End Role="CongDan" EntitySet="CongDan" />
+            <End Role="KhaiSinh" EntitySet="KhaiSinh" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KhaiSinh__ID_Con__0E240DFC" Association="Self.FK__KhaiSinh__ID_Con__0E240DFC">
+            <End Role="CongDan" EntitySet="CongDan" />
+            <End Role="KhaiSinh" EntitySet="KhaiSinh" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KhaiSinh__ID_Me__11007AA7" Association="Self.FK__KhaiSinh__ID_Me__11007AA7">
+            <End Role="CongDan" EntitySet="CongDan" />
+            <End Role="KhaiSinh" EntitySet="KhaiSinh" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KhaiSinh__ID_Ngu__0F183235" Association="Self.FK__KhaiSinh__ID_Ngu__0F183235">
+            <End Role="CongDan" EntitySet="CongDan" />
+            <End Role="KhaiSinh" EntitySet="KhaiSinh" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KhaiTu__ID_CongD__13DCE752" Association="Self.FK__KhaiTu__ID_CongD__13DCE752">
+            <End Role="CongDan" EntitySet="CongDan" />
+            <End Role="KhaiTu" EntitySet="KhaiTu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KhaiTu__ID_Nguoi__14D10B8B" Association="Self.FK__KhaiTu__ID_Nguoi__14D10B8B">
+            <End Role="CongDan" EntitySet="CongDan" />
+            <End Role="KhaiTu" EntitySet="KhaiTu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LichSuThu__ID_Co__2136E270" Association="Self.FK__LichSuThu__ID_Co__2136E270">
+            <End Role="CongDan" EntitySet="CongDan" />
+            <End Role="LichSuThue" EntitySet="LichSuThue" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TamTruTam__ID_Co__02B25B50" Association="Self.FK__TamTruTam__ID_Co__02B25B50">
+            <End Role="CongDan" EntitySet="CongDan" />
+            <End Role="TamTruTamVang" EntitySet="TamTruTamVang" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLCongDanModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CCCD">
+          <Key>
+            <PropertyRef Name="ID_CCCD" />
+          </Key>
+          <Property Name="ID_CCCD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_CongDan" Type="Int32" />
+          <Property Name="SoCCCD" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NgayCap" Type="DateTime" Precision="0" />
+          <Property Name="NoiCap" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CongDan" Relationship="Self.FK__CCCD__ID_CongDan__058EC7FB" FromRole="CCCD" ToRole="CongDan" />
+        </EntityType>
+        <EntityType Name="CongDan">
+          <Key>
+            <PropertyRef Name="ID_CongDan" />
+          </Key>
+          <Property Name="ID_CongDan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GioiTinh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+          <Property Name="QueQuan" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NoiSinh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NoiThuongTru" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DanToc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TonGiao" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="QuocTich" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CCCDs" Relationship="Self.FK__CCCD__ID_CongDan__058EC7FB" FromRole="CongDan" ToRole="CCCD" />
+          <NavigationProperty Name="CongDan_SoHoKhau" Relationship="Self.FK__CongDan_S__ID_Co__0B47A151" FromRole="CongDan" ToRole="CongDan_SoHoKhau" />
+          <NavigationProperty Name="CongTy_NhanVien" Relationship="Self.FK__CongTy_Nh__ID_Nh__1E5A75C5" FromRole="CongDan" ToRole="CongTy_NhanVien" />
+          <NavigationProperty Name="HonNhans" Relationship="Self.FK__HonNhan__ID_Chon__17AD7836" FromRole="CongDan" ToRole="HonNhan" />
+          <NavigationProperty Name="HonNhans1" Relationship="Self.FK__HonNhan__ID_Vo__18A19C6F" FromRole="CongDan" ToRole="HonNhan" />
+          <NavigationProperty Name="KhaiSinhs" Relationship="Self.FK__KhaiSinh__ID_Cha__100C566E" FromRole="CongDan" ToRole="KhaiSinh" />
+          <NavigationProperty Name="KhaiSinhs1" Relationship="Self.FK__KhaiSinh__ID_Con__0E240DFC" FromRole="CongDan" ToRole="KhaiSinh" />
+          <NavigationProperty Name="KhaiSinhs2" Relationship="Self.FK__KhaiSinh__ID_Me__11007AA7" FromRole="CongDan" ToRole="KhaiSinh" />
+          <NavigationProperty Name="KhaiSinhs3" Relationship="Self.FK__KhaiSinh__ID_Ngu__0F183235" FromRole="CongDan" ToRole="KhaiSinh" />
+          <NavigationProperty Name="KhaiTus" Relationship="Self.FK__KhaiTu__ID_CongD__13DCE752" FromRole="CongDan" ToRole="KhaiTu" />
+          <NavigationProperty Name="KhaiTus1" Relationship="Self.FK__KhaiTu__ID_Nguoi__14D10B8B" FromRole="CongDan" ToRole="KhaiTu" />
+          <NavigationProperty Name="LichSuThues" Relationship="Self.FK__LichSuThu__ID_Co__2136E270" FromRole="CongDan" ToRole="LichSuThue" />
+          <NavigationProperty Name="TamTruTamVangs" Relationship="Self.FK__TamTruTam__ID_Co__02B25B50" FromRole="CongDan" ToRole="TamTruTamVang" />
+        </EntityType>
+        <EntityType Name="CongDan_SoHoKhau">
+          <Key>
+            <PropertyRef Name="ID_SoHoKhau" />
+            <PropertyRef Name="ID_CongDan" />
+          </Key>
+          <Property Name="ID_SoHoKhau" Type="Int32" Nullable="false" />
+          <Property Name="ID_CongDan" Type="Int32" Nullable="false" />
+          <Property Name="QuanHe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgheNghiep_NoiLamViec" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NoiThuongTruTruoc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CanBoDangKy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NgayDangKy" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="CongDan" Relationship="Self.FK__CongDan_S__ID_Co__0B47A151" FromRole="CongDan_SoHoKhau" ToRole="CongDan" />
+          <NavigationProperty Name="SoHoKhau" Relationship="Self.FK__CongDan_S__ID_So__0A537D18" FromRole="CongDan_SoHoKhau" ToRole="SoHoKhau" />
+        </EntityType>
+        <EntityType Name="CongTy">
+          <Key>
+            <PropertyRef Name="ID_CongTy" />
+          </Key>
+          <Property Name="ID_CongTy" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenCongTy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NgayTao" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="CongTy_NhanVien" Relationship="Self.FK__CongTy_Nh__ID_Co__1D66518C" FromRole="CongTy" ToRole="CongTy_NhanVien" />
+        </EntityType>
+        <EntityType Name="CongTy_NhanVien">
+          <Key>
+            <PropertyRef Name="ID_CongTyNhanVien" />
+          </Key>
+          <Property Name="ID_CongTyNhanVien" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_CongTy" Type="Int32" />
+          <Property Name="ID_NhanVien" Type="Int32" />
+          <Property Name="Luong" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TrangThai" Type="Boolean" />
+          <Property Name="NgayVao" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="CongDan" Relationship="Self.FK__CongTy_Nh__ID_Nh__1E5A75C5" FromRole="CongTy_NhanVien" ToRole="CongDan" />
+          <NavigationProperty Name="CongTy" Relationship="Self.FK__CongTy_Nh__ID_Co__1D66518C" FromRole="CongTy_NhanVien" ToRole="CongTy" />
+        </EntityType>
+        <EntityType Name="HonNhan">
+          <Key>
+            <PropertyRef Name="ID_HonNhan" />
+          </Key>
+          <Property Name="ID_HonNhan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Chong" Type="Int32" />
+          <Property Name="ID_Vo" Type="Int32" />
+          <Property Name="NgayDangKy" Type="DateTime" Precision="0" />
+          <Property Name="NoiDangKy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TrangThai" Type="Boolean" />
+          <NavigationProperty Name="CongDan" Relationship="Self.FK__HonNhan__ID_Chon__17AD7836" FromRole="HonNhan" ToRole="CongDan" />
+          <NavigationProperty Name="CongDan1" Relationship="Self.FK__HonNhan__ID_Vo__18A19C6F" FromRole="HonNhan" ToRole="CongDan" />
+        </EntityType>
+        <EntityType Name="KhaiSinh">
+          <Key>
+            <PropertyRef Name="ID_KhaiSinh" />
+          </Key>
+          <Property Name="ID_KhaiSinh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_CongDan" Type="Int32" />
+          <Property Name="ID_NguoiYeuCau" Type="Int32" />
+          <Property Name="ID_Cha" Type="Int32" />
+          <Property Name="ID_Me" Type="Int32" />
+          <Property Name="NoiDangKy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NgayThucHien" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="CongDan" Relationship="Self.FK__KhaiSinh__ID_Cha__100C566E" FromRole="KhaiSinh" ToRole="CongDan" />
+          <NavigationProperty Name="CongDan1" Relationship="Self.FK__KhaiSinh__ID_Con__0E240DFC" FromRole="KhaiSinh" ToRole="CongDan" />
+          <NavigationProperty Name="CongDan2" Relationship="Self.FK__KhaiSinh__ID_Me__11007AA7" FromRole="KhaiSinh" ToRole="CongDan" />
+          <NavigationProperty Name="CongDan3" Relationship="Self.FK__KhaiSinh__ID_Ngu__0F183235" FromRole="KhaiSinh" ToRole="CongDan" />
+        </EntityType>
+        <EntityType Name="KhaiTu">
+          <Key>
+            <PropertyRef Name="ID_KhaiTu" />
+          </Key>
+          <Property Name="ID_KhaiTu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_CongDan" Type="Int32" />
+          <Property Name="ID_NguoiYeuCau" Type="Int32" />
+          <Property Name="QuanHe" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianChet" Type="DateTime" Precision="3" />
+          <Property Name="NoiChet" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NguyenNhan" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NoiDangKy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NgayThucHien" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="CongDan" Relationship="Self.FK__KhaiTu__ID_CongD__13DCE752" FromRole="KhaiTu" ToRole="CongDan" />
+          <NavigationProperty Name="CongDan1" Relationship="Self.FK__KhaiTu__ID_Nguoi__14D10B8B" FromRole="KhaiTu" ToRole="CongDan" />
+        </EntityType>
+        <EntityType Name="LichSuThue">
+          <Key>
+            <PropertyRef Name="ID_LichSuThue" />
+          </Key>
+          <Property Name="ID_LichSuThue" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_CongDan" Type="Int32" />
+          <Property Name="TenCongTy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NgayTao" Type="DateTime" Precision="0" />
+          <Property Name="TrangThai" Type="Boolean" />
+          <Property Name="SoTien" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="CongDan" Relationship="Self.FK__LichSuThu__ID_Co__2136E270" FromRole="LichSuThue" ToRole="CongDan" />
+        </EntityType>
+        <EntityType Name="SoHoKhau">
+          <Key>
+            <PropertyRef Name="ID_SoHoKhau" />
+          </Key>
+          <Property Name="ID_SoHoKhau" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_HoSoHoKhau" Type="Int32" />
+          <Property Name="ID_SoDangKyThuongTru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_SoDangKyThuongTru_ToSo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NoiThuongTru" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NgayDangKy" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="CongDan_SoHoKhau" Relationship="Self.FK__CongDan_S__ID_So__0A537D18" FromRole="SoHoKhau" ToRole="CongDan_SoHoKhau" />
+        </EntityType>
+        <EntityType Name="TamTruTamVang">
+          <Key>
+            <PropertyRef Name="ID_TamTru" />
+          </Key>
+          <Property Name="ID_TamTru" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_CongDan" Type="Int32" />
+          <Property Name="NgayDen" Type="DateTime" Precision="0" />
+          <Property Name="NgayDi" Type="DateTime" Precision="0" />
+          <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LiDo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CongDan" Relationship="Self.FK__TamTruTam__ID_Co__02B25B50" FromRole="TamTruTamVang" ToRole="CongDan" />
+        </EntityType>
+        <Association Name="FK__CCCD__ID_CongDan__058EC7FB">
+          <End Role="CongDan" Type="Self.CongDan" Multiplicity="0..1" />
+          <End Role="CCCD" Type="Self.CCCD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CongDan">
+              <PropertyRef Name="ID_CongDan" />
+            </Principal>
+            <Dependent Role="CCCD">
+              <PropertyRef Name="ID_CongDan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CongDan_S__ID_Co__0B47A151">
+          <End Role="CongDan" Type="Self.CongDan" Multiplicity="1" />
+          <End Role="CongDan_SoHoKhau" Type="Self.CongDan_SoHoKhau" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CongDan">
+              <PropertyRef Name="ID_CongDan" />
+            </Principal>
+            <Dependent Role="CongDan_SoHoKhau">
+              <PropertyRef Name="ID_CongDan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CongTy_Nh__ID_Nh__1E5A75C5">
+          <End Role="CongDan" Type="Self.CongDan" Multiplicity="0..1" />
+          <End Role="CongTy_NhanVien" Type="Self.CongTy_NhanVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CongDan">
+              <PropertyRef Name="ID_CongDan" />
+            </Principal>
+            <Dependent Role="CongTy_NhanVien">
+              <PropertyRef Name="ID_NhanVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HonNhan__ID_Chon__17AD7836">
+          <End Role="CongDan" Type="Self.CongDan" Multiplicity="0..1" />
+          <End Role="HonNhan" Type="Self.HonNhan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CongDan">
+              <PropertyRef Name="ID_CongDan" />
+            </Principal>
+            <Dependent Role="HonNhan">
+              <PropertyRef Name="ID_Chong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HonNhan__ID_Vo__18A19C6F">
+          <End Role="CongDan" Type="Self.CongDan" Multiplicity="0..1" />
+          <End Role="HonNhan" Type="Self.HonNhan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CongDan">
+              <PropertyRef Name="ID_CongDan" />
+            </Principal>
+            <Dependent Role="HonNhan">
+              <PropertyRef Name="ID_Vo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KhaiSinh__ID_Cha__100C566E">
+          <End Role="CongDan" Type="Self.CongDan" Multiplicity="0..1" />
+          <End Role="KhaiSinh" Type="Self.KhaiSinh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CongDan">
+              <PropertyRef Name="ID_CongDan" />
+            </Principal>
+            <Dependent Role="KhaiSinh">
+              <PropertyRef Name="ID_Cha" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KhaiSinh__ID_Con__0E240DFC">
+          <End Role="CongDan" Type="Self.CongDan" Multiplicity="0..1" />
+          <End Role="KhaiSinh" Type="Self.KhaiSinh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CongDan">
+              <PropertyRef Name="ID_CongDan" />
+            </Principal>
+            <Dependent Role="KhaiSinh">
+              <PropertyRef Name="ID_CongDan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KhaiSinh__ID_Me__11007AA7">
+          <End Role="CongDan" Type="Self.CongDan" Multiplicity="0..1" />
+          <End Role="KhaiSinh" Type="Self.KhaiSinh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CongDan">
+              <PropertyRef Name="ID_CongDan" />
+            </Principal>
+            <Dependent Role="KhaiSinh">
+              <PropertyRef Name="ID_Me" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KhaiSinh__ID_Ngu__0F183235">
+          <End Role="CongDan" Type="Self.CongDan" Multiplicity="0..1" />
+          <End Role="KhaiSinh" Type="Self.KhaiSinh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CongDan">
+              <PropertyRef Name="ID_CongDan" />
+            </Principal>
+            <Dependent Role="KhaiSinh">
+              <PropertyRef Name="ID_NguoiYeuCau" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KhaiTu__ID_CongD__13DCE752">
+          <End Role="CongDan" Type="Self.CongDan" Multiplicity="0..1" />
+          <End Role="KhaiTu" Type="Self.KhaiTu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CongDan">
+              <PropertyRef Name="ID_CongDan" />
+            </Principal>
+            <Dependent Role="KhaiTu">
+              <PropertyRef Name="ID_CongDan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KhaiTu__ID_Nguoi__14D10B8B">
+          <End Role="CongDan" Type="Self.CongDan" Multiplicity="0..1" />
+          <End Role="KhaiTu" Type="Self.KhaiTu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CongDan">
+              <PropertyRef Name="ID_CongDan" />
+            </Principal>
+            <Dependent Role="KhaiTu">
+              <PropertyRef Name="ID_NguoiYeuCau" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LichSuThu__ID_Co__2136E270">
+          <End Role="CongDan" Type="Self.CongDan" Multiplicity="0..1" />
+          <End Role="LichSuThue" Type="Self.LichSuThue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CongDan">
+              <PropertyRef Name="ID_CongDan" />
+            </Principal>
+            <Dependent Role="LichSuThue">
+              <PropertyRef Name="ID_CongDan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TamTruTam__ID_Co__02B25B50">
+          <End Role="CongDan" Type="Self.CongDan" Multiplicity="0..1" />
+          <End Role="TamTruTamVang" Type="Self.TamTruTamVang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CongDan">
+              <PropertyRef Name="ID_CongDan" />
+            </Principal>
+            <Dependent Role="TamTruTamVang">
+              <PropertyRef Name="ID_CongDan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CongDan_S__ID_So__0A537D18">
+          <End Role="SoHoKhau" Type="Self.SoHoKhau" Multiplicity="1" />
+          <End Role="CongDan_SoHoKhau" Type="Self.CongDan_SoHoKhau" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoHoKhau">
+              <PropertyRef Name="ID_SoHoKhau" />
+            </Principal>
+            <Dependent Role="CongDan_SoHoKhau">
+              <PropertyRef Name="ID_SoHoKhau" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CongTy_Nh__ID_Co__1D66518C">
+          <End Role="CongTy" Type="Self.CongTy" Multiplicity="0..1" />
+          <End Role="CongTy_NhanVien" Type="Self.CongTy_NhanVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CongTy">
+              <PropertyRef Name="ID_CongTy" />
+            </Principal>
+            <Dependent Role="CongTy_NhanVien">
+              <PropertyRef Name="ID_CongTy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLCongDanEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CCCDs" EntityType="Self.CCCD" />
+          <EntitySet Name="CongDans" EntityType="Self.CongDan" />
+          <EntitySet Name="CongDan_SoHoKhau" EntityType="Self.CongDan_SoHoKhau" />
+          <EntitySet Name="CongTies" EntityType="Self.CongTy" />
+          <EntitySet Name="CongTy_NhanVien" EntityType="Self.CongTy_NhanVien" />
+          <EntitySet Name="HonNhans" EntityType="Self.HonNhan" />
+          <EntitySet Name="KhaiSinhs" EntityType="Self.KhaiSinh" />
+          <EntitySet Name="KhaiTus" EntityType="Self.KhaiTu" />
+          <EntitySet Name="LichSuThues" EntityType="Self.LichSuThue" />
+          <EntitySet Name="SoHoKhaus" EntityType="Self.SoHoKhau" />
+          <EntitySet Name="TamTruTamVangs" EntityType="Self.TamTruTamVang" />
+          <AssociationSet Name="FK__CCCD__ID_CongDan__058EC7FB" Association="Self.FK__CCCD__ID_CongDan__058EC7FB">
+            <End Role="CongDan" EntitySet="CongDans" />
+            <End Role="CCCD" EntitySet="CCCDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CongDan_S__ID_Co__0B47A151" Association="Self.FK__CongDan_S__ID_Co__0B47A151">
+            <End Role="CongDan" EntitySet="CongDans" />
+            <End Role="CongDan_SoHoKhau" EntitySet="CongDan_SoHoKhau" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CongTy_Nh__ID_Nh__1E5A75C5" Association="Self.FK__CongTy_Nh__ID_Nh__1E5A75C5">
+            <End Role="CongDan" EntitySet="CongDans" />
+            <End Role="CongTy_NhanVien" EntitySet="CongTy_NhanVien" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HonNhan__ID_Chon__17AD7836" Association="Self.FK__HonNhan__ID_Chon__17AD7836">
+            <End Role="CongDan" EntitySet="CongDans" />
+            <End Role="HonNhan" EntitySet="HonNhans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HonNhan__ID_Vo__18A19C6F" Association="Self.FK__HonNhan__ID_Vo__18A19C6F">
+            <End Role="CongDan" EntitySet="CongDans" />
+            <End Role="HonNhan" EntitySet="HonNhans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KhaiSinh__ID_Cha__100C566E" Association="Self.FK__KhaiSinh__ID_Cha__100C566E">
+            <End Role="CongDan" EntitySet="CongDans" />
+            <End Role="KhaiSinh" EntitySet="KhaiSinhs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KhaiSinh__ID_Con__0E240DFC" Association="Self.FK__KhaiSinh__ID_Con__0E240DFC">
+            <End Role="CongDan" EntitySet="CongDans" />
+            <End Role="KhaiSinh" EntitySet="KhaiSinhs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KhaiSinh__ID_Me__11007AA7" Association="Self.FK__KhaiSinh__ID_Me__11007AA7">
+            <End Role="CongDan" EntitySet="CongDans" />
+            <End Role="KhaiSinh" EntitySet="KhaiSinhs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KhaiSinh__ID_Ngu__0F183235" Association="Self.FK__KhaiSinh__ID_Ngu__0F183235">
+            <End Role="CongDan" EntitySet="CongDans" />
+            <End Role="KhaiSinh" EntitySet="KhaiSinhs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KhaiTu__ID_CongD__13DCE752" Association="Self.FK__KhaiTu__ID_CongD__13DCE752">
+            <End Role="CongDan" EntitySet="CongDans" />
+            <End Role="KhaiTu" EntitySet="KhaiTus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KhaiTu__ID_Nguoi__14D10B8B" Association="Self.FK__KhaiTu__ID_Nguoi__14D10B8B">
+            <End Role="CongDan" EntitySet="CongDans" />
+            <End Role="KhaiTu" EntitySet="KhaiTus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LichSuThu__ID_Co__2136E270" Association="Self.FK__LichSuThu__ID_Co__2136E270">
+            <End Role="CongDan" EntitySet="CongDans" />
+            <End Role="LichSuThue" EntitySet="LichSuThues" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TamTruTam__ID_Co__02B25B50" Association="Self.FK__TamTruTam__ID_Co__02B25B50">
+            <End Role="CongDan" EntitySet="CongDans" />
+            <End Role="TamTruTamVang" EntitySet="TamTruTamVangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CongDan_S__ID_So__0A537D18" Association="Self.FK__CongDan_S__ID_So__0A537D18">
+            <End Role="SoHoKhau" EntitySet="SoHoKhaus" />
+            <End Role="CongDan_SoHoKhau" EntitySet="CongDan_SoHoKhau" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CongTy_Nh__ID_Co__1D66518C" Association="Self.FK__CongTy_Nh__ID_Co__1D66518C">
+            <End Role="CongTy" EntitySet="CongTies" />
+            <End Role="CongTy_NhanVien" EntitySet="CongTy_NhanVien" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLCongDanModelStoreContainer" CdmEntityContainer="QLCongDanEntities">
+          <EntitySetMapping Name="CCCDs">
+            <EntityTypeMapping TypeName="QLCongDanModel.CCCD">
+              <MappingFragment StoreEntitySet="CCCD">
+                <ScalarProperty Name="ID_CCCD" ColumnName="ID_CCCD" />
+                <ScalarProperty Name="ID_CongDan" ColumnName="ID_CongDan" />
+                <ScalarProperty Name="SoCCCD" ColumnName="SoCCCD" />
+                <ScalarProperty Name="NgayCap" ColumnName="NgayCap" />
+                <ScalarProperty Name="NoiCap" ColumnName="NoiCap" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CongDans">
+            <EntityTypeMapping TypeName="QLCongDanModel.CongDan">
+              <MappingFragment StoreEntitySet="CongDan">
+                <ScalarProperty Name="ID_CongDan" ColumnName="ID_CongDan" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="QueQuan" ColumnName="QueQuan" />
+                <ScalarProperty Name="NoiSinh" ColumnName="NoiSinh" />
+                <ScalarProperty Name="NoiThuongTru" ColumnName="NoiThuongTru" />
+                <ScalarProperty Name="DanToc" ColumnName="DanToc" />
+                <ScalarProperty Name="TonGiao" ColumnName="TonGiao" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="QuocTich" ColumnName="QuocTich" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CongDan_SoHoKhau">
+            <EntityTypeMapping TypeName="QLCongDanModel.CongDan_SoHoKhau">
+              <MappingFragment StoreEntitySet="CongDan_SoHoKhau">
+                <ScalarProperty Name="ID_SoHoKhau" ColumnName="ID_SoHoKhau" />
+                <ScalarProperty Name="ID_CongDan" ColumnName="ID_CongDan" />
+                <ScalarProperty Name="QuanHe" ColumnName="QuanHe" />
+                <ScalarProperty Name="NgheNghiep_NoiLamViec" ColumnName="NgheNghiep_NoiLamViec" />
+                <ScalarProperty Name="NoiThuongTruTruoc" ColumnName="NoiThuongTruTruoc" />
+                <ScalarProperty Name="CanBoDangKy" ColumnName="CanBoDangKy" />
+                <ScalarProperty Name="NgayDangKy" ColumnName="NgayDangKy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CongTies">
+            <EntityTypeMapping TypeName="QLCongDanModel.CongTy">
+              <MappingFragment StoreEntitySet="CongTy">
+                <ScalarProperty Name="ID_CongTy" ColumnName="ID_CongTy" />
+                <ScalarProperty Name="TenCongTy" ColumnName="TenCongTy" />
+                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CongTy_NhanVien">
+            <EntityTypeMapping TypeName="QLCongDanModel.CongTy_NhanVien">
+              <MappingFragment StoreEntitySet="CongTy_NhanVien">
+                <ScalarProperty Name="ID_CongTyNhanVien" ColumnName="ID_CongTyNhanVien" />
+                <ScalarProperty Name="ID_CongTy" ColumnName="ID_CongTy" />
+                <ScalarProperty Name="ID_NhanVien" ColumnName="ID_NhanVien" />
+                <ScalarProperty Name="Luong" ColumnName="Luong" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="NgayVao" ColumnName="NgayVao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HonNhans">
+            <EntityTypeMapping TypeName="QLCongDanModel.HonNhan">
+              <MappingFragment StoreEntitySet="HonNhan">
+                <ScalarProperty Name="ID_HonNhan" ColumnName="ID_HonNhan" />
+                <ScalarProperty Name="ID_Chong" ColumnName="ID_Chong" />
+                <ScalarProperty Name="ID_Vo" ColumnName="ID_Vo" />
+                <ScalarProperty Name="NgayDangKy" ColumnName="NgayDangKy" />
+                <ScalarProperty Name="NoiDangKy" ColumnName="NoiDangKy" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KhaiSinhs">
+            <EntityTypeMapping TypeName="QLCongDanModel.KhaiSinh">
+              <MappingFragment StoreEntitySet="KhaiSinh">
+                <ScalarProperty Name="ID_KhaiSinh" ColumnName="ID_KhaiSinh" />
+                <ScalarProperty Name="ID_CongDan" ColumnName="ID_CongDan" />
+                <ScalarProperty Name="ID_NguoiYeuCau" ColumnName="ID_NguoiYeuCau" />
+                <ScalarProperty Name="ID_Cha" ColumnName="ID_Cha" />
+                <ScalarProperty Name="ID_Me" ColumnName="ID_Me" />
+                <ScalarProperty Name="NoiDangKy" ColumnName="NoiDangKy" />
+                <ScalarProperty Name="NgayThucHien" ColumnName="NgayThucHien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KhaiTus">
+            <EntityTypeMapping TypeName="QLCongDanModel.KhaiTu">
+              <MappingFragment StoreEntitySet="KhaiTu">
+                <ScalarProperty Name="ID_KhaiTu" ColumnName="ID_KhaiTu" />
+                <ScalarProperty Name="ID_CongDan" ColumnName="ID_CongDan" />
+                <ScalarProperty Name="ID_NguoiYeuCau" ColumnName="ID_NguoiYeuCau" />
+                <ScalarProperty Name="QuanHe" ColumnName="QuanHe" />
+                <ScalarProperty Name="ThoiGianChet" ColumnName="ThoiGianChet" />
+                <ScalarProperty Name="NoiChet" ColumnName="NoiChet" />
+                <ScalarProperty Name="NguyenNhan" ColumnName="NguyenNhan" />
+                <ScalarProperty Name="NoiDangKy" ColumnName="NoiDangKy" />
+                <ScalarProperty Name="NgayThucHien" ColumnName="NgayThucHien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LichSuThues">
+            <EntityTypeMapping TypeName="QLCongDanModel.LichSuThue">
+              <MappingFragment StoreEntitySet="LichSuThue">
+                <ScalarProperty Name="ID_LichSuThue" ColumnName="ID_LichSuThue" />
+                <ScalarProperty Name="ID_CongDan" ColumnName="ID_CongDan" />
+                <ScalarProperty Name="TenCongTy" ColumnName="TenCongTy" />
+                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="SoTien" ColumnName="SoTien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoHoKhaus">
+            <EntityTypeMapping TypeName="QLCongDanModel.SoHoKhau">
+              <MappingFragment StoreEntitySet="SoHoKhau">
+                <ScalarProperty Name="ID_SoHoKhau" ColumnName="ID_SoHoKhau" />
+                <ScalarProperty Name="ID_HoSoHoKhau" ColumnName="ID_HoSoHoKhau" />
+                <ScalarProperty Name="ID_SoDangKyThuongTru" ColumnName="ID_SoDangKyThuongTru" />
+                <ScalarProperty Name="ID_SoDangKyThuongTru_ToSo" ColumnName="ID_SoDangKyThuongTru_ToSo" />
+                <ScalarProperty Name="NoiThuongTru" ColumnName="NoiThuongTru" />
+                <ScalarProperty Name="NgayDangKy" ColumnName="NgayDangKy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TamTruTamVangs">
+            <EntityTypeMapping TypeName="QLCongDanModel.TamTruTamVang">
+              <MappingFragment StoreEntitySet="TamTruTamVang">
+                <ScalarProperty Name="ID_TamTru" ColumnName="ID_TamTru" />
+                <ScalarProperty Name="ID_CongDan" ColumnName="ID_CongDan" />
+                <ScalarProperty Name="NgayDen" ColumnName="NgayDen" />
+                <ScalarProperty Name="NgayDi" ColumnName="NgayDi" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="LiDo" ColumnName="LiDo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,5 +1,4 @@
-﻿using QuanLyCongDan.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
@@ -12,195 +11,259 @@ namespace QuanLyCongDan.DAO
 {
     internal class CongTyDAO
     {
-        DBconnection dbConn = new DBconnection();
 
         public void ThemCongTy(CongTy ct)
         {
-            string sqlStr = string.Format("INSERT INTO CongTy(tenCongTy, NgayTao) VALUES (N'{0}', '{1}')", ct.TenCongTy, ct.NgayTao.ToString("yyyy-MM-dd"));
-            dbConn.ThucThi(sqlStr);
+            using (var dbConn = new QLCongDanEntities())
+            {
+                dbConn.CongTies.Add(ct);
+                dbConn.SaveChanges();
+            }
         }
 
-        public void NghiViec(int id)
-        {
-            string sqlStr = string.Format("UPDATE CongTy SET TrangThai = {0} WHERE ID_CongTy = {1}", 0 ,id);
-            dbConn.ThucThi(sqlStr);
-        }
-
-        public void SuaLuong(CongTy ct)
-        {
-            string sqlStr = string.Format("UPDATE CongTy SET Luong = {0} WHERE ID_CongTy = {1}", ct.TenCongTy, ct.Id_CongTy);
-            dbConn.ThucThi(sqlStr);
-        }
-        public DataTable LayDanhSachCongTy()
-        {
-            string sqlStr = string.Format("SELECT * FROM CongTy ORDER BY ID_CongTy DESC");
-            return dbConn.LayDanhSach(sqlStr);
-        }
 
         public DataTable LayDanhSachCongTyNhanVien()
         {
-            string sqlStr = string.Format("SELECT * FROM CongTy_NhanVien ORDER BY ID_CongTyNhanVien DESC");
-            return dbConn.LayDanhSach(sqlStr);
+            using (var dbConn = new QLCongDanEntities())
+            {
+                var query = from ctNv in dbConn.CongTy_NhanVien
+                            orderby ctNv.ID_CongTyNhanVien descending
+                            select new
+                            {
+                                ctNv.ID_CongTyNhanVien,
+                                ctNv.ID_CongTy,
+                                ctNv.ID_NhanVien,
+                                ctNv.Luong,
+                                ctNv.TrangThai,
+                                ctNv.NgayVao,
+                            };
+
+                DataTable dataTable = new DataTable();
+                dataTable.Columns.Add("ID_CongTyNhanVien", typeof(int));
+                dataTable.Columns.Add("TenCongTy", typeof(string));
+                dataTable.Columns.Add("HoTen", typeof(string));
+                dataTable.Columns.Add("NgayVaoLam", typeof(DateTime));
+                dataTable.Columns.Add("TrangThai", typeof(int));
+
+                foreach (var row in query)
+                {
+                    dataTable.Rows.Add(row.ID_CongTyNhanVien, row.TenCongTy, row.HoTen, row.NgayVaoLam, row.TrangThai);
+                }
+
+                return dataTable;
+            }
         }
 
         public DataTable LayDanhSachCongTyNhanVien(CongTy ct)
         {
-            string sqlStr = string.Format("SELECT * FROM CongTy_NhanVien Where ID_CongTy = '{0}'", ct.Id_CongTy);
-            return dbConn.LayDanhSach(sqlStr);
+            using (var db = new QLCongDanEntities())
+            {
+                var query = from ctNv in db.CongTy_NhanVien
+                            where ctNv.ID_CongTy == ct.ID_CongTy
+                            select ctNv;
+
+                DataTable dataTable = new DataTable();
+                dataTable.Columns.Add("ID_CongTyNhanVien", typeof(int));
+                dataTable.Columns.Add("ID_CongTy", typeof(int));
+                dataTable.Columns.Add("ID_NhanVien", typeof(int));
+                dataTable.Columns.Add("Luong", typeof(decimal));
+                dataTable.Columns.Add("TrangThai", typeof(bool));
+                dataTable.Columns.Add("NgayVao", typeof(DateTime));
+
+                foreach (var row in query)
+                {
+                    dataTable.Rows.Add(row.ID_CongTyNhanVien, row.ID_CongTy, row.ID_NhanVien, row.Luong, row.TrangThai, row.NgayVao);
+                }
+
+                return dataTable;
+            }
         }
 
         public DataTable LayDanhSachCongTyNhanVien(CongDan cd)
         {
-            string sqlStr = string.Format("SELECT * FROM CongTy_NhanVien Where ID_NhanVien = {0} ORDER BY ID_CongTyNhanVien DESC",cd.Id);
-            return dbConn.LayDanhSach(sqlStr);
+            using (var db = new QLCongDanEntities())
+            {
+                var query = from ctNv in db.CongTy_NhanVien
+                            where ctNv.ID_NhanVien == cd.ID_CongDan
+                            orderby ctNv.ID_CongTyNhanVien descending
+                            select ctNv;
+
+                DataTable dataTable = new DataTable();
+                dataTable.Columns.Add("ID_CongTyNhanVien", typeof(int));
+                dataTable.Columns.Add("ID_CongTy", typeof(int));
+                dataTable.Columns.Add("ID_NhanVien", typeof(int));
+                dataTable.Columns.Add("Luong", typeof(decimal));
+                dataTable.Columns.Add("TrangThai", typeof(bool));
+                dataTable.Columns.Add("NgayVao", typeof(DateTime));
+
+                foreach (var row in query)
+                {
+                    dataTable.Rows.Add(row.ID_CongTyNhanVien, row.ID_CongTy, row.ID_NhanVien, row.Luong, row.TrangThai, row.NgayVao);
+                }
+
+                return dataTable;
+            }
         }
 
         public bool KiemTraNhanVienCoDiLamCongTy(CongDan cd, int idCongTy)
         {
-            string sqlStr = string.Format("SELECT * FROM CongTy_NhanVien Where ID_NhanVien = {0} and TrangThai = 1 and ID_CongTy = {1}", cd.Id, idCongTy);
-            DataTable data = dbConn.LayDanhSach(sqlStr);
-            return data.Rows.Count > 0;
+            using (var db = new QLCongDanEntities())
+            {
+                var query = from ctNv in db.CongTy_NhanVien
+                            where ctNv.ID_NhanVien == cd.ID_CongDan && ctNv.TrangThai == true && ctNv.ID_CongTy == idCongTy
+                            select ctNv;
+
+                return query.Any();
+            }
         }
 
         public bool KiemTraCongTyTonTai(CongTy ct)
         {
-            string sqlStr = string.Format("SELECT * FROM CongTy WHERE tenCongTy = N'{0}'", ct.TenCongTy);
-            DataTable data = dbConn.LayDanhSach(sqlStr);
-            return data.Rows.Count > 0;
+            using (var db = new QLCongDanEntities())
+            {
+                var query = from c in db.CongTies
+                            where c.TenCongTy == ct.TenCongTy
+                            select c;
+
+                return query.Any();
+            }
         }
 
-        public void ThemCongTyNhanVien(CongTyNhanVien ct_nv)
+        public void ThemCongTyNhanVien(CongTy_NhanVien ct_nv)
         {
-            string sqlStr = string.Format("INSERT INTO CongTy_NhanVien(ID_CongTy, ID_NhanVien, Luong, NgayVao, TrangThai) VALUES ({0}, {1}, {2}, '{3}',1)", ct_nv.Id_CongTy, ct_nv.Id_NhanVien, ct_nv.Luong, ct_nv.NgayVao.ToString("yyyy-MM-dd"));
-            dbConn.ThucThi(sqlStr);
+            using (var db = new QLCongDanEntities())
+            {
+                db.CongTy_NhanVien.Add(ct_nv);
+                db.SaveChanges();
+            }
         }
 
-        public void SuaLuong(CongTyNhanVien ct_nv)
+        public void SuaLuong(CongTy_NhanVien ct_nv)
         {
-            string sqlStr = string.Format("UPDATE CongTy_NhanVien SET Luong = {0} WHERE ID_NhanVien = {1} and TrangThai = 1 AND ID_CongTy = {2}", ct_nv.Luong, ct_nv.Id_NhanVien, ct_nv.Id_CongTy);
-            dbConn.ThucThi(sqlStr);
+            using (var db = new QLCongDanEntities())
+            {
+                var query = from ctNv in db.CongTy_NhanVien
+                            where ctNv.ID_NhanVien == ct_nv.ID_NhanVien && ctNv.TrangThai == true && ctNv.ID_CongTy == ct_nv.ID_CongTy
+                            select ctNv;
+
+                foreach (var row in query)
+                {
+                    row.Luong = ct_nv.Luong;
+                }
+
+                db.SaveChanges();
+            }
         }
 
-        public void NghiViec(CongTyNhanVien ct_nv)
+        public void NghiViec(CongTy_NhanVien ct_nv)
         {
-            string sqlStr = string.Format("UPDATE CongTy_NhanVien SET TrangThai = 0 WHERE ID_NhanVien = {0} AND ID_CongTy = {1}", ct_nv.Id_NhanVien, ct_nv.Id_CongTy);
-            dbConn.ThucThi(sqlStr);
+            using (var db = new QLCongDanEntities())
+            {
+                var query = from ctNv in db.CongTy_NhanVien
+                            where ctNv.ID_NhanVien == ct_nv.ID_NhanVien && ctNv.ID_CongTy == ct_nv.ID_CongTy
+                            select ctNv;
+
+                foreach (var row in query)
+                {
+                    row.TrangThai = false;
+                }
+
+                db.SaveChanges();
+            }
         }
 
 
         public CongTy LayCongTy(int idCongTy)
         {
-            try
+            using (var db = new QLCongDanEntities())
             {
-                string sqlStr = string.Format("SELECT * FROM CongTy WHERE ID_CongTy = '{0}'", idCongTy);
-                DataTable dt = dbConn.LayDanhSach(sqlStr);
+                var ct = db.CongTies.FirstOrDefault(c => c.ID_CongTy == idCongTy);
 
-                if (dt != null)
+                if (ct != null)
                 {
-                    if (dt.Rows.Count > 0)
-                    {
-                        DataRow row = dt.Rows[0];
-                        return new CongTy(
-                            Convert.ToInt32(row["ID_CongTy"].ToString()),
-                            row["tenCongTy"].ToString(),
-                            Convert.ToDateTime(row["NgayTao"].ToString())
-                        );
-                    }
+                    return new CongTy(
+                        ct.ID_CongTy,
+                        ct.TenCongTy,
+                        ct.NgayTao
+                    );
                 }
 
-                return null;
-            }
-            catch
-            {
                 return null;
             }
         }
 
-        public CongTyNhanVien LayCongTyNhanVien(int idNhanVien, int idCongTy)
+        public CongTy_NhanVien LayCongTyNhanVien(int idNhanVien, int idCongTy)
         {
-            try
+            using (var db = new QLCongDanEntities())
             {
-                string sqlStr = string.Format("SELECT * FROM CongTy_NhanVien WHERE ID_NhanVien = '{0}' and TrangThai = 1 and ID_CongTy = {1}", idNhanVien,idCongTy);
-                DataTable dt = dbConn.LayDanhSach(sqlStr);
+                var ctNv = db.CongTy_NhanVien.FirstOrDefault(c => c.ID_NhanVien == idNhanVien && c.TrangThai == true && c.ID_CongTy == idCongTy);
 
-                if (dt != null)
+                if (ctNv != null)
                 {
-                    if (dt.Rows.Count > 0)
-                    {
-                        DataRow row = dt.Rows[0];
-                        return new CongTyNhanVien(
-                            Convert.ToInt32(row["ID_CongTy"].ToString()),
-                            Convert.ToInt32(row["ID_NhanVien"].ToString()),
-                            Convert.ToDecimal(row["Luong"].ToString())
-                        );
-                    }
+                    return new CongTy_NhanVien(
+                        ctNv.ID_CongTyNhanVien,
+                        ctNv.ID_CongTy,
+                        ctNv.ID_NhanVien,
+                        ctNv.NgayVao,
+                        ctNv.TrangThai,
+                        ctNv.Luong
+                    );
                 }
 
-                return null;
-            }
-            catch
-            {
                 return null;
             }
         }
 
-        public List<CongTyNhanVien> LayCongTyNhanVien(int idNhanVien)
+        public DataTable LayCongTyNhanVien(int idNhanVien)
         {
-            try
+            using (var db = new QLCongDanEntities())
             {
-                string sqlStr = string.Format("SELECT * FROM CongTy_NhanVien WHERE ID_NhanVien = '{0}' and TrangThai = 1", idNhanVien);
-                DataTable dt = dbConn.LayDanhSach(sqlStr);
+                var query = from ctNv in db.CongTy_NhanVien
+                            where ctNv.ID_NhanVien == idNhanVien && ctNv.TrangThai == true
+                            select new
+                            {
+                                ctNv.ID_CongTy,
+                                ctNv.ID_NhanVien,
+                                ctNv.Luong,
+                                ctNv.NgayVao
+                            };
 
-                if (dt != null)
+                DataTable dt = new DataTable();
+                dt.Columns.Add("ID_CongTy", typeof(int));
+                dt.Columns.Add("ID_NhanVien", typeof(int));
+                dt.Columns.Add("Luong", typeof(decimal));
+                dt.Columns.Add("NgayVao", typeof(DateTime));
+
+                foreach (var item in query)
                 {
-                    List<CongTyNhanVien> list = new List<CongTyNhanVien>();
-
-                    foreach (DataRow row in dt.Rows) 
-                    {
-                        list.Add(new CongTyNhanVien(
-                            Convert.ToInt32(row["ID_CongTy"].ToString()),
-                            Convert.ToInt32(row["ID_NhanVien"].ToString()),
-                            Convert.ToDecimal(row["Luong"].ToString()),
-                            Convert.ToDateTime(row["NgayVao"].ToString())
-                        ));
-                    }
-
-                    return list;
+                    DataRow row = dt.NewRow();
+                    row["ID_CongTy"] = item.ID_CongTy;
+                    row["ID_NhanVien"] = item.ID_NhanVien;
+                    row["Luong"] = item.Luong;
+                    row["NgayVao"] = item.NgayVao;
+                    dt.Rows.Add(row);
                 }
 
-                return null;
-            }
-            catch
-            {
-                return null;
+                return dt;
             }
         }
 
 
-        public CongTy LayCongTyBangTen(String tenCongTy)
+        public CongTy LayCongTyBangTen(string tenCongTy)
         {
-            try
+            using (var db = new QLCongDanEntities())
             {
-                string sqlStr = string.Format("SELECT * FROM CongTy WHERE tenCongTy Like N'{0}'", tenCongTy);
-                DataTable dt = dbConn.LayDanhSach(sqlStr);
+                var ct = db.CongTies.FirstOrDefault(c => c.TenCongTy == tenCongTy);
 
-                if (dt != null)
+                if (ct != null)
                 {
-                    if (dt.Rows.Count > 0)
-                    {
-                        DataRow row = dt.Rows[0];
-                        return new CongTy(
-                            Convert.ToInt32(row["ID_CongTy"].ToString()),
-                            row["tenCongTy"].ToString(),
-                            Convert.ToDateTime(row["NgayTao"].ToString())
-                        );
-                    }
+                    return new CongTy(
+                        ct.ID_CongTy,
+                        ct.TenCongTy,
+                        ct.NgayTao
+                    );
                 }
 
-                return null;
-            }
-            catch
-            {
                 return null;
             }
         }
@@ -208,28 +271,19 @@ namespace QuanLyCongDan.DAO
 
         public CongTy TimKiem(string tenCongTy)
         {
-            try
+            using (var db = new QLCongDanEntities())
             {
-                string sqlStr = string.Format("SELECT * FROM CongTy WHERE tenCongTy LIKE N'{0}'", tenCongTy);
-                DataTable dt = dbConn.LayDanhSach(sqlStr);
+                var ct = db.CongTies.FirstOrDefault(c => c.TenCongTy.Contains(tenCongTy));
 
-                if (dt != null)
+                if (ct != null)
                 {
-                    if (dt.Rows.Count > 0)
-                    {
-                        DataRow row = dt.Rows[0];
-                        return new CongTy(
-                            Convert.ToInt32(row["ID_CongTy"].ToString()),
-                            row["tenCongTy"].ToString(),
-                            Convert.ToDateTime(row["NgayTao"].ToString())
-                        );
-                    }
+                    return new CongTy(
+                        ct.ID_CongTy,
+                        ct.TenCongTy,
+                        ct.NgayTao
+                    );
                 }
 
-                return null;
-            }
-            catch
-            {
                 return null;
             }
         }
