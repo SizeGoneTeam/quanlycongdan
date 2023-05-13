@@ -56,16 +56,16 @@ namespace QuanLyCongDan.View
 
         private void getListOfThanhVien()
         {
-            fThanhVien.DanhSachThanhVien = thanhVienDAO.LayDanhSach(soHoKhau.ID);
+            fThanhVien.DanhSachThanhVien = thanhVienDAO.LayDanhSach(soHoKhau.ID_SoHoKhau);
         }
 
         private bool setListOfThanhVien()
         {
             if (!isAddMode)
             {
-                thanhVienDAO.Xoa(soHoKhau.ID);
+                thanhVienDAO.Xoa(soHoKhau.ID_SoHoKhau);
             }
-            fThanhVien.DanhSachThanhVien.ForEach(tv => thanhVienDAO.Them(soHoKhau.ID, tv));
+            fThanhVien.DanhSachThanhVien.ForEach(tv => thanhVienDAO.Them(soHoKhau.ID_SoHoKhau, tv));
             return true;
         }
 
@@ -91,12 +91,12 @@ namespace QuanLyCongDan.View
         private void updateContent()
         {
             txtTimKiem.Text = "";
-            txtIDHoSoHoKhau.Text = soHoKhau is null ? "" : soHoKhau.IDHoSoHoKhau.ToString();
+            txtIDHoSoHoKhau.Text = soHoKhau is null ? "" : soHoKhau.ID_HoSoHoKhau.ToString();
             txtNoiThuongTru.Text = soHoKhau is null ? "" : soHoKhau.NoiThuongTru;
-            txtID.Text = soHoKhau is null ? "" : soHoKhau.ID.ToString();
-            txtIDSoDangKyThuongTru.Text = soHoKhau is null ? "" : soHoKhau.IDSoDangKyThuongTru;
-            txtIDToSo.Text = soHoKhau is null ? "" : soHoKhau.IDToSo;
-            pkNgayDangKy.Value = soHoKhau is null ? DateTime.Now : soHoKhau.NgayDangKy;
+            txtID.Text = soHoKhau is null ? "" : soHoKhau.ID_SoHoKhau.ToString();
+            txtIDSoDangKyThuongTru.Text = soHoKhau is null ? "" : soHoKhau.ID_SoDangKyThuongTru;
+            txtIDToSo.Text = soHoKhau is null ? "" : soHoKhau.ID_SoDangKyThuongTru_ToSo;
+            pkNgayDangKy.Value = (DateTime)(soHoKhau is null ? DateTime.Now : soHoKhau.NgayDangKy);
 
             updateGridView();
         }
@@ -106,15 +106,15 @@ namespace QuanLyCongDan.View
             if (isAddMode && soHoKhau is null && fThanhVien.DanhSachThanhVien is null)
             {
                 soHoKhau = new SoHoKhau();
-                fThanhVien.DanhSachThanhVien = new List<SoHoKhauThanhVien>();
+                fThanhVien.DanhSachThanhVien = new List<CongDan_SoHoKhau>();
             }
             if (int.TryParse(txtIDHoSoHoKhau.Text, out int id))
             {
-                soHoKhau.IDHoSoHoKhau = id;
+                soHoKhau.ID_HoSoHoKhau = id;
             }
             soHoKhau.NoiThuongTru = txtNoiThuongTru.Text;
-            soHoKhau.IDSoDangKyThuongTru = txtIDSoDangKyThuongTru.Text;
-            soHoKhau.IDToSo = txtIDToSo.Text;
+            soHoKhau.ID_SoDangKyThuongTru = txtIDSoDangKyThuongTru.Text;
+            soHoKhau.ID_SoDangKyThuongTru_ToSo = txtIDToSo.Text;
             soHoKhau.NgayDangKy = pkNgayDangKy.Value;
         }
 
@@ -149,7 +149,7 @@ namespace QuanLyCongDan.View
                 }
                 else
                 {
-                    fThanhVien.DanhSachThanhVien = thanhVienDAO.LayDanhSach(soHoKhau.ID);
+                    fThanhVien.DanhSachThanhVien = thanhVienDAO.LayDanhSach(soHoKhau.ID_SoHoKhau);
                     switchToEditMode();
                 }
             }
@@ -170,11 +170,11 @@ namespace QuanLyCongDan.View
                 {
                     if (soHoKhauDAO.Them(soHoKhau))
                     {
-                        soHoKhau.ID = soHoKhauDAO.getLatestRowIndex();
+                        soHoKhau.ID_SoHoKhau = soHoKhauDAO.GetLatestRowIndex();
                         if (setListOfThanhVien())
                         {
                             MessageBox.Show("Thêm thành công!");
-                            soHoKhau = soHoKhauDAO.TimKiem(soHoKhau.ID);
+                            soHoKhau = soHoKhauDAO.TimKiem(soHoKhau.ID_SoHoKhau);
                             switchToEditMode();
                             updateContent();
                         } 
@@ -221,7 +221,7 @@ namespace QuanLyCongDan.View
             {
                 if (isEnoughContent())
                 {
-                    if (thanhVienDAO.Xoa(soHoKhau.ID) && soHoKhauDAO.Xoa(soHoKhau.ID))
+                    if (thanhVienDAO.Xoa(soHoKhau.ID_SoHoKhau) && soHoKhauDAO.Xoa(soHoKhau.ID_SoHoKhau))
                     {
                         MessageBox.Show("Xóa thành công!");
                         soHoKhau = null;
@@ -248,7 +248,7 @@ namespace QuanLyCongDan.View
         {
             if (e.RowIndex >= 0)
             {
-                fThanhVien.ModeUpdate(gvThanhVien.Rows[e.RowIndex].Cells[0].Value.ToString());
+                fThanhVien.ModeUpdate((int)gvThanhVien.Rows[e.RowIndex].Cells[0].Value);
                 fThanhVien.ShowDialog();
                 updateGridView();
             }

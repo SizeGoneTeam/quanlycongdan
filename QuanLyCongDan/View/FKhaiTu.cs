@@ -1,5 +1,4 @@
 ﻿using QuanLyCongDan.DAO;
-using QuanLyCongDan.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -45,8 +44,8 @@ namespace QuanLyCongDan.View
                     if (khaiTuDAO.Them(khaiTu))
                     {
                         MessageBox.Show("Thêm thành công!");
-                        khaiTu.ID = khaiTuDAO.getLatestRowIndex();
-                        khaiTu = khaiTuDAO.TimKiem(khaiTu.ID);
+                        khaiTu.ID_KhaiTu = khaiTuDAO.getLatestRowIndex();
+                        khaiTu = khaiTuDAO.TimKiem(khaiTu.ID_KhaiTu);
                         switchToEditMode();
                         updateContent();
                     }
@@ -88,7 +87,7 @@ namespace QuanLyCongDan.View
             {
                 if (isEnoughContext() && !isDublicate())
                 {
-                    if (khaiTuDAO.Xoa(khaiTu.ID))
+                    if (khaiTuDAO.Xoa(khaiTu.ID_KhaiTu))
                     {
                         MessageBox.Show("Xóa thành công!");
                         khaiTu = null;
@@ -169,7 +168,7 @@ namespace QuanLyCongDan.View
 
         private bool isDublicate()
         {
-            if (congDan.Id == nguoiYeuCau.Id)
+            if (congDan.ID_CongDan == nguoiYeuCau.ID_CongDan)
             {
                 MessageBox.Show("Người yêu cầu không là người tử!");
 
@@ -223,8 +222,8 @@ namespace QuanLyCongDan.View
             khaiTu.ThoiGianChet = pkThoiGianChet.Value;
             khaiTu.NoiDangKy = txtNoiDangKy.Text;
             khaiTu.NgayThucHien = pkNgayThucHien.Value;
-            khaiTu.IDCongDan = congDan is null ? -1 : int.Parse(congDan.Id);
-            khaiTu.IDNguoiYeuCau = nguoiYeuCau is null ? -1 : int.Parse(nguoiYeuCau.Id);
+            khaiTu.ID_CongDan = congDan is null ? -1 : congDan.ID_CongDan;
+            khaiTu.ID_NguoiYeuCau = nguoiYeuCau is null ? -1 : nguoiYeuCau.ID_CongDan;
         }
 
         private void updateContent()
@@ -234,11 +233,11 @@ namespace QuanLyCongDan.View
             txtNoiChet.Text = khaiTu is null ? "" : khaiTu.NoiChet;
             txtNoiDangKy.Text = khaiTu is null ? "" : khaiTu.NoiDangKy;
             txtNguyenNhan.Text = khaiTu is null ? "" : khaiTu.NguyenNhan;
-            pkThoiGianChet.Value = khaiTu is null ? DateTime.Now : khaiTu.ThoiGianChet;
-            pkNgayThucHien.Value = khaiTu is null ? DateTime.Now : khaiTu.NgayThucHien;
+            pkThoiGianChet.Value = (DateTime)(khaiTu is null ? DateTime.Now : khaiTu.ThoiGianChet);
+            pkNgayThucHien.Value = (DateTime)(khaiTu is null ? DateTime.Now : khaiTu.NgayThucHien);
 
-            congDan = khaiTu is null ? null : congDanDao.TimKiem(khaiTu.IDCongDan.ToString());
-            nguoiYeuCau = khaiTu is null ? null : congDanDao.TimKiem(khaiTu.IDNguoiYeuCau.ToString());
+            congDan = khaiTu is null ? null : congDanDao.TimKiem(khaiTu.ID_CongDan.ToString());
+            nguoiYeuCau = khaiTu is null ? null : congDanDao.TimKiem(khaiTu.ID_NguoiYeuCau.ToString());
 
             updateContentCongDan();
             updateContentNguoiYeuCau();

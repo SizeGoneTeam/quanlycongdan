@@ -1,5 +1,4 @@
-﻿using QuanLyCongDan.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
@@ -11,87 +10,84 @@ namespace QuanLyCongDan.DAO
 {
     internal class SoHoKhauThanhVienDAO
     {
-        DBconnection con = new DBconnection();
-
-        public List<SoHoKhauThanhVien> LayDanhSach(int idSoHoKhau)
+        public List<CongDan_SoHoKhau> LayDanhSach(int idSoHoKhau)
         {
-            string sqlStr = string.Format(
-                "SELECT * FROM CongDan_SoHoKhau WHERE ID_SoHoKhau = '{0}'",
-                idSoHoKhau);
-
-            DataTable dt = con.LayDanhSach(sqlStr);
-
-            List<SoHoKhauThanhVien> list = new List<SoHoKhauThanhVien>();
-
-            if (dt != null)
+            using (var db = new QLCongDanEntities())
             {
-                if (dt.Rows.Count > 0)
+                var query = from cs in db.CongDan_SoHoKhau
+                            join cd in db.CongDans on cs.ID_CongDan equals cd.ID_CongDan
+                            where cs.ID_SoHoKhau == idSoHoKhau
+                            select new CongDan_SoHoKhau
+                            {
+                                ID_SoHoKhau = cs.ID_SoHoKhau,
+                                ID_CongDan = cs.ID_CongDan,
+                                QuanHe = cs.QuanHe,
+                                NgheNghiep_NoiLamViec = cs.NgheNghiep_NoiLamViec,
+                                NoiThuongTruTruoc = cs.NoiThuongTruTruoc,
+                                CanBoDangKy = cs.CanBoDangKy,
+                                NgayDangKy = cs.NgayDangKy,
+                                CongDan = cd
+                            };
+
+                return query.ToList();
+            }
+        }
+
+        public bool Them(CongDan_SoHoKhau soHoKhauThanhVien)
+        {
+            using (var db = new QLCongDanEntities())
+            {
+                var newCongDan_SoHoKhau = new CongDan_SoHoKhau
                 {
-                    foreach (DataRow dr in dt.Rows) 
-                    {
-                        int idCongDan = int.Parse(dr["ID_CongDan"].ToString());
-                        string quanHe = dr["QuanHe"].ToString();
-                        string ngheNghiepNoiLamViec = dr["NgheNghiep_NoiLamViec"].ToString();
-                        string noiThuongTruTruoc = dr["NoiThuongTruTruoc"].ToString();
-                        string canBoDangKy = dr["CanBoDangKy"].ToString();
-                        DateTime ngayDangKy = Convert.ToDateTime(dr["NgayDangKy"].ToString());
+                    ID_SoHoKhau = soHoKhauThanhVien.ID_SoHoKhau,
+                    ID_CongDan = soHoKhauThanhVien.CongDan.ID_CongDan,
+                    QuanHe = soHoKhauThanhVien.QuanHe,
+                    NgheNghiep_NoiLamViec = soHoKhauThanhVien.NgheNghiep_NoiLamViec,
+                    NoiThuongTruTruoc = soHoKhauThanhVien.NoiThuongTruTruoc,
+                    CanBoDangKy = soHoKhauThanhVien.CanBoDangKy,
+                    NgayDangKy = soHoKhauThanhVien.NgayDangKy
+                };
 
-                        CongDanDAO dao = new CongDanDAO();
-
-                        list.Add(new SoHoKhauThanhVien(
-                            idSoHoKhau,
-                            dao.TimKiem(idCongDan.ToString()),
-                            quanHe,
-                            ngheNghiepNoiLamViec,
-                            noiThuongTruTruoc,
-                            canBoDangKy,
-                            ngayDangKy));
-                        
-                    }
-                }
+                db.CongDan_SoHoKhau.Add(newCongDan_SoHoKhau);
+                db.SaveChanges();
             }
 
-            return list;
+            return true;
         }
 
-        public bool Them(SoHoKhauThanhVien soHoKhauThanhVien)
+        public bool Them(int idSoHoKhau, CongDan_SoHoKhau soHoKhauThanhVien)
         {
-            string sqlStr = string.Format(
-                @"INSERT INTO CongDan_SoHoKhau
-                (ID_SoHoKhau, ID_CongDan, QuanHe, NgheNghiep_NoiLamViec, NoiThuongTruTruoc, CanBoDangKy, NgayDangKy)
-                VALUES ('{0}', '{1}', N'{2}', N'{3}', N'{4}', N'{5}', '{6}')",
-                soHoKhauThanhVien.IDSoHoKhau,
-                soHoKhauThanhVien.CongDan.Id,
-                soHoKhauThanhVien.QuanHe,
-                soHoKhauThanhVien.NgheNghiepNoiLamViec,
-                soHoKhauThanhVien.NoiThuongTruTruoc,
-                soHoKhauThanhVien.CanBoDangKy,
-                soHoKhauThanhVien.NgayDangKy);
+            using (var db = new QLCongDanEntities())
+            {
+                var entity = new CongDan_SoHoKhau
+                {
+                    ID_SoHoKhau = idSoHoKhau,
+                    ID_CongDan = soHoKhauThanhVien.CongDan.ID_CongDan,
+                    QuanHe = soHoKhauThanhVien.QuanHe,
+                    NgheNghiep_NoiLamViec = soHoKhauThanhVien.NgheNghiep_NoiLamViec,
+                    NoiThuongTruTruoc = soHoKhauThanhVien.NoiThuongTruTruoc,
+                    CanBoDangKy = soHoKhauThanhVien.CanBoDangKy,
+                    NgayDangKy = soHoKhauThanhVien.NgayDangKy
+                };
 
-            return con.ThucThi(sqlStr);
-        }
+                db.CongDan_SoHoKhau.Add(entity);
+                db.SaveChanges();
 
-        public bool Them(int idSoHoKhau, SoHoKhauThanhVien soHoKhauThanhVien)
-        {
-            string sqlStr = string.Format(
-                @"INSERT INTO CongDan_SoHoKhau
-                (ID_SoHoKhau, ID_CongDan, QuanHe, NgheNghiep_NoiLamViec, NoiThuongTruTruoc, CanBoDangKy, NgayDangKy)
-                VALUES ('{0}', '{1}', N'{2}', N'{3}', N'{4}', N'{5}', '{6}')",
-                idSoHoKhau,
-                soHoKhauThanhVien.CongDan.Id,
-                soHoKhauThanhVien.QuanHe,
-                soHoKhauThanhVien.NgheNghiepNoiLamViec,
-                soHoKhauThanhVien.NoiThuongTruTruoc,
-                soHoKhauThanhVien.CanBoDangKy,
-                soHoKhauThanhVien.NgayDangKy);
-
-            return con.ThucThi(sqlStr);
+                return true;
+            }
         }
 
         public bool Xoa(int id)
         {
-            string sqlStr = string.Format("DELETE FROM CongDan_SoHoKhau WHERE ID_SoHoKhau = '{0}'", id);
-            return con.ThucThi(sqlStr);
+            using (var db = new QLCongDanEntities())
+            {
+                var entity = db.CongDan_SoHoKhau.FirstOrDefault(x => x.ID_SoHoKhau == id);
+                if (entity == null)
+                    return false;
+                db.CongDan_SoHoKhau.Remove(entity);
+                db.SaveChanges();
+                return true;
+            }
         }
     }
 }

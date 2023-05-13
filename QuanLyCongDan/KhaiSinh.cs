@@ -14,6 +14,29 @@ namespace QuanLyCongDan
     
     public partial class KhaiSinh
     {
+        public KhaiSinh() { }
+
+        public KhaiSinh(int? iD_CongDan, int? iD_NguoiYeuCau, int? iD_Cha, int? iD_Me, string noiDangKy, DateTime? ngayThucHien)
+        {
+            ID_CongDan = iD_CongDan;
+            ID_NguoiYeuCau = iD_NguoiYeuCau;
+            ID_Cha = iD_Cha;
+            ID_Me = iD_Me;
+            NoiDangKy = noiDangKy;
+            NgayThucHien = ngayThucHien;
+        }
+
+        public KhaiSinh(int iD_KhaiSinh, int? iD_CongDan, int? iD_NguoiYeuCau, int? iD_Cha, int? iD_Me, string noiDangKy, DateTime? ngayThucHien)
+        {
+            ID_KhaiSinh = iD_KhaiSinh;
+            ID_CongDan = iD_CongDan;
+            ID_NguoiYeuCau = iD_NguoiYeuCau;
+            ID_Cha = iD_Cha;
+            ID_Me = iD_Me;
+            NoiDangKy = noiDangKy;
+            NgayThucHien = ngayThucHien;
+        }
+
         public int ID_KhaiSinh { get; set; }
         public Nullable<int> ID_CongDan { get; set; }
         public Nullable<int> ID_NguoiYeuCau { get; set; }

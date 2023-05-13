@@ -1,5 +1,4 @@
 ﻿using QuanLyCongDan.DAO;
-using QuanLyCongDan.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,9 +14,9 @@ namespace QuanLyCongDan.View
     public partial class FThanhVien : Form
     {
         
-        private SoHoKhauThanhVien thanhVien;
+        private CongDan_SoHoKhau thanhVien;
         private CongDan congDan;
-        private List<SoHoKhauThanhVien> danhSachThanhVien;
+        private List<CongDan_SoHoKhau> danhSachThanhVien;
 
         private CongDanDAO congDanDAO = new CongDanDAO();
         private CCCDDAO cccdDAO = new CCCDDAO();
@@ -29,7 +28,7 @@ namespace QuanLyCongDan.View
             InitializeComponent();
         }
 
-        internal SoHoKhauThanhVien ThanhVien
+        internal CongDan_SoHoKhau ThanhVien
         {
             get
             {
@@ -42,7 +41,7 @@ namespace QuanLyCongDan.View
             }
         }
 
-        internal List<SoHoKhauThanhVien> DanhSachThanhVien { get => danhSachThanhVien; set => danhSachThanhVien = value; }
+        internal List<CongDan_SoHoKhau> DanhSachThanhVien { get => danhSachThanhVien; set => danhSachThanhVien = value; }
 
         #region Methods
         public void ModeAdd()
@@ -54,10 +53,10 @@ namespace QuanLyCongDan.View
             updateFromContent();
         }
 
-        public void ModeUpdate(string id)
+        public void ModeUpdate(int id)
         {
             switchToEditMode();
-            thanhVien = DanhSachThanhVien.FirstOrDefault(tv => tv.CongDan.Id == id);
+            thanhVien = DanhSachThanhVien.FirstOrDefault(tv => tv.CongDan.ID_CongDan == id);
             congDan = thanhVien.CongDan;
             updateContent();
         }
@@ -66,10 +65,10 @@ namespace QuanLyCongDan.View
         {
             if (isAddMode && thanhVien is null)
             {
-                thanhVien = new SoHoKhauThanhVien();
+                thanhVien = new CongDan_SoHoKhau();
             }
             ThanhVien.QuanHe = txtQuanHe.Text;
-            ThanhVien.NgheNghiepNoiLamViec = txtNgheNghiepNoiLamViec.Text;
+            ThanhVien.NgheNghiep_NoiLamViec = txtNgheNghiepNoiLamViec.Text;
             ThanhVien.NoiThuongTruTruoc = txtNoiThuongTruTruoc.Text;
             ThanhVien.CanBoDangKy = txtCanBoDangKy.Text;
             ThanhVien.NgayDangKy = pkNgayDangKy.Value;
@@ -78,14 +77,14 @@ namespace QuanLyCongDan.View
         private void updateContent()
         {
             txtQuanHe.Text = ThanhVien is null ? "" : ThanhVien.QuanHe;
-            txtNgheNghiepNoiLamViec.Text = ThanhVien is null ? "" : ThanhVien.NgheNghiepNoiLamViec;
+            txtNgheNghiepNoiLamViec.Text = ThanhVien is null ? "" : ThanhVien.NgheNghiep_NoiLamViec;
             txtNoiThuongTruTruoc.Text = ThanhVien is null ? "" : ThanhVien.NoiThuongTruTruoc;
             txtCanBoDangKy.Text = ThanhVien is null ? "" : ThanhVien.CanBoDangKy;
-            pkNgayDangKy.Value = ThanhVien is null || ThanhVien.NgayDangKy == DateTime.MinValue ? DateTime.Now : ThanhVien.NgayDangKy;
+            pkNgayDangKy.Value = (DateTime)(ThanhVien is null || ThanhVien.NgayDangKy == DateTime.MinValue ? DateTime.Now : ThanhVien.NgayDangKy);
 
             txtCCCD.Text = "";
             txtHoTen.Text = congDan is null ? "" : congDan.HoTen;
-            txtNgaySinh.Text = congDan is null ? "" : congDan.NgaySinh.ToShortDateString();
+            txtNgaySinh.Text = congDan?.NgaySinh?.ToShortDateString() ?? "";
             txtGioiTinh.Text = congDan is null ? "" : congDan.GioiTinh;
             txtNguyenQuan.Text = congDan is null ? "" : congDan.QueQuan;
             //txtDanToc.Text = ThanhVien.CongDan.DanToc;
@@ -118,7 +117,7 @@ namespace QuanLyCongDan.View
 
         private bool isDublicate()
         {
-            return DanhSachThanhVien.Any(tv => tv.CongDan.Id == congDan.Id);
+            return DanhSachThanhVien.Any(tv => tv.CongDan.ID_CongDan == congDan.ID_CongDan);
         }
         #endregion
 
@@ -164,7 +163,7 @@ namespace QuanLyCongDan.View
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            SoHoKhauThanhVien thanhVienToRemove = danhSachThanhVien.FirstOrDefault(tv => tv.CongDan.Id == congDan.Id);
+            CongDan_SoHoKhau thanhVienToRemove = danhSachThanhVien.FirstOrDefault(tv => tv.CongDan.ID_CongDan == congDan.ID_CongDan);
             if (thanhVienToRemove != null)
             {
                 danhSachThanhVien.Remove(thanhVienToRemove);
