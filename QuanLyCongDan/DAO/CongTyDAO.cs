@@ -40,19 +40,44 @@ namespace QuanLyCongDan.DAO
 
                 DataTable dataTable = new DataTable();
                 dataTable.Columns.Add("ID_CongTyNhanVien", typeof(int));
-                dataTable.Columns.Add("TenCongTy", typeof(string));
-                dataTable.Columns.Add("HoTen", typeof(string));
-                dataTable.Columns.Add("NgayVaoLam", typeof(DateTime));
+                dataTable.Columns.Add("ID_CongTy", typeof(string));
+                dataTable.Columns.Add("ID_NhanVien", typeof(string));
+
+                dataTable.Columns.Add("NgayVao", typeof(DateTime));
                 dataTable.Columns.Add("TrangThai", typeof(int));
 
                 foreach (var row in query)
                 {
-                    dataTable.Rows.Add(row.ID_CongTyNhanVien, row.TenCongTy, row.HoTen, row.NgayVaoLam, row.TrangThai);
+                    dataTable.Rows.Add(row.ID_CongTyNhanVien, row.ID_CongTy, row.ID_NhanVien, row.NgayVao, row.TrangThai);
                 }
 
                 return dataTable;
             }
         }
+
+        public DataTable LayDanhSachCongTy()
+        {
+            using (var db = new QLCongDanEntities())
+            {
+                var query = from congTy in db.CongTies
+                            orderby congTy.ID_CongTy descending
+                            select congTy;
+
+                DataTable dataTable = new DataTable();
+                dataTable.Columns.Add("ID_CongTy", typeof(int));
+                dataTable.Columns.Add("TenCongTy", typeof(string));
+                dataTable.Columns.Add("NgayTao", typeof(DateTime));
+
+                foreach (var congTy in query)
+                {
+                    dataTable.Rows.Add(congTy.ID_CongTy, congTy.TenCongTy, congTy.NgayTao);
+                }
+
+                return dataTable;
+            }
+        }
+
+
 
         public DataTable LayDanhSachCongTyNhanVien(CongTy ct)
         {
@@ -214,40 +239,24 @@ namespace QuanLyCongDan.DAO
             }
         }
 
-        public DataTable LayCongTyNhanVien(int idNhanVien)
+        public List<CongTy_NhanVien> LayCongTyNhanVien(int idNhanVien)
         {
             using (var db = new QLCongDanEntities())
             {
                 var query = from ctNv in db.CongTy_NhanVien
                             where ctNv.ID_NhanVien == idNhanVien && ctNv.TrangThai == true
-                            select new
-                            {
-                                ctNv.ID_CongTy,
-                                ctNv.ID_NhanVien,
-                                ctNv.Luong,
-                                ctNv.NgayVao
-                            };
+                            select new CongTy_NhanVien(
+                        ctNv.ID_CongTyNhanVien,
+                        ctNv.ID_CongTy,
+                        ctNv.ID_NhanVien,
+                        ctNv.NgayVao,
+                        ctNv.TrangThai,
+                        ctNv.Luong
+                    );
 
-                DataTable dt = new DataTable();
-                dt.Columns.Add("ID_CongTy", typeof(int));
-                dt.Columns.Add("ID_NhanVien", typeof(int));
-                dt.Columns.Add("Luong", typeof(decimal));
-                dt.Columns.Add("NgayVao", typeof(DateTime));
-
-                foreach (var item in query)
-                {
-                    DataRow row = dt.NewRow();
-                    row["ID_CongTy"] = item.ID_CongTy;
-                    row["ID_NhanVien"] = item.ID_NhanVien;
-                    row["Luong"] = item.Luong;
-                    row["NgayVao"] = item.NgayVao;
-                    dt.Rows.Add(row);
-                }
-
-                return dt;
+                return query.ToList();
             }
         }
-
 
         public CongTy LayCongTyBangTen(string tenCongTy)
         {

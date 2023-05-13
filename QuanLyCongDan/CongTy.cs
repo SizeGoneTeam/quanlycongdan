@@ -20,6 +20,12 @@ namespace QuanLyCongDan
             this.CongTy_NhanVien = new HashSet<CongTy_NhanVien>();
         }
 
+        public CongTy(string text)
+        {
+            TenCongTy = text;
+            NgayTao = DateTime.Now;
+        }
+
         public CongTy(int iD_CongTy, string tenCongTy, DateTime? ngayTao)
         {
             ID_CongTy = iD_CongTy;

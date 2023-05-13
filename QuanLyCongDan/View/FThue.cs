@@ -1,5 +1,4 @@
 ﻿using QuanLyCongDan.DAO;
-using QuanLyCongDan.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,31 +38,33 @@ namespace QuanLyCongDan.View
             try
             {
                 CCCD cccd = cccdDAO.TimKiem_ID(txtCCCD.Text);
-                cd = cdDAO.TimKiem(cccd.IDCD);
-                List<CongTyNhanVien> ctnvList = ctDAO.LayCongTyNhanVien(int.Parse(cd.Id));
-                foreach (CongTyNhanVien ctnv in ctnvList)
+                cd = cdDAO.TimKiem(cccd.ID_CongDan.ToString());
+                List<CongTy_NhanVien> ctnvList = ctDAO.LayCongTyNhanVien(cd.ID_CongDan);
+                foreach (CongTy_NhanVien ctnv in ctnvList)
                 {
-                    ct = ctDAO.LayCongTy(ctnv.Id_CongTy);
-                    int yearDiff = GetYearsDiff(ctnv.NgayVao);
+                    ct = ctDAO.LayCongTy(ctnv.ID_CongTy ?? 0);
+                    int yearDiff = GetYearsDiff(ctnv.NgayVao ?? DateTime.Now);
                     if (yearDiff > 0)
                     {
                         for (int i = 0; i < yearDiff; i++)
                         {
-                            if (!thueDAO.TimKiemThue(ctnv.Id_NhanVien, ct.TenCongTy, ctnv.NgayVao.AddYears(i+1)))
+                            DateTime ngayVaoPlusYears = (ctnv.NgayVao ?? DateTime.Now).AddYears(i + 1);
+                            if (!thueDAO.TimKiemThue(ctnv.ID_NhanVien??0, ct.TenCongTy, ngayVaoPlusYears))
                             {
-                                LichSuThue lsThue = new LichSuThue(ctnv.Id_NhanVien, ct.TenCongTy, ctnv.Luong * 20/100, ctnv.NgayVao.AddYears(i + 1));
+                                LichSuThue lsThue = new LichSuThue(ctnv.ID_NhanVien, ct.TenCongTy, ctnv.Luong * 20 / 100, ngayVaoPlusYears);
                                 thueDAO.ThemLichSuThue(lsThue);
                             }
                         }
                     }
                 }
 
-                this.gvThue.DataSource = thueDAO.LayLichSuThueTheoIDCongDan(int.Parse(cd.Id));
+                this.gvThue.DataSource = thueDAO.LayLichSuThueTheoIDCongDan(cd.ID_CongDan);
             }
             catch
             {
 
             }
+
         }
 
         private void btnCongTy_Click(object sender, EventArgs e)
@@ -114,8 +115,8 @@ namespace QuanLyCongDan.View
 
         private void btnNopThue_Click(object sender, EventArgs e)
         {
-            thueDAO.NopThue(int.Parse(cd.Id));
-            this.gvThue.DataSource = thueDAO.LayLichSuThueTheoIDCongDan(int.Parse(cd.Id));
+            thueDAO.NopThue(cd.ID_CongDan);
+            this.gvThue.DataSource = thueDAO.LayLichSuThueTheoIDCongDan(cd.ID_CongDan);
         }
 
         public int GetYearsDiff(DateTime firstDate)

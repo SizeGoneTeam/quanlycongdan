@@ -1,5 +1,4 @@
-﻿using QuanLyCongDan.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -12,48 +11,143 @@ namespace QuanLyCongDan.DAO
 {
     internal class ThueDAO
     {
-        DBconnection dbConn = new DBconnection();
-
 
         public void ThemLichSuThue(LichSuThue lichSuThue)
         {
-            string sqlStr = string.Format("INSERT INTO LichSuThue(ID_CongDan, NgayTao, TenCongTy, SoTien, TrangThai) VALUES ({0}, '{1}', N'{2}', {3}, {4})",
-                                          lichSuThue.ID_CongDan, lichSuThue.NgayTao, lichSuThue.TenCongTy, lichSuThue.SoTien, 0);
-            dbConn.ThucThi(sqlStr);
+            using (var db = new QLCongDanEntities())
+            {
+                db.LichSuThues.Add(lichSuThue);
+                db.SaveChanges();
+            }
         }
 
 
         public DataTable LayLichSuThueTheoIDCongDan(int id_congdan)
         {
-            string sqlStr = string.Format("SELECT * FROM LichSuThue WHERE ID_CongDan = '{0}' ORDER BY ID_LichSuThue DESC", id_congdan);
-            return dbConn.LayDanhSach(sqlStr);
+            using (var db = new QLCongDanEntities())
+            {
+                var query = from lichSuThue in db.LichSuThues
+                            where lichSuThue.ID_CongDan == id_congdan
+                            orderby lichSuThue.ID_LichSuThue descending
+                            select lichSuThue;
+
+                List<LichSuThue> lichSuThueList = query.ToList();
+                DataTable dataTable = new DataTable();
+                dataTable.Columns.Add("ID_LichSuThue", typeof(int));
+                dataTable.Columns.Add("ID_CongDan", typeof(int));
+                dataTable.Columns.Add("NgayTao", typeof(DateTime));
+                dataTable.Columns.Add("TenCongTy", typeof(string));
+                dataTable.Columns.Add("SoTien", typeof(decimal));
+                dataTable.Columns.Add("TrangThai", typeof(int));
+
+                foreach (var lichSuThue in lichSuThueList)
+                {
+                    dataTable.Rows.Add(
+                        lichSuThue.ID_LichSuThue,
+                        lichSuThue.ID_CongDan,
+                        lichSuThue.NgayTao,
+                        lichSuThue.TenCongTy,
+                        lichSuThue.SoTien,
+                        lichSuThue.TrangThai
+                    );
+                }
+
+                return dataTable;
+            }
         }
 
-        public DataTable LayLichSuThueTheoCongTY(String tenCongTy)
+
+        public DataTable LayLichSuThueTheoCongTY(string tenCongTy)
         {
-            string sqlStr = string.Format("SELECT * FROM LichSuThue WHERE NguoiNop = N'{0}' ORDER BY ID_LichSuThue DESC", tenCongTy);
-            return dbConn.LayDanhSach(sqlStr);
+            using (var db = new QLCongDanEntities())
+            {
+                var query = from lichSuThue in db.LichSuThues
+                            where lichSuThue.TenCongTy == tenCongTy
+                            orderby lichSuThue.ID_LichSuThue descending
+                            select lichSuThue;
+
+                List<LichSuThue> lichSuThueList = query.ToList();
+                DataTable dataTable = new DataTable();
+                dataTable.Columns.Add("ID_LichSuThue", typeof(int));
+                dataTable.Columns.Add("ID_CongDan", typeof(int));
+                dataTable.Columns.Add("NgayTao", typeof(DateTime));
+                dataTable.Columns.Add("TenCongTy", typeof(string));
+                dataTable.Columns.Add("SoTien", typeof(decimal));
+                dataTable.Columns.Add("TrangThai", typeof(int));
+
+                foreach (var lichSuThue in lichSuThueList)
+                {
+                    dataTable.Rows.Add(
+                        lichSuThue.ID_LichSuThue,
+                        lichSuThue.ID_CongDan,
+                        lichSuThue.NgayTao,
+                        lichSuThue.TenCongTy,
+                        lichSuThue.SoTien,
+                        lichSuThue.TrangThai
+                    );
+                }
+
+                return dataTable;
+            }
         }
 
-        public bool TimKiemThue(int idNhanVien, String tenCongTY, DateTime NgayTao)
+
+        public bool TimKiemThue(int idNhanVien, string tenCongTY, DateTime NgayTao)
         {
-            string sqlStr = string.Format("SELECT * FROM LichSuThue WHERE ID_CongDan = '{0}' and NgayTao = '{1}' and TenCongTy = N'{2}'", idNhanVien, NgayTao.ToString("MM/dd/yy"), tenCongTY);
-            DataTable data = dbConn.LayDanhSach(sqlStr);
-            return data.Rows.Count > 0;
+            using (var db = new QLCongDanEntities())
+            {
+                var query = from lichSuThue in db.LichSuThues
+                            where lichSuThue.ID_CongDan == idNhanVien
+                                  && lichSuThue.NgayTao == NgayTao
+                                  && lichSuThue.TenCongTy == tenCongTY
+                            select lichSuThue;
+
+                return query.Any();
+            }
         }
 
         public void NopThue(int idNhanVien)
         {
-            string sqlStr = string.Format("Update LichSuThue SET TrangThai = 1 WHERE ID_CongDan = '{0}'", idNhanVien);
-            dbConn.ThucThi(sqlStr);
-
+            using (var db = new QLCongDanEntities())
+            {
+                var lichSuThue = db.LichSuThues.FirstOrDefault(l => l.ID_CongDan == idNhanVien);
+                if (lichSuThue != null)
+                {
+                    lichSuThue.TrangThai = true;
+                    db.SaveChanges();
+                }
+            }
         }
+
 
         public DataTable LayCongDanChuaDongThue()
         {
-            string sqlStr = "SELECT ID_CongDan, COUNT(*) as SoPhieu, SUM(SoTien) as TongTien FROM LichSuThue WHERE TrangThai = 0 GROUP BY ID_CongDan";
-            return dbConn.LayDanhSach(sqlStr);
+            using (var db = new QLCongDanEntities())
+            {
+                var query = from lichSuThue in db.LichSuThues
+                            where lichSuThue.TrangThai == false
+                            group lichSuThue by lichSuThue.ID_CongDan into g
+                            select new
+                            {
+                                ID_CongDan = g.Key,
+                                SoPhieu = g.Count(),
+                                TongTien = g.Sum(l => l.SoTien)
+                            };
+
+                DataTable dataTable = new DataTable();
+                dataTable.Columns.Add("ID_CongDan", typeof(int));
+                dataTable.Columns.Add("SoPhieu", typeof(int));
+                dataTable.Columns.Add("TongTien", typeof(decimal));
+
+                foreach (var result in query)
+                {
+                    dataTable.Rows.Add(result.ID_CongDan, result.SoPhieu, result.TongTien);
+                }
+
+                return dataTable;
+            }
         }
-    }   
-        
+
+    }
+
 }

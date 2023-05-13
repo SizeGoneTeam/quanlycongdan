@@ -1,5 +1,4 @@
-﻿using QuanLyCongDan.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
@@ -11,107 +10,120 @@ namespace QuanLyCongDan
 {
     internal class HonNhanDAO
     {
-        DBconnection dbConn = new DBconnection();
         public void Them(HonNhan hn)
         {
-            String sqlStr = string.Format("INSERT INTO HonNhan(ID_Chong,ID_Vo, NgayDangKy, NoiDangKy,TrangThai) VALUES ('{0}','{1}','{2}',N'{3}','{4}')",hn.IdChong,hn.IdVo,hn.NgayDangKy,hn.NoiDangKy,hn.TrangThai);
-            dbConn.ThucThi(sqlStr);
+            using (var db = new QLCongDanEntities())
+            {
+                HonNhan honNhan = new HonNhan
+                {
+                    ID_Chong = hn.ID_Chong,
+                    ID_Vo = hn.ID_Vo,
+                    NgayDangKy = hn.NgayDangKy,
+                    NoiDangKy = hn.NoiDangKy,
+                    TrangThai = hn.TrangThai
+                };
+
+                db.HonNhans.Add(honNhan);
+                db.SaveChanges();
+            }
         }
 
-        public void LyHon(String idChong, String idVo)
+        public void LyHon(string idChong, string idVo)
         {
-            String sqlStr = string.Format("UPDATE HonNhan SET TrangThai = '{0}' WHERE ID_Chong = '{1}' AND ID_Vo = '{2}'",false, idChong, idVo);
-            dbConn.ThucThi(sqlStr);
+            using (var db = new QLCongDanEntities())
+            {
+                var honNhan = db.HonNhans.FirstOrDefault(hn => hn.ID_Chong == int.Parse(idChong) && hn.ID_Vo == int.Parse(idVo));
+                if (honNhan != null)
+                {
+                    honNhan.TrangThai = false;
+                    db.SaveChanges();
+                }
+            }
         }
 
         public DataTable LayHonNhanMoi()
         {
-            string sqlStr = string.Format("SELECT TOP 1 * FROM HonNhan ORDER BY ID_HonNhan DESC");
-            return dbConn.LayDanhSach(sqlStr);
+            using (var db = new QLCongDanEntities())
+            {
+                var honNhan = db.HonNhans.OrderByDescending(hn => hn.ID_HonNhan).FirstOrDefault();
+                DataTable dataTable = new DataTable();
+                if (honNhan != null)
+                {
+                    dataTable.Rows.Add(honNhan.ID_HonNhan, honNhan.ID_Chong, honNhan.ID_Vo, honNhan.NgayDangKy, honNhan.NoiDangKy, honNhan.TrangThai);
+                }
+                return dataTable;
+            }
         }
+
 
         public HonNhan TimKiem_ChongVo(int idChong, int idVo)
         {
-            string sqlStr = string.Format("SELECT TOP 1 * FROM HonNhan WHERE ID_Chong = {0} OR ID_Vo = {0} OR ID_Chong = {1} OR ID_Vo = {1} ORDER BY ID_HonNhan DESC", idChong, idVo);
-            DataTable dt = dbConn.LayDanhSach(sqlStr);
-
-            if (dt != null)
+            using (var db = new QLCongDanEntities())
             {
-                if (dt.Rows.Count > 0)
-                {
-                    DataRow row = dt.Rows[0];
-                    return new HonNhan(
-                        int.Parse(row["ID_HonNhan"].ToString()),
-                        int.Parse(row["ID_Chong"].ToString()),
-                        int.Parse(row["ID_Vo"].ToString()),
-                        Convert.ToDateTime(row["NgayDangKy"].ToString()),
-                        row["NoiDangKy"].ToString(),
-                        Convert.ToBoolean(row["TrangThai"].ToString())
-                    );
-                }
-            }
+                var honNhan = db.HonNhans
+                    .Where(hn => hn.ID_Chong == idChong || hn.ID_Vo == idChong || hn.ID_Chong == idVo || hn.ID_Vo == idVo)
+                    .OrderByDescending(hn => hn.ID_HonNhan)
+                    .FirstOrDefault();
 
-            return null;
+                if (honNhan != null)
+                {
+                    return new HonNhan
+                    {
+                        ID_HonNhan = honNhan.ID_HonNhan,
+                        ID_Chong = honNhan.ID_Chong,
+                        ID_Vo = honNhan.ID_Vo,
+                        NgayDangKy = honNhan.NgayDangKy,
+                        NoiDangKy = honNhan.NoiDangKy,
+                        TrangThai = honNhan.TrangThai
+                    };
+                }
+
+                return null;
+            }
         }
+
 
         public HonNhan TimKiemId(int id)
         {
-            string sqlStr = string.Format("SELECT * FROM HonNhan WHERE ID_HonNhan = '{0}'", id);
-            DataTable dt = dbConn.LayDanhSach(sqlStr);
-
-            if (dt != null)
+            using (var db = new QLCongDanEntities())
             {
-                if (dt.Rows.Count > 0)
-                {
-                    DataRow row = dt.Rows[0];
-                    return new HonNhan(
-                        int.Parse(row["ID_HonNhan"].ToString()),
-                        int.Parse(row["ID_Chong"].ToString()),
-                        int.Parse(row["ID_Vo"].ToString()),
-                        Convert.ToDateTime(row["NgayDangKy"].ToString()),
-                        row["NoiDangKy"].ToString(),
-                        Convert.ToBoolean(row["TrangThai"].ToString())
-                    );
-                }
-            }
+                var honNhan = db.HonNhans.FirstOrDefault(hn => hn.ID_HonNhan == id);
 
-            return null;
+                if (honNhan != null)
+                {
+                    return new HonNhan
+                    {
+                        ID_HonNhan = honNhan.ID_HonNhan,
+                        ID_Chong = honNhan.ID_Chong,
+                        ID_Vo = honNhan.ID_Vo,
+                        NgayDangKy = honNhan.NgayDangKy,
+                        NoiDangKy = honNhan.NoiDangKy,
+                        TrangThai = honNhan.TrangThai
+                    };
+                }
+
+                return null;
+            }
         }
+
 
         // True là đã kết hôn. False là chưa kết hôn
-        public Boolean TinhTrangHonNhanChong(int id)
+        public bool TinhTrangHonNhanChong(int id)
         {
-            string sqlStr = string.Format("SELECT * FROM HonNhan WHERE ID_Chong = {0} AND TrangThai = 1", id);
-            DataTable dt = dbConn.LayDanhSach(sqlStr);
-
-            if (dt != null)
+            using (var db = new QLCongDanEntities())
             {
-                if (dt.Rows.Count > 0)
-                {
-                    return true;
-
-                }
+                return db.HonNhans.Any(hn => hn.ID_Chong == id && hn.TrangThai == true);
             }
-
-            return false;
         }
 
-        public Boolean TinhTrangHonNhanVo(int id)
+        public bool TinhTrangHonNhanVo(int id)
         {
-            string sqlStr = string.Format("SELECT * FROM HonNhan WHERE ID_Vo = {0} AND TrangThai = 1", id);
-            DataTable dt = dbConn.LayDanhSach(sqlStr);
-
-            if (dt != null)
+            using (var db = new QLCongDanEntities())
             {
-                if (dt.Rows.Count > 0)
-                {
-                    return true;
-
-                }
+                return db.HonNhans.Any(hn => hn.ID_Vo == id && hn.TrangThai == true);
             }
-
-            return false;
         }
+
 
     }
 }

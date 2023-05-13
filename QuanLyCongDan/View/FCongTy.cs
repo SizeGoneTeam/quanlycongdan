@@ -1,5 +1,4 @@
 ﻿using QuanLyCongDan.DAO;
-using QuanLyCongDan.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,7 +19,7 @@ namespace QuanLyCongDan.View
         CCCDDAO cccdDAO =  new CCCDDAO();
         CongDanDAO cdDAO = new CongDanDAO();
         CongDan cd;
-        CongTyNhanVien ctnv;
+        CongTy_NhanVien ctnv;
         CCCD cccd;
         public FCongTy()
         {
@@ -102,13 +101,13 @@ namespace QuanLyCongDan.View
         private void btnThemNhanVien_Click(object sender, EventArgs e)
         {
 
-            ctnv = new CongTyNhanVien(ct.Id_CongTy,int.Parse(cd.Id), long.Parse(txtLuong.Text));
+            ctnv = new CongTy_NhanVien(ct.ID_CongTy,cd.ID_CongDan, long.Parse(txtLuong.Text));
             ctDAO.ThemCongTyNhanVien(ctnv);
             HienThiDanhSachCongTyNhanVien();
             try
             {
                 cccd = cccdDAO.TimKiem_ID(txtCCCD.Text);
-                cd = cdDAO.TimKiem(cccd.IDCD);
+                cd = cdDAO.TimKiem(cccd.ID_CongDan.ToString());
             }
             catch
             {
@@ -139,7 +138,7 @@ namespace QuanLyCongDan.View
             try
             {
                 cccd = cccdDAO.TimKiem_ID(txtCCCD.Text);
-                cd = cdDAO.TimKiem(cccd.IDCD);
+                cd = cdDAO.TimKiem(cccd.ID_CongDan.ToString());
                 this.gvCongTy.DataSource = ctDAO.LayDanhSachCongTyNhanVien(cd);
             }
             catch
@@ -162,7 +161,7 @@ namespace QuanLyCongDan.View
             try
             {
                 cccd = cccdDAO.TimKiem_ID(txtCCCD.Text);
-                cd = cdDAO.TimKiem(cccd.IDCD);
+                cd = cdDAO.TimKiem(cccd.ID_CongDan.ToString());
                 if (cd == null) throw new Exception();
                 ct = ctDAO.TimKiem(txtCongTy.Text);
                 return ctDAO.KiemTraNhanVienCoDiLamCongTy(cd,ct.Id_CongTy);
@@ -179,7 +178,7 @@ namespace QuanLyCongDan.View
             try
             {
                 cccd = cccdDAO.TimKiem_ID(txtCCCD.Text);
-                cd = cdDAO.TimKiem(cccd.IDCD);
+                cd = cdDAO.TimKiem(cccd.ID_CongDan.ToString());
                 return cd != null;
             }
             catch
@@ -254,9 +253,9 @@ namespace QuanLyCongDan.View
         private void btnSuaLuong_Click(object sender, EventArgs e)
         {
             cccd = cccdDAO.TimKiem_ID(txtCCCD.Text);
-            cd = cdDAO.TimKiem(cccd.IDCD);
+            cd = cdDAO.TimKiem(cccd.ID_CongDan.ToString());
             ct = ctDAO.TimKiem(txtCongTy.Text);
-            ctnv = ctDAO.LayCongTyNhanVien(int.Parse(cd.Id),ct.Id_CongTy);
+            ctnv = ctDAO.LayCongTyNhanVien(cd.ID_CongDan,ct.ID_CongTy);
             ctnv.Luong = decimal.Parse(txtLuong.Text);
             ctDAO.SuaLuong(ctnv);
             this.gvCongTy.DataSource = ctDAO.LayDanhSachCongTyNhanVien(cd);
@@ -265,9 +264,9 @@ namespace QuanLyCongDan.View
         private void btnNghiViec_Click(object sender, EventArgs e)
         {
             cccd = cccdDAO.TimKiem_ID(txtCCCD.Text);
-            cd = cdDAO.TimKiem(cccd.IDCD);
+            cd = cdDAO.TimKiem(cccd.ID_CongDan.ToString());
             ct = ctDAO.LayCongTyBangTen(txtCongTy.Text);
-            ctnv = ctDAO.LayCongTyNhanVien(int.Parse(cd.Id),ct.Id_CongTy);
+            ctnv = ctDAO.LayCongTyNhanVien(cd.ID_CongDan,ct.ID_CongTy);
             ctDAO.NghiViec(ctnv);
             this.gvCongTy.DataSource = ctDAO.LayDanhSachCongTyNhanVien(cd);
             TatButton();

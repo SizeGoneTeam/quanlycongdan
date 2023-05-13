@@ -1,5 +1,4 @@
-﻿using QuanLyCongDan.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -11,7 +10,6 @@ namespace QuanLyCongDan.DAO
 {
     internal class CCCDDAO
     {
-        DBconnection dbConn = new DBconnection();
         public void Them(CCCD cc)
         {
             String sqlStr = string.Format("INSERT INTO CCCD(ID_CongDan,SoCCCD, NoiCap, NgayCap) VALUES ('{0}','{1}',N'{2}','{3}')",cc.IDCD,cc.SoCC, cc.ADD, cc.NgayCap.Date);

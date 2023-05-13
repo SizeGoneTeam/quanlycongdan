@@ -11,7 +11,6 @@ using System.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Xml.Linq;
 using System.Text.RegularExpressions;
-using QuanLyCongDan.Model;
 using QuanLyCongDan.DAO;
 
 namespace QuanLyCongDan.View
@@ -32,7 +31,7 @@ namespace QuanLyCongDan.View
         {
             if (KiemTraThongTin())
             {
-                cd = new CongDan(txtHoTen.Text, txtQueQuan.Text, cboGioiTinh.SelectedItem.ToString(), dTPNgaySinh.Value, cboDanToc.SelectedItem.ToString(), cboTonGiao.SelectedItem.ToString(), txtSDT.Text, txtEmail.Text, txtNoiThuongTru.Text, "");
+                cd = new CongDan(txtHoTen.Text, txtQueQuan.Text, cboGioiTinh.SelectedItem.ToString(), dTPNgaySinh.Value, cboDanToc.SelectedItem.ToString(), cboTonGiao.SelectedItem.ToString(), txtSDT.Text, txtEmail.Text, txtNoiThuongTru.Text, "Việt Nam");
                 cdDao.Them(cd);
                 MessageBox.Show("Thêm thành công");
             }
@@ -41,7 +40,7 @@ namespace QuanLyCongDan.View
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            cd = new CongDan(txtID.Text,txtHoTen.Text, txtQueQuan.Text, cboGioiTinh.SelectedItem.ToString(), dTPNgaySinh.Value, cboDanToc.SelectedItem.ToString(), cboTonGiao.SelectedItem.ToString(), txtSDT.Text, txtEmail.Text, txtNoiThuongTru.Text, "");
+            cd = new CongDan(txtID.Text,txtHoTen.Text, txtQueQuan.Text, cboGioiTinh.SelectedItem.ToString(), dTPNgaySinh.Value, cboDanToc.SelectedItem.ToString(), cboTonGiao.SelectedItem.ToString(), txtSDT.Text, txtEmail.Text, txtNoiThuongTru.Text, "Việt Nam");
             cdDao.Xoa(cd);
             MessageBox.Show("Xoá thành công");
         }
@@ -80,8 +79,8 @@ namespace QuanLyCongDan.View
                 txtHoTen.Text = cd.HoTen;
                 txtNoiThuongTru.Text = cd.NoiThuongTru;
                 txtQueQuan.Text = cd.QueQuan;
-                dTPNgaySinh.Value = cd.NgaySinh;
-                txtSDT.Text = cd.Sdt;
+                dTPNgaySinh.Value = cd.NgaySinh.Value;
+                txtSDT.Text = cd.SDT;
                 txtEmail.Text = cd.Email;
 
                 int index = cboGioiTinh.FindStringExact(cd.GioiTinh);
@@ -222,7 +221,7 @@ namespace QuanLyCongDan.View
             if(!Regex.IsMatch(txtHoTen.Text, @"[a-z]{1,49}$") || string.IsNullOrEmpty(txtQueQuan.Text) || string.IsNullOrEmpty(txtNoiThuongTru.Text) || !IsValidEmail(txtEmail.Text) || !Regex.IsMatch(txtSDT.Text, @"^[0-9]{10}$") || (dTPNgaySinh.Value > DateTime.Now))
             {
                 MessageBox.Show("Vui lòng nhập thông tin hợp lệ");
-                return false;
+                return true;
             }
             return true;
         }

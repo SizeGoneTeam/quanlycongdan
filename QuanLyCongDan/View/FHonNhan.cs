@@ -1,5 +1,4 @@
 ﻿using QuanLyCongDan.DAO;
-using QuanLyCongDan.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -178,11 +177,11 @@ namespace QuanLyCongDan.View
             try
             {
                 hn = honNhanDAO.TimKiem_ChongVo(idChong, idVo);
-                lblTK_IdChong_txt.Text = hn.IdChong.ToString();
-                lblTK_IdVo_txt.Text = hn.IdVo.ToString();
+                lblTK_IdChong_txt.Text = hn.ID_Chong.ToString();
+                lblTK_IdVo_txt.Text = hn.ID_Vo.ToString();
                 lblTK_NgayDK_txt.Text = hn.NgayDangKy.ToString();
                 lblTK_NoiDK_txt.Text = hn.NoiDangKy.ToString();
-                if (hn.TrangThai) lblTrangThai_txt.Text = "Kết Hôn";
+                if (hn.TrangThai??true) lblTrangThai_txt.Text = "Kết Hôn";
                 else lblTrangThai_txt.Text = "Ly Hôn";
                 btnLyHon.Enabled = true;
 
