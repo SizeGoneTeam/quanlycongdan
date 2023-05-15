@@ -62,6 +62,12 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.vochong.SuspendLayout();
@@ -226,7 +232,7 @@
             this.btnLyHon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLyHon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLyHon.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnLyHon.Location = new System.Drawing.Point(125, 457);
+            this.btnLyHon.Location = new System.Drawing.Point(139, 465);
             this.btnLyHon.Margin = new System.Windows.Forms.Padding(4);
             this.btnLyHon.Name = "btnLyHon";
             this.btnLyHon.Size = new System.Drawing.Size(122, 49);
@@ -241,7 +247,7 @@
             this.cboTimKiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboTimKiem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.cboTimKiem.Location = new System.Drawing.Point(428, 85);
+            this.cboTimKiem.Location = new System.Drawing.Point(419, 77);
             this.cboTimKiem.Margin = new System.Windows.Forms.Padding(4);
             this.cboTimKiem.Name = "cboTimKiem";
             this.cboTimKiem.Size = new System.Drawing.Size(136, 40);
@@ -253,7 +259,7 @@
             // txtIdHonNhan
             // 
             this.txtIdHonNhan.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtIdHonNhan.Location = new System.Drawing.Point(125, 91);
+            this.txtIdHonNhan.Location = new System.Drawing.Point(135, 83);
             this.txtIdHonNhan.Margin = new System.Windows.Forms.Padding(4);
             this.txtIdHonNhan.Name = "txtIdHonNhan";
             this.txtIdHonNhan.Size = new System.Drawing.Size(250, 30);
@@ -357,7 +363,7 @@
             // 
             this.lblTK_NoiDK_txt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblTK_NoiDK_txt.Enabled = false;
-            this.lblTK_NoiDK_txt.Location = new System.Drawing.Point(125, 398);
+            this.lblTK_NoiDK_txt.Location = new System.Drawing.Point(135, 408);
             this.lblTK_NoiDK_txt.Name = "lblTK_NoiDK_txt";
             this.lblTK_NoiDK_txt.Size = new System.Drawing.Size(401, 30);
             this.lblTK_NoiDK_txt.TabIndex = 65;
@@ -367,7 +373,7 @@
             // 
             this.lblTrangThai_txt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblTrangThai_txt.Enabled = false;
-            this.lblTrangThai_txt.Location = new System.Drawing.Point(125, 332);
+            this.lblTrangThai_txt.Location = new System.Drawing.Point(135, 345);
             this.lblTrangThai_txt.Name = "lblTrangThai_txt";
             this.lblTrangThai_txt.Size = new System.Drawing.Size(401, 30);
             this.lblTrangThai_txt.TabIndex = 64;
@@ -377,7 +383,7 @@
             // 
             this.lblTK_NgayDK_txt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblTK_NgayDK_txt.Enabled = false;
-            this.lblTK_NgayDK_txt.Location = new System.Drawing.Point(125, 270);
+            this.lblTK_NgayDK_txt.Location = new System.Drawing.Point(135, 282);
             this.lblTK_NgayDK_txt.Margin = new System.Windows.Forms.Padding(4);
             this.lblTK_NgayDK_txt.Name = "lblTK_NgayDK_txt";
             this.lblTK_NgayDK_txt.Size = new System.Drawing.Size(401, 30);
@@ -388,7 +394,7 @@
             // 
             this.lblTK_IdVo_txt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblTK_IdVo_txt.Enabled = false;
-            this.lblTK_IdVo_txt.Location = new System.Drawing.Point(125, 213);
+            this.lblTK_IdVo_txt.Location = new System.Drawing.Point(135, 221);
             this.lblTK_IdVo_txt.Margin = new System.Windows.Forms.Padding(4);
             this.lblTK_IdVo_txt.Name = "lblTK_IdVo_txt";
             this.lblTK_IdVo_txt.Size = new System.Drawing.Size(401, 30);
@@ -399,7 +405,7 @@
             // 
             this.lblTK_IdChong_txt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblTK_IdChong_txt.Enabled = false;
-            this.lblTK_IdChong_txt.Location = new System.Drawing.Point(125, 155);
+            this.lblTK_IdChong_txt.Location = new System.Drawing.Point(135, 155);
             this.lblTK_IdChong_txt.Margin = new System.Windows.Forms.Padding(4);
             this.lblTK_IdChong_txt.Name = "lblTK_IdChong_txt";
             this.lblTK_IdChong_txt.Size = new System.Drawing.Size(401, 30);
@@ -512,6 +518,11 @@
             // panel10
             // 
             this.panel10.BackColor = System.Drawing.Color.White;
+            this.panel10.Controls.Add(this.label11);
+            this.panel10.Controls.Add(this.label10);
+            this.panel10.Controls.Add(this.label9);
+            this.panel10.Controls.Add(this.label8);
+            this.panel10.Controls.Add(this.label7);
             this.panel10.Controls.Add(this.button1);
             this.panel10.Controls.Add(this.lblTK_NoiDK_txt);
             this.panel10.Controls.Add(this.label5);
@@ -534,7 +545,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(390, 453);
+            this.button1.Location = new System.Drawing.Point(404, 461);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(136, 53);
@@ -554,12 +565,67 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Tình Trạng Hôn Nhân";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(0, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(62, 23);
+            this.label4.TabIndex = 69;
+            this.label4.Text = "label4";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(137, 128);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(98, 23);
+            this.label7.TabIndex = 67;
+            this.label7.Text = "ID Chồng:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(137, 194);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(68, 23);
+            this.label8.TabIndex = 67;
+            this.label8.Text = "ID Vợ:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(141, 255);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(142, 23);
+            this.label9.TabIndex = 67;
+            this.label9.Text = "Ngày Đăng Ký:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(137, 319);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(109, 23);
+            this.label10.TabIndex = 67;
+            this.label10.Text = "Trạng Thái:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(137, 382);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(127, 23);
+            this.label11.TabIndex = 67;
+            this.label11.Text = "Nơi Đăng Ký:";
+            // 
             // FHonNhan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1369, 892);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.tintrang);
             this.Controls.Add(this.vochong);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -578,6 +644,7 @@
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -617,5 +684,11 @@
         private System.Windows.Forms.TextBox lblTrangThai_txt;
         private System.Windows.Forms.Button kiemtra;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label4;
     }
 }
