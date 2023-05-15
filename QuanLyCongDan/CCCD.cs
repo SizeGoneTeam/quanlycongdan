@@ -21,5 +21,22 @@ namespace QuanLyCongDan
         public string NoiCap { get; set; }
     
         public virtual CongDan CongDan { get; set; }
+
+        public CCCD(int ID_CCCD, int? ID_CongDan, string SoCCCD, DateTime? NgayCap, string NoiCap)
+        {
+            this.ID_CCCD = ID_CCCD;
+            this.ID_CongDan = ID_CongDan;
+            this.SoCCCD = SoCCCD;
+            this.NgayCap = NgayCap;
+            this.NoiCap = NoiCap;
+        }
+        public CCCD(int? ID_CongDan, string SoCCCD, DateTime? NgayCap, string NoiCap)
+        {
+            this.ID_CongDan = ID_CongDan;
+            this.SoCCCD = SoCCCD;
+            this.NgayCap = NgayCap;
+            this.NoiCap = NoiCap;
+        }
+        public CCCD() { }
     }
 }
