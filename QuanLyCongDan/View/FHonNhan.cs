@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyCongDan.DAO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,12 +14,12 @@ namespace QuanLyCongDan.View
 {
     public partial class FHonNhan : Form
     {
-        /*CongDan cd = new CongDan();
+        CongDan cd = new CongDan();
         CongDanDAO cdDAO = new CongDanDAO();
         HonNhanDAO honNhanDAO = new HonNhanDAO();
         HonNhan hn;
         CCCD cccd;
-        CCCDDAO cccdDAO = new CCCDDAO();*/
+        CCCDDAO cccdDAO = new CCCDDAO();
         public FHonNhan()
         {
             InitializeComponent();
@@ -29,7 +30,7 @@ namespace QuanLyCongDan.View
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             //Chồng
-            /*if(txtID_Chong.Text != "")
+            if(txtID_Chong.Text != "")
             try
             {
                 cccd = cccdDAO.TimKiem_ID(txtID_Chong.Text);
@@ -68,13 +69,13 @@ namespace QuanLyCongDan.View
                 lblHoTenChong.Text = " Họ Tên";
                 lblNgaySinhChong.Text = " Ngày Sinh";
                 btnThem.Enabled = false;
-            }*/
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             //Vợ
-            /*if(txtID_Vo.Text != "")
+            if(txtID_Vo.Text != "")
             try
             {
                 cccd = cccdDAO.TimKiem_ID(txtID_Vo.Text);
@@ -112,23 +113,23 @@ namespace QuanLyCongDan.View
                 lblHoTenVo.Text = " Họ Tên";
                 lblNgaySinhVo.Text = " Ngày Sinh";
                 btnThem.Enabled = false;
-            }*/
+            }
         }
 
         private void cboThem_Click(object sender, EventArgs e)
         {
-            /*HonNhan honNhan = new HonNhan(Int32.Parse(lblID_CongDanChong.Text), Int32.Parse(lblID_CongDanVo.Text), cboNoiDK.SelectedItem.ToString());
+            HonNhan honNhan = new HonNhan(Int32.Parse(lblID_CongDanChong.Text), Int32.Parse(lblID_CongDanVo.Text), cboNoiDK.SelectedItem.ToString());
             honNhanDAO.Them(honNhan);
             HonNhanMoi();
             btnThem.Enabled = false;
             tintrang.Visible = true;
             vochong.Visible = false;
-            TimKiemHonNhan_ChongVo(int.Parse(cd.Id), int.Parse(cd.Id));*/
+            TimKiemHonNhan_ChongVo(int.Parse(cd.Id), int.Parse(cd.Id));
         }
 
         private void cboTimKiem_Click(object sender, EventArgs e)
         {
-            /*try
+            try
             {
                 if (txtIdHonNhan.Text != "")
                 {
@@ -144,13 +145,13 @@ namespace QuanLyCongDan.View
                 lblTK_NgayDK_txt.Clear();
                 lblTK_NoiDK_txt.Clear();
                 lblTrangThai_txt.Clear();
-            }*/
+            }
             
         }
 
         private void HonNhanMoi()
         {
-            /*try
+            try
             {
                 DataRow row = honNhanDAO.LayHonNhanMoi().Rows[0];
                 txtIdHonNhan.Text = row["ID_HonNhan"].ToString();
@@ -168,19 +169,19 @@ namespace QuanLyCongDan.View
                 lblTK_NgayDK_txt.Text = "";
                 lblTK_NoiDK_txt.Text = "";
                 lblTrangThai_txt.Text = "";
-            }*/
+            }
         }
 
         private void TimKiemHonNhan_ChongVo(int idChong, int idVo)
         {
-            /*try
+            try
             {
                 hn = honNhanDAO.TimKiem_ChongVo(idChong, idVo);
-                lblTK_IdChong_txt.Text = hn.IdChong.ToString();
-                lblTK_IdVo_txt.Text = hn.IdVo.ToString();
+                lblTK_IdChong_txt.Text = hn.ID_Chong.ToString();
+                lblTK_IdVo_txt.Text = hn.ID_Vo.ToString();
                 lblTK_NgayDK_txt.Text = hn.NgayDangKy.ToString();
                 lblTK_NoiDK_txt.Text = hn.NoiDangKy.ToString();
-                if (hn.TrangThai) lblTrangThai_txt.Text = "Kết Hôn";
+                if (hn.TrangThai??true) lblTrangThai_txt.Text = "Kết Hôn";
                 else lblTrangThai_txt.Text = "Ly Hôn";
                 btnLyHon.Enabled = true;
 
@@ -193,13 +194,13 @@ namespace QuanLyCongDan.View
                 lblTK_NoiDK_txt.Text = "";
                 lblTrangThai_txt.Text = "";
                 btnLyHon.Enabled = false;
-            }*/
+            }
         }
 
         private void btnLyHon_Click(object sender, EventArgs e)
         {
-            /*honNhanDAO.LyHon(lblTK_IdChong_txt.Text,lblTK_IdVo_txt.Text);
-            TimKiemHonNhan_ChongVo(int.Parse(cd.Id), int.Parse(cd.Id));*/
+            honNhanDAO.LyHon(lblTK_IdChong_txt.Text,lblTK_IdVo_txt.Text);
+            TimKiemHonNhan_ChongVo(int.Parse(cd.Id), int.Parse(cd.Id));
         }
 
         private void FHonNhan_Load(object sender, EventArgs e)

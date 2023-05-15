@@ -19,7 +19,17 @@ namespace QuanLyCongDan
         {
             this.CongDan_SoHoKhau = new HashSet<CongDan_SoHoKhau>();
         }
-    
+
+        public SoHoKhau(int iD_SoHoKhau, int? iD_HoSoHoKhau, string iD_SoDangKyThuongTru, string iD_SoDangKyThuongTru_ToSo, string noiThuongTru, DateTime? ngayDangKy)
+        {
+            ID_SoHoKhau = iD_SoHoKhau;
+            ID_HoSoHoKhau = iD_HoSoHoKhau;
+            ID_SoDangKyThuongTru = iD_SoDangKyThuongTru;
+            ID_SoDangKyThuongTru_ToSo = iD_SoDangKyThuongTru_ToSo;
+            NoiThuongTru = noiThuongTru;
+            NgayDangKy = ngayDangKy;
+        }
+
         public int ID_SoHoKhau { get; set; }
         public Nullable<int> ID_HoSoHoKhau { get; set; }
         public string ID_SoDangKyThuongTru { get; set; }

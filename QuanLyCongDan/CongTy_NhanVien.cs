@@ -14,6 +14,25 @@ namespace QuanLyCongDan
     
     public partial class CongTy_NhanVien
     {
+        public CongTy_NhanVien(int iD_CongTy, int iD_CongDan, long Luong)
+        {
+            ID_CongTy = iD_CongTy;
+            ID_NhanVien = iD_CongDan;
+            this.Luong = Luong;
+            NgayVao = DateTime.Now;
+            TrangThai = true;
+        }
+
+        public CongTy_NhanVien(int iD_CongTyNhanVien, int? iD_CongTy, int? iD_NhanVien, DateTime? ngayVao, bool? trangThai, decimal? luong)
+        {
+            ID_CongTyNhanVien = iD_CongTyNhanVien;
+            ID_CongTy = iD_CongTy;
+            ID_NhanVien = iD_NhanVien;
+            NgayVao = ngayVao;
+            TrangThai = trangThai;
+            Luong = luong;
+        }
+
         public int ID_CongTyNhanVien { get; set; }
         public Nullable<int> ID_CongTy { get; set; }
         public Nullable<int> ID_NhanVien { get; set; }

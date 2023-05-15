@@ -1,4 +1,6 @@
-﻿using QuanLyCongDan.View;
+﻿using QuanLyCongDan.DAO;
+using QuanLyCongDan.Model;
+using QuanLyCongDan.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,9 +21,9 @@ namespace QuanLyCongDan
         private CongDan nguoiCha;
         private CongDan nguoiYeuCau;
 
-        /*private KhaiSinhDAO khaiSinhDao = new KhaiSinhDAO();
+        private KhaiSinhDAO khaiSinhDao = new KhaiSinhDAO();
         private CongDanDAO congDanDao = new CongDanDAO();
-        private CCCDDAO cccdDao = new CCCDDAO();*/
+        private CCCDDAO cccdDao = new CCCDDAO();
 
         private bool isAddMode;
 
@@ -34,8 +36,8 @@ namespace QuanLyCongDan
         private void btnTimKiemNguoiYeuCau_Click(object sender, EventArgs e)
         {
             string cccd = txtCCCDNguoiYeuCau.Text;
-            /*int id = cccdDao.toIdCongDan(cccd);
-            nguoiYeuCau = congDanDao.TimKiem(id.ToString());*/
+            int id = cccdDao.toIdCongDan(cccd);
+            nguoiYeuCau = congDanDao.TimKiem(id.ToString());
 
             if (nguoiYeuCau is null)
             {
@@ -50,8 +52,8 @@ namespace QuanLyCongDan
         private void btnTimKiemNguoiMe_Click(object sender, EventArgs e)
         {
             string cccd = txtCCCDNguoiMe.Text;
-            /*int id = cccdDao.toIdCongDan(cccd);
-            nguoiMe = congDanDao.TimKiem(id.ToString());*/
+            int id = cccdDao.toIdCongDan(cccd);
+            nguoiMe = congDanDao.TimKiem(id.ToString());
 
             if (nguoiMe is null || !isFemale())
             {
@@ -66,8 +68,8 @@ namespace QuanLyCongDan
         private void btnTimKiemNguoiCha_Click(object sender, EventArgs e)
         {
             string cccd = txtCCCDNguoiCha.Text;
-            /*int id = cccdDao.toIdCongDan(cccd);
-            nguoiCha = congDanDao.TimKiem(id.ToString());*/
+            int id = cccdDao.toIdCongDan(cccd);
+            nguoiCha = congDanDao.TimKiem(id.ToString());
 
             if (nguoiCha is null || !isMale())
             {
@@ -81,18 +83,22 @@ namespace QuanLyCongDan
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            /*if (isAddMode)
+            if (isAddMode)
             {
                 updateFromContent();
                 if (isEnoughContext())
                 {
                     congDanDao.Them(congDan);
-                    int count = congDanDao.LayDanhSachCongDan().Rows.Count;
-                    congDan.Id = congDanDao.LayDanhSachCongDan().Rows[count - 1]["ID_CongDan"].ToString();
-                    khaiSinh.IDCongDan = int.Parse(congDan.Id);
+                    congDan.ID_CongDan = congDanDao.getLatestRowIndex();
+                    khaiSinh.ID_CongDan = congDan.ID_CongDan;
                     if (khaiSinhDao.Them(khaiSinh))
                     {  
                         MessageBox.Show("Thêm thành công!");
+                        khaiSinh.ID_KhaiSinh = khaiSinhDao.GetLatestRowIndex();
+                        khaiSinh = khaiSinhDao.TimKiem(khaiSinh.ID_KhaiSinh);
+                        congDan = congDanDao.TimKiem(khaiSinh.ID_CongDan.ToString());
+                        switchToEditMode();
+                        updateContent();
                     }
                     else
                     {
@@ -103,12 +109,12 @@ namespace QuanLyCongDan
             else
             {
                 switchToAddMode();
-            }*/
+            }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            /*updateFromContent();
+            updateFromContent();
             if (!isInAddMode() && isEnoughContext())
             {
                 if (khaiSinhDao.Sua(khaiSinh))
@@ -120,12 +126,12 @@ namespace QuanLyCongDan
                 {
                     MessageBox.Show("Sửa thất bại!");
                 }
-            }*/
+            }
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            /*int id;
+            int id;
 
             if (int.TryParse(txtID.Text, out id))
             {
@@ -144,12 +150,12 @@ namespace QuanLyCongDan
                 MessageBox.Show("ID không hợp lệ!");
                 khaiSinh = null;
             }
-            updateContent();*/
+            updateContent();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            /*if (isAddMode)
+            if (isAddMode)
             {
                 MessageBox.Show("Đang ở add mode!");
             }
@@ -157,26 +163,18 @@ namespace QuanLyCongDan
             {
                 if (isEnoughContext())
                 {
-                    if (khaiSinhDao.Xoa(khaiSinh.ID))
+                    if (khaiSinhDao.Xoa(khaiSinh.ID_KhaiSinh))
                     {
                         MessageBox.Show("Xóa thành công!");
                         khaiSinh = null;
                         updateContent();
+                        switchToAddMode();
                     }
                     else
                     {
                         MessageBox.Show("Xóa thất bại!");
                     }
                 }
-            }*/
-        }
-
-        private void txtHoTen_Enter(object sender, EventArgs e)
-        {
-            if (txtHoTen.Text == "  Họ Và Tên")
-            {
-                txtHoTen.Text = "";
-                txtHoTen.ForeColor = Color.Black;
             }
         }
 
@@ -208,15 +206,6 @@ namespace QuanLyCongDan
             cha.Visible = true;
         }
 
-        private void txtIDNguoiCha_Enter(object sender, EventArgs e)
-        {
-            if (txtCCCDNguoiCha.Text == "  ID")
-            {
-                txtCCCDNguoiCha.Text = "";
-                txtCCCDNguoiCha.ForeColor = Color.Black;
-            }
-        }
-
         private void chaprev_Click(object sender, EventArgs e)
         {
             cha.Visible = false;
@@ -227,15 +216,6 @@ namespace QuanLyCongDan
         {
             cha.Visible= false;
             yc.Visible = true;
-        }
-
-        private void txtIDNguoiYeuCau_Enter(object sender, EventArgs e)
-        {
-            if (txtCCCDNguoiYeuCau.Text == "  ID")
-            {
-                txtCCCDNguoiYeuCau.Text = "";
-                txtCCCDNguoiYeuCau.ForeColor = Color.Black;
-            }
         }
 
         private void ycprev_Click(object sender, EventArgs e)
@@ -296,6 +276,9 @@ namespace QuanLyCongDan
 
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
+
+            clear();
+            updateContent();
         }
 
         private void switchToEditMode()
@@ -318,9 +301,9 @@ namespace QuanLyCongDan
             }
             khaiSinh.NoiDangKy = txtNoiDangKy.Text;
             khaiSinh.NgayThucHien = pkNgayDangKy.Value;
-            /*khaiSinh.IDNguoiYeuCau = nguoiYeuCau is null ? -1 : int.Parse(nguoiYeuCau.Id);
-            khaiSinh.IDCha = nguoiCha is null ? -1 : int.Parse(nguoiCha.Id);
-            khaiSinh.IDMe = nguoiMe is null ? -1 : int.Parse(nguoiMe.Id);*/
+            khaiSinh.ID_NguoiYeuCau = nguoiYeuCau is null ? -1 : nguoiYeuCau.ID_CongDan;
+            khaiSinh.ID_Cha = nguoiCha is null ? -1 : nguoiCha.ID_CongDan;
+            khaiSinh.ID_Me = nguoiMe is null ? -1 : nguoiMe.ID_CongDan;
             congDan.HoTen = txtHoTen.Text;
             congDan.NgaySinh = pkNgaySinh.Value;
             congDan.NoiSinh = txtNoiSinh.Text;
@@ -331,11 +314,11 @@ namespace QuanLyCongDan
 
         private void updateContent()
         {
-            /*congDan = khaiSinh is null ? null : congDanDao.TimKiem(khaiSinh.IDCongDan.ToString());
-            nguoiCha = khaiSinh is null ? null : congDanDao.TimKiem(khaiSinh.IDCha.ToString());
-            nguoiMe = khaiSinh is null ? null : congDanDao.TimKiem(khaiSinh.IDMe.ToString());
-            nguoiYeuCau = khaiSinh is null ? null : congDanDao.TimKiem(khaiSinh.IDNguoiYeuCau.ToString());
-*/
+            congDan = khaiSinh is null ? null : congDanDao.TimKiem(khaiSinh.ID_CongDan.ToString());
+            nguoiCha = khaiSinh is null ? null : congDanDao.TimKiem(khaiSinh.ID_Cha.ToString());
+            nguoiMe = khaiSinh is null ? null : congDanDao.TimKiem(khaiSinh.ID_Me.ToString());
+            nguoiYeuCau = khaiSinh is null ? null : congDanDao.TimKiem(khaiSinh.ID_NguoiYeuCau.ToString());
+
             updateContentCongDan();
             updateContentCha();
             updateContentMe();
@@ -344,36 +327,36 @@ namespace QuanLyCongDan
 
         private void updateContentCongDan()
         {
-            /*txtID.Text = "";
+            txtID.Text = "";
             txtHoTen.Text = congDan is null ? "" : congDan.HoTen;
             txtQuocTich.Text = congDan is null ? "" : "Việt Nam";
-            pkNgaySinh.Value = congDan is null ? DateTime.Now : congDan.NgaySinh;
+            pkNgaySinh.Value = (DateTime)(congDan is null ? DateTime.Now : congDan.NgaySinh);
             txtNoiSinh.Text = congDan is null ? "" : congDan.NoiSinh;
             cbGioiTinh.Text = congDan is null ? "" : congDan.GioiTinh;
             txtQueQuan.Text = congDan is null ? "" : congDan.QueQuan;
             cboDanToc.Text = congDan is null ? "" : congDan.DanToc;
             txtNoiDangKy.Text = khaiSinh is null ? "" : khaiSinh.NoiDangKy;
-            pkNgayDangKy.Value = khaiSinh is null ? DateTime.Now : khaiSinh.NgayThucHien;*/
+            pkNgayDangKy.Value = (DateTime)(khaiSinh is null ? DateTime.Now : khaiSinh.NgayThucHien);
         }
 
         private void updateContentCha()
         {
-            /*txtCCCDNguoiCha.Text = "";
+            txtCCCDNguoiCha.Text = "";
             txtHoTenNguoiCha.Text = nguoiCha is null ? "" : nguoiCha.HoTen;
-            txtNamSinhNguoiCha.Text = nguoiCha is null ? "" : nguoiCha.NgaySinh.Year.ToString();
+            txtNamSinhNguoiCha.Text = nguoiCha.NgaySinh?.Year.ToString() ?? "";
             txtDanTocNguoiCha.Text = nguoiCha is null ? "" : nguoiCha.DanToc;
             txtQuocTichNguoiCha.Text = nguoiCha is null ? "" : "Việt Nam";
-            txtDiaChiNguoiCha.Text = nguoiCha is null ? "" : nguoiCha.NoiThuongTru;*/
+            txtDiaChiNguoiCha.Text = nguoiCha is null ? "" : nguoiCha.NoiThuongTru;
         }
 
         private void updateContentMe()
         {
-            /*txtCCCDNguoiMe.Text = "";
+            txtCCCDNguoiMe.Text = "";
             txtHoTenNguoiMe.Text = nguoiMe is null ? "" : nguoiMe.HoTen;
-            txtNamSinhNguoiMe.Text = nguoiMe is null ? "" : nguoiMe.NgaySinh.Year.ToString();
+            txtNamSinhNguoiMe.Text = nguoiMe.NgaySinh?.Year.ToString() ?? "";
             txtDanTocNguoiMe.Text = nguoiMe is null ? "" : nguoiMe.DanToc;
             txtQuocTichNguoiMe.Text = nguoiMe is null ? "" : "Việt Nam";
-            txtDiaChiNguoiMe.Text = nguoiMe is null ? "" : nguoiMe.NoiThuongTru;*/
+            txtDiaChiNguoiMe.Text = nguoiMe is null ? "" : nguoiMe.NoiThuongTru;
         }
 
         private void updateContentNguoiYeuCau()
@@ -382,6 +365,12 @@ namespace QuanLyCongDan
             txtHoTenNguoiYeuCau.Text = nguoiYeuCau is null ? "" : nguoiYeuCau.HoTen;
             txtDiaChiNguoiYeuCau.Text = nguoiYeuCau is null ? "" : nguoiYeuCau.NoiThuongTru;
             txtQuanHe.Text = khaiSinh is null ? "" : "Quan hệ";
+        }
+
+        private void clear()
+        {
+            khaiSinh = null;
+            congDan = null;
         }
         #endregion
     }

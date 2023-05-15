@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyCongDan.DAO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,9 +17,9 @@ namespace QuanLyCongDan.View
         private CongDan congDan;
         private CongDan nguoiYeuCau;
 
-        /*private KhaiTuDAO khaiTuDAO = new KhaiTuDAO();
+        private KhaiTuDAO khaiTuDAO = new KhaiTuDAO();
         private CongDanDAO congDanDao = new CongDanDAO();
-        private CCCDDAO cccdDao = new CCCDDAO();*/
+        private CCCDDAO cccdDao = new CCCDDAO();
 
         private bool isAddMode;
 
@@ -40,14 +41,18 @@ namespace QuanLyCongDan.View
                 updateFromContent();
                 if (isEnoughContext() && !isDublicate())
                 {
-                    /*if (khaiTuDAO.Them(khaiTu))
+                    if (khaiTuDAO.Them(khaiTu))
                     {
                         MessageBox.Show("Thêm thành công!");
+                        khaiTu.ID_KhaiTu = khaiTuDAO.getLatestRowIndex();
+                        khaiTu = khaiTuDAO.TimKiem(khaiTu.ID_KhaiTu);
+                        switchToEditMode();
+                        updateContent();
                     }
                     else
                     {
                         MessageBox.Show("Thêm thất bại!");
-                    }*/
+                    }
                 }
             }
             else
@@ -61,14 +66,14 @@ namespace QuanLyCongDan.View
             updateFromContent();
             if (!isInAddMode() && isEnoughContext() && !isDublicate())
             {
-                /*if (khaiTuDAO.Sua(khaiTu))
+                if (khaiTuDAO.Sua(khaiTu))
                 {
                     MessageBox.Show("Sửa thành công!");
                 }
                 else
                 {
                     MessageBox.Show("Sửa thất bại!");
-                }*/
+                }
             }
         }
 
@@ -82,16 +87,17 @@ namespace QuanLyCongDan.View
             {
                 if (isEnoughContext() && !isDublicate())
                 {
-                   /* if (khaiTuDAO.Xoa(khaiTu.ID))
+                    if (khaiTuDAO.Xoa(khaiTu.ID_KhaiTu))
                     {
                         MessageBox.Show("Xóa thành công!");
                         khaiTu = null;
                         updateContent();
+                        switchToAddMode();
                     }
                     else
                     {
                         MessageBox.Show("Xóa thất bại!");
-                    }*/
+                    }
                 }
             }
         }
@@ -102,8 +108,8 @@ namespace QuanLyCongDan.View
             
             if (int.TryParse(txtTimKiem.Text, out iD))
             {
-/*                khaiTu = khaiTuDAO.TimKiem(iD);
-*/                if (khaiTu is null)
+                khaiTu = khaiTuDAO.TimKiem(iD);
+                if (khaiTu is null)
                 {
                     MessageBox.Show("Không tìm thấy!");
                 }
@@ -123,8 +129,8 @@ namespace QuanLyCongDan.View
         private void btnTimKiemCongDan_Click(object sender, EventArgs e)
         {
             string cccd = txtCCCDCongDan.Text;
-            /*int id = cccdDao.toIdCongDan(cccd);
-            congDan = congDanDao.TimKiem(id.ToString());*/
+            int id = cccdDao.toIdCongDan(cccd);
+            congDan = congDanDao.TimKiem(id.ToString());
 
             if (congDan is null)
             {
@@ -139,8 +145,8 @@ namespace QuanLyCongDan.View
         private void btnTimKiemNguoiYeuCau_Click(object sender, EventArgs e)
         {
             string cccd = txtCCCDNguoiYeuCau.Text;
-            /*int id = cccdDao.toIdCongDan(cccd);
-            nguoiYeuCau = congDanDao.TimKiem(id.ToString());*/
+            int id = cccdDao.toIdCongDan(cccd);
+            nguoiYeuCau = congDanDao.TimKiem(id.ToString());
             if (nguoiYeuCau is null)
             {
                 MessageBox.Show("Không tìm thấy");
@@ -162,7 +168,7 @@ namespace QuanLyCongDan.View
 
         private bool isDublicate()
         {
-            /*if (congDan.Id == nguoiYeuCau.Id)
+            if (congDan.ID_CongDan == nguoiYeuCau.ID_CongDan)
             {
                 MessageBox.Show("Người yêu cầu không là người tử!");
 
@@ -172,7 +178,7 @@ namespace QuanLyCongDan.View
                 updateContentCongDan();
                 updateContentNguoiYeuCau();
                 return true;
-            }*/
+            }
             return false;
         }
 
@@ -192,6 +198,9 @@ namespace QuanLyCongDan.View
 
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
+
+            clear();
+            updateContent();
         }
 
         private void switchToEditMode()
@@ -213,8 +222,8 @@ namespace QuanLyCongDan.View
             khaiTu.ThoiGianChet = pkThoiGianChet.Value;
             khaiTu.NoiDangKy = txtNoiDangKy.Text;
             khaiTu.NgayThucHien = pkNgayThucHien.Value;
-            /*khaiTu.IDCongDan = congDan is null ? -1 : int.Parse(congDan.Id);
-            khaiTu.IDNguoiYeuCau = nguoiYeuCau is null ? -1 : int.Parse(nguoiYeuCau.Id);*/
+            khaiTu.ID_CongDan = congDan is null ? -1 : congDan.ID_CongDan;
+            khaiTu.ID_NguoiYeuCau = nguoiYeuCau is null ? -1 : nguoiYeuCau.ID_CongDan;
         }
 
         private void updateContent()
@@ -224,11 +233,11 @@ namespace QuanLyCongDan.View
             txtNoiChet.Text = khaiTu is null ? "" : khaiTu.NoiChet;
             txtNoiDangKy.Text = khaiTu is null ? "" : khaiTu.NoiDangKy;
             txtNguyenNhan.Text = khaiTu is null ? "" : khaiTu.NguyenNhan;
-            /*pkThoiGianChet.Value = khaiTu is null ? DateTime.Now : khaiTu.ThoiGianChet;
-            pkNgayThucHien.Value = khaiTu is null ? DateTime.Now : khaiTu.NgayThucHien;
+            pkThoiGianChet.Value = (DateTime)(khaiTu is null ? DateTime.Now : khaiTu.ThoiGianChet);
+            pkNgayThucHien.Value = (DateTime)(khaiTu is null ? DateTime.Now : khaiTu.NgayThucHien);
 
-            congDan = khaiTu is null ? null : congDanDao.TimKiem(khaiTu.IDCongDan.ToString());
-            nguoiYeuCau = khaiTu is null ? null : congDanDao.TimKiem(khaiTu.IDNguoiYeuCau.ToString());*/
+            congDan = khaiTu is null ? null : congDanDao.TimKiem(khaiTu.ID_CongDan.ToString());
+            nguoiYeuCau = khaiTu is null ? null : congDanDao.TimKiem(khaiTu.ID_NguoiYeuCau.ToString());
 
             updateContentCongDan();
             updateContentNguoiYeuCau();
@@ -244,6 +253,13 @@ namespace QuanLyCongDan.View
         {
             txtCCCDNguoiYeuCau.Text = "";
             txtHoVaTenNguoiYeuCau.Text = nguoiYeuCau is null ? "" : nguoiYeuCau.HoTen;
+        }
+
+        private void clear()
+        {
+            khaiTu = null;
+            congDan = null;
+            nguoiYeuCau = null;
         }
         #endregion
     }

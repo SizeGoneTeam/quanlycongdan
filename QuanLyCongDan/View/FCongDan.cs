@@ -11,12 +11,14 @@ using System.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Xml.Linq;
 using System.Text.RegularExpressions;
-using System.Data.Entity;
+using QuanLyCongDan.DAO;
 
 namespace QuanLyCongDan.View
 {
     public partial class FCongDan : Form
     {
+        CongDan cd;
+        CongDanDAO cdDao = new CongDanDAO();
 
         public FCongDan()
         {
@@ -29,146 +31,100 @@ namespace QuanLyCongDan.View
         {
             if (KiemTraThongTin())
             {
-                using (var db = new QLCongDanEntities())
-                {
-                    var cd = new CongDan
-                    {
-                        HoTen = txtHoTen.Text,
-                        QueQuan = txtQueQuan.Text,
-                        GioiTinh = cboGioiTinh.SelectedItem.ToString(),
-                        NgaySinh = dTPNgaySinh.Value,
-                        DanToc = cboDanToc.SelectedItem.ToString(),
-                        TonGiao = cboTonGiao.SelectedItem.ToString(),
-                        SDT = txtSDT.Text,
-                        Email = txtEmail.Text,
-                        NoiThuongTru = txtNoiThuongTru.Text
-                    };
-                    db.CongDans.Add(cd);
-                    db.SaveChanges();
-                }
+                cd = new CongDan(txtHoTen.Text, txtQueQuan.Text, cboGioiTinh.SelectedItem.ToString(), dTPNgaySinh.Value, cboDanToc.SelectedItem.ToString(), cboTonGiao.SelectedItem.ToString(), txtSDT.Text, txtEmail.Text, txtNoiThuongTru.Text, "Việt Nam");
+                cdDao.Them(cd);
                 MessageBox.Show("Thêm thành công");
             }
-
+           
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            try
-            {
-                int id = Convert.ToInt32(txtID.Text);
-                using (var db = new QLCongDanEntities())
-                {
-                    var cd = db.CongDans.SingleOrDefault(c => c.ID_CongDan == id);
-                    if (cd != null)
-                    {
-                        db.CongDans.Remove(cd);
-                        db.SaveChanges();
-                        MessageBox.Show("Xoá thành công");
-                        ClearTextBox();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Không tìm thấy công dân để xoá");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi: " + ex.Message);
-            }
+            cd = new CongDan(txtID.Text,txtHoTen.Text, txtQueQuan.Text, cboGioiTinh.SelectedItem.ToString(), dTPNgaySinh.Value, cboDanToc.SelectedItem.ToString(), cboTonGiao.SelectedItem.ToString(), txtSDT.Text, txtEmail.Text, txtNoiThuongTru.Text, "Việt Nam");
+            cdDao.Xoa(cd);
+            MessageBox.Show("Xoá thành công");
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            try
+            if (KiemTraThongTin())
             {
-                int id = Convert.ToInt32(txtID.Text);
-                using (var db = new QLCongDanEntities())
-                {
-                    var cd = db.CongDans.SingleOrDefault(c => c.ID_CongDan == id);
-                    if (cd != null)
-                    {
-                        cd.HoTen = txtHoTen.Text;
-                        cd.QueQuan = txtQueQuan.Text;
-                        cd.GioiTinh = cboGioiTinh.SelectedItem.ToString();
-                        cd.NgaySinh = dTPNgaySinh.Value;
-                        cd.DanToc = cboDanToc.SelectedItem.ToString();
-                        cd.TonGiao = cboTonGiao.SelectedItem.ToString();
-                        cd.SDT = txtSDT.Text;
-                        cd.Email = txtEmail.Text;
-                        cd.NoiThuongTru = txtNoiThuongTru.Text;
+                cd = new CongDan(txtID.Text, txtHoTen.Text, txtQueQuan.Text, cboGioiTinh.SelectedItem.ToString(), dTPNgaySinh.Value, cboDanToc.SelectedItem.ToString(), cboTonGiao.SelectedItem.ToString(), txtSDT.Text, txtEmail.Text, txtNoiThuongTru.Text, "");
+                cdDao.Sua(cd);
+                MessageBox.Show("Sửa thành công");
+            }
+            
+        }
 
-                        db.SaveChanges();
-                        MessageBox.Show("Sửa thành công");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Không tìm thấy công dân để sửa");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi: " + ex.Message);
-            }
+        private void dTPNgaySinh_ValueChanged(object sender, EventArgs e)
+        {
 
         }
 
-        private void TimKiemCongDan(int id)
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtID_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void TimKiemCongDan(String id)
         {
             try
             {
-                using (var db = new QLCongDanEntities())
+                cd = cdDao.TimKiem(id);
+                txtHoTen.Text = cd.HoTen;
+                txtNoiThuongTru.Text = cd.NoiThuongTru;
+                txtQueQuan.Text = cd.QueQuan;
+                dTPNgaySinh.Value = cd.NgaySinh.Value;
+                txtSDT.Text = cd.SDT;
+                txtEmail.Text = cd.Email;
+
+                int index = cboGioiTinh.FindStringExact(cd.GioiTinh);
+                if (index >= 0)
                 {
-                    var cd = db.CongDans.SingleOrDefault(c => c.ID_CongDan == id);
-                    if (cd != null)
-                    {
-                        txtHoTen.Text = cd.HoTen;
-                        txtNoiThuongTru.Text = cd.NoiThuongTru;
-                        txtQueQuan.Text = cd.QueQuan;
-                        dTPNgaySinh.Value = cd.NgaySinh != null ? cd.NgaySinh.Value : DateTime.MinValue;
-                        txtSDT.Text = cd.SDT;
-                        txtEmail.Text = cd.Email;
+                    cboGioiTinh.SelectedIndex = index;
+                }
 
-                        int index = cboGioiTinh.FindStringExact(cd.GioiTinh);
-                        if (index >= 0)
-                        {
-                            cboGioiTinh.SelectedIndex = index;
-                        }
+                index = cboDanToc.FindStringExact(cd.DanToc);
+                if (index >= 0)
+                {
+                    cboDanToc.SelectedIndex = index;
+                }
 
-                        index = cboDanToc.FindStringExact(cd.DanToc);
-                        if (index >= 0)
-                        {
-                            cboDanToc.SelectedIndex = index;
-                        }
-
-                        index = cboTonGiao.FindStringExact(cd.TonGiao);
-                        if (index >= 0)
-                        {
-                            cboTonGiao.SelectedIndex = index;
-                        }
-                    }
-                    else
-                    {
-                        txtHoTen.Text = "";
-                    }
+                index = cboTonGiao.FindStringExact(cd.TonGiao);
+                if (index >= 0)
+                {
+                    cboTonGiao.SelectedIndex = index;
                 }
             }
             catch
             {
                 txtHoTen.Text = "";
-            }
 
+            }
+            
         }
 
         private void btnTimKiem_Click_1(object sender, EventArgs e)
         {
             try
             {
-                TimKiemCongDan(int.Parse(txtID.Text));
+                TimKiemCongDan(txtID.Text);
                 if (String.IsNullOrEmpty(txtHoTen.Text))
                 {
-                    ClearTextBox();
+                    txtHoTen.Clear();
+                    txtQueQuan.Clear();
+                    dTPNgaySinh.Value = DateTime.Now;
+                    cboGioiTinh.SelectedIndex = 0;
+                    cboDanToc.SelectedIndex = 0;
+                    cboTonGiao.SelectedIndex = 0;
+                    txtSDT.Clear();
+                    txtEmail.Clear();
+                    txtNoiThuongTru.Clear();
                     btnSua.Enabled = false;
                     btnXoa.Enabled = false;
                 }
@@ -265,7 +221,7 @@ namespace QuanLyCongDan.View
             if(!Regex.IsMatch(txtHoTen.Text, @"[a-z]{1,49}$") || string.IsNullOrEmpty(txtQueQuan.Text) || string.IsNullOrEmpty(txtNoiThuongTru.Text) || !IsValidEmail(txtEmail.Text) || !Regex.IsMatch(txtSDT.Text, @"^[0-9]{10}$") || (dTPNgaySinh.Value > DateTime.Now))
             {
                 MessageBox.Show("Vui lòng nhập thông tin hợp lệ");
-                return false;
+                return true;
             }
             return true;
         }
@@ -289,19 +245,6 @@ namespace QuanLyCongDan.View
             {
                 return false;
             }
-        }
-
-        private void ClearTextBox()
-        {
-            txtHoTen.Clear();
-            txtQueQuan.Clear();
-            dTPNgaySinh.Value = DateTime.Now;
-            cboGioiTinh.SelectedIndex = 0;
-            cboDanToc.SelectedIndex = 0;
-            cboTonGiao.SelectedIndex = 0;
-            txtSDT.Clear();
-            txtEmail.Clear();
-            txtNoiThuongTru.Clear();
         }
     }
 }

@@ -14,6 +14,15 @@ namespace QuanLyCongDan
     
     public partial class LichSuThue
     {
+        public LichSuThue(int? iD_NhanVien, string tenCongTy, decimal? v, DateTime ngayVaoPlusYears)
+        {
+            TenCongTy = tenCongTy;
+            ID_CongDan = iD_NhanVien;
+            SoTien = v;
+            NgayTao = ngayVaoPlusYears;
+            TrangThai = false;
+        }
+
         public int ID_LichSuThue { get; set; }
         public Nullable<int> ID_CongDan { get; set; }
         public string TenCongTy { get; set; }

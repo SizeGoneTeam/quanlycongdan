@@ -31,7 +31,54 @@ namespace QuanLyCongDan
             this.LichSuThues = new HashSet<LichSuThue>();
             this.TamTruTamVangs = new HashSet<TamTruTamVang>();
         }
-    
+
+        public CongDan(string HoTen, string QueQuan, string GioiTinh, DateTime NgaySinh, string danToc, string tonGiao, string SDT, string email, string noiThuongTru, string quocTich)
+        {
+            this.HoTen = HoTen;
+            this.QueQuan = QueQuan;
+            this.GioiTinh = GioiTinh;
+            this.NgaySinh = NgaySinh;
+            this.DanToc = DanToc;
+            this.TonGiao = TonGiao;
+            this.SDT = SDT;
+            this.Email = Email;
+            this.NoiThuongTru = NoiThuongTru;
+            this.QuocTich = QuocTich;
+
+
+        }
+
+        public CongDan(string iD_CongDan ,string HoTen, string QueQuan, string GioiTinh, DateTime NgaySinh, string danToc, string tonGiao, string SDT, string email, string noiThuongTru, string quocTich)
+        {
+            this.ID_CongDan = int.Parse(iD_CongDan);
+            this.HoTen = HoTen;
+            this.QueQuan = QueQuan;
+            this.GioiTinh = GioiTinh;
+            this.NgaySinh = NgaySinh;
+            this.DanToc = DanToc;
+            this.TonGiao = TonGiao;
+            this.SDT = SDT;
+            this.Email = Email;
+            this.NoiThuongTru = NoiThuongTru;
+            this.QuocTich = QuocTich;
+        }
+
+        public CongDan(int iD_CongDan, string hoTen, string quocTich, string queQuan, string gioiTinh, DateTime? ngaySinh, string danToc, string tonGiao, string sDT, string email, string noiThuongTru, string noiSinh)
+        {
+            ID_CongDan = iD_CongDan;
+            HoTen = hoTen;
+            QuocTich = quocTich;
+            QueQuan = queQuan;
+            GioiTinh = gioiTinh;
+            NgaySinh = ngaySinh;
+            DanToc = danToc;
+            TonGiao = tonGiao;
+            SDT = sDT;
+            Email = email;
+            NoiThuongTru = noiThuongTru;
+            NoiSinh = noiSinh;
+        }
+
         public int ID_CongDan { get; set; }
         public string HoTen { get; set; }
         public string GioiTinh { get; set; }
