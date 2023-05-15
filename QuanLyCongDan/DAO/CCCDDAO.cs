@@ -12,9 +12,6 @@ namespace QuanLyCongDan.DAO
     {
         public void Them(CCCD cc)
         {
-            /*String sqlStr = string.Format("INSERT INTO CCCD(ID_CongDan,SoCCCD, NoiCap, NgayCap) VALUES ('{0}','{1}',N'{2}','{3}')", cc.IDCD, cc.SoCC, cc.ADD, cc.NgayCap.Date);
-            dbConn.ThucThi(sqlStr);*/
-
             using (var dbConn = new QLCongDanEntities())
             {
                 var newCC = new CCCD
@@ -32,8 +29,6 @@ namespace QuanLyCongDan.DAO
 
         public void Xoa(CCCD cc)
         {
-            /*String sqlStr = string.Format("UPDATE CCCD SET SoCCCD = '', NoiCap = '', NgayCap = '' where ID_CongDan = '{0}'", cc.IDCD);
-            dbConn.ThucThi(sqlStr);*/
             using (var dbConn = new QLCongDanEntities())
             {
                 var delCC = dbConn.CCCDs.SingleOrDefault(c => c.ID_CongDan == cc.ID_CongDan);
@@ -47,8 +42,6 @@ namespace QuanLyCongDan.DAO
 
         public void Sua(CCCD cc)
         {
-            /*String sqlStr = string.Format("UPDATE CCCD SET SoCCCD = '{0}', NoiCap = N'{1}',NgayCap = '{2}' where ID_CongDan = '{3}'", cc.SoCC, cc.ADD, cc.NgayCap.Date, cc.IDCD);
-            dbConn.ThucThi(sqlStr);*/
             using (var dbConn = new QLCongDanEntities())
             {
                 var UpCCCD = dbConn.CCCDs.FirstOrDefault(c => c.ID_CongDan == cc.ID_CongDan);
@@ -65,33 +58,6 @@ namespace QuanLyCongDan.DAO
 
         public CCCD TimKiem_ID(String id)
         {
-            /*try
-            {
-                string sqlStr = string.Format("SELECT * FROM CCCD WHERE SoCCCD LIKE '{0}'", id);
-                DataTable dt = dbConn.LayDanhSach(sqlStr);
-
-                if (dt != null)
-                {
-                    if (dt.Rows.Count > 0)
-                    {
-                        DataRow row = dt.Rows[0];
-                        return new CCCD(
-                            row["ID_CCCD"].ToString(),
-                            row["ID_CongDan"].ToString(),
-                            row["SoCCCD"].ToString(),
-                            Convert.ToDateTime(row["NgayCap"].ToString()),
-                            row["NoiCap"].ToString()
-                        );
-                    }
-                }
-
-                return null;
-            }
-            catch
-            {
-                return null;
-            }*/
-
             try
             {
                 using (var dbConn = new QLCongDanEntities())
@@ -122,33 +88,6 @@ namespace QuanLyCongDan.DAO
         }
         public CCCD TimKiem(String id)
         {
-            /*try
-            {
-                string sqlStr = string.Format("SELECT * FROM CCCD WHERE ID_CongDan LIKE '{0}'", id);
-                DataTable dt = dbConn.LayDanhSach(sqlStr);
-
-                if (dt != null)
-                {
-                    if (dt.Rows.Count > 0)
-                    {
-                        DataRow row = dt.Rows[0];
-                        return new CCCD(
-                            row["ID_CCCD"].ToString(),
-                            row["ID_CongDan"].ToString(),
-                            row["SoCCCD"].ToString(),
-                            Convert.ToDateTime(row["NgayCap"].ToString()),
-                            row["NoiCap"].ToString()
-                        );
-                    }
-                }
-
-                return null;
-            }
-            catch
-            {
-                return null;
-            }*/
-
             try
             {
                 using (var dbConn = new QLCongDanEntities())
@@ -178,8 +117,6 @@ namespace QuanLyCongDan.DAO
         }
         public DataTable LayDanhSachCCCD()
         {
-            /*string sqlStr = string.Format("SELECT * FROM CCCD");
-            return dbConn.LayDanhSach(sqlStr);*/
             using (var dbConn = new QLCongDanEntities())
             {
                 var CCCD = dbConn.CCCDs.ToList();
@@ -206,19 +143,6 @@ namespace QuanLyCongDan.DAO
         }
         public int toIdCongDan(String soCCCD)
         {
-            /*string sqlStr = string.Format("SELECT * FROM CCCD WHERE SoCCCD LIKE '{0}'", soCCCD);
-            DataTable dt = dbConn.LayDanhSach(sqlStr);
-
-            if (dt != null)
-            {
-                if (dt.Rows.Count > 0)
-                {
-                    DataRow row = dt.Rows[0];
-                    return int.Parse(row["ID_CongDan"].ToString());
-                }
-            }
-
-            return -1;*/
             using (var dbConn = new QLCongDanEntities())
             {
                 var cccd = dbConn.CCCDs.FirstOrDefault(c => c.SoCCCD == soCCCD);
